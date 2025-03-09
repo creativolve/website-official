@@ -6,10 +6,11 @@ export default function Home() {
     {/* Logo */}
     <div className="mb-6">
       <Image
-        src="/logo.svg"
+        src="/images/logo.svg"
         alt="Creativolve Logo"
         width={100}
         height={100}
+        Priority
       />
     </div>
 
