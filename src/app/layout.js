@@ -3,9 +3,10 @@ import "./globals.css";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
-  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
+
+
 
 export const metadata = {
   title: "Creativolve Agency",
@@ -16,7 +17,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id">
       <body
-        className={`${montserrat.variable} antialiased`}
+        className={`${montserrat.variable} antialiased bg-[#171717]`}
+
       >
         {children}
       </body>
