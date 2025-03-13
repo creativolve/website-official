@@ -164,7 +164,7 @@ export default function Navbar() {
           {/* Link */}
           <div
             style={{
-              transform: isOpen ? "translateY(-10vh)" : "translateY(-120vh)",
+              transform: isOpen ? "translateY(-10vh)" : "translateY(-200vh)",
               transition: "transform 1s ease-in-out",
               right: "0px",
             }}

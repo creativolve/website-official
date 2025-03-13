@@ -1,3 +1,9 @@
+# *
 User-agent: *
-Disallow:
+Allow: /
+
+# Host
+Host: https://creativolve.agency
+
+# Sitemaps
 Sitemap: https://creativolve.agency/sitemap.xml
