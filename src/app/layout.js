@@ -11,6 +11,7 @@ const montserrat = Montserrat({
 export const metadata = {
   title: "Creativolve Agency",
   description: "Creative and innovative digital agency focused on delivering professional and innovative digital solutions.",
+  metadataBase: new URL('https://creativolve.agency'), 
 
   icons: {
     icon: "/favicon.svg"
@@ -20,7 +21,6 @@ export const metadata = {
 
   robots: "index, follow", 
 
-  viewport: "width=device-width, initial-scale=1.0",
 
   openGraph: {
     title: "Creativolve Agency",
@@ -37,6 +37,8 @@ export const metadata = {
     ],
   },
 };
+
+export const viewport = 'width=device-width, initial-scale=1';
 
 export default function RootLayout({ children }) {
   return (

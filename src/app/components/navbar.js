@@ -46,6 +46,8 @@ export default function Navbar() {
               src="/images/logo.svg"
               width={140}
               height={200}
+              quality={80} 
+              priority
               alt="Creativolve - Creative And Innovative Agency"
             />
 
@@ -105,6 +107,8 @@ export default function Navbar() {
               src="/images/logo.svg"
               width={150}
               height={150}
+              quality={80}
+              priority 
               alt="Creativolve - Creative And Innovative Agency"
               className="md:hidden"
             />
@@ -114,6 +118,8 @@ export default function Navbar() {
               src="/images/logo.svg"
               width={250}
               height={250}
+              quality={80}
+              priority
               alt="Creativolve - Creative And Innovative Agency"
               className="
               hidden
