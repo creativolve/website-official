@@ -29,8 +29,8 @@ export default function Navbar() {
     <>
       <nav
         className="
-      p-[20px]
-      lg:p-0
+      p-[30px] fixed w-full
+      lg:px-[200px] lg:py-[10px]
       "
       >
         {/* Dekstop */}
@@ -48,6 +48,7 @@ export default function Navbar() {
               height={200}
               alt="Creativolve - Creative And Innovative Agency"
             />
+
             <h1
               className="
               sr-only
@@ -60,7 +61,7 @@ export default function Navbar() {
           {/* LINK NAVBAR */}
           <ul
             className="
-            flex gap-8 text-[1vw] text-[#4E4E4E]
+            flex gap-12 text-[1vw] text-[#4E4E4E]
             "
           >
             {/* ITERASI */}
@@ -98,12 +99,29 @@ export default function Navbar() {
         >
           {/* TITLE */}
           <div className="title">
+
+            {/* MOBILE LOGO */}
             <Image
               src="/images/logo.svg"
               width={150}
               height={150}
               alt="Creativolve - Creative And Innovative Agency"
+              className="md:hidden"
             />
+
+              {/* TAB LOGO */}
+              <Image
+              src="/images/logo.svg"
+              width={250}
+              height={250}
+              alt="Creativolve - Creative And Innovative Agency"
+              className="
+              hidden
+              lg:flex
+              "
+            />
+
+
             <h1
               className="
               sr-only
@@ -114,33 +132,59 @@ export default function Navbar() {
           </div>
 
           <div className="lg:hidden absolute top-[28px] right-[20px]">
-            <button onClick={toggleNavbar} className="text-gray-700" aria-label={isOpen ? "Tutup Menu" : "Buka Menu"}>
+            <button
+              onClick={toggleNavbar}
+              className="text-gray-700"
+              aria-label={isOpen ? "Tutup Menu" : "Buka Menu"}
+            >
+
+              {/* OPEN MENU */}
               {isOpen === true ? (
-                <X size={40} className="text-white hidden" />
+                <X size={40} 
+                className="
+                text-white hidden
+                " />
               ) : (
-                <Menu size={40} />
+                <Menu 
+                className="
+                w-[45px] h-[45px]
+                md:w-[70px] md:h-[70px]
+                "/>
               )}
+
             </button>
           </div>
 
           {/* Link */}
           <div
             style={{
-              transform: isOpen ? "translateY(-10vh)" : "translateY(-110vh)",
+              transform: isOpen ? "translateY(-10vh)" : "translateY(-120vh)",
               transition: "transform 1s ease-in-out",
               right: "0px",
             }}
             className="
           flex flex-col gap-10 items-end absolute w-[100vw] h-[100vh]  bg-[#171717] text-[#ffffff] py-34 px-18 overflow-hidden
+          md:py-42 md:px-28
           "
           >
-            <div className="close fixed top-[20px] right-[20px]">
-              <button onClick={toggleNavbar} className="text-gray-700" aria-label={isOpen ? "Tutup Menu" : "Buka Menu"}>
+            <div className="close fixed top-[40px] right-[30px]">
+              <button
+                onClick={toggleNavbar}
+                className="text-gray-700"
+                aria-label={isOpen ? "Tutup Menu" : "Buka Menu"}
+              >
+
+                {/* CLOSE MENU */}
                 {isOpen === true ? (
-                  <X size={40} className="text-white" />
+                  <X size={55} 
+                  className="
+                  w-[45px] h-[45px] text-white
+                  md:w-[70px] md:h-[70px]
+                  "/>
                 ) : (
                   <Menu size={40} className="hidden" />
                 )}
+                
               </button>
             </div>
 
@@ -155,7 +199,7 @@ export default function Navbar() {
                   key={index}
                   className="
                 text-[4.1vw]
-                md:text-[3vw]
+                md:text-[4vw]
                 "
                 >
                   <Link href={item.href}>{item.nav}</Link>
@@ -169,7 +213,7 @@ export default function Navbar() {
                 href="#"
                 className="
                   bg-[#ffffff] text-black px-[15px] text-[4.1vw] w-auto rounded-4xl
-                  md:text-[3vw]
+                  md:text-[4vw]
                   
                   hover:bg-[#cccccc] hover:text-[black]
                   "

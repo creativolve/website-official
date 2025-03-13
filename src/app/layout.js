@@ -18,7 +18,9 @@ export const metadata = {
 
   keywords: "Creativolve, Agency, Digital Solutions, Creative Agency, Web Development",
 
+  robots: "index, follow", 
 
+  viewport: "width=device-width, initial-scale=1.0",
 
   openGraph: {
     title: "Creativolve Agency",
