@@ -1,10 +1,9 @@
 User-agent: *
 Allow: /
-Disallow: http://www.creativolve.agency/
-Disallow: https://www.creativolve.agency/
 
-# Host
-Host: https://creativolve.agency
+# Disallow HTTP dan WWW
+Disallow: http://
+Disallow: https://www.
 
 # Sitemaps
 Sitemap: https://creativolve.agency/sitemap.xml
