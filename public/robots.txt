@@ -1,6 +1,7 @@
-# *
 User-agent: *
 Allow: /
+Disallow: http://www.creativolve.agency/
+Disallow: https://www.creativolve.agency/
 
 # Host
 Host: https://creativolve.agency
