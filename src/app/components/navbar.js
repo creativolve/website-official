@@ -93,6 +93,10 @@ export default function Navbar() {
           </Link>
         </div>
 
+
+
+
+
         {/* Mobile an */}
         <div
           className="
@@ -123,7 +127,7 @@ export default function Navbar() {
               alt="Creativolve - Creative And Innovative Agency"
               className="
               hidden
-              lg:flex
+              md:flex
               "
             />
 
@@ -164,12 +168,12 @@ export default function Navbar() {
           {/* Link */}
           <div
             style={{
-              transform: isOpen ? "translateY(-10vh)" : "translateY(-200vh)",
+              transform: isOpen ? "translateY(-10%)" : "translateY(-200%)",
               transition: "transform 1s ease-in-out",
               right: "0px",
             }}
             className="
-          flex flex-col gap-10 items-end absolute w-[100vw] h-[100vh]  bg-[#171717] text-[#ffffff] py-34 px-18 overflow-hidden
+          flex flex-col gap-10 items-end absolute w-[100vw] h-[102vh]  bg-[#171717] text-[#ffffff] py-34 px-18 overflow-hidden
           md:py-42 md:px-28
           "
           >

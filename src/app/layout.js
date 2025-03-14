@@ -6,28 +6,28 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
-
-
 export const metadata = {
   title: "Creativolve Agency",
-  
-  description: "Creativolve Agency adalah agensi digital kreatif yang menyediakan solusi branding dan strategi profesional dengan penerapan AI Automation.",
 
-  metadataBase: new URL('https://creativolve.agency'), 
+  description:
+    "Creativolve Agency adalah agensi digital kreatif yang menyediakan solusi branding dan strategi profesional dengan penerapan AI Automation.",
+
+  metadataBase: new URL("https://creativolve.agency"),
 
   icons: {
-    icon: "/images/favicon.svg"
+    icon: '/favicon.png', 
   },
 
-  keywords: "Creativolve, Agency, Digital Solutions, Creative Agency, Agensi Marketing",
+  keywords:
+    "Creativolve, Agency, Digital Solutions, Creative Agency, Agensi Marketing",
 
-  robots: "index, follow", 
-
+  robots: "index, follow",
 
   openGraph: {
     title: "Creativolve Agency - Agensi Digital Kreatif",
 
-    description: "Creativolve Agency adalah agensi digital kreatif yang menyediakan solusi branding dan strategi profesional dengan penerapan AI Automation.",
+    description:
+      "Creativolve Agency adalah agensi digital kreatif yang menyediakan solusi branding dan strategi profesional dengan penerapan AI Automation.",
 
     url: "https://creativolve.agency/",
     type: "website",
@@ -42,14 +42,14 @@ export const metadata = {
   },
 };
 
-export const viewport = 'width=device-width, initial-scale=1';
+export const viewport = "width=device-width, initial-scale=1";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="id">
-      <body
-        className={`${montserrat.className} antialiased bg-[#ffffff]`}
-      >
+
+
+      <body className={`${montserrat.className} antialiased bg-[#ffffff]`}>
         {children}
       </body>
     </html>

@@ -78,7 +78,12 @@ export default function Hero() {
                         lg:text-[2.4vw]
                         "
               >
-                <Link href={item.url} target="_blank" label={item.label} rel="noopener noreferrer">
+                <Link
+                  href={item.url}
+                  target="_blank"
+                  label={item.label}
+                  rel="noopener noreferrer"
+                >
                   <FontAwesomeIcon icon={item.name} />
                 </Link>
               </li>
