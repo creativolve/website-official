@@ -10,7 +10,9 @@ const montserrat = Montserrat({
 
 export const metadata = {
   title: "Creativolve Agency",
-  description: "Agensi Digital Kreatif dan inovatif yang berfokus pada penyampaian solusi digital yang profesional dengan penerapan AI Automation",
+  
+  description: "Creativolve Agency adalah agensi digital kreatif yang menyediakan solusi branding dan strategi profesional dengan penerapan AI Automation.",
+
   metadataBase: new URL('https://creativolve.agency'), 
 
   icons: {
@@ -24,7 +26,9 @@ export const metadata = {
 
   openGraph: {
     title: "Creativolve Agency - Agensi Digital Kreatif",
-    description: "Creativolve Agency adalah sebuah agency full service dengan role model ‘Digital Branding Dan Strategy Branding’ sebagai role utama, Agensi Digital Kreatif dan inovatif yang berfokus pada penyampaian solusi digital yang profesional dengan penerapan AI Automation",
+
+    description: "Creativolve Agency adalah agensi digital kreatif yang menyediakan solusi branding dan strategi profesional dengan penerapan AI Automation.",
+
     url: "https://creativolve.agency/",
     type: "website",
     images: [
