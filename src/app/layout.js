@@ -10,14 +10,14 @@ const montserrat = Montserrat({
 
 export const metadata = {
   title: "Creativolve Agency",
-  description: "Creative and innovative digital agency focused on delivering professional and innovative digital solutions.",
+  description: "Agensi Digital Kreatif dan inovatif yang berfokus pada penyampaian solusi digital yang profesional dengan penerapan AI Automation",
   metadataBase: new URL('https://creativolve.agency'), 
 
   icons: {
-    icon: "/favicon.svg"
+    icon: "/images/favicon.svg"
   },
 
-  keywords: "Creativolve, Agency, Digital Solutions, Creative Agency, Web Development",
+  keywords: "Creativolve, Agency, Digital Solutions, Creative Agency, Agensi Marketing",
 
   robots: "index, follow", 
 
