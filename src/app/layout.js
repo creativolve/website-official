@@ -23,8 +23,8 @@ export const metadata = {
 
 
   openGraph: {
-    title: "Creativolve Agency",
-    description: "Creative and innovative digital agency focused on delivering professional and innovative digital solutions.",
+    title: "Creativolve Agency - Agensi Digital Kreatif",
+    description: "Creativolve Agency adalah sebuah agency full service dengan role model ‘Digital Branding Dan Strategy Branding’ sebagai role utama, Agensi Digital Kreatif dan inovatif yang berfokus pada penyampaian solusi digital yang profesional dengan penerapan AI Automation",
     url: "https://creativolve.agency/",
     type: "website",
     images: [
