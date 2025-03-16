@@ -1,5 +1,8 @@
+
+
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
@@ -15,7 +18,8 @@ export const metadata = {
   metadataBase: new URL("https://creativolve.agency"),
 
   icons: {
-    icon: '/favicon.png', 
+    icon: '/favicon.png',
+    shortcut: '/favicon.png', 
   },
 
   keywords:
@@ -45,9 +49,22 @@ export const metadata = {
 export const viewport = "width=device-width, initial-scale=1";
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="id">
 
+<Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-L7L5HMSKME"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-L7L5HMSKME');
+        `}
+      </Script>
 
       <body className={`${montserrat.className} antialiased bg-[#ffffff]`}>
         {children}
