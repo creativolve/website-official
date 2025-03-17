@@ -10,16 +10,17 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Creativolve Agency",
+  title: "Creativolve Agency | Creative Digital Solutions",
 
   description:
-    "Creativolve Agency adalah agensi digital kreatif yang menyediakan solusi branding dan strategi profesional dengan penerapan AI Automation.",
+    "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
 
   metadataBase: new URL("https://creativolve.agency"),
 
   icons: {
     icon: '/favicon.png',
-    shortcut: '/favicon.png', 
+    shortcut: '/favicon.png',
+    apple: '/apple-touch-icon.png',
   },
 
   keywords:

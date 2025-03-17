@@ -1,0 +1,22 @@
+[
+    {
+        "image": "/images/card/Digital Marketing.svg",
+        "title": "Digital Marketing",
+        "paragraph": "Perkenalkan brand mu ke seluruh audiens."
+    },
+    {
+        "image": "/images/card/Digital Branding.svg",
+        "title": "Digital Branding",
+        "paragraph": "Buat identitas brand mu menjadi lebih profesional."
+    },
+    {
+        "image": "/images/card/Digital Ads.svg",
+        "title": "Digital Ads",
+        "paragraph": "Buat Pelanggan menemukan anda."
+    },
+    {
+        "image": "/images/card/Digital Solution.svg",
+        "title": "Digital Solution",
+        "paragraph": "Temukan masalah kamu dengan pemanfaatan teknologi digital."
+    }
+]

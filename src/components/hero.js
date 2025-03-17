@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
+import Card from "./card";
 
 export default function Hero() {
   const iconSocial = [
@@ -19,7 +20,7 @@ export default function Hero() {
   ];
 
   return (
-    <>
+    <section>
       <Image
         src="/images/hero/background.svg"
         alt="background"
@@ -48,7 +49,7 @@ export default function Hero() {
           >
             <h2
               className="
-                    font-semibold text-[8vw] leading-[9vw] 
+                    font-bold text-[8vw] leading-[9vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888]
                     lg:text-[3.3vw] lg:leading-[3.7vw] 
                     "
             >
@@ -56,12 +57,11 @@ export default function Hero() {
             </h2>
             <p
               className="
-                    w-[80%] text-[3.3vw]
+                    w-[80%] text-[3.3vw] text-[#4E4E4E] normal-case
                     lg:w-[55%] lg:text-[1.2vw]
                     "
             >
-              Bangun Brand Digital Anda dengan Strategi Terbaik & Fleksibel
-              dengan menerapkan sistem automasi.
+              Bangun brand digital anda menggunakan strategi terbaik & fleksibel dengan menerapkan sistem automasi.
             </p>
           </div>
 
@@ -74,7 +74,7 @@ export default function Hero() {
               <li
                 key={index}
                 className="
-                        text-[6.9vw]
+                        text-[6.9vw] text-[#262626]
                         lg:text-[2.4vw]
                         "
               >
@@ -91,6 +91,49 @@ export default function Hero() {
           </ul>
         </div>
       </div>
-    </>
+
+      <div
+        className="
+              flex flex-col justify-between items-center gap-10  mt-[-35vh]
+              lg:flex-row lg:mt-[-22vh]
+              "
+      >
+        <div
+          className="
+                digital-marketing w-full
+                lg:mt-[-130px] lg:ml-0
+                "
+        >
+          <Card index={0} />
+        </div>
+
+        <div
+          className="
+                digital-branding w-full
+                lg:m-0
+                "
+        >
+          <Card index={1} />
+        </div>
+
+        <div
+          className="
+                digital-ads w-full
+                lg:mt-[-190px] lg:ml-0
+                "
+        >
+          <Card index={2} />
+        </div>
+
+        <div
+          className="
+                digital-solution w-full
+                lg:m-0
+                "
+        >
+          <Card index={3} />
+        </div>
+      </div>
+    </section>
   );
 }

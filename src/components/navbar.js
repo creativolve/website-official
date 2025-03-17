@@ -1,37 +1,46 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const toggleNavbar = () => {
-    setIsOpen(!isOpen);
+  const toggleNavbar = ()=>(setIsOpen(!isOpen));
 
-    if (!isOpen) {
-      document.body.style.overflow = "hidden"; // Disable scroll
-    } else {
-      document.body.style.overflow = ""; // Aktifkan kembali scroll
-    }
-  };
+  const clicked = () => (setIsOpen(false));
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+  
+    window.addEventListener('scroll', handleScroll);
+  
+    // Tangani overflow saat navbar terbuka
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isOpen]);
 
   const navLink = [
     { nav: "Tentang", href: "#tentang" },
     { nav: "Layanan", href: "#layanan" },
     { nav: "Mengapa Kami", href: "#mengapa" },
-    { nav: "Blog", href: "#blog" },
+    // { nav: "Blog", href: "#blog" },
   ];
 
   return (
     <>
       <nav
-        className="
-      p-[30px] fixed w-full
-      lg:px-[200px] lg:py-[10px]
-      "
+        className={`
+      p-[30px] fixed w-full mt-[-20px] h-[90px] z-[2]
+      lg:px-[200px] lg:py-[25px] lg:mt-0 lg:h-auto
+      ${scrolled? 'bg-[#fffffff6] backdrop-blur-[2px] shadow-[#7c7c7c0e] shadow-lg' : 'bg-transparent shadow-none'}
+      `}
       >
         {/* Dekstop */}
         <div
@@ -63,7 +72,7 @@ export default function Navbar() {
           {/* LINK NAVBAR */}
           <ul
             className="
-            flex gap-12 text-[1vw] text-[#4E4E4E]
+            flex gap-12 text-[1vw] text-[#000000]
             "
           >
             {/* ITERASI */}
@@ -71,7 +80,7 @@ export default function Navbar() {
               <li
                 key={index}
                 className="
-                hover:text-black
+                hover:text-[#4e4e4e]
                 "
               >
                 <Link href={item.href}>{item.nav}</Link>
@@ -109,26 +118,14 @@ export default function Navbar() {
             {/* MOBILE LOGO */}
             <Image
               src="/images/logo.svg"
-              width={150}
-              height={150}
+              width={0}
+              height={0}
               quality={80}
               priority 
               alt="Creativolve - Creative And Innovative Agency"
-              className="md:hidden"
-            />
-
-              {/* TAB LOGO */}
-              <Image
-              src="/images/logo.svg"
-              width={250}
-              height={250}
-              quality={80}
-              priority
-              alt="Creativolve - Creative And Innovative Agency"
               className="
-              hidden
-              md:flex
-              "
+              mb-1
+              md:hidden w-[120px] md:w-[250px]"
             />
 
 
@@ -141,7 +138,7 @@ export default function Navbar() {
             </h1>
           </div>
 
-          <div className="lg:hidden absolute top-[28px] right-[20px]">
+          <div className="lg:hidden absolute top-[30px] right-[30px]">
             <button
               onClick={toggleNavbar}
               className="text-gray-700"
@@ -157,7 +154,7 @@ export default function Navbar() {
               ) : (
                 <Menu 
                 className="
-                w-[45px] h-[45px]
+                w-[30px] h-[30px]
                 md:w-[70px] md:h-[70px]
                 "/>
               )}
@@ -211,6 +208,7 @@ export default function Navbar() {
                 text-[4.1vw]
                 md:text-[4vw]
                 "
+                onClick={clicked}
                 >
                   <Link href={item.href}>{item.nav}</Link>
                 </li>
@@ -222,7 +220,7 @@ export default function Navbar() {
               <button
                 href="#"
                 className="
-                  bg-[#ffffff] text-black px-[15px] text-[4.1vw] w-auto rounded-4xl
+                  bg-[#ffffff] text-black px-[15px] text-[4.1vw] w-auto rounded-4xl py-[3px]
                   md:text-[4vw]
                   
                   hover:bg-[#cccccc] hover:text-[black]

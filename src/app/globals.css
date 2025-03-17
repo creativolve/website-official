@@ -12,3 +12,7 @@
     --foreground: #ededed;
   }
 }
+
+html,body,*{
+  scroll-behavior: smooth;
+}
