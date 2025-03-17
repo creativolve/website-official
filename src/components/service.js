@@ -38,7 +38,7 @@ export default function Service(){
                 src="/images/layanan/background.svg"
                 alt="background"
                 width={100}
-                quality={100}
+                quality={60}
                 height={100}
                 className="
                 absolute top-[50%] right-[50%] translate-y-[-60%] z-[-2] translate-x-[50%] w-[110vw]

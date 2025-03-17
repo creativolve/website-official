@@ -83,7 +83,7 @@ export default function About(){
                 alt="AI"
                 width={100}
                 height={100}
-                priority
+                quality={60}
                 className="
                 w-full
                 "

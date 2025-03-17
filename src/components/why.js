@@ -38,8 +38,7 @@ export default function whyOur(){
                 src='/images/Mengapa/why.png'
                 width={450}
                 height={450}
-                quality={100}
-                priority
+                quality={40}
                 alt="Why Our"
                 className="
                 w-[100vw] ml-[-160px]
