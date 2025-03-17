@@ -61,7 +61,7 @@ export default function About(){
                         <Link key={index} href={item.href}>
                             <button
                             className={`
-                            px-[20px] py-[30px] rounded-3xl
+                            px-[20px] py-[5px] rounded-3xl
                             lg:px-[25px] lg:py-[8px]
                             ${item.solid !== 'transparent' ? 'bg-[#070707] text-white' : 'bg-transparent'}
                             ${item.stroke !== 'none' ? 'border border-[#070707] text-[#070707]' : ''}
