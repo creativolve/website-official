@@ -1,11 +1,20 @@
 "use client";
 
 import Navbar from "./navbar";
-import Hero from "./hero";
 import About from "./about";
 import Service from "./service";
-import WhyOur from "./why";
 import Footer from "./footer";
+import dynamic from "next/dynamic";
+
+const Hero = dynamic(() => import('./hero'), {
+  loading: () => <p>Loading...</p>,
+  ssr: false, // Matikan SSR jika komponen hanya untuk client side
+});
+
+const WhyOur = dynamic(() => import('./why'), {
+  loading: () => <p>Loading...</p>,
+  ssr: false, // Matikan SSR jika komponen hanya untuk client side
+});
 
 export default function Main() {
   return (
