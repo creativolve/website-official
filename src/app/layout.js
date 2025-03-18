@@ -29,16 +29,16 @@ export const metadata = {
   robots: "index, follow",
 
   openGraph: {
-    title: "Creativolve Agency - Agensi Digital Kreatif",
+    title: "Creativolve Agency | Creative Digital Solutions",
 
     description:
-      "Creativolve Agency adalah agensi digital kreatif yang menyediakan solusi branding dan strategi profesional dengan penerapan AI Automation.",
+     "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
 
     url: "https://creativolve.agency/",
     type: "website",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/ogg-image.jpg",
         width: 1200,
         height: 630,
         alt: "Creativolve Agency",
@@ -53,8 +53,8 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="id">
-
-<Script
+      <head>
+      <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-L7L5HMSKME"
         strategy="afterInteractive"
       />
@@ -66,6 +66,7 @@ export default function RootLayout({ children }) {
           gtag('config', 'G-L7L5HMSKME');
         `}
       </Script>
+      </head>
 
       <body className={`${montserrat.className} antialiased bg-[#ffffff]`}>
         {children}
