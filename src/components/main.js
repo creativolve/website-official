@@ -7,12 +7,10 @@ import Footer from "./footer";
 import dynamic from "next/dynamic";
 
 const Hero = dynamic(() => import('./hero'), {
-  loading: () => <p>Loading...</p>,
   ssr: false, // Matikan SSR jika komponen hanya untuk client side
 });
 
 const WhyOur = dynamic(() => import('./why'), {
-  loading: () => <p>Loading...</p>,
   ssr: false, // Matikan SSR jika komponen hanya untuk client side
 });
 

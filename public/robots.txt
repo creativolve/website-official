@@ -2,6 +2,10 @@
 User-agent: *
 Allow: /
 
+# *
+User-agent: *
+Allow: /favicon.png
+
 # Host
 Host: https://creativolve.agency
 
