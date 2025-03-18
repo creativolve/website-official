@@ -69,13 +69,14 @@ export default function whyOur(){
                         list flex gap-5
                         ">
                             <p
-                            className="
-                            bg-[#212121] text-white font-bold rounded-2xl text-center flex justify-center items-center text-[4vw] w-[120px] h-[40px]
+    className="
+    bg-[#212121] text-white font-bold rounded-2xl text-center flex justify-center items-center
+    min-w-[40px] h-[40px] text-[4vw]
+    lg:min-w-[45px] lg:h-[45px] lg:text-[1vw]
+    ">
+    {item.number}
+</p>
 
-                            lg:w-[120px] lg:h-[45px] lg:text-[1.1vw]
-                            ">
-                                {item.number}
-                            </p>
                             <div
                             className="
                             text flex flex-col
