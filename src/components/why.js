@@ -16,7 +16,7 @@ const theList = [
     {
         number: '3',
         title: 'Memberikan Solusi Digital Berbasis Big Data',
-        paragraph: 'Selain memeberikan layanan konsultasi secara teknis dan profesional, kami memberikan layanan konsultasi berbasis AI.'
+        paragraph: 'Kami memberikan solusi digital dari hasil kesimpulan riset dari sistem ‘Big Data’'
     },
 ]
 
