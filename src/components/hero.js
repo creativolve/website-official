@@ -24,14 +24,14 @@ export default function Hero() {
       <Image
         src="/images/hero/background_hero.png"
         alt="background"
-        layout="fill"
-        objectFit="cover"
+        width={300}
+        height={300}
+        quality={40}
         fetchPriority="high"
         loading="lazy"
         className="
-        absolute top-0 right-0 opacity-[0.9] z-[-20]
-        md:opacity-[0.28]
-        lg:opacity-[0.3]
+        absolute top-0 left-0 object-cover w-full h-[100vh] opacity-[0.9] z-[-20]
+        lg:opacity-[0.4] lg:w-full lg:h-auto
         "
       />
       <div

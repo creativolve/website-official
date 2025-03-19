@@ -15,13 +15,13 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 5);
     };
   
     window.addEventListener('scroll', handleScroll);
   
     // Tangani overflow saat navbar terbuka
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
   
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isOpen]);
@@ -37,9 +37,9 @@ export default function Navbar() {
     <>
       <nav
         className={`
-      p-[30px] fixed w-full mt-[-20px] h-[90px] z-[2]
-      lg:px-[200px] lg:py-[25px] lg:mt-0 lg:h-auto
-      ${scrolled? 'bg-[#fffffff6] backdrop-blur-[2px] shadow-[#7c7c7c0e] shadow-lg' : 'bg-transparent shadow-none'}
+      p-[30px] w-full mt-[-20px] h-[90px] z-[2]
+      lg:px-[200px] lg:py-[15px] lg:mt-0 lg:h-auto
+      ${scrolled? 'bg-[#fffffff6] backdrop-blur-[2px] fixed shadow-[#7c7c7c0e] shadow-lg' : 'bg-transparent shadow-none'}
       `}
       >
         {/* Dekstop */}
@@ -165,12 +165,12 @@ export default function Navbar() {
           {/* Link */}
           <div
             style={{
-              transform: isOpen ? "translateY(-10%)" : "translateY(-200%)",
-              transition: "transform 1s ease-in-out",
+              transform: isOpen ? "translateY(-8%)" : "translateY(-150%)",
+              transition: "all 1s ease-in-out",
               right: "0px",
             }}
             className="
-          flex flex-col gap-10 items-end absolute w-[100vw] h-[102vh]  bg-[#171717] text-[#ffffff] py-44 px-18 overflow-hidden
+          flex flex-col gap-10 items-end absolute w-[100vw] h-[115vh]  bg-[#171717] text-[#ffffff] py-44 px-18 overflow-hidden
           md:py-42 md:px-28
           "
           >
