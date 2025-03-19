@@ -69,7 +69,7 @@ export default function Navbar() {
                 quality={40} 
                 fetchPriority="high"
                 alt="Creativolve - Creative And Innovative Agency"
-                className="select-none"
+                className="select-none w-[9vw]"
               />
 
               <h1
