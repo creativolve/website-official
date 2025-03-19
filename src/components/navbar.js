@@ -64,10 +64,10 @@ export default function Navbar() {
             <div className="title">
               <Image
                 src="/images/logo.svg"
-                width={140}
-                height={200}
-                quality={80} 
-                priority
+                width={100}
+                height={100}
+                quality={40} 
+                fetchPriority="high"
                 alt="Creativolve - Creative And Innovative Agency"
                 className="select-none"
               />
