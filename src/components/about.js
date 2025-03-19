@@ -61,8 +61,8 @@ export default function About(){
                         <Link key={index} href={item.href}>
                             <button
                             className={`
-                            px-[20px] py-[5px] rounded-3xl
-                            lg:px-[25px] lg:py-[8px]
+                            px-[20px] py-[5px] rounded-3xl text-[3.8vw]
+                            lg:px-[25px] lg:py-[8px] lg:text-[1vw]
                             ${item.solid !== 'transparent' ? 'bg-[#070707] text-white' : 'bg-transparent'}
                             ${item.stroke !== 'none' ? 'border border-[#070707] text-[#070707]' : ''}
                             `}>
@@ -79,13 +79,16 @@ export default function About(){
             lg:mb-[-180px]
             ">
                 <Image
-                src="/images/tentang/Hand_AI.svg"
+                src="/images/tentang/Hand_AI.png"
                 alt="AI"
-                width={100}
-                height={100}
-                quality={60}
+                width={300}
+                height={200}
+                quality={40}
+                fetchPriority="high"
+                loading="lazy"
                 className="
-                w-full
+                w-full pointer-events-none user-select-none
+                lg:w-[40vw]
                 "
                 />
 

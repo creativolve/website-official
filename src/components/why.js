@@ -7,7 +7,7 @@ const theList = [
     number: "1",
     title: "Fleksibel Sesuai Budget",
     paragraph:
-      "Kami menerapkan sistem Budget-Based Costumixation yang dimana kami menyesuaikan project dengan budget yang dimiliki.",
+      "Kami menerapkan sistem Budget-Based Costumization yang dimana kami menyesuaikan project dengan budget yang dimiliki.",
   },
   {
     number: "2",
@@ -41,12 +41,14 @@ export default function whyOur() {
       >
         <Image
           src="/images/Mengapa/why.png"
-          width={450}
-          height={450}
-          quality={40}
+          width={380}
+          height={380}
+          quality={10}
           alt="Why Our"
+          fetchPriority="high"
+          loading="lazy"
           className="
-                w-[100vw] ml-[-160px]
+                w-[85vw] ml-[-100px] pointer-events-none user-select-none
                 lg:w-[70%] lg:m-0
                 "
         />
@@ -54,8 +56,8 @@ export default function whyOur() {
 
       <div
         className="
-            text
-            lg:w-[40%]
+            text flex flex-col gap-[40px]
+            lg:w-[40%] lg:gap-[20px]
             "
       >
         <h2

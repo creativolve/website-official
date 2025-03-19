@@ -5,22 +5,22 @@ import Image from "next/image";
 
 const cardData = [
     {
-        "image": "/images/card/Brand Identity.svg",
+        "image": "/images/card/Brand Identity.png",
         "title": "Brand Identity",
         "paragraph": "Membangun identitas visual yang kuat dan unik agar bisnis Anda mudah dikenali."
     },
     {
-        "image": "/images/card/Brand Positioning.svg",
+        "image": "/images/card/Brand Positioning.png",
         "title": "Brand Positioning",
         "paragraph": "Menentukan strategi dan posisi bisnis Anda di pasar agar lebih kompetitif."
     },
     {
-        "image": "/images/card/Story Telling.svg",
+        "image": "/images/card/Story Telling.png",
         "title": "Storytelling Branding",
         "paragraph": "Mengomunikasikan nilai dan cerita unik brand Anda untuk menarik pelanggan."
     },
     {
-        "image": "/images/card/Digital Marketing Ads.svg",
+        "image": "/images/card/Digital Marketing Ads.png",
         "title": "Digital Marketing Ads",
         "paragraph": "Strategi pemasaran digital yang efektif untuk lebih menjangkau audiens."
     }
@@ -50,7 +50,7 @@ export default function Service(){
                         {cardData.map((items, index) =>(
                             <div key={index}
                             className="
-                            card bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl py-[30px] px-[20px] flex flex-col justify-center w-[130px] h-[200px]
+                            card bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl py-[30px] px-[20px] flex flex-col justify-center
 
                             lg:w-[260px] lg:h-[auto]
                             ">
@@ -60,8 +60,10 @@ export default function Service(){
                                     alt={items.title}
                                     width={100}
                                     height={100}
+                                    fetchPriority="high"
+                                    loading="lazy"
                                     className="
-                                    w-[15vw]
+                                    w-[15vw] pointer-events-none user-select-none
                                     lg:w-[6vw]"
                                     />
                                 </div>

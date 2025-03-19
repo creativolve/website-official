@@ -170,11 +170,11 @@ export default function Navbar() {
               right: "0px",
             }}
             className="
-          flex flex-col gap-10 items-end absolute w-[100vw] h-[102vh]  bg-[#171717] text-[#ffffff] py-34 px-18 overflow-hidden
+          flex flex-col gap-10 items-end absolute w-[100vw] h-[102vh]  bg-[#171717] text-[#ffffff] py-44 px-18 overflow-hidden
           md:py-42 md:px-28
           "
           >
-            <div className="close fixed top-[40px] right-[30px]">
+            <div className="close fixed top-[70px] right-[30px]">
               <button
                 onClick={toggleNavbar}
                 className="text-gray-700"
@@ -197,7 +197,7 @@ export default function Navbar() {
 
             <ul
               className="
-            flex flex-col gap-6 items-end
+            flex flex-col gap-7 items-end
             "
             >
               {/* Iterasi */}
@@ -205,7 +205,7 @@ export default function Navbar() {
                 <li
                   key={index}
                   className="
-                text-[4.1vw]
+                text-[4.9vw]
                 md:text-[4vw]
                 "
                 onClick={clicked}
@@ -220,7 +220,7 @@ export default function Navbar() {
               <button
                 href="#"
                 className="
-                  bg-[#ffffff] text-black px-[15px] text-[4.1vw] w-auto rounded-4xl py-[3px]
+                  bg-[#ffffff] text-black px-[15px] text-[4.9vw] w-auto rounded-4xl py-[3px]
                   md:text-[4vw]
                   
                   hover:bg-[#cccccc] hover:text-[black]

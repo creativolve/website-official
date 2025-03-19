@@ -41,14 +41,14 @@ const contact = [
 
 export default function Footer(){
     return(
-        <footer
+        <footer data-nonsnipet
         className="
         bg-[#212121] h-fit
         grid grid-cols-1 gap-[30px] py-[90px] px-[50px]
         lg:px-[200px] lg:grid-cols-4 lg:py-[120px] lg:gap-[10px]
         ">
             <div className="
-            desk flex flex-col gap-[1vw]
+            desk flex flex-col gap-[13px]
             ">
                 <Image
                 src="/images/logo_footer.png"
@@ -57,7 +57,7 @@ export default function Footer(){
                 height={500}
                 quality={100}
                 className="
-                w-[35vw]
+                w-[35vw] pointer-events-none user-select-none
                 lg:w-[11vw]
                 "
                 />
@@ -72,7 +72,7 @@ export default function Footer(){
 
             <div
             className="
-            flex flex-col gap-[10px]
+            flex flex-col gap-[5px]
             lg:px-[100px]"
             >
                 <h2
@@ -85,7 +85,7 @@ export default function Footer(){
                 </h2>
                 <ul
                 className="
-                text-[#C5C5C5] flex flex-col gap-[6px]
+                text-[#C5C5C5] flex flex-col gap-[0px]
                 ">
                     {produk.map((item, index) =>(
                         <li key={index}

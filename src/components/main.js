@@ -1,20 +1,31 @@
 "use client";
 
-import Navbar from "./navbar";
-import About from "./about";
-import Service from "./service";
-import Footer from "./footer";
+
 import dynamic from "next/dynamic";
+import { useState, useEffect } from "react";
+const Navbar = dynamic(() => import('./navbar'), {ssr: true});
+const About = dynamic(() => import('./about'), {ssr: true});
+const Service = dynamic(() => import('./service'), {ssr: true});
+const Footer = dynamic(() => import('./footer'), {ssr: false});
+const Hero = dynamic(() => import('./hero'), {ssr: true});
+const WhyOur = dynamic(() => import('./why'), {ssr: true});
 
-const Hero = dynamic(() => import('./hero'), {
-  ssr: false, // Matikan SSR jika komponen hanya untuk client side
-});
-
-const WhyOur = dynamic(() => import('./why'), {
-  ssr: false, // Matikan SSR jika komponen hanya untuk client side
-});
+const Loader = dynamic(() => import("./load"), { ssr: false });
 
 export default function Main() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) return <Loader />;
+ 
+
   return (
     <>
       <Navbar />

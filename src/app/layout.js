@@ -7,13 +7,13 @@ import Script from "next/script";
 const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata = {
   title: "Creativolve Agency | Creative Digital Solutions",
 
-  description:
-    "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
+  description: "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
 
   metadataBase: new URL("https://creativolve.agency"),
 
@@ -56,9 +56,9 @@ export default function RootLayout({ children }) {
       <head>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-L7L5HMSKME"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="lazyOnload  ">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}

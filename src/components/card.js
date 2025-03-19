@@ -29,10 +29,13 @@ export default function Card({ index }) {
             <Image
             alt={item.title}
             src={item.image}
-            width={0}
-            height={0}
+            width={120}
+            height={120}
+            quality={30}
+            fetchPriority="high"
+            loading="lazy" 
             className="
-            w-[15vw]
+            w-[25vw] pointer-events-none user-select-none
             md:w-[20vw]
             lg:w-[6vw]"
             />
@@ -43,7 +46,7 @@ export default function Card({ index }) {
         ">
             <h3
             className="
-            font-semibold text-[3.5vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888]
+            font-semibold text-[4.5vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888]
             md:text-[4vw]
             lg:text-[1.3vw]
             ">
@@ -51,7 +54,7 @@ export default function Card({ index }) {
             </h3>
             <p
             className="
-            text-[3vw] text-[#4E4E4E] 
+            text-[3.3vw] text-[#4E4E4E] 
             md:text-[2.8vw]
             lg:text-[0.9vw]
             ">

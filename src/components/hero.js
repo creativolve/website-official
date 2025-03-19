@@ -20,12 +20,14 @@ export default function Hero() {
   ];
 
   return (
-    <section>
+    <header>
       <Image
-        src="/images/hero/background.svg"
+        src="/images/hero/background_hero.png"
         alt="background"
         layout="fill"
         objectFit="cover"
+        fetchPriority="high"
+        loading="lazy"
         className="
         absolute top-0 right-0 opacity-[0.9] z-[-20]
         md:opacity-[0.28]
@@ -57,7 +59,7 @@ export default function Hero() {
             </h2>
             <p
               className="
-                    w-[80%] text-[3.3vw] text-[#4E4E4E] normal-case
+                    w-[100%] text-[4vw] text-[#4E4E4E] normal-case
                     lg:w-[55%] lg:text-[1.2vw]
                     "
             >
@@ -134,6 +136,6 @@ export default function Hero() {
           <Card index={3} />
         </div>
       </div>
-    </section>
+    </header>
   );
 }
