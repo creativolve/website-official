@@ -31,7 +31,7 @@ export default function Card({ index }) {
             src={item.image}
             width={120}
             height={120}
-            quality={30}
+            quality={10}
             fetchPriority="high"
             loading="lazy" 
             className="

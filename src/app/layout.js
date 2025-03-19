@@ -68,7 +68,7 @@ export default function RootLayout({ children }) {
       </Script>
       </head>
 
-      <body className={`${montserrat.className} antialiased bg-[#ffffff]`}>
+      <body className={`${montserrat.className} relative antialiased bg-[#ffffff]`}>
         {children}
       </body>
     </html>
