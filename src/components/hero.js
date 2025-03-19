@@ -11,131 +11,173 @@ import Image from "next/image";
 import Link from "next/link";
 import Card from "./card";
 
+
+// Framer Motion
+import { LazyMotion, domAnimation, m } from "framer-motion";
+
+
 export default function Hero() {
   const iconSocial = [
-    { name: faInstagram, url: "https://www.instagram.com", label: "Instagram" },
-    { name: faTiktok, url: "https://www.tiktok.com", label: "TikTok" },
-    { name: faWhatsapp, url: "https://wa.me/your-number", label: "WhatsApp" },
-    { name: faLinkedinIn, url: "https://www.linkedin.com", label: "LinkedIn" },
+    { name: faInstagram, url: "https://www.instagram.com/creativolve_", label: "Instagram" },
+    { name: faTiktok, url: "https://www.tiktok.com/@creativolve_", label: "TikTok" },
+    { name: faWhatsapp, url: "https://wa.me/6288289158984", label: "WhatsApp" },
+    { name: faLinkedinIn, url: "https://www.linkedin.com/company/creativolve", label: "LinkedIn" },
   ];
 
   return (
     <header>
-      <Image
-        src="/images/hero/background_hero.png"
-        alt="background"
-        width={300}
-        height={300}
-        quality={40}
-        fetchPriority="high"
-        loading="lazy"
-        className="
-        absolute top-0 left-0 object-cover w-full h-[100vh] opacity-[0.9] z-[-20]
-        lg:opacity-[0.4] lg:w-full lg:h-auto
-        "
-      />
-      <div
-        className="
-        h-[100vh] flex justify-center
-        "
-      >
-        <div
-          className="
-            typografi flex flex-col items-center gap-8 justify-center mt-[-140px]
+      <LazyMotion features={domAnimation}>
+          <Image
+            src="/images/hero/background_hero.png"
+            alt="background"
+            width={300}
+            height={300}
+            quality={40}
+            fetchPriority="high"
+            loading="lazy"
+            className="
+            absolute top-0 left-0 object-cover w-full h-[100vh] opacity-[0.9] z-[-20]
+            lg:opacity-[0.4] lg:w-full lg:h-auto
             "
-        >
+          />
           <div
             className="
-                heading text-center flex flex-col items-center gap-[14px]
-                "
+            h-[100vh] flex justify-center
+            "
           >
-            <h2
+            <div
               className="
-                    font-bold text-[8vw] leading-[9vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888]
-                    lg:text-[3.3vw] lg:leading-[3.7vw] 
-                    "
+                typografi flex flex-col items-center gap-8 justify-center mt-[-250px] z-[-10]
+                "
             >
-              Bisnis Berevolusi <br /> Perlu Kreativitas
-            </h2>
-            <p
-              className="
-                    w-[100%] text-[4vw] text-[#4E4E4E] normal-case
-                    lg:w-[55%] lg:text-[1.2vw]
+              <div
+                className="
+                    heading text-center flex flex-col items-center gap-[14px]
                     "
-            >
-              Bangun brand digital anda menggunakan strategi terbaik & fleksibel dengan menerapkan sistem automasi.
-            </p>
+              >
+                <m.h2
+                initial={{y: 50, opacity: 0}}
+                whileInView={{y: 0, opacity: 100}}
+                transition={{
+                  duration: 0.5, 
+                  ease: 'easeInOut'}}
+                viewport={{once: true}}
+                  className="
+                        font-bold text-[8vw] leading-[9vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888]
+                        lg:text-[3.3vw] lg:leading-[3.7vw] 
+                        "
+                >
+                  Bisnis Berevolusi <br /> Perlu Kreativitas
+                </m.h2>
+                <m.p
+                  initial={{y: 50, opacity: 0}}
+                  whileInView={{y: 0, opacity: 100}}
+                  transition={{
+                    duration: 0.5, 
+                    delay: 0.4, 
+                    ease: 'easeInOut'}}
+                  viewport={{once: true}}
+                  className="
+                        w-[100%] text-[4vw] text-[#4E4E4E] normal-case
+                        lg:w-[55%] lg:text-[1.2vw]
+                        "
+                >
+                  Bangun brand digital anda menggunakan strategi terbaik & fleksibel dengan menerapkan sistem automasi.
+                </m.p>
+              </div>
+
+              <m.ul
+              initial={{y: 50, opacity: 0}}
+              whileInView={{y: 0, opacity: 1,
+                transition: {
+                  duration: 0.7, 
+                  delay: 0.8, 
+                  ease: 'easeInOut',
+                  staggerChildren: 0.2
+                }
+              }}
+              viewport={{once: true}}
+
+                className="
+                    icon flex gap-8
+                    "
+              >
+                {iconSocial.map((item, index) => (
+                  <m.li
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        ease: "easeInOut",
+                        duration: 0.5,
+                        delay: index * 0.4
+                      },
+                    }}
+                    viewport={{once: true}}
+                    className="
+                            text-[6.9vw] text-[#262626]
+                            lg:text-[2.4vw]
+                            "
+                  >
+                    <Link
+                      href={item.url}
+                      target="_blank"
+                      label={item.label}
+                      rel="noopener noreferrer"
+                    >
+                      <FontAwesomeIcon icon={item.name} />
+                    </Link>
+                  </m.li>
+                ))}
+              </m.ul>
+            </div>
           </div>
 
-          <ul
+          <div
             className="
-                icon flex gap-8
-                "
+                  flex flex-col justify-between items-center gap-10  mt-[-15vh]
+                  lg:flex-row lg:mt-[-35vh]
+                  "
           >
-            {iconSocial.map((item, index) => (
-              <li
-                key={index}
-                className="
-                        text-[6.9vw] text-[#262626]
-                        lg:text-[2.4vw]
-                        "
-              >
-                <Link
-                  href={item.url}
-                  target="_blank"
-                  label={item.label}
-                  rel="noopener noreferrer"
-                >
-                  <FontAwesomeIcon icon={item.name} />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+            <div
+              className="
+                    digital-marketing w-full
+                    lg:mt-[-130px] lg:ml-0
+                    "
+            >
+              <Card index={0} />
+            </div>
 
-      <div
-        className="
-              flex flex-col justify-between items-center gap-10  mt-[-35vh]
-              lg:flex-row lg:mt-[-22vh]
-              "
-      >
-        <div
-          className="
-                digital-marketing w-full
-                lg:mt-[-130px] lg:ml-0
-                "
-        >
-          <Card index={0} />
-        </div>
+            <div
+              className="
+                    digital-branding w-full
+                    lg:m-0
+                    "
+            >
+              <Card index={1} />
+            </div>
 
-        <div
-          className="
-                digital-branding w-full
-                lg:m-0
-                "
-        >
-          <Card index={1} />
-        </div>
+            <div
+              className="
+                    digital-ads w-full
+                    lg:mt-[-190px] lg:ml-0
+                    "
+            >
+              <Card index={2} />
+            </div>
 
-        <div
-          className="
-                digital-ads w-full
-                lg:mt-[-190px] lg:ml-0
-                "
-        >
-          <Card index={2} />
-        </div>
-
-        <div
-          className="
-                digital-solution w-full
-                lg:m-0
-                "
-        >
-          <Card index={3} />
-        </div>
-      </div>
+            <div
+              className="
+                    digital-solution w-full
+                    lg:m-0
+                    "
+            >
+              <Card index={3} />
+            </div>
+          </div>
+      </LazyMotion>
     </header>
   );
 }

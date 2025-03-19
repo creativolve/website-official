@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 
+// Framer Motion
+import { LazyMotion, domAnimation, m } from "framer-motion";
+
 const theList = [
   {
     number: "1",
@@ -25,98 +28,162 @@ const theList = [
 
 export default function whyOur() {
   return (
-    <section
-      id="mengapa"
-      className="
-        flex flex-col items-center justify-center
-        h-[150vh]
-        lg:h-[130vh] lg:flex-row
-        "
-    >
-      <div
-        className="
-            image w-[100vw]
-            lg:w-[60%]
+    <>
+     <LazyMotion features={domAnimation}>
+        <section
+          id="mengapa"
+          className="
+            flex flex-col items-center justify-center
+            h-[150vh]
+            lg:h-[130vh] lg:flex-row
             "
-      >
-        <Image
-          src="/images/Mengapa/why.png"
-          width={380}
-          height={380}
-          quality={10}
-          alt="Why Our"
-          fetchPriority="high"
-          loading="lazy"
-          className="
-                w-[85vw] ml-[-100px] pointer-events-none user-select-none
-                lg:w-[70%] lg:m-0
-                "
-        />
-      </div>
-
-      <div
-        className="
-            text flex flex-col gap-[40px]
-            lg:w-[40%] lg:gap-[20px]
-            "
-      >
-        <h2
-          className="
-                bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888] font-semibold text-[6.6vw]
-                lg:text-[2.4vw]
-                "
         >
-          Alasan Kenapa Harus Memilih Kami
-        </h2>
-        <div
-          className="
-                container-list flex flex-col gap-5
+          <m.div
+          initial={{opacity: 0, y: 40}}
+          whileInView={{opacity: 1, y: 0,
+            transition: {
+              duration: 0.6,
+              ease: 'easeInOut',
+            }
+          }}
+          viewport={{once: true, amount: 0.2}}
+            className="
+                image w-[100vw]
+                lg:w-[60%]
                 "
-        >
-          {theList.map((item, index) => (
-            <div
-              key={index}
+          >
+            <Image
+              src="/images/Mengapa/why.png"
+              width={380}
+              height={380}
+              quality={10}
+              alt="Why Our"
+              fetchPriority="high"
+              loading="lazy"
               className="
-                        list flex gap-5
-                        "
-            >
-              <p
-                className="
-                bg-[#212121] text-white font-bold rounded-2xl text-center flex justify-center items-center
-                min-w-[40px] h-[40px] text-[4vw]
-                lg:min-w-[45px] lg:h-[45px] lg:text-[1vw]
+                    w-[85vw] ml-[-100px] pointer-events-none select-none
+                    lg:w-[70%] lg:m-0
+                    "
+            />
+          </m.div>
+
+          <div
+            className="
+                text flex flex-col gap-[40px]
+                lg:w-[40%] lg:gap-[20px]
                 "
-              >
-                {item.number}
-              </p>
-
-              <div
-                className="
-                            text flex flex-col
+          >
+            <m.h2
+            initial={{opacity: 0, y: 20}}
+            whileInView={{opacity: 1, y:0}}
+            transition={{
+              duration: 0.5,
+              ease: 'easeInOut'
+            }}
+            viewport={{once: true, amount: 0.2}}
+              className="
+                    bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888] font-semibold text-[6.6vw]
+                    lg:text-[2.4vw]
+                    "
+            >
+              Alasan Kenapa Harus Memilih Kami
+            </m.h2>
+            <m.div
+            initial={{opacity: 0, y: 20}}
+            whileInView={{opacity: 1, y:0}}
+            transition={{
+              duration: 0.5,
+              ease: 'easeInOut',
+              delay: 0.5,
+              staggerChildren: 0.2
+            }}
+            viewport={{once: true, amount: 0.2}}
+              className="
+                    container-list flex flex-col gap-5
+                    "
+            >
+              {theList.map((item, index) => (
+                <div
+                  key={index}
+                  className="
+                            list flex gap-5
                             "
-              >
-                <h4
-                  className="
-                                font-semibold
+                >
+                  <m.p
+                  initial={{opacity: 0, y: 20}}
+                  whileInView={{opacity: 1, y: 0}}
+                  transition={{
+                    duration: 0.5,
+                    ease: 'easeInOut',
+                    delay: index * 0.4
+                  }}
+                  viewport={{once: true, amount: 0.2}}
+                    className="
+                    bg-[#212121] text-white font-bold rounded-2xl text-center flex justify-center items-center
+                    min-w-[40px] h-[40px] text-[4vw]
+                    lg:min-w-[45px] lg:h-[45px] lg:text-[1vw]
+                    "
+                  >
+                    {item.number}
+                  </m.p>
 
-                                lg:text-[1.3vw]
+                  <m.div
+                  initial={{opacity: 0, y: 20}}
+                  whileInView={{opacity: 1, y: 0,
+                    transition: {
+                      duration: 0.5,
+                      ease: 'easeInOut',
+                      delay: index * 0.6
+                    }
+                  }}
+                  viewport={{once: true, amount: 0.2}}
+                    className="
+                                text flex flex-col
                                 "
-                >
-                  {item.title}
-                </h4>
-                <p
-                  className="
-                                 text-[4vw] text-[#4E4E4E]
-                                 lg:text-[1.2vw]
-                                "
-                >
-                  {item.paragraph}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+                  >
+                    <m.h4
+                      initial={{opacity: 0, y: 20}}
+                      whileInView={{opacity: 1, y: 0,
+                        transition: {
+                          duration: 0.5,
+                          ease: 'easeInOut',
+                          delay: index * 0.8
+                        }
+                      }}
+                      viewport={{once: true, amount: 0.2}}
+
+                      className="
+                                    font-semibold
+
+                                    lg:text-[1.3vw]
+                                    "
+                    >
+                      {item.title}
+                    </m.h4>
+                    <m.p
+                      initial={{opacity: 0, y: 20}}
+                      whileInView={{opacity: 1, y: 0,
+                        transition: {
+                          duration: 0.5,
+                          ease: 'easeInOut',
+                          delay: index * 0.9
+                        }
+                      }}
+                      viewport={{once: true, amount: 0.2}}
+                      className="
+                                    text-[4vw] text-[#4E4E4E]
+                                    lg:text-[1.2vw]
+                                    "
+                    >
+                      {item.paragraph}
+                    </m.p>
+                  </m.div>
+                </div>
+              ))}
+            </m.div>
+          </div>
+        </section>
+     </LazyMotion>
+    </>
   );
 }

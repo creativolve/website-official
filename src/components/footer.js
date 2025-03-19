@@ -10,9 +10,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
   const iconSocial = [
-    { name: faInstagram, url: "https://www.instagram.com", label: "Instagram" },
-    { name: faTiktok, url: "https://www.tiktok.com", label: "TikTok" },
-    { name: faLinkedinIn, url: "https://www.linkedin.com", label: "LinkedIn" },
+    { name: faInstagram, url: "https://www.instagram.com/creativolve_", label: "Instagram" },
+    { name: faTiktok, url: "https://www.tiktok.com/@creativolve_", label: "TikTok" },
+    { name: faLinkedinIn, url: "https://www.linkedin.com/company/creativolve", label: "LinkedIn" },
   ];
 
 const produk = [
@@ -29,11 +29,11 @@ const produk = [
 const contact = [
     {
         link: 'Email',
-        href: '/' 
+        href: 'creativolve.agency@gmail.com' 
     },
     {
         link: 'WhatsApp',
-        href: '/' 
+        href: 'https://wa.me/6288289158984' 
     }
 ]
 
@@ -57,7 +57,7 @@ export default function Footer(){
                 height={500}
                 quality={100}
                 className="
-                w-[35vw] pointer-events-none user-select-none
+                w-[35vw] pointer-events-none select-none
                 lg:w-[11vw]
                 "
                 />
