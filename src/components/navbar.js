@@ -63,13 +63,13 @@ export default function Navbar() {
             {/* TITLE */}
             <div className="title">
               <Image
-                src="/images/logo.svg"
-                width={100}
-                height={100}
-                quality={40} 
+                src="/images/logo.png"
+                width={300}
+                height={200}
+                quality={50} 
                 fetchPriority="high"
                 alt="Creativolve - Creative And Innovative Agency"
-                className="select-none w-[9vw]"
+                className="select-none w-[11vw]"
               />
 
               <h1
