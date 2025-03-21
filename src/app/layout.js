@@ -39,8 +39,8 @@ export const metadata = {
     images: [
       {
         url: "/ogg-image.jpg",
-        width: 1200,
-        height: 630,
+        width: 1080,
+        height: 1080,
         alt: "Creativolve Agency",
       },
     ],
