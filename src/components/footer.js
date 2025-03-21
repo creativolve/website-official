@@ -45,6 +45,7 @@ export default function Footer(){
         className="
         bg-[#212121] h-fit
         grid grid-cols-1 gap-[30px] py-[90px] px-[50px]
+        md:px-[15vw]
         lg:px-[200px] lg:grid-cols-4 lg:py-[120px] lg:gap-[10px]
         ">
             <div className="
@@ -53,8 +54,8 @@ export default function Footer(){
                 <Image
                 src="/images/logo_footer.png"
                 alt="Creativolve Agency"
-                width={500}
-                height={500}
+                width={600}
+                height={600}
                 quality={100}
                 className="
                 w-[35vw] pointer-events-none select-none
@@ -64,6 +65,7 @@ export default function Footer(){
                 <p
                 className="
                 text-[#C5C5C5] text-[3.5vw]
+                md:text-[2.8vw]
                 lg:text-[0.9vw]
                 ">
                 Creativolve Agency adalah agency full-service yang membantu bisnis berkembang dengan strategi digital branding berbasis automasi.
@@ -78,6 +80,7 @@ export default function Footer(){
                 <h2
                 className="
                 font-semibold text-white text-[4.2vw]
+                md:text-[3.4vw]
                 lg:text-[1.3vw]
                 "
                 >
@@ -91,6 +94,7 @@ export default function Footer(){
                         <li key={index}
                         className="
                         text-[3.5vw]
+                        md:text-[2.8vw]
                         lg:text-[0.9vw]
                         ">
                             <Link href={item.href}>
@@ -111,6 +115,7 @@ export default function Footer(){
                 <h2
                 className="
                 font-semibold text-white
+                md:text-[3.4vw]
                 lg:text-[1.3vw]
                 "
                 >
@@ -124,6 +129,7 @@ export default function Footer(){
                         <li key={index}
                         className="
                         text-[3.5vw]
+                        md:text-[2.8vw]
                         lg:text-[0.9vw]
                         ">
                             <Link href={item.href}>
@@ -140,6 +146,7 @@ export default function Footer(){
                 <h2
                 className="
                 font-semibold text-white
+                md:text-[3.4vw]
                 lg:text-[1.3vw]
                 ">
                     Ikuti Perjalanan Kami di Media Sosial!
@@ -152,6 +159,7 @@ export default function Footer(){
                         <li key={index}
                         className="
                         text-[6.9vw] text-[#C5C5C5]
+                        md:text-[4.5vw]
                         lg:text-[1.8vw]
                         "
                         >

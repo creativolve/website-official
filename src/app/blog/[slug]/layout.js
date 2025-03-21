@@ -53,20 +53,6 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="id">
-      <head>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-L7L5HMSKME"
-        strategy="lazyOnload"
-      />
-      <Script id="google-analytics" strategy="lazyOnload  ">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-L7L5HMSKME');
-        `}
-      </Script>
-      </head>
 
       <body className={`${montserrat.className} relative antialiased bg-[#ffffff]`}>
         {children}

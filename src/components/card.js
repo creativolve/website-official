@@ -40,12 +40,12 @@ export default function Card({ index }) {
                 }}
                 viewport={{once: true, amount: 0.1}}
                 className="
-                bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl gap-2 items-center ransition-all duration-100 ease-in-out w-[270px] m-auto py-8 px-3 justify-center
+                bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl gap-2 items-center ransition-all duration-100 ease-in-out w-[100%] m-auto py-8 px-3 justify-center
 
-                md:w-[500px] 
+                md:w-[90%]  md:py-12 md:px-16
 
                 lg:flex lg:flex-col lg:w-[15vw]
-                hover:scale-[100]
+                hover:scale-[1.030] hover:shadow-md
                 lg:hover:scale-[1.021] lg:hover:shadow-md
                 ">
             

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import '@/app/load.css'
+import '@/css/load.css'
 
 
 export default function Loader() {

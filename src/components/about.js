@@ -15,7 +15,7 @@ const buttonAbout = [
         href: "/"
     },
     {
-        name: 'Cari Tahu!',
+        name: 'Lebih Banyak',
         solid: 'transparent',
         stroke: '#070707',
         href: "/"
@@ -33,7 +33,7 @@ export default function About(){
             id="tentang"
             className="
             flex flex-col-reverse h-[150vh] 
-            md:h-[150vh] 
+            md:h-[190vh] 
             lg:flex-row justify-center items-center lg:h-[110vh] 
             ">
                 <div 
@@ -51,6 +51,7 @@ export default function About(){
                         viewport={{once: true, amount: 0.3}}
                         className="
                         font-semibold text-[6.6vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888]
+                        md:text-[5vw]
                         lg:text-[2.4vw]
                         ">
                             Agensi Solusi Digital Dan Branding
@@ -65,9 +66,10 @@ export default function About(){
                         viewport={{once: true, amount: 0.3}}
                         className="
                         text-[4vw] text-[#4E4E4E]
+                        md:text-[3.4vw]
                         lg:text-[1.2vw]
                         ">
-                            Kami akan menjadi partner bisnis anda untuk berkembang dan lebih tampil kreatif dengan menerapkan sistem Automasi.
+                            Kami akan menjadi partner bisnis anda untuk berkembang dan tampil lebih kreatif dengan 'Big Data'.
                         </m.p>
                     </div>
                     <m.div
@@ -100,6 +102,7 @@ export default function About(){
                                 viewport={{once: true, amount: 0.2}}
                                 className={`
                                 px-[20px] py-[5px] rounded-3xl text-[3.8vw]
+                                md:text-[3vw]
                                 lg:px-[25px] lg:py-[8px] lg:text-[1vw]
                                 ${item.solid !== 'transparent' ? 'bg-[#070707] text-white' : 'bg-transparent'}
                                 ${item.stroke !== 'none' ? 'border border-[#070707] text-[#070707]' : ''}
@@ -134,6 +137,7 @@ export default function About(){
                     loading="lazy"
                     className="
                     w-full pointer-events-none select-none
+                    md:w-[100vw]
                     lg:w-[40vw]
                     "
                     />
@@ -153,6 +157,8 @@ export default function About(){
 
                         className="
                         card bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl w-fit px-[20px] py-[7px] translate-x-[2px] translate-y-[20px]
+
+                        md:translate-x-[0px] md:translate-y-[40px]
 
                         lg:translate-y-[85px] lg:translate-x-[105px] lg:px-[20px] lg:py-[9px] 
                         ">
@@ -178,6 +184,8 @@ export default function About(){
 
                         className="
                         card bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl w-fit px-[20px] py-[7px] translate-x-[70px] translate-y-[-80px]
+
+                        md:translate-x-[150px] md:translate-y-[-130px]
                         
                         lg:px-[20px] lg:py-[9px] lg:translate-y-[-50px] lg:translate-x-[245px]
                         ">
@@ -203,6 +211,8 @@ export default function About(){
                             
                         className="
                         card bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl w-fit px-[20px] py-[7px] translate-x-[140px] translate-y-[-50px]
+
+                        md:translate-x-[300px] md:translate-y-[-90px]
                         
                         lg:px-[20px] lg:py-[9px] lg:translate-y-[-20px] lg:translate-x-[345px]
                         ">

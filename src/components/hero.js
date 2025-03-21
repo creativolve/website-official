@@ -64,10 +64,11 @@ export default function Hero() {
                 viewport={{once: true}}
                   className="
                         font-bold text-[8vw] leading-[9vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888]
+                        md:text-[7vw] md:leading-[7.1vw]
                         lg:text-[3.3vw] lg:leading-[3.7vw] 
                         "
                 >
-                  Bisnis Berevolusi <br /> Perlu Kreativitas
+                  Bisnis Berkembang <br /> Perlu Kreativitas
                 </m.h2>
                 <m.p
                   initial={{y: 50, opacity: 0}}
@@ -79,10 +80,11 @@ export default function Hero() {
                   viewport={{once: true}}
                   className="
                         w-[100%] text-[4vw] text-[#4E4E4E] normal-case
+                        md:text-[3.3vw]
                         lg:w-[55%] lg:text-[1.2vw]
                         "
                 >
-                  Bangun brand digital anda menggunakan strategi terbaik & fleksibel dengan menerapkan sistem automasi.
+                    Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat.
                 </m.p>
               </div>
 

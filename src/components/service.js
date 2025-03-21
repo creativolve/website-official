@@ -39,6 +39,7 @@ export default function Service(){
                 id="layanan"
                 className="
                 h-[100vh] flex justify-center flex-col gap-[100px]
+                md:h-[170vh]
                 lg:h-[100vh]">
                     <div
                     className="container relative">
@@ -90,6 +91,9 @@ export default function Service(){
                                     card bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl py-[30px] px-[20px] flex flex-col justify-center
 
                                     lg:w-[260px] lg:h-[auto]
+
+                                    hover:scale-[1.030] hover:shadow-md
+                                    lg:hover:scale-[1.021] lg:hover:shadow-md
                                     ">
                                         <div className="image">
                                             <Image
@@ -139,6 +143,7 @@ export default function Service(){
                         <p
                         className="
                         text-[4vw] text-[#4E4E4E] font-semibold
+                        md:text-[3.4vw]
                         lg:text-[1.2vw]
                         ">
                         Ini adalah layanan utama yang kami sediakan untuk membuat bisnis anda berevolusi dan tampil kreatif.

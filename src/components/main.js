@@ -13,17 +13,17 @@ const WhyOur = dynamic(() => import('./why'), {ssr: true});
 const Loader = dynamic(() => import("./load"), { ssr: false });
 
 export default function Main() {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 1500);
   
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
-  if (isLoading) return <Loader />;
+  // if (isLoading) return <Loader />;
  
 
   return (
@@ -32,6 +32,7 @@ export default function Main() {
       <main
         className="
       px-[45px]
+      md:px-[100px]
       lg:px-[200px] lg:py-[10px]
       "
       >

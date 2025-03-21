@@ -1,0 +1,11 @@
+[
+    {
+        "slug": "first-blog",
+        "name": "post_1.md",
+        "title": "First Blog Post",
+        "date": "2025-03-20",
+        "desc": "This is the first blog post.",
+        "imageOg": "/ogg-image.jpg",
+        "path": "./post/post_1.md"
+    }
+]

@@ -49,6 +49,7 @@ export default function Navbar() {
           }}
           className={`
         p-[30px] w-full mt-[-20px] h-[90px] z-[10]
+        md:py-[20x] md:h-[123px]
         lg:px-[200px] lg:py-[15px] lg:mt-0 lg:h-auto
         ${scrolled? 'bg-[#fffffff6] backdrop-blur-[2px] fixed shadow-[#7c7c7c0e] shadow-lg' : 'bg-transparent shadow-none'}
         `}
@@ -105,7 +106,7 @@ export default function Navbar() {
               <button
                 href="#"
                 className="
-                  bg-[#070707] text-white px-[15px] py-[3px] text-[1vw] w-auto rounded-4xl 
+                  bg-[#070707] text-white px-[20px] py-[3px] text-[1vw] w-auto rounded-4xl 
                   hover:bg-[#363f5a] hover:text-[#ffffff]
                   "
               >
@@ -129,15 +130,15 @@ export default function Navbar() {
 
               {/* MOBILE LOGO */}
               <Image
-                src="/images/logo.svg"
-                width={0}
-                height={0}
+                src="/images/logo.png"
+                width={200}
+                height={200}
                 quality={80}
-                priority 
+                fetchPriority="high"
                 alt="Creativolve - Creative And Innovative Agency"
                 className="
-                mb-1
-                md:hidden w-[120px] md:w-[250px]"
+                mb-[-50px]
+                lg:hidden w-[150px] md:w-[250px]"
               />
 
 

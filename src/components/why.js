@@ -22,7 +22,7 @@ const theList = [
     number: "3",
     title: "Memberikan Solusi Digital Berbasis Big Data",
     paragraph:
-      "Kami memberikan solusi digital dari hasil kesimpulan riset dari sistem ‘Big Data’",
+      "Kami memberikan solusi digital dari hasil kesimpulan riset dari sistem ‘Big Data’.",
   },
 ];
 
@@ -35,6 +35,7 @@ export default function whyOur() {
           className="
             flex flex-col items-center justify-center
             h-[150vh]
+            md:h-[200vh]
             lg:h-[130vh] lg:flex-row
             "
         >
@@ -56,12 +57,13 @@ export default function whyOur() {
               src="/images/Mengapa/why.png"
               width={380}
               height={380}
-              quality={10}
+              quality={90}
               alt="Why Our"
               fetchPriority="high"
               loading="lazy"
               className="
                     w-[85vw] ml-[-100px] pointer-events-none select-none
+                    md:w-[65%]
                     lg:w-[70%] lg:m-0
                     "
             />
@@ -121,6 +123,7 @@ export default function whyOur() {
                     className="
                     bg-[#212121] text-white font-bold rounded-2xl text-center flex justify-center items-center
                     min-w-[40px] h-[40px] text-[4vw]
+                    md:text-[5vw] md:min-w-[60px] md:h-[60px]
                     lg:min-w-[45px] lg:h-[45px] lg:text-[1vw]
                     "
                   >
@@ -154,7 +157,7 @@ export default function whyOur() {
 
                       className="
                                     font-semibold
-
+                                    md:text-[4vw]
                                     lg:text-[1.3vw]
                                     "
                     >
@@ -172,6 +175,7 @@ export default function whyOur() {
                       viewport={{once: true, amount: 0.2}}
                       className="
                                     text-[4vw] text-[#4E4E4E]
+                                    md:text-[3.4vw]
                                     lg:text-[1.2vw]
                                     "
                     >

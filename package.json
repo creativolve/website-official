@@ -15,21 +15,29 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "framer-motion": "^12.5.0",
+    "glob": "^11.0.1",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^0.479.0",
     "next": "15.2.1",
     "next-sitemap": "^4.2.3",
+    "path": "^0.12.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
+    "rimraf": "^6.0.1",
+    "set-value": "^4.1.0",
     "update": "^0.7.4"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@eslint/eslintrc": "^3.3.0",
+    "@tailwindcss/postcss": "^4.0.14",
+    "@tailwindcss/typography": "^0.5.16",
     "autoprefixer": "^10.4.21",
-    "eslint": "^9",
+    "eslint": "^9.22.0",
     "eslint-config-next": "15.2.1",
     "postcss": "^8.5.3",
-    "tailwindcss": "^4.0.13"
+    "tailwindcss": "^4.0.14"
   },
   "pnpm": {
     "ignoredBuiltDependencies": [
@@ -38,5 +46,12 @@
     "onlyBuiltDependencies": [
       "sharp"
     ]
-  }
+  },
+  "overrides": {
+  "glob": "^11.0.1",
+  "inflight": "^1.0.7",
+  "lodash.isequal": "^4.5.0",
+  "rimraf": "^6.0.1",
+  "set-value": "^4.1.0"
+}
 }
