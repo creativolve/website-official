@@ -69,7 +69,7 @@ export default function About(){
                         md:text-[3.4vw]
                         lg:text-[1.2vw]
                         ">
-                            Kami akan menjadi partner bisnis anda untuk berkembang dan tampil lebih kreatif dengan 'Big Data'.
+                            Kami akan menjadi partner bisnis anda untuk berkembang dan tampil lebih kreatif dengan &apos;Big Data&apos;.
                         </m.p>
                     </div>
                     <m.div
