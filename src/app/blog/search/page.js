@@ -36,6 +36,8 @@ export default function SearchArticle() {
         <input
           type="text"
           placeholder="Cari Artikel"
+          name='search'
+          id='search'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="
@@ -59,9 +61,11 @@ export default function SearchArticle() {
                   alt={blog.slug}
                   className="
                     w-full object-cover rounded-[5vw]
-                    shadow-[0px_5px_12px_rgba(0,0,0,0.3)]
+                    shadow-[5px_5px_5px_rgba(0,0,0,0.3)]
                     select-none pointer-events-none
                     lg:rounded-[1vw]
+
+                    hover:scale-[1]
                   "
                 />
               </Link>

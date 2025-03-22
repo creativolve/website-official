@@ -29,7 +29,8 @@ export default function HeroBlog() {
     <LazyMotion features={domAnimation}>
         <section id="blog"
           className="
-              h-[180vh] flex flex-col items-center justify-center gap-[50px]
+              h-[180vh] my-[150px] flex flex-col items-center justify-center gap-[50px]
+              md:h-[300vh] 
               lg:grid-cols-2 lg:grid lg:h-[110vh]
               "
         >
@@ -142,8 +143,8 @@ export default function HeroBlog() {
                     <div className="image p-[0.6vw]">
                       <Image
                         src={blog.thumbnail}
-                        width={300}
-                        height={300}
+                        width={330}
+                        height={330}
                         alt={blog.slug}
                         className="
                           w-full object-cover rounded-[2.3vw] shadow-[0px_05px_4px_rgba(0,0,0,0.3)] select-none pointer-events-none lg:rounded-[1vw]

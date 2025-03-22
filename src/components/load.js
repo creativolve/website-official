@@ -13,7 +13,7 @@ export default function Loader() {
           alt="Logo"
           width={150}
           height={150}
-          fetchPriority="high" 
+          priority
           className="w-full" />
         </div>
       </div>

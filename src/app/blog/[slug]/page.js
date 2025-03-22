@@ -128,7 +128,7 @@
             />
 
             <div className="back-button mt-30">
-              <Link href='/blog'>
+              <Link href='/blog/search'>
                 <button
                 className='
                 bg-[#212121] text-white px-[20px] py-[6px] rounded-2xl pointer-events-auto cursor-pointer

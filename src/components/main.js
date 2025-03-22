@@ -13,26 +13,26 @@ const Blog = dynamic(() => import("./blog"));
 const Loader = dynamic(() => import("./load"), { ssr: false });
 
 export default function Main() {
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const loadAssets = async () => {
-  //     await Promise.all([
-  //       new Promise((resolve) => {
-  //         const img = new Image();
-  //         img.src = "/images/load_logo.png"; // Pastikan path benar
-  //         img.onload = resolve;
-  //         img.onerror = resolve; // Tambahkan fallback jika gagal
-  //       }),
-  //       new Promise((resolve) => setTimeout(resolve, 1500)),
-  //     ]);
-  //     setIsLoading(false);
-  //   };
+  useEffect(() => {
+    const loadAssets = async () => {
+      await Promise.all([
+        new Promise((resolve) => {
+          const img = new Image();
+          img.src = "/images/load_logo.png"; // Pastikan path benar
+          img.onload = resolve;
+          img.onerror = resolve; // Tambahkan fallback jika gagal
+        }),
+        new Promise((resolve) => setTimeout(resolve, 1500)),
+      ]);
+      setIsLoading(false);
+    };
 
-  //   loadAssets();
-  // }, []);
+    loadAssets();
+  }, []);
 
-  // if (isLoading) return <Loader />;
+  if (isLoading) return <Loader />;
 
   return (
     <>

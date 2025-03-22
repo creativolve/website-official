@@ -19,14 +19,11 @@ export const metadata = blog ? {
 
 export const viewport = "width=device-width, initial-scale=1";
 
-export default function RootLayout({ children }) {
+export default function ArticleLayout({ children }) {
 
   return (
-    <html lang="id">
-
-      <body className={`${montserrat.className} relative antialiased bg-[#ffffff]`}>
-        {children}
-      </body>
-    </html>
+    <div className={`${montserrat.className} relative antialiased bg-[#ffffff]`}>
+    {children}
+  </div>
   );
 }

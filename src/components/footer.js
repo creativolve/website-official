@@ -98,7 +98,8 @@ export default function Footer(){
                         lg:text-[0.9vw]
                         ">
                             <Link href={item.href}>
-                                <button>
+                                <button
+                                className="cursor-pointer">
                                     {item.link}
                                 </button>
                             </Link>
@@ -108,39 +109,55 @@ export default function Footer(){
             </div>
 
             <div
-            className="
-            flex flex-col gap-[10px]
-            lg:px-[100px]"
+                className="
+                flex flex-col gap-[10px]
+                lg:px-[100px]"
             >
                 <h2
-                className="
-                font-semibold text-white
-                md:text-[3.4vw]
-                lg:text-[1.3vw]
-                "
+                    className="
+                    font-semibold text-white
+                    md:text-[3.4vw]
+                    lg:text-[1.3vw]
+                    "
                 >
                     Contact
                 </h2>
                 <ul
-                className="
-                text-[#C5C5C5] flex flex-col gap-[6px]
-                ">
-                    {contact.map((item, index) =>(
+                    className="
+                    text-[#C5C5C5] flex flex-col gap-[6px]
+                    ">
+                    {contact.map((item, index) => (
                         <li key={index}
-                        className="
-                        text-[3.5vw]
-                        md:text-[2.8vw]
-                        lg:text-[0.9vw]
-                        ">
-                            <Link href={item.href}>
-                                <button>
-                                    {item.link}
-                                </button>
-                            </Link>
+                            className="
+                            text-[3.5vw]
+                            md:text-[2.8vw]
+                            lg:text-[0.9vw]
+                            ">
+                            {/* Gunakan mailto untuk email */}
+                            {item.link === 'Email' ? (
+                                <a href={`mailto:${item.href}`}>
+                                    <button
+                                    className="
+                                    cursor-pointer
+                                    ">
+                                        {item.link}
+                                    </button>
+                                </a>
+                            ) : (
+                                <Link href={item.href} target="_blank" rel="noopener noreferrer">
+                                    <button
+                                    className="
+                                    cursor-pointer
+                                    ">
+                                        {item.link}
+                                    </button>
+                                </Link>
+                            )}
                         </li>
                     ))}
                 </ul>
             </div>
+
 
             <div>
                 <h2

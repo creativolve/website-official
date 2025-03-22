@@ -34,7 +34,7 @@ export default function whyOur() {
           id="mengapa"
           className="
             flex flex-col items-center justify-center
-            h-[150vh]
+            h-[150vh] my-[150px]
             md:h-[200vh]
             lg:h-[130vh] lg:flex-row
             "
@@ -84,7 +84,8 @@ export default function whyOur() {
             }}
             viewport={{once: true, amount: 0.2}}
               className="
-                    bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888] font-semibold text-[6.6vw]
+                    bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888] font-semibold text-[7vw]
+                    md:text-[5.3vw]
                     lg:text-[2.4vw]
                     "
             >
