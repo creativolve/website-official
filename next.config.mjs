@@ -7,7 +7,7 @@ const nextConfig = {
         headers: [
           {
             key: 'X-Robots-Tag',
-            value: 'all' // Izinkan semua bot untuk mengindeks
+            value: 'all',
           }
         ]
       }

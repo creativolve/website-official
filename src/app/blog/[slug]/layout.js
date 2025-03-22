@@ -1,8 +1,9 @@
 
 
 import { Montserrat } from "next/font/google";
-import "@/css/globals.css";
+import "@/css/typografi.css";
 import Script from "next/script";
+import Blogs from "@/data/blog.json";
 
 const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
@@ -10,42 +11,11 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-export const metadata = {
-  title: "Creativolve Agency | Creative Digital Solutions",
+const blog = Blogs.find((blog) => blog.slug === blog.slug );
 
-  description: "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
-
-  metadataBase: new URL("https://creativolve.agency"),
-
-  icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
-    apple: '/apple-touch-icon.png',
-  },
-
-  keywords:
-    "Creativolve, Agency, Digital Solutions, Creative Agency, Agensi Marketing",
-
-  robots: "index, follow",
-
-  openGraph: {
-    title: "Creativolve Agency | Creative Digital Solutions",
-
-    description:
-     "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
-
-    url: "https://creativolve.agency/",
-    type: "website",
-    images: [
-      {
-        url: "/ogg-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Creativolve Agency",
-      },
-    ],
-  },
-};
+export const metadata = blog ? {
+  ...blog.metaTag, // Ambil data metaTag dari JSON
+} : {};
 
 export const viewport = "width=device-width, initial-scale=1";
 

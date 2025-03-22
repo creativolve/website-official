@@ -46,7 +46,7 @@ export default function Card({ index }) {
 
                 lg:flex lg:flex-col lg:w-[15vw]
                 hover:scale-[1.030] hover:shadow-md
-                lg:hover:scale-[1.021] lg:hover:shadow-md
+                lg:hover:scale-[1.021] lg:hover:shadow-md lg:py-7 lg:px-3
                 ">
             
                     <div 

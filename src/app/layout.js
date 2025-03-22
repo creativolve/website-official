@@ -38,9 +38,9 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "/ogg-image.jpg",
+        width: 1080,
+        height: 1080,
         alt: "Creativolve Agency",
       },
     ],

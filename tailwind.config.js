@@ -8,11 +8,20 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'sm': '480px', // Mobile kecil
-        'md': '744px', // Tablet
-        'lg': '1024px', // Laptop
-        'xl': '1280px', // Desktop besar
-        '2xl': '1536px', // Monitor besar
+        'sm': '480px',
+        'md': '744px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            h1: {
+              fontSize: '3vw',
+            },
+          },
+        },
       },
     },
   },

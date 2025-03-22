@@ -39,6 +39,7 @@ export default function Hero() {
             absolute top-0 left-0 object-cover w-full h-[100vh] opacity-[0.9] z-[-20]
             lg:opacity-[0.4] lg:w-full lg:h-auto
             "
+            
           />
           <div
             className="

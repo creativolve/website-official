@@ -34,7 +34,7 @@ export default function Navbar() {
     { nav: "Tentang", href: "#tentang" },
     { nav: "Layanan", href: "#layanan" },
     { nav: "Mengapa Kami", href: "#mengapa" },
-    // { nav: "Blog", href: "#blog" },
+    { nav: "Blog", href: "#blog" },
   ];
 
   return (
@@ -48,7 +48,7 @@ export default function Navbar() {
             ease: 'easeInOut'
           }}
           className={`
-        p-[30px] w-full mt-[-20px] h-[90px] z-[10]
+        p-[30px] w-full mt-[-20px] h-[90px] z-[50]
         md:py-[20x] md:h-[123px]
         lg:px-[200px] lg:py-[15px] lg:mt-0 lg:h-auto
         ${scrolled? 'bg-[#fffffff6] backdrop-blur-[2px] fixed shadow-[#7c7c7c0e] shadow-lg' : 'bg-transparent shadow-none'}
@@ -106,7 +106,7 @@ export default function Navbar() {
               <button
                 href="#"
                 className="
-                  bg-[#070707] text-white px-[20px] py-[3px] text-[1vw] w-auto rounded-4xl 
+                  bg-[#070707] text-white px-[20px] py-[3px] text-[1vw] w-auto rounded-4xl  cursor-pointer
                   hover:bg-[#363f5a] hover:text-[#ffffff]
                   "
               >
@@ -183,11 +183,11 @@ export default function Navbar() {
                 right: "0px",
               }}
               className="
-            flex flex-col gap-10 items-end absolute w-[100vw] h-[115vh]  bg-[#171717] text-[#ffffff] py-44 px-18 overflow-hidden
+            flex flex-col gap-10 items-end absolute w-[100vw] h-[115vh]  bg-[#171717] text-[#ffffff] py-58 px-18 overflow-hidden
             md:py-42 md:px-28
             "
             >
-              <div className="close fixed top-[70px] right-[30px]">
+              <div className="close fixed top-[120px] right-[30px]">
                 <button
                   onClick={toggleNavbar}
                   className="text-gray-700"
@@ -233,7 +233,7 @@ export default function Navbar() {
                 <button
                   href="#"
                   className="
-                    bg-[#ffffff] text-black px-[15px] text-[4.9vw] w-auto rounded-4xl py-[3px]
+                    bg-[#ffffff] text-black px-[15px] text-[4.9vw] w-auto rounded-4xl py-[3px] cursor-pointer
                     md:text-[4vw]
                     
                     hover:bg-[#cccccc] hover:text-[black]

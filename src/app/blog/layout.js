@@ -12,9 +12,9 @@ const montserrat = Montserrat({
 
 
 export const metadata = {
-    title: "Creativolve Agency | Creative Digital Solutions",
+    title: "Creav Blog - Tingkatkan Pemahamanmu Sebelum Memulai Bisnis Digital",
   
-    description: "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
+    description: "Pelajari artikel kami untuk pemahaman lebih dalam terkait strategi,    branding, marketing dan sistem big data untuk bisnis.",
   
     metadataBase: new URL("https://creativolve.agency"),
   
@@ -25,15 +25,15 @@ export const metadata = {
     },
   
     keywords:
-      "Creativolve, Agency, Digital Solutions, Creative Agency, Agensi Marketing",
+      "Creav Blog, Digital Solutions, Creative Agency, Agensi Marketing",
   
     robots: "index, follow",
   
     openGraph: {
-      title: "Creativolve Agency | Creative Digital Solutions",
+      title: "Creav Blog - Tingkatkan Pemahamanmu Sebelum Memulai Bisnis Digital",
   
       description:
-       "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
+       "Pelajari artikel kami untuk pemahaman lebih dalam terkait strategi,    branding, marketing dan sistem big data untuk bisnis.",
   
       url: "https://creativolve.agency/",
       type: "website",

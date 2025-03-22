@@ -12,13 +12,13 @@ const buttonAbout = [
         name: 'Cari Tahu!',
         solid: '#070707',
         stroke: 'none',
-        href: "/"
+        href: "/blog/pentingnya-penerapan-sistem-big-data"
     },
     {
         name: 'Lebih Banyak',
         solid: 'transparent',
         stroke: '#070707',
-        href: "/"
+        href: "/blog/search"
     }
 ]
 
@@ -32,8 +32,8 @@ export default function About(){
             <section
             id="tentang"
             className="
-            flex flex-col-reverse h-[150vh] 
-            md:h-[190vh] 
+            flex flex-col-reverse h-[100vh] pt-[35vw] 
+            md:h-[190vh] lg:p-0
             lg:flex-row justify-center items-center lg:h-[110vh] 
             ">
                 <div 
@@ -87,7 +87,7 @@ export default function About(){
                     button flex gap-6
                     ">
                         {buttonAbout.map((item, index) =>(
-                            <Link key={index} href={item.href}>
+                            <Link key={index} href={item.href} target="_blank">
                                 <m.button
                                 initial={{pacity: 0, y: 50}}
                                 whileInView={{
@@ -101,7 +101,7 @@ export default function About(){
                                 }}
                                 viewport={{once: true, amount: 0.2}}
                                 className={`
-                                px-[20px] py-[5px] rounded-3xl text-[3.8vw]
+                                px-[20px] py-[5px] rounded-3xl text-[3.8vw] cursor-pointer
                                 md:text-[3vw]
                                 lg:px-[25px] lg:py-[8px] lg:text-[1vw]
                                 ${item.solid !== 'transparent' ? 'bg-[#070707] text-white' : 'bg-transparent'}
@@ -120,7 +120,6 @@ export default function About(){
                 transition={{
                     duration: 0.5,
                     ease: 'easeInOut',
-                    delay: 1.2
                 }}
                 viewport={{once: true, amount: 0.2}}
                 className="
@@ -178,7 +177,6 @@ export default function About(){
                         transition={{
                             duration: 0.5,
                             ease: 'easeInOut',
-                            delay: 0.8
                         }}
                         viewport={{once: true, amount: 0.2}}
 
@@ -205,7 +203,6 @@ export default function About(){
                         transition={{
                             duration: 0.5,
                             ease: 'easeInOut',
-                            delay: 1
                         }}
                         viewport={{once: true, amount: 0.2}}
                             

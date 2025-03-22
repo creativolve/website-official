@@ -1,11 +1,41 @@
 [
     {
-        "slug": "first-blog",
-        "name": "post_1.md",
-        "title": "First Blog Post",
-        "date": "2025-03-20",
-        "desc": "This is the first blog post.",
-        "imageOg": "/ogg-image.jpg",
-        "path": "./post/post_1.md"
+      "slug": "pentingnya-penerapan-sistem-big-data",
+      "name": "post_1.md",
+      "title": "Pentingnya Penerapan Sistem Big Data Pada Bisnis",
+      "date": "2025-03-22",
+      "desc": "Menerapkan sistem Big Data dalam bisnis dapat meningkatkan efisiensi operasional dan pengambilan keputusan berbasis data.",
+      "thumbnail": "/images/blog/thumbnail/post_1.jpg",
+      "path": "./post",
+
+
+      "metaTag": {
+        "title": "Pentingnya Penerapan Sistem Big Data Pada Bisnis",
+        "description": "Big data memiliki potensi untuk memberikan wawasan berharga dan membantu organisasi atau bisnis dalam pengambilan keputusan yang lebih baik. ",
+        "authors": "Creativolve Agency",
+        "icons": {
+          "icon": "/favicon.png",
+          "shortcut": "/favicon.png",
+          "apple": "/favicon.png"
+        },
+        "keywords": "Apa pentingnya sistem big data untuk bisnis",
+        "robots": "index, follow",
+        "openGraph": {
+          "title": "Pentingnya Penerapan Sistem Big Data Pada Bisnis",
+          "description": "Big data memiliki potensi untuk memberikan wawasan berharga dan membantu organisasi atau bisnis dalam pengambilan keputusan yang lebih baik.",
+          "authors": "Creativolve Agency",
+          "url": "https://creativolve.agency/blog/pentingnya-penerapan-sistem-big-data",
+          "type": "website",
+          "images": [
+            {
+              "url": "/images/blog/thumbnail/post_1.jpg",
+              "width": 1200,
+              "height": 630,
+              "alt": "Creativolve Agency"
+            }
+          ]
+        }
+      }
     }
-]
+  ]
+  
