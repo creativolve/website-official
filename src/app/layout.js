@@ -64,6 +64,7 @@ export default function RootLayout({ children }) {
     <html lang="id">
       <head>
       <Script
+      async
         src="https://www.googletagmanager.com/gtag/js?id=G-L7L5HMSKME"
         strategy="lazyOnload"
       />
