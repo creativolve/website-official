@@ -41,7 +41,7 @@ const contact = [
 
 export default function Footer(){
     return(
-        <footer data-nonsnipet
+        <footer data-nosnippet id="footer"
         className="
         bg-[#212121] h-fit
         grid grid-cols-1 gap-[30px] py-[90px] px-[50px]
@@ -62,7 +62,7 @@ export default function Footer(){
                 lg:w-[11vw]
                 "
                 />
-                <p
+                <p data-nosnippet
                 className="
                 text-[#C5C5C5] text-[3.5vw]
                 md:text-[2.8vw]
@@ -77,7 +77,7 @@ export default function Footer(){
             flex flex-col gap-[5px]
             lg:px-[100px]"
             >
-                <h2
+                <h2 data-nosnippet
                 className="
                 font-semibold text-white text-[4.2vw]
                 md:text-[3.4vw]
@@ -113,7 +113,7 @@ export default function Footer(){
                 flex flex-col gap-[10px]
                 lg:px-[100px]"
             >
-                <h2
+                <h2 data-nosnippet
                     className="
                     font-semibold text-white
                     md:text-[3.4vw]
@@ -160,7 +160,7 @@ export default function Footer(){
 
 
             <div>
-                <h2
+                <h2 data-nosnippet
                 className="
                 font-semibold text-white
                 md:text-[3.4vw]

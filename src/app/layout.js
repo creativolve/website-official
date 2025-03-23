@@ -26,7 +26,7 @@ export const metadata = {
   keywords:
     "Creativolve, Agency, Digital Solutions, Creative Agency, Agensi Marketing",
 
-  robots: "index, follow",
+  robots:  "index, follow, noarchive",
 
   openGraph: {
     title: "Creativolve Agency | Creative Digital Solutions",
@@ -38,12 +38,21 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/ogg-image.jpg",
-        width: 1080,
-        height: 1080,
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
         alt: "Creativolve Agency",
       },
     ],
+  },
+
+  structuredData: {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Creativolve Agency | Creative Digital Solutions",
+    "url": "https://creativolve.agency",
+    "description": "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
+    "image": "/ogg-image.jpg" // Gambar berbeda untuk hasil pencarian Google
   },
 };
 
