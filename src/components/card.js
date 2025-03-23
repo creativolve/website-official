@@ -72,14 +72,14 @@ export default function Card({ index }) {
                     className="
                     text w-[80%]
                     ">
-                        <h3
+                        <h2
                         className="
                         font-semibold text-[4.5vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888]
                         md:text-[4vw]
                         lg:text-[1.3vw]
                         ">
                             {item.title}
-                        </h3>
+                        </h2>
                         <p
                         className="
                         text-[3.3vw] text-[#4E4E4E] 

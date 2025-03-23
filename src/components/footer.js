@@ -44,7 +44,7 @@ export default function Footer(){
         <footer data-nosnippet id="footer"
         className="
         bg-[#212121] h-fit
-        grid grid-cols-1 gap-[30px] py-[90px] px-[50px]
+        grid grid-cols-1 gap-[50px] py-[90px] px-[50px]
         md:px-[15vw]
         lg:px-[200px] lg:grid-cols-4 lg:py-[120px] lg:gap-[10px]
         ">
@@ -88,7 +88,7 @@ export default function Footer(){
                 </h2>
                 <ul
                 className="
-                text-[#C5C5C5] flex flex-col gap-[0px]
+                text-[#C5C5C5] flex flex-col gap-[15px]
                 ">
                     {produk.map((item, index) =>(
                         <li key={index}
@@ -99,7 +99,9 @@ export default function Footer(){
                         ">
                             <Link href={item.href}>
                                 <button
-                                className="cursor-pointer">
+                                className="
+                                cursor-pointer px-1 py-1
+                                ">
                                     {item.link}
                                 </button>
                             </Link>
@@ -124,7 +126,7 @@ export default function Footer(){
                 </h2>
                 <ul
                     className="
-                    text-[#C5C5C5] flex flex-col gap-[6px]
+                    text-[#C5C5C5] flex flex-col gap-[15px]
                     ">
                     {contact.map((item, index) => (
                         <li key={index}
@@ -138,7 +140,7 @@ export default function Footer(){
                                 <a href={`mailto:${item.href}`}>
                                     <button
                                     className="
-                                    cursor-pointer
+                                    cursor-pointer px-1 py-1
                                     ">
                                         {item.link}
                                     </button>

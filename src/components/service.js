@@ -109,13 +109,13 @@ export default function Service(){
                                             />
                                         </div>
                                         <div className="text">
-                                            <h3
+                                            <h2
                                             className="
                                             font-semibold text-[3.5vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888]
                                             lg:text-[1.1vw] 
                                             ">
                                                 {items.title}
-                                            </h3>
+                                            </h2>
                                             <p
                                             className="
                                             text-[2.6vw] text-[#4E4E4E] 

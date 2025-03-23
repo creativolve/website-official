@@ -40,7 +40,7 @@ export default function HeroBlog() {
                   heading flex flex-col gap-2
                   "
           >
-            <m.h1
+            <m.h2
               initial={{y: 50, opacity: 0}}
               whileInView={{y: 0, opacity: 100}}
               transition={{
@@ -66,7 +66,7 @@ export default function HeroBlog() {
               </span>{" "}
               <br />
               Perlu Pengetahuan
-            </m.h1>
+            </m.h2>
             <m.p
             initial={{y: 50, opacity: 0}}
             whileInView={{y: 0, opacity: 100}}
@@ -175,7 +175,7 @@ export default function HeroBlog() {
                       <Link href={`/blog/${blog.slug}`}>
                         <button
                           className="
-                          border border-[#212121] text-[#212121] rounded-3xl mt-[20px] px-[5vw] py-[1.5vw] mb-[15px] cursor-pointer
+                          border border-[#212121] text-[#212121] rounded-3xl  px-[5vw] py-[1.5vw] cursor-pointer
                             lg:px-[2vw] lg:py-[0.3vw]
                           "
                         >

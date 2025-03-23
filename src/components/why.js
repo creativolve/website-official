@@ -112,7 +112,7 @@ export default function whyOur() {
                             list flex gap-5
                             "
                 >
-                  <m.p
+                  <m.span
                   initial={{opacity: 0, y: 20}}
                   whileInView={{opacity: 1, y: 0}}
                   transition={{
@@ -129,7 +129,7 @@ export default function whyOur() {
                     "
                   >
                     {item.number}
-                  </m.p>
+                  </m.span>
 
                   <m.div
                   initial={{opacity: 0, y: 20}}
@@ -145,7 +145,7 @@ export default function whyOur() {
                                 text flex flex-col
                                 "
                   >
-                    <m.h4
+                    <m.h3
                       initial={{opacity: 0, y: 20}}
                       whileInView={{opacity: 1, y: 0,
                         transition: {
@@ -163,7 +163,7 @@ export default function whyOur() {
                                     "
                     >
                       {item.title}
-                    </m.h4>
+                    </m.h3>
                     <m.p
                       initial={{opacity: 0, y: 20}}
                       whileInView={{opacity: 1, y: 0,

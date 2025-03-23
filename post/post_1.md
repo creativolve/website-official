@@ -19,5 +19,5 @@ Analisis big data dapat membantu meningkatkan kualitas produk dan layanan berdas
 ### 4. Analisis risiko
 Analisis big data dapat membantu memahami pola risiko, mengidentifikasi titik lemah, dan mengambil tindakan pencegahan yang diperlukan. 
 
-## Kesimpulan
+### Kesimpulan
 Big data adalah kumpulan data besar dan kompleks yang mencakup data terstruktur, semi-terstruktur, dan tidak terstruktur. Big data memiliki potensi besar dalam memberikan wawasan berharga yang dapat membantu organisasi dalam pengambilan keputusan yang lebih baik. Dalam dunia bisnis, big data berperan penting dalam meningkatkan efisiensi operasional, memahami pelanggan, meningkatkan daya saing, dan mengelola risiko dengan lebih efektif. Melalui analisis big data, bisnis dapat mengidentifikasi area yang kurang efisien, meningkatkan kualitas produk dan layanan, serta mengambil langkah pencegahan terhadap potensi risiko.

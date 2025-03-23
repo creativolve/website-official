@@ -126,10 +126,11 @@ export default function Hero() {
                     <Link
                       href={item.url}
                       target="_blank"
-                      label={item.label}
+                      aria-label={`buka ${item.label} Creativolve Agency`}
                       rel="noopener noreferrer"
                     >
                       <FontAwesomeIcon icon={item.name} />
+                      <span className="sr-only">{item.label}</span>
                     </Link>
                   </m.li>
                 ))}
