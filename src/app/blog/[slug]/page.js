@@ -4,11 +4,13 @@
   import { remark } from 'remark';
   import html from 'remark-html';
   import blogs from '@/data/blog.json';
+  import Footer from '@/components/footer';
 
   import '@/css/typografi.css'
 
   import Link from 'next/link';
   import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
   export async function generateStaticParams() {
     return blogs.map((blog) => ({
@@ -18,10 +20,10 @@
 
   async function getBlog(slug) {
       const blog = blogs?.find((b) => b.slug === slug);
-      if (!blog) throw new Error(`Blog dengan slug "${slug}" tidak ditemukan`);
+      if (!blog) return notFound();
     
       const filePath = path.join(process.cwd(), 'post', blog.name);
-      if (!fs.existsSync(filePath)) throw new Error(`File tidak ditemukan: ${filePath}`);
+      if (!fs.existsSync(filePath)) return notFound();
     
       const fileContent = fs.readFileSync(filePath, 'utf-8');
       const { data, content } = matter(fileContent);
@@ -40,14 +42,17 @@
     
 
     export default async function BlogDetail({ params }) {
-      const { slug } = await params; // Pakai await untuk destructuring params
-      
-      if (!slug) return <div>Loading...</div>;
-    
-      const { content } = await getBlog(slug);
-      const blog = blogs.find((b) => b.slug === slug);
-    
-      if (!blog) return <div>Blog tidak ditemukan</div>;
+        const { slug } = await params; // Pakai await untuk destructuring params
+        
+        if (!slug) return <div>Loading...</div>;
+        
+        const blog = blogs.find((b) => b.slug === slug);
+
+        const { content } = await getBlog(slug);
+        if (!blog) return <div>Blog tidak ditemukan</div>;
+
+        const blogIndex = blogs.findIndex((b) => b.slug === slug)
+        const nextArticle = blogIndex !== -1 ? blogs[blogIndex + 1] || null : null;
     
       return (
         <>
@@ -63,7 +68,7 @@
         />
         <section
         className='
-        py-[17vw] flex flex-col gap-16
+        py-[17vw] flex flex-col gap-16 mb-50
         lg:gap-10 lg:py-[5vw]
         '>
                   <header
@@ -127,20 +132,30 @@
             "
             />
 
-            <div className="back-button mt-30">
-              <Link href='/blog/search'>
-                <button
+            <div className="link mt-30">
+              <div className="">
+                <Link href='/blog'
                 className='
-                bg-[#212121] text-white px-[20px] py-[6px] rounded-2xl pointer-events-auto cursor-pointer
+                underline decoration-solid text-blue-600 hover:text-black
                 '>
-                  Beranda Blog
-                </button>
-              </Link>
+                  Beranda
+                </Link>
+
+                {nextArticle && (                
+                  <Link href={`/blog/${nextArticle.slug}`}
+                  className='
+                  underline decoration-solid text-blue-600 hover:text-black
+                  '>
+                    Artikel Berikutnya
+                  </Link>
+                )}
+              </div>
             </div>
 
           </main>
 
         </section>
+        <Footer/>
         </>
       );
     }

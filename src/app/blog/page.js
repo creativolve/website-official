@@ -5,7 +5,7 @@ import blog from '@/data/blog.json';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function SearchArticle() {
+export default function Article() {
   const [searchTerm, setSearchTerm] = useState("");
 
   // Filter berdasarkan pencarian
@@ -25,11 +25,11 @@ export default function SearchArticle() {
             <Image
             src="/images/Back Button.png"
             alt="kembali"
-            width={200}
-            height={200}
+            width={100}
+            height={100}
             className='
             w-[12vw]
-            lg:w-[3.3vw] lg:h-[3vw] object-cover select-none cursor-pointer
+            lg:w-[2.5vw] object-cover select-none cursor-pointer
             '
             />
         </Link>
@@ -53,7 +53,7 @@ export default function SearchArticle() {
         {filteredBlogs.length > 0 ? (
           <div className="grid gap-[50px] lg:grid-cols-3">
             {filteredBlogs.map((blog) => (
-              <Link href={`/blog/${blog.slug}`} key={blog.slug}>
+              <Link href={`/blog/${blog.slug}`} key={blog.slug} className='hover:scale-[1.021] transition-transform duration-300 ease-in-out'>
                 <Image
                   src={blog.thumbnail}
                   width={300}
@@ -61,11 +61,9 @@ export default function SearchArticle() {
                   alt={blog.slug}
                   className="
                     w-full object-cover rounded-[5vw]
-                    shadow-[5px_5px_5px_rgba(0,0,0,0.3)]
+                    shadow-[5px_5px_5px_rgba(0,0,0,0.3)] transform
                     select-none pointer-events-none
                     lg:rounded-[1vw]
-
-                    hover:scale-[1]
                   "
                 />
               </Link>

@@ -14,9 +14,9 @@ export const metadata = {
     "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
   metadataBase: new URL("https://creativolve.agency"),
   icons: {
-    icon: "https://creativolve.agency/favicon.png",
-    shortcut: "https://creativolve.agency/favicon.png",
-    apple: "https://creativolve.agency/favicon.png",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
   keywords: "Creativolve Agency, Agensi Pemasaran, Solusi Bisnis Digital",
 
@@ -39,7 +39,10 @@ export const metadata = {
   },
 };
 
-export const viewport = "width=device-width, initial-scale=1";
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({ children }) {
   const jsonLd = {
@@ -61,23 +64,34 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id">
       <head>
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-L7L5HMSKME"
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-L7L5HMSKME');
-          `}
+      <Script id="google-analytics" strategy="lazyOnload">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+      `}
+    </Script>
+
+    <Script id="ga-consent" strategy="lazyOnload">
+      {`
+        gtag('consent', 'default', {
+          'ad_storage': 'denied',
+          'analytics_storage': 'denied'
+        });
+
+        gtag('js', new Date());
+
+        function enableTracking() {
+          gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+          });
+          gtag('config', 'G-L7L5HMSKME', { anonymize_ip: true });
+        }
+      `}
+    </Script>
+
+        <Script id="json-ld" type="application/ld+json">
+          {JSON.stringify(jsonLd)}
         </Script>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
       </head>
       <body className={`${montserrat.className} relative antialiased bg-[#ffffff]`}>
         {children}

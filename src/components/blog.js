@@ -37,7 +37,7 @@ export default function HeroBlog() {
           {/* BAGIAN TEKS */}
           <div
             className="
-                  heading flex flex-col gap-2
+                  heading flex flex-col gap-6
                   "
           >
             <m.h2
@@ -84,7 +84,7 @@ export default function HeroBlog() {
               Pelajari artikel kami untuk pemahaman lebih dalam terkait strategi,
               branding, marketing dan sistem big data untuk bisnis.
             </m.p>
-            <Link href='/blog/search'>
+            <Link href='/blog' className="block w-fit">
               <m.button
               initial={{y: 50, opacity: 0}}
               whileInView={{y: 0, opacity: 100}}
@@ -94,7 +94,7 @@ export default function HeroBlog() {
                 ease: 'easeInOut'}}
               viewport={{once: true, amount: 0.3}}
                 className="
-                            bg-[#212121] text-[#ffffff] rounded-4xl mt-[20px] px-[5vw] py-[1.5vw]            md:text-[2.7vw]
+                            bg-[#212121] text-[#ffffff] rounded-4xl px-[5vw] cursor-pointer py-[1.5vw]            md:text-[2.7vw]
                             lg:text-[1.3vw]
                             lg:px-[2vw] lg:py-[0.3vw]
                           "
@@ -175,7 +175,7 @@ export default function HeroBlog() {
                       <Link href={`/blog/${blog.slug}`}>
                         <button
                           className="
-                          border border-[#212121] text-[#212121] rounded-3xl  px-[5vw] py-[1.5vw] cursor-pointer
+                          border border-[#212121] text-[#212121] rounded-3xl  px-[5vw] py-[1.5vw]  cursor-pointer
                             lg:px-[2vw] lg:py-[0.3vw]
                           "
                         >

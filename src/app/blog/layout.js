@@ -16,14 +16,6 @@ export const metadata = {
   
     description: "Pelajari artikel kami untuk pemahaman lebih dalam terkait strategi,    branding, marketing dan sistem big data untuk bisnis.",
   
-    metadataBase: new URL("https://creativolve.agency"),
-  
-    icons: {
-      icon: '/favicon.png',
-      shortcut: '/favicon.png',
-      apple: '/apple-touch-icon.png',
-    },
-  
     keywords:
       "Creav Blog, Digital Solutions, Creative Agency, Agensi Marketing",
   
@@ -51,7 +43,7 @@ export const metadata = {
 
   export const viewport = "width=device-width, initial-scale=1";
 
-  export default function SearchLayout({ children }) {
+  export default function ArticleLayout({ children }) {
     return (
     <div className={`${montserrat.className} relative antialiased bg-[#ffffff]`}>
       {children}

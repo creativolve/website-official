@@ -68,7 +68,7 @@ export default function Footer(){
                 md:text-[2.8vw]
                 lg:text-[0.9vw]
                 ">
-                Creativolve Agency adalah agency full-service yang membantu bisnis berkembang dengan strategi digital branding berbasis automasi.
+                Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.
                 </p>
             </div>
 
@@ -96,6 +96,7 @@ export default function Footer(){
                         text-[3.5vw]
                         md:text-[2.8vw]
                         lg:text-[0.9vw]
+                         hover:text-white
                         ">
                             <Link href={item.href}>
                                 <button
@@ -134,6 +135,7 @@ export default function Footer(){
                             text-[3.5vw]
                             md:text-[2.8vw]
                             lg:text-[0.9vw]
+                             hover:text-white
                             ">
                             {/* Gunakan mailto untuk email */}
                             {item.link === 'Email' ? (
@@ -180,6 +182,7 @@ export default function Footer(){
                         text-[6.9vw] text-[#C5C5C5]
                         md:text-[4.5vw]
                         lg:text-[1.8vw]
+                        hover:text-white
                         "
                         >
                             <Link

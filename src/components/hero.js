@@ -25,7 +25,12 @@ export default function Hero() {
   ];
 
   return (
-    <header>
+    <header
+    className="
+    py-36
+    lg:h-[100vh]
+    "
+    >
       <LazyMotion features={domAnimation}>
           <Image
             src="/images/hero/background_hero.png"
@@ -40,14 +45,9 @@ export default function Hero() {
             "
             
           />
-          <div
-            className="
-            h-[100vh] flex justify-center
-            "
-          >
             <div
               className="
-                typografi flex flex-col items-center gap-8 justify-center mt-[-250px] z-[-10]
+                typografi flex flex-col items-center gap-8 justify-center z-[-2]
                 "
             >
               <div
@@ -120,14 +120,14 @@ export default function Hero() {
                     viewport={{once: true}}
                     className="
                             text-[6.9vw] text-[#262626]
-                            lg:text-[2.4vw]
+                            lg:text-[2.4vw] 
                             "
                   >
                     <Link
                       href={item.url}
                       target="_blank"
-                      aria-label={`buka ${item.label} Creativolve Agency`}
-                      rel="noopener noreferrer"
+                        aria-label={`buka ${item.label} Creativolve Agency`}
+                        rel="noopener noreferrer"
                     >
                       <FontAwesomeIcon icon={item.name} />
                       <span className="sr-only">{item.label}</span>
@@ -136,12 +136,11 @@ export default function Hero() {
                 ))}
               </m.ul>
             </div>
-          </div>
 
           <div
             className="
-                  flex flex-col justify-between items-center gap-10  mt-[-15vh]
-                  lg:flex-row lg:mt-[-35vh]
+                  flex flex-col justify-between items-center gap-10 
+                  lg:flex-row mt-[17vh]
                   "
           >
             <div
