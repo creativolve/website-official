@@ -4,7 +4,7 @@
   import { remark } from 'remark';
   import html from 'remark-html';
   import blogs from '@/data/blog.json';
-  import Footer from '@/components/footer';
+  import FooterBlog from '@/components/footer-blog';
 
   import '@/css/typografi.css'
 
@@ -68,8 +68,8 @@ import { notFound } from 'next/navigation';
         />
         <section
         className='
-        py-[17vw] flex flex-col gap-16 mb-50
-        lg:gap-10 lg:py-[5vw]
+        py-[17vw] flex flex-col gap-16 mb-[170px]
+        lg:gap-10 lg:py-[5vw] lg:mb-0
         '>
                   <header
             className='
@@ -155,7 +155,7 @@ import { notFound } from 'next/navigation';
           </main>
 
         </section>
-        <Footer/>
+        <FooterBlog />
         </>
       );
     }

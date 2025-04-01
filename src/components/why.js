@@ -97,7 +97,6 @@ export default function whyOur() {
             transition={{
               duration: 0.5,
               ease: 'easeInOut',
-              delay: 0.5,
               staggerChildren: 0.2
             }}
             viewport={{once: true, amount: 0.2}}
