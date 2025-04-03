@@ -62,9 +62,11 @@ export default function whyOur() {
               fetchPriority="high"
               loading="lazy"
               className="
-                    w-[85vw] ml-[-100px] pointer-events-none select-none
-                    md:w-[65%]
+                    w-[85vw] ml-[-100px] select-none pointer-events-auto
+                    md:w-[65%] transition-all duration-200 ease-in-out
                     lg:w-[70%] lg:m-0
+
+                    hover:translate-y-[-40px] hover:scale-[1.05]
                     "
             />
           </m.div>
@@ -122,9 +124,11 @@ export default function whyOur() {
                   viewport={{once: true, amount: 0.2}}
                     className="
                     bg-[#212121] text-white font-bold rounded-2xl text-center flex justify-center items-center
-                    min-w-[40px] h-[40px] text-[4vw]
+                    min-w-[40px] h-[40px] text-[4vw] transition-all duration-200 ease-in-out
                     md:text-[5vw] md:min-w-[60px] md:h-[60px]
                     lg:min-w-[45px] lg:h-[45px] lg:text-[1vw]
+
+                    hover:translate-y-[-20px] hover:scale-[1.13]
                     "
                   >
                     {item.number}

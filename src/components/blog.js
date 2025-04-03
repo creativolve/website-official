@@ -94,9 +94,12 @@ export default function HeroBlog() {
                 ease: 'easeInOut'}}
               viewport={{once: true, amount: 0.3}}
                 className="
-                            bg-[#212121] text-[#ffffff] rounded-4xl px-[5vw] cursor-pointer py-[1.5vw]            md:text-[2.7vw]
+                            bg-[#212121] text-[#ffffff] rounded-4xl px-[5vw] cursor-pointer py-[1.5vw] transition-all duration-200 border-transparent border-2 ease-in-out
+                            md:text-[2.7vw]
                             lg:text-[1.3vw]
                             lg:px-[2vw] lg:py-[0.3vw]
+
+                            hover:bg-transparent hover:text-[#262626] hover:border-[#262626] hover:translate-y-[-5px] 
                           "
               >
                 Jelajahi Artikel
@@ -134,9 +137,11 @@ export default function HeroBlog() {
                   <div
                     className="
                       card flex flex-col bg-[#ffffff] m-auto px-[3vw] py-[3vw] rounded-2xl w-full gap-[20px]
-                      shadow-[0px_0px_12px_rgba(0,0,0,0.3)]
+                      shadow-[0px_0px_12px_rgba(0,0,0,0.3)] transition-all duration-200 ease-in-out
 
                       lg:w-[410px] lg:px-[0.5vw] lg:py-[0.4vw] lg:rounded-[1.3vw] lg:gap-[5px]
+
+                      hover:bg-[#262626] group hover:translate-y-[-20px]
                     "
                   >
                     {/* GAMBAR */}
@@ -156,17 +161,21 @@ export default function HeroBlog() {
                     <div className="text p-[0.6vw] flex flex-col gap-[14px]">
                       <h2
                         className="
-                      font-semibold text-[7vw] leading-[8vw]
+                      font-semibold text-[7vw] leading-[8vw] transition-all duration-100 ease-in-out
                       md:text-[5vw] md:leading-[6vw]
-                      lg:text-[1.7vw] lg:leading-[2vw]"
+                      lg:text-[1.7vw] lg:leading-[2vw]
+                      
+                      group-hover:invert"
                       >
                         {blog.title}
                       </h2>
                       <p
                         className="
-                      text-[4vw] text-[#212121]
+                      text-[4vw] text-[#212121] transition-all duration-200 ease-in-out
                       md:text-[3.5vw]
                       lg:text-[1.05vw]
+
+                      group-hover:invert
                       "
                       >
                         {blog.desc}
@@ -176,7 +185,9 @@ export default function HeroBlog() {
                         <button
                           className="
                           border border-[#212121] text-[#212121] rounded-3xl  px-[5vw] py-[1.5vw]  cursor-pointer
-                            lg:px-[2vw] lg:py-[0.3vw]
+                          lg:px-[2vw] lg:py-[0.3vw] transition-all duration-200 ease-in-out
+
+                          hover:border-transparent hover:bg-[#262626] hover:text-white group-hover:invert hover:translate-y-[-5px] 
                           "
                         >
                           Baca Artikel

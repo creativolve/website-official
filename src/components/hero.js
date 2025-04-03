@@ -120,7 +120,9 @@ export default function Hero() {
                     viewport={{once: true}}
                     className="
                             text-[6.9vw] text-[#262626]
-                            lg:text-[2.4vw] 
+                            lg:text-[2.4vw] transition-all duration-100 ease-in-out
+
+                            hover:scale-[1.1] hover:translate-y-[-10px]
                             "
                   >
                     <Link

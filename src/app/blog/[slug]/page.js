@@ -78,7 +78,9 @@ import { notFound } from 'next/navigation';
             '>
               <div 
               className="
-              image
+              image transition-all duration-200 ease-in-out
+
+              hover:translate-y-[-15px] hover:scale-[1.012] group
               ">
                 <Image
                 src={blog?.thumbnail}
@@ -89,8 +91,10 @@ import { notFound } from 'next/navigation';
                 fetchPriority='high'
                 alt={blog?.title}
                 className='
-                w-[100%] rounded-2xl pointer-events-none select-none
-                lg:rounded-4xl
+                w-[100%] rounded-2xl pointer-events-none select-none transition-all duration-200 ease-in-out
+                lg:rounded-4xl 
+
+                group-hover:shadow-2xl
                 '
                 />
               </div>

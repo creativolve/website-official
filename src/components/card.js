@@ -39,13 +39,13 @@ export default function Card({ index }) {
                 }}
                 viewport={{once: true, amount: 0.1}}
                 className="
-                bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl gap-2 items-center ransition-all duration-100 ease-in-out w-[100%] m-auto py-8 px-3 justify-center
+                bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl gap-2 items-center ransition-all duration-200 ease-in-out w-[100%] m-auto py-8 px-3 justify-center 
 
                 md:w-[90%]  md:py-12 md:px-16
 
                 lg:flex lg:flex-col lg:w-[15vw]
                 hover:scale-[1.030] hover:shadow-md
-                lg:hover:scale-[1.021] lg:hover:shadow-md lg:py-7 lg:px-3
+                lg:hover:scale-[1.021] lg:hover:shadow-md lg:py-7 lg:px-3 hover:bg-[#262626] group hover:translate-y-[-20px]
                 ">
             
                     <div 
@@ -62,9 +62,12 @@ export default function Card({ index }) {
                         fetchPriority="high"
                         loading="lazy" 
                         className="
-                        w-[25vw] pointer-events-none select-none
-                        md:w-[20vw]
-                        lg:w-[6vw]"
+                        w-[25vw] pointer-events-none select-none transition-all duration-100 ease-in-out
+                        md:w-[20vw] 
+                        lg:w-[6vw]
+
+                        group-hover:invert
+                        "
                         />
                     </div>
                     <div
@@ -73,17 +76,21 @@ export default function Card({ index }) {
                     ">
                         <h2
                         className="
-                        font-semibold text-[4.5vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888]
+                        font-semibold text-[4.5vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888] transition-all duration-100 ease-in-out
                         md:text-[4vw]
                         lg:text-[1.3vw]
+
+                        group-hover:invert
                         ">
                             {item.title}
                         </h2>
                         <p
                         className="
-                        text-[3.3vw] text-[#4E4E4E] 
+                        text-[3.3vw] text-[#4E4E4E] transition-all duration-100
                         md:text-[2.8vw]
                         lg:text-[0.9vw]
+
+                        group-hover:invert
                         ">
                             {item.paragraph}
                         </p>

@@ -106,8 +106,9 @@ export default function Navbar() {
               <button
                 href="#"
                 className="
-                  bg-[#070707] text-white px-[20px] py-[3px] text-[1vw] w-auto rounded-4xl  cursor-pointer
-                  hover:bg-[#363f5a] hover:text-[#ffffff]
+                  bg-[#070707] text-white px-[20px] py-[3px] text-[1vw] w-auto rounded-4xl  cursor-pointer transition-all duration-100 ease-in-out
+                  
+                  hover:bg-transparent hover:text-[#000000] hover:border
                   "
               >
                 Konsultasi
@@ -218,8 +219,11 @@ export default function Navbar() {
                   <li
                     key={index}
                     className="
-                  text-[4.9vw]
+                  text-[4.9vw] text-[#dfdfdf]
                   md:text-[4vw]
+                  transition-all duration-100 ease-in-out
+
+                  hover:text-[#ffffff]
                   "
                   onClick={clicked}
                   >
@@ -234,9 +238,9 @@ export default function Navbar() {
                   href="#"
                   className="
                     bg-[#ffffff] text-black px-[15px] text-[4.9vw] w-auto rounded-4xl py-[3px] cursor-pointer
-                    md:text-[4vw]
+                    md:text-[4vw] ease-in-out
                     
-                    hover:bg-[#cccccc] hover:text-[black]
+                    hover:bg-transparent hover:text-[white] hover:border
                     "
                 >
                   Konsultasi

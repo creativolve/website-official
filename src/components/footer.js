@@ -93,7 +93,7 @@ export default function Footer(){
                     {produk.map((item, index) =>(
                         <li key={index}
                         className="
-                        text-[3.5vw]
+                        text-[3.5vw] transition-all duration-200 ease-in-out
                         md:text-[2.8vw]
                         lg:text-[0.9vw]
                          hover:text-white
@@ -132,7 +132,7 @@ export default function Footer(){
                     {contact.map((item, index) => (
                         <li key={index}
                             className="
-                            text-[3.5vw]
+                            text-[3.5vw] transition-all duration-200 ease-in-out
                             md:text-[2.8vw]
                             lg:text-[0.9vw]
                              hover:text-white
@@ -179,10 +179,10 @@ export default function Footer(){
                     {iconSocial.map((item, index) =>(
                         <li key={index}
                         className="
-                        text-[6.9vw] text-[#C5C5C5]
+                        text-[6.9vw] text-[#C5C5C5] transition-all duration-200 ease-in-out
                         md:text-[4.5vw]
                         lg:text-[1.8vw]
-                        hover:text-white
+                        hover:text-white 
                         "
                         >
                             <Link

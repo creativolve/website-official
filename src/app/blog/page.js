@@ -53,7 +53,7 @@ export default function Article() {
         {filteredBlogs.length > 0 ? (
           <div className="grid gap-[50px] lg:grid-cols-3">
             {filteredBlogs.map((blog) => (
-              <Link href={`/blog/${blog.slug}`} key={blog.slug} className='hover:scale-[1.021] transition-transform duration-300 ease-in-out'>
+              <Link href={`/blog/${blog.slug}`} key={blog.slug} className='hover:scale-[1.021] hover:translate-y-[-5px] transition-transform duration-200 ease-in-out'>
                 <Image
                   src={blog.thumbnail}
                   width={300}
