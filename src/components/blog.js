@@ -44,8 +44,10 @@ export default function HeroBlog() {
               initial={{y: 50, opacity: 0}}
               whileInView={{y: 0, opacity: 100}}
               transition={{
-                duration: 0.5, 
-                ease: 'easeInOut'}}
+                type: 'spring',
+                stiffness: 120,
+                damping: 12,
+              }}
               viewport={{once: true, amount: 0.3}}
               className="
                       font-bold
@@ -71,9 +73,10 @@ export default function HeroBlog() {
             initial={{y: 50, opacity: 0}}
             whileInView={{y: 0, opacity: 100}}
             transition={{
-              duration: 0.5, 
-              delay: 0.4, 
-              ease: 'easeInOut'}}
+              type: 'spring',
+              stiffness: 120,
+              damping: 12,
+            }}
             viewport={{once: true, amount: 0.3}}
               className="
                       text-[4vw] [4vw] text-[#4E4E4E]
@@ -89,9 +92,10 @@ export default function HeroBlog() {
               initial={{y: 50, opacity: 0}}
               whileInView={{y: 0, opacity: 100}}
               transition={{
-                duration: 0.5, 
-                delay: 0.8, 
-                ease: 'easeInOut'}}
+                type: 'spring',
+                stiffness: 120,
+                damping: 12,
+              }}
               viewport={{once: true, amount: 0.3}}
                 className="
                             bg-[#212121] text-[#ffffff] rounded-4xl px-[5vw] cursor-pointer py-[1.5vw] transition-all duration-200 border-transparent border-2 ease-in-out
@@ -112,8 +116,10 @@ export default function HeroBlog() {
           initial={{y: 50, opacity: 0}}
           whileInView={{y: 0, opacity: 100}}
           transition={{
-            duration: 0.5,
-            ease: 'easeInOut'}}
+            type: 'spring',
+            stiffness: 120,
+            damping: 12,  
+          }}
           viewport={{once: true, amount: 0.3}}
           className="latest flex flex-col gap-4">
               <span
@@ -142,6 +148,8 @@ export default function HeroBlog() {
                       lg:w-[410px] lg:px-[0.5vw] lg:py-[0.4vw] lg:rounded-[1.3vw] lg:gap-[5px]
 
                       hover:bg-[#262626] group hover:translate-y-[-20px]
+
+                      active:bg-[#262626] group active:translate-y-[-20px]
                     "
                   >
                     {/* GAMBAR */}
@@ -165,7 +173,9 @@ export default function HeroBlog() {
                       md:text-[5vw] md:leading-[6vw]
                       lg:text-[1.7vw] lg:leading-[2vw]
                       
-                      group-hover:invert"
+                      group-hover:invert
+                      group-active:invert
+                      "
                       >
                         {blog.title}
                       </h2>
@@ -176,6 +186,7 @@ export default function HeroBlog() {
                       lg:text-[1.05vw]
 
                       group-hover:invert
+                      group-active:invert
                       "
                       >
                         {blog.desc}
@@ -187,7 +198,7 @@ export default function HeroBlog() {
                           border border-[#212121] text-[#212121] rounded-3xl  px-[5vw] py-[1.5vw]  cursor-pointer
                           lg:px-[2vw] lg:py-[0.3vw] transition-all duration-200 ease-in-out
 
-                          hover:border-transparent hover:bg-[#262626] hover:text-white group-hover:invert hover:translate-y-[-5px] 
+                          hover:border-transparent hover:bg-[#262626] hover:text-white group-hover:invert hover:translate-y-[-5px] group-active:invert 
                           "
                         >
                           Baca Artikel

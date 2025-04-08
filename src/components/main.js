@@ -41,7 +41,7 @@ export default function Main() {
         className="
         px-[45px]
         md:px-[100px]
-        lg:px-[200px] lg:py-[10px]
+        lg:px-[280px] lg:py-[10px]
         "
       >
         <Hero />

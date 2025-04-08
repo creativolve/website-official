@@ -59,6 +59,9 @@ export default function Hero() {
                 initial={{y: 50, opacity: 0}}
                 whileInView={{y: 0, opacity: 100}}
                 transition={{
+                  type: 'spring',
+                  stiffness: 120,
+                  damping: 12,
                   duration: 0.5, 
                   ease: 'easeInOut'}}
                 viewport={{once: true}}
@@ -74,6 +77,9 @@ export default function Hero() {
                   initial={{y: 50, opacity: 0}}
                   whileInView={{y: 0, opacity: 100}}
                   transition={{
+                    type: 'spring',
+                    stiffness: 120,
+                    damping: 12,
                     duration: 0.5, 
                     delay: 0.4, 
                     ease: 'easeInOut'}}
@@ -92,7 +98,9 @@ export default function Hero() {
               initial={{y: 50, opacity: 0}}
               whileInView={{y: 0, opacity: 1,
                 transition: {
-                  duration: 0.7, 
+                  type: 'spring',
+                  stiffness: 120,
+                  damping: 12,
                   delay: 0.8, 
                   ease: 'easeInOut',
                   staggerChildren: 0.2
@@ -101,7 +109,8 @@ export default function Hero() {
               viewport={{once: true}}
 
                 className="
-                    icon flex gap-8
+                    icon flex gap-0
+                    lg:gap-4
                     "
               >
                 {iconSocial.map((item, index) => (
@@ -112,7 +121,9 @@ export default function Hero() {
                       opacity: 1,
                       y: 0,
                       transition: {
-                        ease: "easeInOut",
+                        type: 'spring',
+                        stiffness: 120,
+                        damping: 12,
                         duration: 0.5,
                         delay: index * 0.4
                       },
@@ -120,9 +131,11 @@ export default function Hero() {
                     viewport={{once: true}}
                     className="
                             text-[6.9vw] text-[#262626]
-                            lg:text-[2.4vw] transition-all duration-100 ease-in-out
+                            lg:text-[2.4vw] w-[65px] h-[65px] rounded-4xl text-center flex items-center justify-center transition-all duration-200 ease-in-out
 
-                            hover:scale-[1.1] hover:translate-y-[-10px]
+                             hover:bg-[#262626] hover:text-white hover:translate-y-[-8px]
+
+                            active:bg-[#262626] active:text-white active:translate-y-[-8px]
                             "
                   >
                     <Link

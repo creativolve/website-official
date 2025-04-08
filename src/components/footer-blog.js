@@ -32,6 +32,7 @@ export default function FooterBlog(){
         lg:px-[200px] lg:py-[150px] lg:gap-[50px]
 
         hover:shadow-neutral-900 hover:shadow-2xl
+        active:shadow-neutral-900 active:shadow-2xl
         ">
             <div className="
             desk flex flex-col gap-[20px] 
@@ -96,6 +97,8 @@ export default function FooterBlog(){
                         md:text-[4.5vw]
                         lg:text-[1.8vw]
                         hover:bg-[#262626] hover:text-white hover:translate-y-[-8px]
+                        
+                        active:bg-[#262626] active:text-white active:translate-y-[-8px]
                         "
                         >
                             <Link

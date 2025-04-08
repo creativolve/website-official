@@ -9,10 +9,10 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 
 const buttonAbout = [
     {
-        name: 'Cari Tahu!',
+        name: 'Tentang Kita!',
         solid: '#070707',
         stroke: 'none',
-        href: "/blog/pentingnya-penerapan-sistem-big-data"
+        href: "/tentang"
     },
 ]
 
@@ -40,8 +40,9 @@ export default function About(){
                         initial={{y: 50, opacity: 0}}
                         whileInView={{y: 0, opacity: 100}}
                         transition={{
-                          duration: 0.5, 
-                          ease: 'easeInOut'}}
+                            type: 'spring',
+                            stiffness: 120,
+                            damping: 12,}}
                         viewport={{once: true, amount: 0.3}}
                         className="
                         font-semibold text-[6.6vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888]
@@ -54,24 +55,30 @@ export default function About(){
                         initial={{y: 50, opacity: 0}}
                         whileInView={{y: 0, opacity: 100}}
                         transition={{
-                          duration: 0.5,
-                          ease: 'easeInOut'}}
+                            type: 'spring',
+                            stiffness: 120,
+                            damping: 12,}}
                         viewport={{once: true, amount: 0.3}}
                         className="
                         text-[4vw] text-[#4E4E4E]
                         md:text-[3.4vw]
                         lg:text-[1.2vw]
                         ">
-                            Kami akan menjadi partner bisnis anda untuk berkembang dan tampil lebih kreatif dengan &apos;Big Data&apos;.
+                            Kami akan menjadi partner bisnis anda untuk berkembang dan tampil lebih kreatif <i
+                            className="
+                            text-[#383838]
+                            ">
+                                &apos;Tanpa Mengkhawatirkan Budget Anda&apos;.
+                            </i>
                         </m.p>
                     </div>
                     <m.div
                     initial={{y: 50, opacity: 0}}
                     whileInView={{y: 0, opacity: 1,
                     transition: {
-                        duration: 0.7,
-                        ease: 'easeInOut',
-                        staggerChildren: 0.2
+                        type: 'spring',
+                        stiffness: 120,
+                        damping: 12,
                                     }
                     }}
                     viewport={{once: true, amount: 0.2}}
@@ -79,15 +86,17 @@ export default function About(){
                     button flex gap-6
                     ">
                         {buttonAbout.map((item, index) =>(
-                            <Link key={index} href={item.href} target="_blank">
+                            <Link key={index} href={item.href} target="_blank" data-nonsnipet>
                                 <m.button
+                                data-nonsnipet
                                 initial={{pacity: 0, y: 50}}
                                 whileInView={{
                                 opacity: 1,
                                 y: 0,
                                 transition: {
-                                    ease: "easeInOut",
-                                    duration: 0.5,
+                                    type: 'spring',
+                                    stiffness: 120,
+                                    damping: 12,
                                 },
                                 }}
                                 viewport={{once: true, amount: 0.2}}
@@ -98,7 +107,7 @@ export default function About(){
                                 
                                 hover:bg-transparent hover:text-[#262626] hover:border-[#262626] hover:translate-y-[-5px] 
 
-            
+                                active:bg-transparent active:text-[#262626] active:border-[#262626] active:translate-y-[-5px] 
                                 `}>
                                     {item.name}
                                 </m.button>
@@ -111,8 +120,9 @@ export default function About(){
                 initial={{opacity: 0, y: 15}}
                 whileInView={{opacity: 1, y: 0}}
                 transition={{
-                    duration: 0.5,
-                    ease: 'easeInOut',
+                    type: 'spring',
+                    stiffness: 120,
+                    damping: 12,
                 }}
                 viewport={{once: true, amount: 0.2}}
                 className="
@@ -142,19 +152,21 @@ export default function About(){
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0}}
                         transition={{
-                            duration: 0.5,
-                            ease: 'easeInOut'
+                            type: 'spring',
+                            stiffness: 120,
+                            damping: 12,
                         }}
                         viewport={{once: true, amount: 0.2}}
 
                         className="
-                        card bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl w-fit px-[20px] py-[7px] translate-x-[2px] translate-y-[20px] transition-all duration-200 ease-in-out
+                        card bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl w-fit px-[20px] py-[7px] translate-x-[2px] translate-y-[20px] transition-all duration-200
 
                         md:translate-x-[0px] md:translate-y-[40px]
 
                         lg:translate-y-[85px] lg:translate-x-[105px] lg:px-[20px] lg:py-[9px]
 
                         hover:bg-[#262626] group
+                        active:bg-[#262626] group
                         ">
                             <span
                             className="
@@ -164,6 +176,7 @@ export default function About(){
                             lg:text-[1.3vw]
 
                             group-hover:text-white !important
+                            group-active:text-white
                             ">
                                 Masalah
                             </span>
@@ -173,19 +186,21 @@ export default function About(){
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0}}
                         transition={{
-                            duration: 0.5,
-                            ease: 'easeInOut',
+                            type: 'spring',
+                            stiffness: 120,
+                            damping: 12,
                         }}
                         viewport={{once: true, amount: 0.2}}
 
                         className="
-                        card bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl w-fit px-[20px] py-[7px] translate-x-[70px] translate-y-[-80px] transition-all duration-200 ease-in-out
+                        card bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl w-fit px-[20px] py-[7px] translate-x-[70px] translate-y-[-80px] transition-all duration-200
 
                         md:translate-x-[150px] md:translate-y-[-130px]
                         
                         lg:px-[20px] lg:py-[9px] lg:translate-y-[-50px] lg:translate-x-[245px]
 
                         hover:bg-[#262626] group
+                        active:bg-[#262626] group
                         ">
                             <span
                             className="
@@ -193,7 +208,8 @@ export default function About(){
 
                             lg:text-[1.3vw]
 
-                            group-hover:text-white 
+                            group-hover:text-white !important
+                            group-active:text-white
                             ">
                                 Solusi
                             </span>
@@ -203,19 +219,21 @@ export default function About(){
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0}}
                         transition={{
-                            duration: 0.5,
-                            ease: 'easeInOut',
+                            type: 'spring',
+                            stiffness: 120,
+                            damping: 12,
                         }}
                         viewport={{once: true, amount: 0.2}}
                             
                         className="
-                        card bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl w-fit px-[20px] py-[7px] translate-x-[140px] translate-y-[-50px] transition-all duration-200 ease-in-out
+                        card bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl w-fit px-[20px] py-[7px] translate-x-[140px] translate-y-[-50px] transition-all duration-200
 
                         md:translate-x-[300px] md:translate-y-[-90px]
                         
                         lg:px-[20px] lg:py-[9px] lg:translate-y-[-20px] lg:translate-x-[345px]
-
+                        
                         hover:bg-[#262626] group
+                        active:bg-[#262626] group
                         ">
                             <span
                             className="
@@ -224,7 +242,8 @@ export default function About(){
 
                             lg:text-[1.3vw]
 
-                            group-hover:text-white
+                            group-hover:text-white !important
+                            group-active:text-white
                             ">
                                 Strategi
                             </span>

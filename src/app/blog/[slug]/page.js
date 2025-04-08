@@ -41,7 +41,7 @@ import { notFound } from 'next/navigation';
 
     
 
-    export default async function BlogDetail({ params }) {
+    export default async function Page({ params }) {
         const { slug } = await params; // Pakai await untuk destructuring params
         
         if (!slug) return <div>Loading...</div>;
@@ -81,6 +81,7 @@ import { notFound } from 'next/navigation';
               image transition-all duration-200 ease-in-out
 
               hover:translate-y-[-15px] hover:scale-[1.012] group
+              active:translate-y-[-15px] active:scale-[1.012]
               ">
                 <Image
                 src={blog?.thumbnail}
@@ -95,6 +96,7 @@ import { notFound } from 'next/navigation';
                 lg:rounded-4xl 
 
                 group-hover:shadow-2xl
+                group-active:shadow-2xl
                 '
                 />
               </div>

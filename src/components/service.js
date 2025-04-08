@@ -59,8 +59,9 @@ export default function Service(){
                         initial={{opacity: 0}}
                         whileInView={{opacity: 1}}
                         transition={{
-                            duration: 0.5,
-                            ease: 'easeInOut'
+                            type: 'spring',
+                            stiffness: 120,
+                            damping: 12,
                         }}
                         viewport={{once: true, amount: 0.2}}
                         >
@@ -82,9 +83,9 @@ export default function Service(){
                             initial={{opacity: 0, y: 20}}
                             whileInView={{opacity: 1, y: 0}}
                             transition={{
-                                duration: 0.5,
-                                ease: 'easeInOut',
-                                staggerChildren: 0.2
+                                type: 'spring',
+                                stiffness: 120,
+                                damping: 12,
                             }}
                             viewport={{once: true, amount: 0.2}}
                             className="container m-auto w-fit grid grid-cols-2 grid-rows-2 gap-[20px]">
@@ -93,9 +94,9 @@ export default function Service(){
                                     initial={{opacity: 0, y: 20}}
                                     whileInView={{opacity: 1, y: 0}}
                                     transition={{
-                                        duration: 0.5,
-                                        ease: 'easeInOut',
-                                        delay: index * 0.5
+                                        type: 'spring',
+                                        stiffness: 120,
+                                        damping: 12,
                                     }}
                                     viewport={{once: true, amount: 0.2}}
 
@@ -105,7 +106,11 @@ export default function Service(){
                                     lg:w-[260px] lg:h-[auto]
 
                                     hover:scale-[1.030] hover:shadow-md
-                                    lg:hover:scale-[1.021] lg:hover:shadow-md hover:bg-[#262626] group hover:translate-y-[-20px]
+                                    lg:hover:scale-[1.021] lg:hover:shadow-md 
+                                    
+                                    hover:bg-[#262626] group hover:translate-y-[-20px]
+
+                                                                                                         active:bg-[#262626] group                               active:translate-y-[-20px]
                                     ">
                                         <div className="image">
                                             <Image
@@ -118,7 +123,9 @@ export default function Service(){
                                             className="
                                             w-[15vw] pointer-events-none select-none transition-all duration-200 ease-in-out
                                             lg:w-[6vw]
+
                                             group-hover:invert
+                                            group-active:invert
                                             "
                                             />
                                         </div>
@@ -127,7 +134,9 @@ export default function Service(){
                                             className="
                                             font-semibold text-[3.5vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888] transition-all duration-200 ease-in-out
                                             lg:text-[1.1vw] 
+                                            
                                             group-hover:invert
+                                            group-active:invert
                                             ">
                                                 {items.title}
                                             </h2>
@@ -136,7 +145,9 @@ export default function Service(){
                                             text-[2.6vw] text-[#4E4E4E] transition-all duration-200 ease-in-out
                                             md:text-[2.8vw] 
                                             lg:text-[0.9vw]
+                                            
                                             group-hover:invert
+                                            group-active:invert
                                             ">
                                                 {items.paragraph}
                                             </p>
@@ -149,9 +160,9 @@ export default function Service(){
                     initial={{opacity: 0, y: 20}}
                     whileInView={{opacity: 1, y: 0}}
                     transition={{
-                        duration: 0.5,
-                        ease: 'easeInOut',
-                        delay: 0.7
+                        type: 'spring',
+                        stiffness: 120,
+                        damping: 12,
                     }}
                     viewport={{once: true, amount: 0.2}}
 
@@ -165,34 +176,28 @@ export default function Service(){
                         Ini adalah layanan utama yang kami sediakan untuk membuat bisnis anda berkembang dan tampil kreatif, Lihat layanan kami secara rinci sesuai kategori!.
                         </p>
                         <div className="button flex gap-6">
-                            {buttonService.map((items, index) => (
-                                <Link key={index} href={items.href}>
+                                <Link href='/layanan'>
                                 <m.button
                                 initial={{y: 50, opacity: 0}}
                                 whileInView={{y: 0, opacity: 100}}
                                 transition={{
-                                    duration: 0.5, 
-                                    delay: 0.8, 
-                                    ease: 'easeInOut'}}
+                                    type: 'spring',
+                                    stiffness: 120,
+                                    damping: 12,}}
                                 viewport={{once: true, amount: 0.3}}
 
                                 className={`
-                                px-[10px] py-[5px] rounded-3xl text-[3.4vw] cursor-pointe ease-in-out
+                                px-[10px] py-[5px] rounded-3xl text-[3.4vw] cursor-pointe ease-in-out bg-[#262626] cursor-pointer text-white border-2 border-transparent hover:bg-transparent
                                 md:text-[3vw]
                                 lg:px-[25px] lg:py-[5px] lg:text-[1vw] transition-all duration-200
-                                hover:translate-y-[-5px] cursor-pointer
-
-                                ${items.solid ? 
-                                    'bg-[#262626] text-white border-2 border-transparent hover:bg-transparent hover:text-[#262626] hover:border-[#262626]' 
-                                    : 
-                                    'bg-transparent border border-[#262626] text-black hover:bg-[#262626] hover:text-white'
-                                }
+                                hover:translate-y-[-5px] 
+                                
+                                hover:text-[#262626] hover:border-[#262626]
                                     `}
                                 >
-                                    {items.name}
+                                    Lihat Layanan!
                                 </m.button>
                                 </Link>
-                            ))}
                         </div>
                     </m.div>
                 </section>

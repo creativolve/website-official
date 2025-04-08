@@ -5,7 +5,7 @@ import blog from '@/data/blog.json';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Article() {
+export default function Page() {
   const [searchTerm, setSearchTerm] = useState("");
 
   // Filter berdasarkan pencarian

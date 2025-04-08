@@ -18,10 +18,9 @@ export default function Card({ index }) {
             initial={{opacity: 0, y: 20}}
             whileInView={{opacity: 1, y: 0,
                 transition: {
-                    duration: 0.5,
-                    ease: 'easeInOut',
-                    delay: 1.6,
-                    staggerChildren: 0.2
+                    type: 'spring',
+                    stiffness: 120,
+                    damping: 12,
                 }
             }}
             viewport={{once: true, amount: 0.1}}
@@ -33,8 +32,9 @@ export default function Card({ index }) {
                 whileInView={{
                     opacity: 1, y: 0,
                     transition: {
-                        duration: 0.5,
-                        ease: 'easeInOut',
+                        type: 'spring',
+                        stiffness: 120,
+                        damping: 12,
                     }
                 }}
                 viewport={{once: true, amount: 0.1}}
@@ -45,7 +45,11 @@ export default function Card({ index }) {
 
                 lg:flex lg:flex-col lg:w-[15vw]
                 hover:scale-[1.030] hover:shadow-md
-                lg:hover:scale-[1.021] lg:hover:shadow-md lg:py-7 lg:px-3 hover:bg-[#262626] group hover:translate-y-[-20px]
+                lg:hover:scale-[1.021] lg:hover:shadow-md lg:py-7 lg:px-3 
+                
+                hover:bg-[#262626] group hover:translate-y-[-20px]
+
+                active:bg-[#262626] active:translate-y-[-20px]
                 ">
             
                     <div 
@@ -67,6 +71,7 @@ export default function Card({ index }) {
                         lg:w-[6vw]
 
                         group-hover:invert
+                        group-active:invert
                         "
                         />
                     </div>
@@ -81,6 +86,7 @@ export default function Card({ index }) {
                         lg:text-[1.3vw]
 
                         group-hover:invert
+                        group-active:invert
                         ">
                             {item.title}
                         </h2>
@@ -91,6 +97,7 @@ export default function Card({ index }) {
                         lg:text-[0.9vw]
 
                         group-hover:invert
+                        group-active:invert
                         ">
                             {item.paragraph}
                         </p>

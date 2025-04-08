@@ -48,10 +48,10 @@ export default function Navbar() {
             ease: 'easeInOut'
           }}
           className={`
-        p-[30px] w-full mt-[-20px] h-[90px] z-[50]
+        p-[30px] w-full mt-[-20px] h-[90px] z-[50] transition-all duration-200 ease-linear
         md:py-[20x] md:h-[123px]
-        lg:px-[200px] lg:py-[15px] lg:mt-0 lg:h-auto
-        ${scrolled? 'bg-[#fffffff6] backdrop-blur-[2px] fixed shadow-[#7c7c7c0e] shadow-lg' : 'bg-transparent shadow-none'}
+        lg:px-[260px] lg:py-[15px] lg:mt-0 lg:h-auto
+        ${scrolled? 'bg-[#ffffffe5] backdrop-blur-[2px] fixed shadow-xl' : 'bg-transparent shadow-none'}
         `}
         >
           {/* Dekstop */}
@@ -93,7 +93,7 @@ export default function Navbar() {
                 <li
                   key={index}
                   className="
-                  hover:text-[#4e4e4e]
+                  hover:text-[#4e4e4e] active:text-[#4e4e4e]
                   "
                 >
                   <Link href={item.href}>{item.nav}</Link>
@@ -109,6 +109,8 @@ export default function Navbar() {
                   bg-[#070707] text-white px-[20px] py-[3px] text-[1vw] w-auto rounded-4xl  cursor-pointer transition-all duration-100 ease-in-out
                   
                   hover:bg-transparent hover:text-[#000000] hover:border
+
+                  active:bg-transparent active:text-[#000000] active:border
                   "
               >
                 Konsultasi
@@ -223,7 +225,7 @@ export default function Navbar() {
                   md:text-[4vw]
                   transition-all duration-100 ease-in-out
 
-                  hover:text-[#ffffff]
+                  hover:text-[#ffffff] active:text-[#ffffff]
                   "
                   onClick={clicked}
                   >
@@ -241,6 +243,8 @@ export default function Navbar() {
                     md:text-[4vw] ease-in-out
                     
                     hover:bg-transparent hover:text-[white] hover:border
+
+                    active:bg-transparent active:text-[#ffffff] active:border
                     "
                 >
                   Konsultasi

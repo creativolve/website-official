@@ -43,8 +43,9 @@ export default function whyOur() {
           initial={{opacity: 0, y: 40}}
           whileInView={{opacity: 1, y: 0,
             transition: {
-              duration: 0.6,
-              ease: 'easeInOut',
+              type: 'spring',
+              stiffness: 120,
+              damping: 12,
             }
           }}
           viewport={{once: true, amount: 0.2}}
@@ -63,7 +64,7 @@ export default function whyOur() {
               loading="lazy"
               className="
                     w-[85vw] ml-[-100px] select-none pointer-events-auto
-                    md:w-[65%] transition-all duration-200 ease-in-out
+                    md:w-[65%] transition-all duration-200 
                     lg:w-[70%] lg:m-0
 
                     hover:translate-y-[-40px] hover:scale-[1.05]
@@ -81,8 +82,9 @@ export default function whyOur() {
             initial={{opacity: 0, y: 20}}
             whileInView={{opacity: 1, y:0}}
             transition={{
-              duration: 0.5,
-              ease: 'easeInOut'
+              type: 'spring',
+              stiffness: 120,
+              damping: 12,
             }}
             viewport={{once: true, amount: 0.2}}
               className="
@@ -97,9 +99,9 @@ export default function whyOur() {
             initial={{opacity: 0, y: 20}}
             whileInView={{opacity: 1, y:0}}
             transition={{
-              duration: 0.5,
-              ease: 'easeInOut',
-              staggerChildren: 0.2
+              type: 'spring',
+              stiffness: 120,
+              damping: 12,
             }}
             viewport={{once: true, amount: 0.2}}
               className="
@@ -111,15 +113,16 @@ export default function whyOur() {
                   key={index}
                   className="
                             list flex gap-5
+                            group
                             "
                 >
                   <m.span
                   initial={{opacity: 0, y: 20}}
                   whileInView={{opacity: 1, y: 0}}
                   transition={{
-                    duration: 0.5,
-                    ease: 'easeInOut',
-                    delay: index * 0.4
+                    type: 'spring',
+                    stiffness: 120,
+                    damping: 12,
                   }}
                   viewport={{once: true, amount: 0.2}}
                     className="
@@ -128,7 +131,8 @@ export default function whyOur() {
                     md:text-[5vw] md:min-w-[60px] md:h-[60px]
                     lg:min-w-[45px] lg:h-[45px] lg:text-[1vw]
 
-                    hover:translate-y-[-20px] hover:scale-[1.13]
+                    group-hover:translate-y-[-20px] group-hover:scale-[1.13]
+                    group-active:translate-y-[-20px] group-active:scale-[1.13]
                     "
                   >
                     {item.number}
@@ -138,23 +142,25 @@ export default function whyOur() {
                   initial={{opacity: 0, y: 20}}
                   whileInView={{opacity: 1, y: 0,
                     transition: {
-                      duration: 0.5,
-                      ease: 'easeInOut',
-                      delay: index * 0.6
+                      type: 'spring',
+                      stiffness: 120,
+                      damping: 12,
                     }
                   }}
                   viewport={{once: true, amount: 0.2}}
                     className="
-                                text flex flex-col
+                                text flex flex-col transition-all duration-200 ease-in-out
+                                group-hover:translate-y-[-20px]
+                                group-active:translate-y-[-20px]
                                 "
                   >
                     <m.h3
                       initial={{opacity: 0, y: 20}}
                       whileInView={{opacity: 1, y: 0,
                         transition: {
-                          duration: 0.5,
-                          ease: 'easeInOut',
-                          delay: index * 0.8
+                          type: 'spring',
+                          stiffness: 120,
+                          damping: 12,
                         }
                       }}
                       viewport={{once: true, amount: 0.2}}
@@ -171,9 +177,9 @@ export default function whyOur() {
                       initial={{opacity: 0, y: 20}}
                       whileInView={{opacity: 1, y: 0,
                         transition: {
-                          duration: 0.5,
-                          ease: 'easeInOut',
-                          delay: index * 0.9
+                          type: 'spring',
+                          stiffness: 120,
+                          damping: 12,
                         }
                       }}
                       viewport={{once: true, amount: 0.2}}
