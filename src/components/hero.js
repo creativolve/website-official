@@ -60,7 +60,7 @@ export default function Hero() {
                 whileInView={{y: 0, opacity: 100}}
                 transition={{
                   type: 'spring',
-                  stiffness: 120,
+                  stiffness: 60,
                   damping: 12,
                   duration: 0.5, 
                   ease: 'easeInOut'}}
@@ -78,7 +78,7 @@ export default function Hero() {
                   whileInView={{y: 0, opacity: 100}}
                   transition={{
                     type: 'spring',
-                    stiffness: 120,
+                    stiffness: 60,
                     damping: 12,
                     duration: 0.5, 
                     delay: 0.4, 
@@ -99,7 +99,7 @@ export default function Hero() {
               whileInView={{y: 0, opacity: 1,
                 transition: {
                   type: 'spring',
-                  stiffness: 120,
+                  stiffness: 60,
                   damping: 12,
                   delay: 0.8, 
                   ease: 'easeInOut',
@@ -122,8 +122,8 @@ export default function Hero() {
                       y: 0,
                       transition: {
                         type: 'spring',
-                        stiffness: 120,
-                        damping: 12,
+                        stiffness: 60,
+                        damping: 14,
                         duration: 0.5,
                         delay: index * 0.4
                       },

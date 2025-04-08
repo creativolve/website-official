@@ -45,7 +45,7 @@ export default function HeroBlog() {
               whileInView={{y: 0, opacity: 100}}
               transition={{
                 type: 'spring',
-                stiffness: 120,
+                stiffness: 60,
                 damping: 12,
               }}
               viewport={{once: true, amount: 0.3}}
@@ -74,7 +74,7 @@ export default function HeroBlog() {
             whileInView={{y: 0, opacity: 100}}
             transition={{
               type: 'spring',
-              stiffness: 120,
+              stiffness: 60,
               damping: 12,
             }}
             viewport={{once: true, amount: 0.3}}
@@ -93,7 +93,7 @@ export default function HeroBlog() {
               whileInView={{y: 0, opacity: 100}}
               transition={{
                 type: 'spring',
-                stiffness: 120,
+                stiffness: 60,
                 damping: 12,
               }}
               viewport={{once: true, amount: 0.3}}
@@ -117,7 +117,7 @@ export default function HeroBlog() {
           whileInView={{y: 0, opacity: 100}}
           transition={{
             type: 'spring',
-            stiffness: 120,
+            stiffness: 60,
             damping: 12,  
           }}
           viewport={{once: true, amount: 0.3}}

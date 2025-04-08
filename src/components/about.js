@@ -41,7 +41,7 @@ export default function About(){
                         whileInView={{y: 0, opacity: 100}}
                         transition={{
                             type: 'spring',
-                            stiffness: 120,
+                            stiffness: 60,
                             damping: 12,}}
                         viewport={{once: true, amount: 0.3}}
                         className="
@@ -56,7 +56,7 @@ export default function About(){
                         whileInView={{y: 0, opacity: 100}}
                         transition={{
                             type: 'spring',
-                            stiffness: 120,
+                            stiffness: 60,
                             damping: 12,}}
                         viewport={{once: true, amount: 0.3}}
                         className="
@@ -77,7 +77,7 @@ export default function About(){
                     whileInView={{y: 0, opacity: 1,
                     transition: {
                         type: 'spring',
-                        stiffness: 120,
+                        stiffness: 60,
                         damping: 12,
                                     }
                     }}
@@ -95,8 +95,8 @@ export default function About(){
                                 y: 0,
                                 transition: {
                                     type: 'spring',
-                                    stiffness: 120,
-                                    damping: 12,
+                                    stiffness: 60,
+                                    damping: 14,
                                 },
                                 }}
                                 viewport={{once: true, amount: 0.2}}
@@ -121,7 +121,7 @@ export default function About(){
                 whileInView={{opacity: 1, y: 0}}
                 transition={{
                     type: 'spring',
-                    stiffness: 120,
+                    stiffness: 60,
                     damping: 12,
                 }}
                 viewport={{once: true, amount: 0.2}}
@@ -153,7 +153,7 @@ export default function About(){
                         whileInView={{opacity: 1, y: 0}}
                         transition={{
                             type: 'spring',
-                            stiffness: 120,
+                            stiffness: 60,
                             damping: 12,
                         }}
                         viewport={{once: true, amount: 0.2}}
@@ -187,7 +187,7 @@ export default function About(){
                         whileInView={{opacity: 1, y: 0}}
                         transition={{
                             type: 'spring',
-                            stiffness: 120,
+                            stiffness: 60,
                             damping: 12,
                         }}
                         viewport={{once: true, amount: 0.2}}
@@ -220,7 +220,7 @@ export default function About(){
                         whileInView={{opacity: 1, y: 0}}
                         transition={{
                             type: 'spring',
-                            stiffness: 120,
+                            stiffness: 60,
                             damping: 12,
                         }}
                         viewport={{once: true, amount: 0.2}}
