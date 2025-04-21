@@ -64,6 +64,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id">
       <head>
+      <link rel="canonical" href="https://creativolve.agency" />
       <Script id="google-analytics" strategy="lazyOnload">
       {`
         window.dataLayer = window.dataLayer || [];
