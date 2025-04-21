@@ -47,7 +47,7 @@
           href="/"
           className="
           rounded-full p-2 transition-all duration-200 ease-in-out
-          hover:bg-[#262626] group 
+          hover:bg-[#ffffff] group 
           ">
               <Image
               src="/images/Back Button.png"
@@ -55,19 +55,19 @@
               width={100}
               height={100}
               className='
-              w-[8vw] transition-all duration-200 ease-in-out
+              w-[8vw] transition-all duration-200 ease-in-out invert
               lg:w-[2vw] object-cover select-none cursor-pointer
-              group-hover:invert
+              group-hover:invert-0
               '
               />
           </Link>
           <div
           className="
-          relative bg-[#262626] w-fit h-full px-5 py-2 rounded-3xl flex gap-5 
+          relative bg-[#ffffff] w-fit h-full px-5 py-2 rounded-3xl flex gap-5 
           ">
             <motion.div 
             className="
-            background absolute bg-[#ffffff] w-[46%] h-[60%] rounded-full top-[20%] left-[3%] z-[0]
+            background absolute bg-[#262626] w-[46%] h-[60%] rounded-full top-[20%] left-[3%] z-[0]
             "
             animate={{x: selectedIndex === 0 ? 0 : "100%"}}
             transition={{ type: "spring", stiffness: 100, damping: 18 }}
@@ -81,7 +81,7 @@
                 font-medium z-[1] cursor-pointer
                 text-[3vw]
                 lg:text-[0.9vw]
-              ${selectedIndex === index ? 'text-[#262626]' : 'text-white'}  
+              ${selectedIndex === index ? 'text-[#ffffff]' : 'text-[#262626]'}  
                 `}
                 >
                   {items.name}
@@ -120,8 +120,8 @@
                     quality={50}
                     priority
                     className="
-                    m-auto pointer-events-none select-none w-[70vw]
-                    lg:w-[26vw]"
+                    m-auto pointer-events-none select-none w-[70vw] rounded-[5vw]
+                    lg:w-[26vw] lg:rounded-[2vw]"
                   />
                 </motion.div>
               ) : null
@@ -146,7 +146,7 @@
                 }}
                 layout
                 className="
-                font-semibold text-[6.6vw] leading-[6vw]
+                font-semibold text-[6.6vw] leading-[6vw] text-[#ffffff]
                 md:text-[5vw]
                  lg:text-[2.4vw] lg:leading-[3vw]
                 ">
@@ -165,7 +165,7 @@
                 }}
                 layout
                 className="
-                text-[4vw] text-[#4E4E4E]
+                text-[4vw] text-[#cccccc]
                 md:text-[3.4vw]
                 lg:text-[1.2vw]
                 "
@@ -186,13 +186,13 @@
                 }}
                 layout
                 className="
-                bg-[#212121] text-[#ffffff] rounded-4xl px-[5vw] cursor-pointer py-[1.5vw] transition-all duration-200 border-transparent border-2 ease-in-out text-[3.5vw]
+                bg-[#ffffff] text-[#262626] rounded-4xl px-[5vw] cursor-pointer py-[1.5vw] transition-all duration-200 border-transparent border-2 ease-in-out text-[3.5vw]
                 md:text-[2.7vw]
                 lg:text-[1.1vw]
                 lg:px-[2vw] lg:py-[0.3vw]
 
-                hover:bg-transparent hover:text-[#262626]
-                hover:border-[#262626] hover:translate-y-[-5px]
+                hover:bg-transparent hover:text-[#ffffff]
+                hover:border-[#ffffff] hover:translate-y-[-5px]
                 ">
                   {items.button}
                 </motion.button>

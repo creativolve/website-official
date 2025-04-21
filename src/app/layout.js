@@ -93,7 +93,7 @@ export default function RootLayout({ children }) {
           {JSON.stringify(jsonLd)}
         </Script>
       </head>
-      <body className={`${montserrat.className} relative antialiased bg-[#ffffff]`}>
+      <body className={`${montserrat.className} relative antialiased bg-[#171717]`}>
         {children}
       </body>
     </html>

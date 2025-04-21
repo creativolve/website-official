@@ -41,7 +41,7 @@ export default function BreadcrumbNav({ index = 0 }) {
       className={`
       flex items-center gap-3 px-5 py-2  rounded-full transition-all duration-150 ease-in-out
 
-      ${scrolled? 'bg-[#262626] fixed' : 'bg-transparent'}
+      ${scrolled? 'bg-[#ffffff] fixed' : 'bg-transparent'}
       `}>
         <Link href="/" 
           className="group">
@@ -51,8 +51,8 @@ export default function BreadcrumbNav({ index = 0 }) {
             width={40}
             height={40}
             className={`
-              w-[7vw] lg:w-[1.5vw] object-cover select-none cursor-pointer transition-all duration-150 ease-in-out
-              ${scrolled ? 'invert' : ''}
+              w-[7vw] lg:w-[1.5vw] object-cover select-none cursor-pointer invert transition-all duration-150 ease-in-out
+              ${scrolled ? 'invert-0' : 'invert'}
             `}
           />
         </Link>
@@ -63,21 +63,21 @@ export default function BreadcrumbNav({ index = 0 }) {
             <ChevronRight size={16} 
             className={`
             select-none
-            ${scrolled? 'text-white' : 'text-gray-200'}
+            ${scrolled? 'text-[#262626]' : 'text-[#ffffff]'}
          `} />
             {item.href ? (
               <Link
                 href={item.href}
                 className={`select-none text-[3.4vw] lg:text-[1.1vw] hover:underline transition-all duration-150 ease-in-out
-                ${scrolled? 'text-white' : 'text-[#262626]'}
+                ${scrolled? 'text-[#262626]' : 'text-[#ffffff]'}
                   `}
               >
                 {item.name}
               </Link>
             ) : (
               <span
-                className={`px-[5px] rounded-full select-none text-[3.4vw] lg:text-[1.1vw] transition-all duration-150 ease-in-out
-                ${scrolled? 'text-[#262626] bg-white' : 'text-white bg-[#262626]'}
+                className={`px-[15px] rounded-full select-none text-[3.4vw] lg:text-[1.1vw] transition-all duration-150 ease-in-out
+                ${scrolled? 'text-[#ffffff] bg-[#262626]' : 'text-[#262626] bg-[#ffffff]'}
                   `}
               >
                 {item.name}

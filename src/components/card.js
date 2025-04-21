@@ -39,17 +39,17 @@ export default function Card({ index }) {
                 }}
                 viewport={{once: true, amount: 0.1}}
                 className="
-                bg-[#ffffff] shadow-[0px_05px_15px_rgba(0,0,0,0.09)] rounded-2xl gap-2 items-center ransition-all duration-200 ease-in-out w-[100%] m-auto py-8 px-3 justify-center 
+                bg-[#262626] shadow-[3px_6px_18px_rgba(0,0,0,0.9)] rounded-2xl gap-2 items-center ransition-all duration-200 ease-in-out w-[100%] m-auto py-8 px-3 justify-center 
 
                 md:w-[90%]  md:py-12 md:px-16
 
                 lg:flex lg:flex-col lg:w-[15vw]
-                hover:scale-[1.030] hover:shadow-md
-                lg:hover:scale-[1.021] lg:hover:shadow-md lg:py-7 lg:px-3 
+                hover:scale-[1.030] hover:shadow-[3px_6px_25px_rgba(0,0,0,0.9)]
+                lg:hover:scale-[1.021] lg:py-7 lg:px-3 
                 
-                hover:bg-[#262626] group hover:translate-y-[-20px]
+                hover:bg-[#ffffff] group hover:translate-y-[-20px]
 
-                active:bg-[#262626] active:translate-y-[-20px]
+                active:bg-[#ffffff] active:translate-y-[-20px]
                 ">
             
                     <div 
@@ -81,7 +81,7 @@ export default function Card({ index }) {
                     ">
                         <h2
                         className="
-                        font-semibold text-[4.5vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888] transition-all duration-100 ease-in-out
+                        font-semibold text-[4.5vw] text-[#ffffff] ransition-all duration-100 ease-in-out
                         md:text-[4vw]
                         lg:text-[1.3vw]
 
@@ -92,7 +92,7 @@ export default function Card({ index }) {
                         </h2>
                         <p
                         className="
-                        text-[3.3vw] text-[#4E4E4E] transition-all duration-100
+                        text-[3.3vw] text-[#cccccc] transition-all duration-100
                         md:text-[2.8vw]
                         lg:text-[0.9vw]
 

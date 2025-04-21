@@ -34,9 +34,8 @@ export default function whyOur() {
           id="mengapa"
           className="
             flex flex-col items-center justify-center
-            h-[150vh] my-[150px]
-            md:h-[200vh]
-            lg:h-[130vh] lg:flex-row
+            h-fit py-18 my-[150px] gap-20
+            lg:flex-row
             "
         >
           <m.div
@@ -50,12 +49,12 @@ export default function whyOur() {
           }}
           viewport={{once: true, amount: 0.2}}
             className="
-                image w-[100vw]
+                image w-full
                 lg:w-[60%]
                 "
           >
             <Image
-              src="/images/Mengapa/why.png"
+              src="/images/Mengapa/image.jpg"
               width={380}
               height={380}
               quality={90}
@@ -63,11 +62,11 @@ export default function whyOur() {
               fetchPriority="high"
               loading="lazy"
               className="
-                    w-[85vw] ml-[-100px] select-none pointer-events-auto
+                    w-full select-none pointer-events-auto shadow-[5px_10px_25px_rgba(0,0,0,1)] rounded-[5vw]
                     md:w-[65%] transition-all duration-200 
-                    lg:w-[70%] lg:m-0
+                    lg:w-[70%] lg:m-0 lg:rounded-[2vw]
 
-                    hover:translate-y-[-40px] hover:scale-[1.05]
+                    hover:scale-[1.04] hover:shadow-[5px_10px_45px_rgba(0,0,0,0.1]
                     "
             />
           </m.div>
@@ -88,7 +87,7 @@ export default function whyOur() {
             }}
             viewport={{once: true, amount: 0.2}}
               className="
-                    bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888] font-semibold text-[7vw]
+                    text-white font-semibold text-[6.6vw] 
                     md:text-[5.3vw]
                     lg:text-[2.4vw]
                     "
@@ -126,7 +125,7 @@ export default function whyOur() {
                   }}
                   viewport={{once: true, amount: 0.2}}
                     className="
-                    bg-[#212121] text-white font-bold rounded-2xl text-center flex justify-center items-center
+                    bg-[#ffffff] text-[#262626] font-bold rounded-2xl text-center flex justify-center items-center
                     min-w-[40px] h-[40px] text-[4vw] transition-all duration-200 ease-in-out
                     md:text-[5vw] md:min-w-[60px] md:h-[60px]
                     lg:min-w-[45px] lg:h-[45px] lg:text-[1vw]
@@ -166,7 +165,7 @@ export default function whyOur() {
                       viewport={{once: true, amount: 0.2}}
 
                       className="
-                                    font-semibold
+                                    font-semibold text-[#ffffff]
                                     md:text-[4vw]
                                     lg:text-[1.3vw]
                                     "
@@ -184,7 +183,7 @@ export default function whyOur() {
                       }}
                       viewport={{once: true, amount: 0.2}}
                       className="
-                                    text-[4vw] text-[#4E4E4E]
+                                    text-[4vw] text-[#cccccc]
                                     md:text-[3.4vw]
                                     lg:text-[1.2vw]
                                     "

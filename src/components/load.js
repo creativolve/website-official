@@ -6,7 +6,7 @@ import '@/css/load.css'
 
 export default function Loader() {
     return (
-      <div className="fixed inset-0 flex justify-center items-center bg-white z-50">
+      <div className="fixed inset-0 flex justify-center items-center bg-[#171717] z-50">
         <div className="animate-scale">
           <Image 
           src="/images/load_logo.png"
@@ -14,7 +14,7 @@ export default function Loader() {
           width={150}
           height={150}
           priority
-          className="w-full" />
+          className="w-full invert" />
         </div>
       </div>
     )

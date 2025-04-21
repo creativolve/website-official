@@ -10,7 +10,7 @@
 
   import Link from 'next/link';
   import Image from 'next/image';
-import { notFound } from 'next/navigation';
+  import { notFound } from 'next/navigation';
 
   export async function generateStaticParams() {
     return blogs.map((blog) => ({
@@ -107,7 +107,7 @@ import { notFound } from 'next/navigation';
               ">  
                 <h1
                 className="
-                font-bold text-[8vw] leading-[9.5vw]
+                font-bold text-[8vw] leading-[9.5vw] text-white
                 lg:text-[4.3vw] lg:leading-[5.5vw]
                 ">
                   {blog?.title}
@@ -130,9 +130,9 @@ import { notFound } from 'next/navigation';
             dangerouslySetInnerHTML={{ __html: content }}
             className="
               py-[6vw] text-justify w-[100%]
-              prose prose-2xl prose-headings:text-[4.6vw] prose-h2:text-[6vw] prose-h1:text-[6.8vw]  prose-p:text-[4.5vw] prose-li:text-[4.5vw]
+              prose prose-2xl prose-headings:text-[4.6vw] prose-h2:text-[6vw] prose-h1:text-[6.8vw]  prose-p:text-[4.5vw] prose-li:text-[4.5vw] 
 
-              md:prose-headings:text-[3.6vw]  md:prose-h2:text-[4vw] md:prose-h1:text-[5vw] md:prose-p:text-[3.5vw] md:prose-li:text-[3.5vw]
+              md:prose-headings:text-[3.6vw]  md:prose-h2:text-[4vw] md:prose-h1:text-[5vw] md:prose-p:text-[3.5vw] md:prose-li:text-[3.5vw] prose-p:text-[#cccccc] prose-headings:text-white
               
               lg:prose-headings:text-[1.5vw] lg:prose-h2:text-[2.1vw] lg:prose-h1:text-[3.2vw] lg:prose-p:text-[1.3vw] lg:prose-li:text-[1.3vw]
             "
@@ -142,7 +142,7 @@ import { notFound } from 'next/navigation';
               <div className="">
                 <Link href='/blog'
                 className='
-                underline decoration-solid text-blue-600 hover:text-black
+                underline decoration-solid text-blue-600 hover:text-white
                 '>
                   Beranda
                 </Link>

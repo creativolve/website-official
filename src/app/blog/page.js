@@ -16,7 +16,7 @@ export default function Page() {
 
   return (  
     <main className="flex flex-col gap-14 
-    px-[20px] pt-[30px]
+    px-[20px] pt-[30px] 
     md:px-[80px]
     lg:px-[120px]">
       {/* INPUT SEARCH */}
@@ -29,7 +29,7 @@ export default function Page() {
             height={100}
             className='
             w-[12vw]
-            lg:w-[2.5vw] object-cover select-none cursor-pointer
+            lg:w-[2.5vw] object-cover select-none cursor-pointer invert
             '
             />
         </Link>
@@ -41,9 +41,9 @@ export default function Page() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="
-            w-full rounded-4xl border border-gray-300 px-[3vw] py-[0.8vw]
+            w-full rounded-4xl border border-gray-300 px-[3vw] py-[0.8vw] text-white
             text-[5vw] lg:text-[1.2vw] lg:px-[2vw] lg:py-[0.7vw]
-            outline-none focus:ring-2 focus:ring-gray-400
+            outline-none focus:ring-2 focus:ring-gray-400 placeholder:text-white
           "
         />
       </div>
@@ -64,6 +64,7 @@ export default function Page() {
                     shadow-[5px_5px_5px_rgba(0,0,0,0.3)] transform
                     select-none pointer-events-none
                     lg:rounded-[1vw]
+                    
                   "
                 />
               </Link>

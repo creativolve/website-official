@@ -1,28 +1,15 @@
 "use client";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInstagram,
-  faTiktok,
-  faWhatsapp,
-  faLinkedinIn,
-} from "@fortawesome/free-brands-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
 import Card from "./card";
-
+import Button from "./button";
 
 // Framer Motion
 import { LazyMotion, domAnimation, m } from "framer-motion";
 
 
 export default function Hero() {
-  const iconSocial = [
-    { name: faInstagram, url: "https://www.instagram.com/creativolve_", label: "Instagram" },
-    { name: faTiktok, url: "https://www.tiktok.com/@creativolve_", label: "TikTok" },
-    { name: faWhatsapp, url: "https://wa.me/6288289158984", label: "WhatsApp" },
-    { name: faLinkedinIn, url: "https://www.linkedin.com/company/creativolve", label: "LinkedIn" },
-  ];
 
   return (
     <header
@@ -33,15 +20,15 @@ export default function Hero() {
     >
       <LazyMotion features={domAnimation}>
           <Image
-            src="/images/hero/background_hero.png"
+            src="/images/hero/background.png"
             alt="background"
             width={300}
             height={300}
             quality={40}
             priority
             className="
-            absolute top-0 left-0 object-cover w-full h-[100vh] opacity-[0.9] z-[-20]
-            lg:opacity-[0.4] lg:w-full lg:h-auto
+            absolute top-0 left-0 w-full h-[100vh] opacity-10 z-[-20]
+            lg:w-full lg:opacity-25 lg:h-auto
             "
             
           />
@@ -52,10 +39,10 @@ export default function Hero() {
             >
               <div
                 className="
-                    heading text-center flex flex-col items-center gap-[14px]
+                    heading text-center flex flex-col items-center gap-[25px] lg:w-[80%]
                     "
               >
-                <m.h2
+                <m.h1
                 initial={{y: 50, opacity: 0}}
                 whileInView={{y: 0, opacity: 100}}
                 transition={{
@@ -66,13 +53,13 @@ export default function Hero() {
                   ease: 'easeInOut'}}
                 viewport={{once: true}}
                   className="
-                        font-bold text-[8vw] leading-[9vw] bg-gradient-to-r bg-clip-text text-transparent from-[#000000] to-[#888888]
+                        font-bold text-[8vw] leading-[9vw] text-white
                         md:text-[7vw] md:leading-[7.1vw]
                         lg:text-[3.3vw] lg:leading-[3.7vw] 
                         "
                 >
-                  Bisnis Berkembang <br /> Perlu Kreativitas
-                </m.h2>
+                  Jangan Biarkan Budget Menjadi Penghambat!
+                </m.h1>
                 <m.p
                   initial={{y: 50, opacity: 0}}
                   whileInView={{y: 0, opacity: 100}}
@@ -85,71 +72,19 @@ export default function Hero() {
                     ease: 'easeInOut'}}
                   viewport={{once: true}}
                   className="
-                        w-[100%] text-[4vw] text-[#4E4E4E] normal-case
+                        w-[100%] text-[4vw] text-[#cccccc] normal-case
                         md:text-[3.3vw]
                         lg:w-[55%] lg:text-[1.2vw]
                         "
                 >
-                    Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat.
+                    Kami siap jadi partner terbaik bisnis Anda dengan solusi fleksibel dan terjangkau.
+                    Diskusikan Masalah Anda Sekarang!
+
                 </m.p>
+                <Button name="Ayo Diskusikan!" href="/#diskusi"/>
               </div>
 
-              <m.ul
-              initial={{y: 50, opacity: 0}}
-              whileInView={{y: 0, opacity: 1,
-                transition: {
-                  type: 'spring',
-                  stiffness: 60,
-                  damping: 12,
-                  delay: 0.8, 
-                  ease: 'easeInOut',
-                  staggerChildren: 0.2
-                }
-              }}
-              viewport={{once: true}}
-
-                className="
-                    icon flex gap-0
-                    lg:gap-4
-                    "
-              >
-                {iconSocial.map((item, index) => (
-                  <m.li
-                    key={index}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{
-                      opacity: 1,
-                      y: 0,
-                      transition: {
-                        type: 'spring',
-                        stiffness: 60,
-                        damping: 14,
-                        duration: 0.5,
-                        delay: index * 0.4
-                      },
-                    }}
-                    viewport={{once: true}}
-                    className="
-                            text-[6.9vw] text-[#262626]
-                            lg:text-[2.4vw] w-[65px] h-[65px] rounded-4xl text-center flex items-center justify-center transition-all duration-200 ease-in-out
-
-                             hover:bg-[#262626] hover:text-white hover:translate-y-[-8px]
-
-                            active:bg-[#262626] active:text-white active:translate-y-[-8px]
-                            "
-                  >
-                    <Link
-                      href={item.url}
-                      target="_blank"
-                        aria-label={`buka ${item.label} Creativolve Agency`}
-                        rel="noopener noreferrer"
-                    >
-                      <FontAwesomeIcon icon={item.name} />
-                      <span className="sr-only">{item.label}</span>
-                    </Link>
-                  </m.li>
-                ))}
-              </m.ul>
+              
             </div>
 
           <div

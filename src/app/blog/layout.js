@@ -45,7 +45,7 @@ export const metadata = {
 
   export default function ArticleLayout({ children }) {
     return (
-    <div className={`${montserrat.className} relative antialiased bg-[#ffffff]`}>
+    <div className={`${montserrat.className} h-[100vh] antialiased bg-[#171717]`}>
       {children}
     </div>
     );

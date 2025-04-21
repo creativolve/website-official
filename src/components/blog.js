@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { LazyMotion, domAnimation, m } from "framer-motion";
+import Button from "./button";
 
 export default function HeroBlog() {
   const sortedBlogs = blogs
@@ -29,9 +30,8 @@ export default function HeroBlog() {
     <LazyMotion features={domAnimation}>
         <section id="blog"
           className="
-              h-[180vh] my-[150px] flex flex-col items-center justify-center gap-[50px]
-              md:h-[300vh] 
-              lg:grid-cols-2 lg:grid lg:h-[110vh]
+              h-fit py-18 flex flex-col items-center justify-center gap-[50px]
+              lg:grid-cols-2 lg:grid
               "
         >
           {/* BAGIAN TEKS */}
@@ -51,7 +51,7 @@ export default function HeroBlog() {
               viewport={{once: true, amount: 0.3}}
               className="
                       font-bold
-                      text-[8vw] leading-[12vw]
+                      text-[8vw] leading-[12vw] text-[#ffffff]
 
                       md:text-[7vw] md:leading-[10vw]
 
@@ -61,7 +61,7 @@ export default function HeroBlog() {
               Bisnis <br />
               <span
                 className="
-                          bg-[#212121] px-3 py-1 rounded-lg text-[#ffffff]
+                          bg-[#ffffff] px-3 py-1 rounded-lg text-[#262626]
                           "
               >
                 Berkembang
@@ -79,7 +79,7 @@ export default function HeroBlog() {
             }}
             viewport={{once: true, amount: 0.3}}
               className="
-                      text-[4vw] [4vw] text-[#4E4E4E]
+                      text-[4vw] [4vw] text-[#cccccc]
                       md:text-[3.3vw]
                       lg:text-[1.3vw]
                       "
@@ -87,28 +87,7 @@ export default function HeroBlog() {
               Pelajari artikel kami untuk pemahaman lebih dalam terkait strategi,
               branding, marketing dan sistem big data untuk bisnis.
             </m.p>
-            <Link href='/blog' className="block w-fit">
-              <m.button
-              initial={{y: 50, opacity: 0}}
-              whileInView={{y: 0, opacity: 100}}
-              transition={{
-                type: 'spring',
-                stiffness: 60,
-                damping: 12,
-              }}
-              viewport={{once: true, amount: 0.3}}
-                className="
-                            bg-[#212121] text-[#ffffff] rounded-4xl px-[5vw] cursor-pointer py-[1.5vw] transition-all duration-200 border-transparent border-2 ease-in-out
-                            md:text-[2.7vw]
-                            lg:text-[1.3vw]
-                            lg:px-[2vw] lg:py-[0.3vw]
-
-                            hover:bg-transparent hover:text-[#262626] hover:border-[#262626] hover:translate-y-[-5px] 
-                          "
-              >
-                Jelajahi Artikel
-              </m.button>
-            </Link>
+            <Button name='Jelajahi Artikel' href='/blog' target='_blank'/>
           </div>
 
           {/* BAGIAN ARTIKEL */}
@@ -124,7 +103,7 @@ export default function HeroBlog() {
           className="latest flex flex-col gap-4">
               <span
               className="
-              select-none text-[#6d6d6d] font-medium 
+              select-none text-[#ffffff] font-medium 
               md:text-[3.3vw]
               lg:hidden
               ">
@@ -142,14 +121,14 @@ export default function HeroBlog() {
                 >
                   <div
                     className="
-                      card flex flex-col bg-[#ffffff] m-auto px-[3vw] py-[3vw] rounded-2xl w-full gap-[20px]
+                      card flex flex-col bg-[#262626] m-auto px-[3vw] py-[3vw] rounded-2xl w-full gap-[20px]
                       shadow-[0px_0px_12px_rgba(0,0,0,0.3)] transition-all duration-200 ease-in-out
 
                       lg:w-[410px] lg:px-[0.5vw] lg:py-[0.4vw] lg:rounded-[1.3vw] lg:gap-[5px]
 
-                      hover:bg-[#262626] group hover:translate-y-[-20px]
+                      hover:bg-[#ffffff] group hover:translate-y-[-20px]
 
-                      active:bg-[#262626] group active:translate-y-[-20px]
+                      active:bg-[#ffffff] group active:translate-y-[-20px]
                     "
                   >
                     {/* GAMBAR */}
@@ -169,7 +148,7 @@ export default function HeroBlog() {
                     <div className="text p-[0.6vw] flex flex-col gap-[14px]">
                       <h2
                         className="
-                      font-semibold text-[7vw] leading-[8vw] transition-all duration-100 ease-in-out
+                      font-semibold text-[7vw] text-[#ffffff] leading-[8vw] transition-all duration-100 ease-in-out
                       md:text-[5vw] md:leading-[6vw]
                       lg:text-[1.7vw] lg:leading-[2vw]
                       
@@ -181,7 +160,7 @@ export default function HeroBlog() {
                       </h2>
                       <p
                         className="
-                      text-[4vw] text-[#212121] transition-all duration-200 ease-in-out
+                      text-[4vw] text-[#cccccc] transition-all duration-200 ease-in-out
                       md:text-[3.5vw]
                       lg:text-[1.05vw]
 
@@ -195,10 +174,11 @@ export default function HeroBlog() {
                       <Link href={`/blog/${blog.slug}`}>
                         <button
                           className="
-                          border border-[#212121] text-[#212121] rounded-3xl  px-[5vw] py-[1.5vw]  cursor-pointer
+                          border border-[#ffffff] text-[#ffffff] rounded-3xl  px-[5vw] py-[1.5vw]  cursor-pointer
                           lg:px-[2vw] lg:py-[0.3vw] transition-all duration-200 ease-in-out
 
-                          hover:border-transparent hover:bg-[#262626] hover:text-white group-hover:invert hover:translate-y-[-5px] group-active:invert 
+                          hover:border-transparent hover:bg-[#262626] hover:text-white 
+                          hover:invert-0 group-hover:invert hover:translate-y-[-5px] group-active:invert 
                           "
                         >
                           Baca Artikel

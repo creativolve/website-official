@@ -9,6 +9,7 @@ const Footer = dynamic(() => import("./footer"), { ssr: false });
 const Hero = dynamic(() => import("./hero"), { ssr: true });
 const WhyOur = dynamic(() => import("./why"), { ssr: true });
 const Blog = dynamic(() => import("./blog"));
+const Discus = dynamic(() => import("./discus"), { ssr: false });
 
 const Loader = dynamic(() => import("./load"), { ssr: false });
 
@@ -40,8 +41,9 @@ export default function Main() {
       <main
         className="
         px-[45px]
+
         md:px-[100px]
-        lg:px-[280px] lg:py-[10px]
+        lg:px-[200px] lg:py-[10px]
         "
       >
         <Hero />
@@ -49,6 +51,7 @@ export default function Main() {
         <Service />
         <WhyOur />
         <Blog />
+        <Discus/> 
       </main>
       <Footer />
     </>
