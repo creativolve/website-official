@@ -48,12 +48,21 @@ const Form = () => {
     
         if (response.ok) {
             setMessage('Data berhasil dikirim!');
+            setFormData(() => ({
+              name: '',
+              businessName: '',
+              email: '',
+              phone: '',
+              duration: '',
+              topicTitle: '',
+              description: '',
+              businessType: '',
+            }));
         } else {
             const errorData = await response.json();
             setMessage(errorData.error || 'Terjadi kesalahan. Coba lagi.');
         }
 
-        form.reset()
         } catch (error) {
         setMessage('Terjadi kesalahan. Coba lagi.');
         }
@@ -124,6 +133,14 @@ const Form = () => {
           value={formData.name}
           onChange={handleInputChange}
         />
+        <InputFloating
+          id="namaBisnis"
+          label="Nama Bisnis"
+          type="text"
+          name="businessName"
+          value={formData.businessName}
+          onChange={handleInputChange}
+        />
 
         <div className="flex gap-5">
           <InputFloating
@@ -143,17 +160,6 @@ const Form = () => {
             onChange={handleInputChange}
           />
         </div>
-
-        <InputFloating
-          id="namaBisnis"
-          label="Nama Bisnis"
-          type="text"
-          name="businessName"
-          value={formData.businessName}
-          onChange={handleInputChange}
-        />
-
-
 
         <div className="flex space-x-4">
           <InputFloating
