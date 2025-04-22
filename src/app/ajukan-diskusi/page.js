@@ -133,15 +133,6 @@ const Form = () => {
           value={formData.name}
           onChange={handleInputChange}
         />
-        <InputFloating
-          id="namaBisnis"
-          label="Nama Bisnis"
-          type="text"
-          name="businessName"
-          value={formData.businessName}
-          onChange={handleInputChange}
-        />
-
         <div className="flex gap-5">
           <InputFloating
             id="Email"
@@ -160,6 +151,14 @@ const Form = () => {
             onChange={handleInputChange}
           />
         </div>
+        <InputFloating
+          id="namaBisnis"
+          label="Nama Bisnis"
+          type="text"
+          name="businessName"
+          value={formData.businessName}
+          onChange={handleInputChange}
+        />
 
         <div className="flex space-x-4">
           <InputFloating
