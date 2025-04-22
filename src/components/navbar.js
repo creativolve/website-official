@@ -100,6 +100,7 @@ export default function Navbar() {
                 width={300}
                 height={200}
                 quality={50}
+                priority
                 fetchPriority="high"
                 alt="Creativolve - Creative And Innovative Agency"
                 className="select-none w-[11vw]"

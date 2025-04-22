@@ -72,7 +72,7 @@ export default function Discus(){
               Diskusikan Masalah Bisnis Anda Dengan Kami Dan Ciptakan Solusinya Bersama Kami!
               </h2>
               
-              <Button name='Ajukan Diskusi!' href='/ajukan-diskusi' target='_blank'/>
+              <Button name='Ajukan Diskusi!' href='/ajukan-diskusi'/>
 
               <m.ul
                 initial={{ y: 0, opacity: 0 }}

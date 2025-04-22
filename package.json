@@ -14,6 +14,8 @@
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@notionhq/client": "^2.3.0",
+    "axios": "^1.8.4",
     "framer-motion": "^12.5.0",
     "glob": "^11.0.1",
     "gray-matter": "^4.0.3",
@@ -48,10 +50,10 @@
     ]
   },
   "overrides": {
-  "glob": "^11.0.1",
-  "inflight": "^1.0.7",
-  "lodash.isequal": "^4.5.0",
-  "rimraf": "^6.0.1",
-  "set-value": "^4.1.0"
-}
+    "glob": "^11.0.1",
+    "inflight": "^1.0.7",
+    "lodash.isequal": "^4.5.0",
+    "rimraf": "^6.0.1",
+    "set-value": "^4.1.0"
+  }
 }

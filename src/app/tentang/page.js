@@ -66,7 +66,7 @@ export default function TentangPage() {
                 hover:shadow-md hover:bg-[#cfcfcf] hover:text-black group
                 active:shadow-md active:bg-[#cfcfcf] active:text-black
 
-                ${scrolled? 'fixed ' : ''}
+                ${scrolled? 'fixed z-[100]' : ''}
                 `}>
                     <Image
                     src="/images/Back Button.png"
