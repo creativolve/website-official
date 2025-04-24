@@ -14,7 +14,7 @@ export default function Loader() {
           width={150}
           height={150}
           priority
-          className="w-full invert" />
+          className="w-full" />
         </div>
       </div>
     )

@@ -14,15 +14,21 @@ const theList = [
   },
   {
     number: "2",
-    title: "Menerapkan Sistem Konsultasi Unik",
+    title: "Layanan Lengkap dalam Satu Atap",
     paragraph:
-      "Selain memeberikan layanan konsultasi secara teknis dan profesional, kami memberikan layanan konsultasi berbasis AI.",
+      "Kami menyediakan layanan digital secara menyeluruh mulai dari branding, digital marketing, desain konten, hingga pengembangan website dan SEO dalam satu ekosistem yang terintegrasi.",
   },
   {
     number: "3",
-    title: "Memberikan Solusi Digital Berbasis Big Data",
+    title: "Pendekatan Kolaboratif dan Inovatif",
     paragraph:
-      "Kami memberikan solusi digital dari hasil kesimpulan riset dari sistem ‘Big Data’.",
+      "Kami mengutamakan kolaborasi dan inovasi dalam setiap proses kerja. Lebih dari sekadar vendor, kami akan berperan sebagai partner dalam perjalanan bisnis Anda dan berkembang bersama",
+  },
+  {
+    number: "4",
+    title: "Solusi Digital yang Skalabel",
+    paragraph:
+      "Kami membangun solusi digital yang skalabel dan siap mengikuti perkembangan teknologi, sehingga bisnis Anda bisa terus bertumbuh dan relevan di era digital yang terus berubah.",
   },
 ];
 
@@ -88,7 +94,7 @@ export default function whyOur() {
             viewport={{once: true, amount: 0.2}}
               className="
                     text-white font-semibold text-[6.6vw] 
-                    md:text-[5.3vw]
+                    md:text-[5vw]
                     lg:text-[2.4vw]
                     "
             >
@@ -165,8 +171,8 @@ export default function whyOur() {
                       viewport={{once: true, amount: 0.2}}
 
                       className="
-                                    font-semibold text-[#ffffff]
-                                    md:text-[4vw]
+                                    font-semibold text-[#ffffff] text-[4.1  vw]
+                                    md:text-[3.5vw]
                                     lg:text-[1.3vw]
                                     "
                     >

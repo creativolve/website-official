@@ -2,6 +2,7 @@
 
 import BreadcrumbNav from "@/components/breadCrumbs-layanan";
 import Footer from "@/components/footer";
+import Button from '@/components/button';
 
 import '@/css/typografi.css'
 
@@ -79,7 +80,12 @@ export default function LayananUmum(){
         Ini waktunya untuk mulai, berkembang, dan dikenal lebih luas. Dengan fleksibilitas dalam layanan, strategi yang sesuai dengan anggaranmu, serta pendampingan intens dari tim kami — kamu tidak lagi sendiri dalam membangun brand. Kami hadir bukan hanya untuk mengeksekusi, tapi juga mendampingi, merancang, dan tumbuh bersama kamu.
         </p>
 
-        
+        <p>
+          <i>Diskusikan Project kamu sekarang juga bersama tim profesional kami</i>
+        </p>
+
+        <Button name='Diskusikan Project' href='/diskusi-project'/>
+
       </main>
       <Footer/>
     </>

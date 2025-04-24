@@ -116,7 +116,7 @@ export default function TentangPage() {
             <p className='
             text-justify
             '>
-            Creativolve Agency adalah sebuah agency full-service yang hadir sebagai solusi inovatif untuk menjawab kebutuhan digital branding dan strategi bisnis masa kini. Dengan menjadikan Digital Branding dan Strategy Branding sebagai role model utama, kami berkomitmen untuk menjadi mitra strategis yang mendorong evolusi dan pertumbuhan bisnis melalui pendekatan kreatif, kolaboratif, dan berbasis teknologi digital.
+            Creativolve Agency adalah sebuah <i> marketing and branding agency </i>yang hadir sebagai solusi inovatif untuk menjawab kebutuhan digital branding dan strategi bisnis masa kini. Dengan menjadikan Digital Branding dan Strategy Branding sebagai role model utama, kami berkomitmen untuk menjadi mitra strategis yang mendorong evolusi dan pertumbuhan bisnis melalui pendekatan kreatif, kolaboratif, dan berbasis teknologi digital.
             </p>
             <p className='
             text-justify
@@ -150,7 +150,7 @@ export default function TentangPage() {
             </div>
 
             <h2>Layanan Kami</h2>
-            <p className='text-justify'>Sebagai agency dengan pendekatan menyeluruh, layanan kami dirancang dalam empat cakupan utama:</p>
+            <p className='text-justify'>Sebagai agensi dengan pendekatan menyeluruh, layanan kami dirancang dalam empat cakupan utama:</p>
             <ul>
                 <li>
                 Digital Branding dan Strategy (Role Model Utama)
