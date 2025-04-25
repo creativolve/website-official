@@ -54,7 +54,13 @@ export async function POST(request) {
 
 
 
+    // ADNAN WA
     await fetch(`https://api.callmebot.com/whatsapp.php?phone=6288289158984&text=${encodeURIComponent(`*Ajuan Diskusi!*\n*Nama:* ${name}\n*Dari Bisnis:* ${businessName}\n*No Whatsapp:* ${phone}\n*Mengenai Topik:* ${topicTitle}\n*Deskripsi:* \n${description}`)}&apikey=${process.env.CALLMEBOT_API_KEY}`);
+
+
+
+    // kHALIF WA
+    await fetch(`https://api.callmebot.com/whatsapp.php?phone=6285159128773&text=${encodeURIComponent(`*Ajuan Diskusi!*\n*Nama:* ${name}\n*Dari Bisnis:* ${businessName}\n*No Whatsapp:* ${phone}\n*Mengenai Topik:* ${topicTitle}\n*Deskripsi:* \n${description}`)}&apikey=${process.env.CALLMEBOTKHAL_API_KEY}`);
 
 
 
