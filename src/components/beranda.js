@@ -17,7 +17,7 @@ export default function Beranda(){
         <>
         <div 
         className="
-        text-white flex flex-col gap-6
+        text-white flex flex-col gap-6 py-25 px-7
         "
         >
             <div className="heading">                

@@ -28,7 +28,7 @@ const Button = ({ name, href, target }) => {
             lg:px-[25px] lg:py-[5px] lg:text-[1vw] transition-all duration-100 ease-in-out
             
             hover:bg-transparent hover:text-[#ffffff] hover:border-[#ffffff] hover:translate-y-[-5px] 
-            active:bg-transparent active:text-[#262626] active:border-[#ffffff] active:translate-y-[-5px]
+            active:bg-transparent active:text-[#ffffff] active:border-[#ffffff] active:translate-y-[-5px]
           `}
         >
           {name}

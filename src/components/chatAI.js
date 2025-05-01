@@ -1,13 +1,29 @@
 "use client";
 
 import '@/css/globals.css'
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 export default function ChatAI() {
   const [question, setQuestion] = useState('');
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([]);
+
+  const textareaRef = useRef(null);
+
+  const handleInput = (e) => {
+    const textarea = textareaRef.current;
+    textarea.style.height = 'auto'; // reset dulu
+    textarea.style.height = Math.min(textarea.scrollHeight, 24 * 5) + 'px'; // max 5 baris (24px per baris)
+    setQuestion(e.target.value);
+  };
+
+
+  const bottomRef = useRef(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,47 +68,70 @@ export default function ChatAI() {
   };
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="h-[95vh] flex flex-col overflow-hidden">
       {/* Area pesan, yang bisa di-scroll */}
       <div className="flex-1 overflow-y-auto p-4 scrollbar-hide no-scrollbar">
-        {messages.length === 0 ? (
-          // Teks dengan transisi fade jika belum ada pesan
-          <motion.h1
-            className="text-center font-semibold text-[4vw] lg:text-[1.1vw] text-[#cccccc] mt-17"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+      {messages.length === 0 && !loading && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="text-center text-white text-[4vw] lg:text-[1.3vw] mt-[50%] lg:mt-[25%]"
+      >
+        Tanyakan apapun kepada <strong>Asisten Digital Creativolve</strong> ✨
+      </motion.div>
+    )}
+
+      {messages.map((msg, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0 }}       // Mulai dengan opacity 0 (sembunyi)
+          animate={{ opacity: 1 }}       // Fade in ke opacity 1
+          exit={{ opacity: 0 }}          // Fade out ketika pesan dihapus (bisa untuk animasi keluar)
+          transition={{ duration: 0.5 }} // Durasi animasi
+          className={`mt-5 flex flex-col ${
+            msg.role === 'user' ? 'items-end' : 'items-start'
+          }`}
+        >
+          <span className="text-[#cccccc] mb-1">
+            {msg.role === 'user' ? 'Anda' : 'Asisten Digital Creativolve'}
+          </span>
+          <div
+            className={`rounded-[10px] p-4 text-left text-[3.5vw] lg:text-[1.1vw] max-w-[90%] lg:max-w-[60%] whitespace-pre-line ${
+              msg.role === 'user' ? 'bg-[#cccccc] text-[#262626]' : 'bg-[#3b3b3b] text-white'
+            }`}
           >
-            Mulai percakapan baru dengan mengajukan pertanyaan!
-          </motion.h1>
-        ) : (
-          messages.map((msg, i) => (
-            <div
-              key={i}
-              className={`mt-5 flex flex-col ${
-                msg.role === 'user' ? 'items-end' : 'items-start'
-              }`}
-            >
-              <span className="text-[#cccccc] mb-1">
-                {msg.role === 'user' ? 'Anda' : 'Asisten Digital Creativolve'}
-              </span>
-              <div
-                className={`text-white rounded-[10px] p-4 text-left  text-[3.5vw] lg:text-[1.1vw]  max-w-[90%] lg:max-w-[60%] whitespace-pre-line ${
-                  msg.role === 'user' ? 'bg-[#262626]' : 'bg-[#3b3b3b]'
-                }`}
-              >
-                {renderMessageContent(msg.content)}
-              </div>
-            </div>
-          ))
-        )}
+            {renderMessageContent(msg.content)}
+          </div>
+        </motion.div>
+      ))}
+
+      {/* Tambahkan indikator loading AI */}
+      {loading && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mt-5 flex flex-col items-start"
+        >
+          <span className="text-[#cccccc] mb-1">Asisten Digital Creativolve</span>
+          <div className="text-white rounded-[10px] p-4 text-left text-[3.5vw] lg:text-[1.1vw] max-w-[90%] lg:max-w-[60%] bg-[#3b3b3b]">
+            <strong>Membalas...</strong>
+          </div>
+        </motion.div>
+      )}
+
+      {/* Auto scroll ref */}
+      <div ref={bottomRef} />
       </div>
 
       {/* Form tetap di bawah */}
-      <form onSubmit={handleSubmit} className="pb-4">
+      <form onSubmit={handleSubmit} className="pb-17">
         <textarea
-          rows="4"
+        ref={textareaRef}
+          rows={1}
           value={question}
+          onInput={handleInput}
           onChange={(e) => setQuestion(e.target.value)}
           placeholder="Tanyakan sesuatu..."
           className="w-full p-2 rounded bg-white text-black focus:outline-none"
@@ -100,7 +139,8 @@ export default function ChatAI() {
         <button
           type="submit"
           disabled={loading}
-          className="mt-4 py-2 px-6 text-white border-white border rounded-full w-[30%] cursor-pointer w-fitt"
+          className="mt-4 py-2 px-6 text-white border-white border rounded-full max-w-[400px] cursor-pointer w-fitt hover:bg-[white] hover:text-[#262626] active:bg-[white] active:text-[#262626]"
+           style={{ lineHeight: '24px', maxHeight: `${24 * 5}px`, minHeight: `${24}px` }}
         >
           {loading ? 'Menjawab...' : 'Tanya'}
         </button>

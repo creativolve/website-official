@@ -36,14 +36,14 @@ export default function NavLayanan() {
 
   const [isOpen, setIsOpen] = useState(false)
 
+    const handleNavClick = (hash) => {
+      setIsOpen(false); 
+      setTimeout(() => {
+        window.location.hash = hash; 
+      }, 300);}
+    
   const toggleNavbar = () => setIsOpen(!isOpen);
 
-  const handleNavClick = (hash) => {
-    setIsOpen(false); 
-    setTimeout(() => {
-      window.location.hash = hash; 
-    }, 300);}
-  
 
   return (
     <>

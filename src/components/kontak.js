@@ -25,7 +25,7 @@ export default function Kontak(){
     return(
         <div
         className="
-        flex flex-col gap-6
+        flex flex-col gap-6 py-25 px-7
         ">
         <div className="heading">
             <h2

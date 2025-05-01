@@ -84,7 +84,7 @@ export default function LayananUmum(){
           <i>Diskusikan Project kamu sekarang juga bersama tim profesional kami</i>
         </p>
 
-        <Button name='Diskusikan Project' href='/diskusi-project'/>
+        <Button name='Pusat Layanan!' href='/pusat-layanan'/>
 
       </main>
       <Footer/>

@@ -146,7 +146,7 @@
                 
           
 
-          <div className="text-white flex items-center justify-center">
+          <div className="text-white flex items-center justify-center py-25 px-1">
             <form
               onSubmit={handleSubmit}
               className="w-full flex flex-col gap-10 max-w-xl space-y-6 z-[0]"
