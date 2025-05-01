@@ -2,12 +2,13 @@
   "name": "creativolve-agency",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build && next-sitemap",
+    "build": "next build && next-sitemap --config next-sitemap.config.cjs",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap --config next-sitemap.config.cjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -17,9 +18,12 @@
     "@getbrevo/brevo": "^2.2.0",
     "@notionhq/client": "^2.3.0",
     "axios": "^1.8.4",
+    "dotenv": "^16.5.0",
     "framer-motion": "^12.8.0",
     "glob": "^11.0.2",
     "gray-matter": "^4.0.3",
+    "groq": "^3.87.0",
+    "groq-sdk": "^0.20.1",
     "lucide-react": "^0.503.0",
     "next": "15.3.1",
     "next-sitemap": "^4.2.3",
@@ -31,6 +35,7 @@
     "remark-html": "^16.0.1",
     "rimraf": "^6.0.1",
     "set-value": "^4.1.0",
+    "tailwind-scrollbar-hide": "^2.0.0",
     "update": "^0.7.4"
   },
   "devDependencies": {
@@ -53,19 +58,19 @@
   },
   "overrides": {
     "@humanwhocodes/config-array": "^0.11.8",
-      "@humanwhocodes/object-schema": "^2.0.4",
-      "eslint": "^8.57.0",
-      "glob@5.0.15": "glob@10.3.0",
-      "glob@7.2.3": "glob@10.3.0",
-      "har-validator": "ignore",
-      "inflight": "ignore",
-      "lodash.isequal": "^4.5.1",
-      "request": "ignore",
-      "rimraf@2.7.1": "^5.0.1",
-      "rimraf@3.0.2": "^5.0.1",
-      "set-value@0.2.0": "^4.1.0",
-      "set-value@0.3.3": "^4.1.0",
-      "set-value@0.4.3": "^4.1.0",
-      "uuid@3.4.0": "^9.0.0"
+    "@humanwhocodes/object-schema": "^2.0.4",
+    "eslint": "^8.57.0",
+    "glob@5.0.15": "glob@10.3.0",
+    "glob@7.2.3": "glob@10.3.0",
+    "har-validator": "ignore",
+    "inflight": "ignore",
+    "lodash.isequal": "^4.5.1",
+    "request": "ignore",
+    "rimraf@2.7.1": "^5.0.1",
+    "rimraf@3.0.2": "^5.0.1",
+    "set-value@0.2.0": "^4.1.0",
+    "set-value@0.3.3": "^4.1.0",
+    "set-value@0.4.3": "^4.1.0",
+    "uuid@3.4.0": "^9.0.0"
   }
 }

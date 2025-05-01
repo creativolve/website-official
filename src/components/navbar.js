@@ -78,7 +78,7 @@ export default function Navbar() {
           className={`
         p-[30px] w-full mt-[-20px] h-[90px] z-[50] transition-all duration-200 ease-linear
         md:py-[20x] md:h-[123px] 
-        lg:px-[180px] lg:py-[25px] lg:mt-0 lg:h-auto
+        lg:px-[96px] lg:py-[25px] lg:mt-0 lg:h-auto
         ${
           scrolled
             ? "bg-[#262626e5] backdrop-blur-[2px] fixed shadow-xl"
@@ -177,6 +177,12 @@ export default function Navbar() {
               ))}
             </m.ul>
           </div>
+
+
+
+
+
+
 
 
 

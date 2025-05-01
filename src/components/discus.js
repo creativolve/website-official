@@ -69,10 +69,10 @@ export default function Discus(){
                 lg:text-[2.4vw] lg:w-[70%]
                 "
               >
-              Diskusikan Masalah Bisnis Anda Dengan Kami Dan Ciptakan Solusinya Bersama Kami!
+              Diskusikan Masalah Bisnis Anda Dengan Kami Dan Ciptakan Solusinya Bersama Kami, Pergi Ke Pusat Layanan Kami Sekarang!
               </h2>
               
-              <Button name='Ajukan Diskusi!' href='/ajukan-diskusi'/>
+              <Button name='Pusat Layanan!' href='/pusat-layanan'/>
 
               <m.ul
                 initial={{ y: 0, opacity: 0 }}

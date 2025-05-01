@@ -88,27 +88,27 @@ export async function POST(request) {
     <table role="presentation" style="background-color: #171717; width: 88%; margin: 5 auto; border-radius: 20px; padding: 20px;">
       <tr>
         <td>
-          <img src="https://creativolve.agency/images/logo.png" alt="logo" style="width: clamp(200px, 50%, 600px);" />
-          <h1 style="color: white; font-weight: bold; font-size: clamp(1.5rem, 6vw, 3rem);">
+          <img src="https://creativolve.agency/images/logo-email.png" alt="logo" style="width: clamp(200px, 50%, 500px);" />
+          <h1 style="color: white; font-weight: bold; font-size: clamp(1.5rem, 6vw, 2rem);">
             Pengajuan Kamu Telah Diterima Oleh Kami
           </h1>
-          <p style="color: #cccccc; font-size: clamp(1rem, 3vw, 1.5rem); font-weight: normal;">
+          <p style="color: #cccccc; font-size: clamp(1rem, 3vw, 1rem); font-weight: normal;">
             Halo ${name} (${businessName})
           </p>
-          <p style="color: #cccccc; font-size: clamp(1rem, 3vw, 1.5rem); font-weight: normal;">
+          <p style="color: #cccccc; font-size: clamp(0.9rem, 3vw, 1rem); font-weight: normal;">
             Terima kasih telah mempercayakan kami untuk mendiskusikan masalah atau proyek yang ingin Anda selesaikan. Kami sangat menghargai kesempatan untuk bekerja sama dan memberikan solusi terbaik bagi kebutuhan Anda.
           </p>
-          <p style="color: #cccccc; font-size: clamp(1rem, 3vw, 1.5rem); font-weight: normal;">
+          <p style="color: #cccccc; font-size: clamp(0.9rem, 3vw, 1rem); font-weight: normal;">
             Tim kami sedang memproses pengajuan Anda, dan kami akan segera menghubungi Anda untuk melanjutkan pembahasan lebih lanjut. Kami ingin memastikan bahwa setiap detail dapat dipahami dengan baik agar hasilnya sesuai dengan harapan Anda.
           </p>
-          <p style="color: #cccccc; font-size: clamp(1rem, 3vw, 1.5rem); font-weight: normal;">
+          <p style="color: #cccccc; font-size: clamp(0.9rem, 3vw, 1rem); font-weight: normal;">
             Semoga kita bisa bekerja sama dengan baik untuk mewujudkan proyek ini. Jika ada hal lain yang perlu Anda tanyakan atau klarifikasi, jangan ragu untuk menghubungi kami kapan saja. Kami siap membantu Anda.
           </p>
           <br />
-          <p style="font-weight: medium; color: #cccccc; font-size: clamp(0.875rem, 3vw, 1rem);">
+          <p style="font-weight: medium; color: #cccccc; font-size: clamp(0.6rem, 2vw, 0.8rem);">
             Salam,
           </p>
-          <p style="font-weight: bold; color: white; font-size: clamp(0.875rem, 3vw, 1rem);">
+          <p style="font-weight: bold; color: white; font-size:  clamp(0.6rem, 2vw, 0.8rem);">
             Creativolve Agency <br/> creativolve.agency@gmail.com
           </p>
         </td>

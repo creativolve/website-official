@@ -133,7 +133,7 @@ export default function TentangPage() {
             '>
                 <h2 className='text-white'>Visi Dan Misi Kami!</h2>
                 <p className='text-[#c2c2c2] text-justify lg:text-left'>
-                    <strong className='text-white'>Visi :</strong><br /> Menjadi pusat solusi bisnis inovatif yang berpusat pada kreatyif digital untuk mendorong evolusi dan pertumbuhan bisnis.
+                    <strong className='text-white'>Visi :</strong><br /> Menjadi pusat solusi bisnis inovatif yang berpusat pada kreatif digital untuk mendorong evolusi dan pertumbuhan bisnis.
                 </p>
 
                 <ol className='list-decimal list-inside text-[#c2c2c2] marker:text-white '>
