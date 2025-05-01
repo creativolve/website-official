@@ -42,20 +42,68 @@ export default function NavLayanan() {
 
   return (
     <>
+            <div className="lg:hidden absolute top-[30px] left-[30px]">
+              <button
+                onClick={toggleNavbar}
+                className="text-gray-700"
+                aria-label={isOpen ? "Tutup Menu" : "Buka Menu"}
+              >
+                {/* OPEN MENU */}
+                {isOpen === true ? (
+                  <X
+                    size={40}
+                    className="
+                  text-white hidden
+                  "
+                  />
+                ) : (
+                  <Menu
+                    className="
+                  w-[30px] h-[30px] text-white
+                  md:w-[70px] md:h-[70px]
+                  "
+                  />
+                )}
+              </button>
+            </div>
+
+
+
+              <div className="close fixed top-[30] right-[30px]">
+                <button
+                  onClick={toggleNavbar}
+                  className="text-gray-700"
+                  aria-label={isOpen ? "Tutup Menu" : "Buka Menu"}
+                >
+                  {/* CLOSE MENU */}
+                  {isOpen === true ? (
+                    <X
+                      size={55}
+                      className="
+                    w-[45px] h-[45px] text-white
+                    md:w-[70px] md:h-[70px]
+                    "
+                    />
+                  ) : (
+                    <Menu size={40} className="hidden" />
+                  )}
+                </button>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       {/* Mobile View */}
-      <div className="lg:hidden absolute top-[30px] left-[30px]">
-        <button
-          onClick={toggleNavbar}
-          className="text-gray-700"
-          aria-label={isOpen ? "Tutup Menu" : "Buka Menu"}
-        >
-          {isOpen ? (
-            <X size={40} className="text-white" />
-          ) : (
-            <Menu className="w-[30px] h-[30px] text-white" />
-          )}
-        </button>
-      </div>
 
       {/* Menu Mobile */}
       <nav
