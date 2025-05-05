@@ -25,9 +25,9 @@ export default function NavLayanan() {
       path: '/pusat-layanan/kontak'  // Ganti dari #kontak menjadi /kontak
     },
     {
-      name: "Ajukan Diskusi",
+      name: "Pengajuan",
       key: "AjukaDiskusi",
-      path: '/pusat-layanan/diskusi'  // Ganti dari #diskusi menjadi /diskusi
+      path: '/pusat-layanan/pengajuan'  // Ganti dari #diskusi menjadi /diskusi
     },
   ];
 
@@ -103,7 +103,6 @@ export default function NavLayanan() {
 
 
 
-      {/* Mobile View */}
 
       {/* Menu Mobile */}
       <nav

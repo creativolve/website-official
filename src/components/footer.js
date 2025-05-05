@@ -46,7 +46,7 @@ export default function Footer(){
         bg-[#212121] h-fit
         grid grid-cols-1 gap-[50px] py-[90px] px-[50px]
         md:px-[15vw]
-        lg:px-[260px] lg:grid-cols-4 lg:py-[120px] lg:gap-[10px]
+        lg:px-[100px] lg:grid-cols-4 lg:py-[120px] lg:gap-[10px]
         ">
             <div className="
             desk flex flex-col gap-[13px]

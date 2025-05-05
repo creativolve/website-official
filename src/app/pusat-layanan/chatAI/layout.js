@@ -2,9 +2,9 @@ import { Montserrat } from "next/font/google";
 import "@/css/globals.css";
 
 export const metadata = {
-  title: "Pusat Layanan | Creativolve Agency",
+  title: "Asisten Digital | Creativolve Agency",
   description:
-    "Pusat Layanan resmi Creativolve Agency — tempat Anda mendapatkan bantuan, informasi layanan, dan solusi terbaik untuk kebutuhan digital Anda. Tim kami siap mendampingi Anda 24/7 dengan respons cepat dan pelayanan yang empatik.",  
+    "Asisten Digital Creativolve adalah chatbot cerdas berbasis AI yang siap membantu Anda memahami layanan kami, menjawab pertanyaan, dan memberikan solusi sesuai kebutuhan digital Anda — tersedia 24/7 dengan respons cepat dan pendekatan yang ramah.",  
     keywords: "Creativolve Agency, Agensi Pemasaran, Solusi Bisnis Digital",
 
     robots: "index, follow, noarchive",
@@ -12,12 +12,12 @@ export const metadata = {
     openGraph: {
       title: "Asisten Digital | Creativolve Agency",
       description:
-        "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
+      "Asisten Digital Creativolve adalah chatbot cerdas berbasis AI yang siap membantu Anda memahami layanan kami, menjawab pertanyaan, dan memberikan solusi sesuai kebutuhan digital Anda — tersedia 24/7 dengan respons cepat dan pendekatan yang ramah.",  
       url: "https://creativolve.agency/",
       type: "website",
       images: [
         {
-          url: "https://creativolve.agency/og-image.jpg",
+          url: "https://creativolve.agency/images/Pusat-layanan/og-image.jpg",
           width: 1200,
           height: 630,
           alt: "Creativolve Agency",
