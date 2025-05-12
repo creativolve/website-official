@@ -90,7 +90,7 @@ const FormDiskusi = () => {
     setPopupMessage("Mohon Tunggu Pengajuan Anda Sedang dikirim...");
 
     try {
-      const response = await fetch("/api/formDiskusi", {
+      const response = await fetch("/api/pengajuan/diskusiDB", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

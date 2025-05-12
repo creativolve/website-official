@@ -1,5 +1,6 @@
 "use client";
 
+import "@/css/animate.css"
 import Image from "next/image";
 import Link from "next/link";
 import Card from "./card";
@@ -53,7 +54,8 @@ export default function Hero() {
                   ease: 'easeInOut'}}
                 viewport={{once: true}}
                   className="
-                        font-bold text-[8vw] leading-[9vw] text-white
+                    animated-gradient-white animated-gradient text-transparent bg-clip-text
+                        font-bold text-[8vw] leading-[9vw]
                         md:text-[7vw] md:leading-[7.1vw]
                         lg:text-[3.3vw] lg:leading-[3.7vw] 
                         "

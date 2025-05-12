@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import "@/css/animate.css"
 
 // Framer Motion
 import { LazyMotion, domAnimation, m } from "framer-motion";
@@ -93,9 +94,11 @@ export default function whyOur() {
             }}
             viewport={{once: true, amount: 0.2}}
               className="
-                    text-white font-semibold text-[6.6vw] 
+                    font-semibold text-[6.6vw] 
                     md:text-[5vw]
                     lg:text-[2.4vw]
+                                            animated-gradient-white animated-gradient text-transparent bg-clip-text
+
                     "
             >
               Alasan Kenapa Harus Memilih Kami

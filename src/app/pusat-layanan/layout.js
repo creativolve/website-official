@@ -4,47 +4,47 @@ import "@/css/globals.css";
 export const metadata = {
   title: "Pusat Layanan | Creativolve Agency",
   description:
-    "Pusat Layanan resmi Creativolve Agency — tempat Anda mendapatkan bantuan, informasi layanan, dan solusi terbaik untuk kebutuhan digital Anda. Tim kami siap mendampingi Anda 24/7 dengan respons cepat dan pelayanan yang empatik.",  
-    keywords: "Creativolve Agency, Agensi Pemasaran, Solusi Bisnis Digital",
+    "Pusat Layanan resmi Creativolve Agency — tempat Anda mendapatkan bantuan, informasi layanan, dan solusi terbaik untuk kebutuhan digital Anda. Tim kami siap mendampingi Anda 24/7 dengan respons cepat dan pelayanan yang empatik.",
+  keywords: "Creativolve Agency, Agensi Pemasaran, Solusi Bisnis Digital",
 
-    robots: "index, follow, noarchive",
+  robots: "index, follow, noarchive",
 
-    openGraph: {
-      title: "Asisten Digital | Creativolve Agency",
-      description:
-        "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
-      url: "https://creativolve.agency/",
-      type: "website",
-      images: [
-        {
-          url: "https://creativolve.agency/og-image.jpg",
-          width: 1200,
-          height: 630,
-          alt: "Creativolve Agency",
-        },
-      ],
-    },
-  };
-
+  openGraph: {
+    title: "Asisten Digital | Creativolve Agency",
+    description:
+      "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
+    url: "https://creativolve.agency/",
+    type: "website",
+    images: [
+      {
+        url: "https://creativolve.agency/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Creativolve Agency",
+      },
+    ],
+  },
+};
 
 export const viewport = {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: "no",
-  };
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: "no",
+};
 
-    const montserrat = Montserrat({
-      weight: ["400", "500", "600", "700"],
-      subsets: ["latin"],
-      display: "swap",
-    });
+const montserrat = Montserrat({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
-    export default function PageLayout({ children }) {
-      return (
-        <div className={`${montserrat.className} relative antialiased bg-[#171717]`}>
-          {children}
-        </div>
-      );
-    }
-    
+export default function PageLayout({ children }) {
+  return (
+    <div
+      className={`${montserrat.className} relative antialiased bg-[#171717]`}
+    >
+      {children}
+    </div>
+  );
+}

@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
+import "@/css/animate.css"
 
 
 
@@ -64,9 +65,12 @@ export default function Discus(){
               />
               <h2
               className="
-                font-semibold w-full text-center text-[6.6vw] text-white
+                font-semibold w-full text-center text-[6.6vw]
                 md:text-[5vw]
                 lg:text-[2.4vw] lg:w-[70%]
+
+                                            animated-gradient-white animated-gradient text-transparent bg-clip-text
+
                 "
               >
               Diskusikan Masalah Bisnis Anda Dengan Kami Dan Ciptakan Solusinya Bersama Kami, Pergi Ke Pusat Layanan Kami Sekarang!

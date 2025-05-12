@@ -6,6 +6,7 @@ import Image from "next/image";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import Link from "next/link";
 import Button from "./button";
+import "@/css/animate.css"
 
 const buttonService = [
   {
@@ -134,7 +135,8 @@ export default function Service() {
                   <div className="text">
                     <h2
                       className="
-                        font-semibold text-[3.5vw] text-[#ffffff] transition-all duration-200 ease-in-out
+                        font-semibold text-[3.5vw]                                             animated-gradient-blue animated-gradient text-transparent bg-clip-text
+ transition-all duration-200 ease-in-out
                         lg:text-[1.1vw] 
                                             
                         group-hover:invert

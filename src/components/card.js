@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import cardData from "@/data/card_data.json";
+import "@/css/animate.css"
 
 // Framer Motion
 import { LazyMotion, domAnimation, m } from "framer-motion";
@@ -81,9 +82,11 @@ export default function Card({ index }) {
                     ">
                         <h2
                         className="
-                        font-semibold text-[4.5vw] text-[#ffffff] ransition-all duration-100 ease-in-out
+                        font-semibold text-[4.5vw] ransition-all duration-100 ease-in-out
                         md:text-[4vw]
                         lg:text-[1.3vw]
+
+                                            animated-gradient-blue animated-gradient text-transparent bg-clip-text
 
                         group-hover:invert
                         group-active:invert
