@@ -35,14 +35,14 @@ const pertanyaanKhususLayanan = {
     "Apa tujuan utama campaign ini? (misalnya: Awareness, Engagement, Penjualan, dsb)",
     "Platform mana yang ingin difokuskan untuk campaign ini?",
     "Siapa target market utama dari brand ini? (Usia, lokasi, pekerjaan, minat, gaya hidup)",
-    "pa pesan utama yang ingin disampaikan melalui campaign ini?",
-    "Apakah kamu sudah memiliki konten atau akan dibuatkan?",
+    "apa pesan utama yang ingin disampaikan melalui campaign marketing ini?",
+    "Apakah kamu sudah memiliki konten Marketing atau akan dibuatkan?",
     "Berapa frekuensi posting konten yang diinginkan?(harian/mingguan)",
-    "Gaya komunikasi seperti apa yang diinginkan?(Serius/friendly dll)",
-    "Komponen apa saja yang sudah kamu miliki?(Logo,font,warna brand dll)",
-    "Jika ada referensi campaign yang kamu suka, mohon lampirkan (cantumkan link)",
-    "Berapa lama periode campaign ini akan berlangsung?",
-    "Kapan deadline laporan performa atau hasil (jika ada)?",
+    "Gaya komunikasi seperti apa yang diinginkan dalam project Digital Marketing Ini?(Serius/friendly dll)",
+    "Komponen apa campaign saja yang sudah kamu miliki?(Logo,font,warna brand dll)",
+    "Jika ada referensi campaign yang kamu suka untuk digital marketing, mohon lampirkan (cantumkan link)",
+    "Berapa lama periode campaign Digital Markting ini akan berlangsung?",
+    "Kapan deadline laporan performa atau hasil dari markring (jika ada)?",
   ],
   "Editing Video": [
     "Apa judul atau tema video ini?",
@@ -54,30 +54,29 @@ const pertanyaanKhususLayanan = {
     "Apakah ada referensi video yang kamu suka? (cantumkan link)",
     "Apakah ada elemen yang harus dimasukkan? (logo, subtitle, bumper, musik tertentu, footage wajib, dll)",
     "Durasi dan format file video yang diinginkan",
-    "Apakah kamu punya target tanggal tertentu untuk deadline Project ini?",
+    "Apakah kamu punya target tanggal tertentu untuk deadline Project Editing Video ini?"
   ],
   "Desain Grafis": [
     "Apa judul atau tema desain ini?",
     "Deskripsikan desain proyek ini secara singkat?",
     "Apa tujuan desain ini dibuat? (misalnya: promosi, edukasi, internal)",
-    "Jenis video apa yang akan dibuat? (misalnya: poster, banner, spanduk, dsb)",
+    "Jenis Desain apa yang akan dibuat? (misalnya: poster, banner, spanduk, dsb)",
     "Siapa target audiens utama dari desain ini? (usia, minat, lokasi, gaya hidup, dll)",
-    "Apa tone video yang diinginkan?",
+    "Apa tone Desain yang diinginkan?",
     "Apakah ada referensi desain yang kamu suka? (cantumkan link)",
     "Apakah ada elemen yang harus dimasukkan? (logo, foto dll)",
-    "format file video yang diinginkan",
-    "Apakah kamu punya target tanggal tertentu untuk deadline Project ini?",
+    "Apakah kamu punya target tanggal tertentu untuk deadline Project Desain ini?",
   ],
   Copywriting: [
-    "Apa tujuan yang ingin kamu capai dari campaign ini?",
-    "Campaign ini ingin disajikan dalam bentuk seperti apa? (Soft selling, Hard selling, Storytelling, Naratif, Informatif, dsb)",
-    "Siapa target audiens campaign ini? (Umur, profesi, gaya hidup, minat, masalah yang dihadapi)",
-    "Tone of Voice seperti apa yang ingin digunakan?",
-    "Apakah kamu punya contoh campaign dari brand lain yang kamu suka?",
-    "Poin penting apa saja yang wajib ada?",
-    "Apakah ada kalimat tertentu yang harus digunakan?",
-    "Apakah ada hal-hal tertentu yang harus dihindari?",
-    "Apakah kamu punya target tanggal tertentu untuk deadline project ini?",
+    "Apa tujuan yang ingin kamu capai dari hasil CoprWriting ini?",
+    "CoprWriting ini ingin disajikan dalam bentuk seperti apa? (Soft selling, Hard selling, Storytelling, Naratif, Informatif, dsb)",
+    "Siapa target audiens tulisan ini? (Umur, profesi, gaya hidup, minat, masalah yang dihadapi)",
+    "Tone of Voice seperti apa yang ingin digunakan dalam CoprWriting?",
+    "Apakah kamu punya contoh CoprWriting dari brand lain yang kamu suka?",
+    "Poin penting apa saja yang wajib ada dalam CoprWriting?",
+    "Apakah ada kalimat tertentu yang harus digunakan dalam CoprWriting ini?",
+    "Apakah ada hal-hal tertentu yang harus dihindari dalam CoprWriting ini?",
+    "Apakah kamu punya target tanggal tertentu untuk deadline project copywriting ini?",
   ],
 };
 
@@ -235,7 +234,7 @@ const FormProject = () => {
     // Removed: setSelectedService([]);
 
     // If last question, process the answers
-    if (currentQnaStep === listPertanyaan.length - 1) {
+    if (currentQnaStep === listPertanyaan.length) {
       setIsProcessing(true);
       setShowChatbot(false);
 
