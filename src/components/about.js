@@ -46,7 +46,7 @@ export default function About() {
                 }}
                 viewport={{ once: true, amount: 0.3 }}
                 className="
-                        font-semibold text-[6.6vw]                                             animated-gradient-white animated-gradient text-transparent bg-clip-text
+                        font-semibold text-[6.6vw] animated-gradient-white animated-gradient text-transparent bg-clip-text
 
                         md:text-[5vw]
                         lg:text-[2.4vw]

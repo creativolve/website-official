@@ -1,5 +1,5 @@
 // components/InputFloating.js
-const InputFloating = ({ id, label, type, name, value, onChange, className = "" }) => (
+const InputFloating = ({ id, label, type, name, value, onChange, disabled, className = "" }) => (
     <div className={`relative w-full ${className}`}>
       <input
       name={name}
@@ -9,6 +9,8 @@ const InputFloating = ({ id, label, type, name, value, onChange, className = "" 
         onChange={onChange} 
         placeholder=" "
         className="peer w-full border-b border-[#ffffff] bg-transparent py-2 text-white placeholder-transparent focus:outline-none"
+        required
+        disabled={disabled}
       />
       <label
         htmlFor={id}

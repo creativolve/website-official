@@ -10,25 +10,17 @@
         const data = await request.json();
         const {
           name,
-          businessName,
           email,
           phone,
-          duration,
-          businessType,
-          topicTitle,
           description,
         } = data;
 
         // Validasi data
         if (
           !name ||
-          !businessName ||
           !email ||
           !phone ||
-          !duration ||
-          !topicTitle ||
-          !description ||
-          !businessType
+          !description
         ) {
           return NextResponse.json(
             { error: "Semua field wajib diisi" },
@@ -36,31 +28,88 @@
           );
         }
 
+        function processDescriptionBlocks(description) {
+          const blocks = [];
+          const sections = description.split('\n'); // Pisahkan berdasarkan baris baru
+          
+          for (const section of sections) {
+            if (section.startsWith('# ')) {
+              // Jika baris dimulai dengan #, buat heading_2
+              blocks.push({
+                object: "block",
+                type: "heading_1",
+                heading_1: {
+                  rich_text: [{
+                    type: "text",
+                    text: { content: section.replace('# ', '') }
+                  }]
+                }
+              });
+            } else if (section.startsWith('## ')){
+              blocks.push({
+                object: "block",
+                type: "heading_2",
+                heading_2: {
+                  rich_text: [{
+                    type: "text",
+                    text: { content: section.replace('## ', '') }
+                  }]
+                }
+              });
+            } else if (section.startsWith('### ')){
+              blocks.push({
+                object: "block",
+                type: "heading_3",
+                heading_3: {
+                  rich_text: [{
+                    type: "text",
+                    text: { content: section.replace('### ', '') }
+                  }]
+                }
+              });
+            } else if (section.trim()) {
+              // Untuk teks biasa, buat paragraph
+              // Bagi teks panjang menjadi chunk 2000 karakter
+              const chunkSize = 2000;
+              for (let i = 0; i < section.length; i += chunkSize) {
+                blocks.push({
+                  object: "block",
+                  type: "paragraph",
+                  paragraph: {
+                    rich_text: [{
+                      type: "text",
+                      text: { content: section.substring(i, i + chunkSize) }
+                    }]
+                  }
+                });
+              }
+            }
+          }
+          
+          return blocks;
+        }
+
         // Kirim data ke Notion
         await notion.pages.create({
           parent: { database_id: databaseId },
           properties: {
             Name: { title: [{ text: { content: name } }] },
-            "Nama Bisnis": { rich_text: [{ text: { content: businessName } }] },
             Email: { email: email },
             "No Whatsapp": { phone_number: phone },
-            Durasi: { rich_text: [{ text: { content: duration } }] },
-            "Jenis Bisnis": { select: { name: businessType.label || businessType } },
-            "Judul Diskusi": { rich_text: [{ text: { content: topicTitle } }] },
-            Deskripsi: { rich_text: [{ text: { content: description } }] },
             "Tanggal Dikirim": { date: { start: new Date().toISOString() } },
           },
+          children: processDescriptionBlocks(description) 
         });
 
 
 
         // ADNAN WA
-        await fetch(`https://api.callmebot.com/whatsapp.php?phone=6288289158984&text=${encodeURIComponent(`*Ajuan Diskusi!*\n*Nama:* ${name}\n*Dari Bisnis:* ${businessName}\n*No Whatsapp:* ${phone}\n*Mengenai Topik:* ${topicTitle}\n*Deskripsi:* \n${description}`)}&apikey=${process.env.CALLMEBOT_API_KEY}`);
+        // await fetch(`https://api.callmebot.com/whatsapp.php?phone=6288289158984&text=${encodeURIComponent(`*Ajuan Diskusi!*\n*Nama:* ${name}\n*Dari Bisnis:* ${businessName}\n*No Whatsapp:* ${phone}\n*Mengenai Topik:* ${topicTitle}\n*Deskripsi:* \n${description}`)}&apikey=${process.env.CALLMEBOT_API_KEY}`);
 
 
 
-        // kHALIF WA
-        await fetch(`https://api.callmebot.com/whatsapp.php?phone=6285159128773&text=${encodeURIComponent(`*Ajuan Diskusi!*\n*Nama:* ${name}\n*Dari Bisnis:* ${businessName}\n*No Whatsapp:* ${phone}\n*Mengenai Topik:* ${topicTitle}\n*Deskripsi:* \n${description}`)}&apikey=${process.env.CALLMEBOTKHAL_API_KEY}`);
+        // // kHALIF WA
+        // await fetch(`https://api.callmebot.com/whatsapp.php?phone=6285159128773&text=${encodeURIComponent(`*Ajuan Diskusi!*\n*Nama:* ${name}\n*Dari Bisnis:* ${businessName}\n*No Whatsapp:* ${phone}\n*Mengenai Topik:* ${topicTitle}\n*Deskripsi:* \n${description}`)}&apikey=${process.env.CALLMEBOTKHAL_API_KEY}`);
 
 
 
@@ -93,7 +142,7 @@
                 Pengajuan Kamu Telah Diterima Oleh Kami
               </h1>
               <p style="color: #cccccc; font-size: clamp(1rem, 3vw, 1rem); font-weight: normal;">
-                Halo ${name} (${businessName})
+                Halo ${name} 
               </p>
               <p style="color: #cccccc; font-size: clamp(0.9rem, 3vw, 1rem); font-weight: normal;">
                 Terima kasih telah mempercayakan kami untuk mendiskusikan masalah atau proyek yang ingin Anda selesaikan. Kami sangat menghargai kesempatan untuk bekerja sama dan memberikan solusi terbaik bagi kebutuhan Anda.

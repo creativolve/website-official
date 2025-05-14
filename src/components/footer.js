@@ -52,7 +52,6 @@ const contact = [
 export default function Footer() {
   return (
     <footer
-      data-nosnippet
       id="footer"
       className="
         bg-[#212121] h-fit
@@ -196,7 +195,15 @@ export default function Footer() {
         </ul>
       </div>
 
-      <div>
+      <div className="flex flex-col gap-3" >
+        <span
+                  className="
+                  text-[#ffffff] text-[3.5vw]
+                  md:text-[2.8vw]
+                  lg:text-[0.9vw]
+                  ">
+          Indonesisa, Jawa Barat, Kab Bogor, 16310
+        </span>
         <h2
           data-nosnippet
           className="
@@ -234,6 +241,15 @@ export default function Footer() {
           ))}
         </ul>
       </div>
+
+      <div
+        className="
+            px-10 flex flex-col gap-[13px] items-center
+            "
+      >
+      </div>
+
+      
     </footer>
   );
 }

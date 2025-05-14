@@ -130,7 +130,7 @@ export default function ChatAI() {
                 className={`rounded-[10px] p-4 text-left text-[3.5vw] lg:text-[1.1vw] max-w-[90%] lg:max-w-[60%] whitespace-pre-line ${
                   msg.role === "user"
                     ? "bg-[#ffffff] text-[#000000]"
-                    : "bg-[#3b3b3b] text-white"
+                    : "bg-[#505f7a] text-[#ffffff]"
                 }`}
               >
                 {renderMessageContent(msg.content)}

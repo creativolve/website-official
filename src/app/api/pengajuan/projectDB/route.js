@@ -19,7 +19,6 @@ export async function POST(request) {
       businessType,
       kategori,
       budget,
-      expectation,
       description,
     } = data;
 
@@ -32,7 +31,6 @@ export async function POST(request) {
       !businessType ||
       !kategori ||
       !budget ||
-      !expectation ||
       !description
     ) {
       return NextResponse.json(
@@ -41,11 +39,79 @@ export async function POST(request) {
       );
     }
 
+    const cleanedBudget = budget.replace(/\./g, "");
+const budgetNumber = parseInt(cleanedBudget);
+
+
+
     const formattedBudget = new Intl.NumberFormat("id-ID", {
       style: "currency",
       currency: "IDR",
       maximumFractionDigits: 0,
     }).format(budget);
+
+
+    function processDescriptionBlocks(description) {
+      const blocks = [];
+      const sections = description.split('\n'); // Pisahkan berdasarkan baris baru
+      
+      for (const section of sections) {
+        if (section.startsWith('# ')) {
+          // Jika baris dimulai dengan #, buat heading_2
+          blocks.push({
+            object: "block",
+            type: "heading_1",
+            heading_1: {
+              rich_text: [{
+                type: "text",
+                text: { content: section.replace('# ', '') }
+              }]
+            }
+          });
+        } else if (section.startsWith('## ')){
+          blocks.push({
+            object: "block",
+            type: "heading_2",
+            heading_2: {
+              rich_text: [{
+                type: "text",
+                text: { content: section.replace('## ', '') }
+              }]
+            }
+          });
+        } else if (section.startsWith('### ')){
+          blocks.push({
+            object: "block",
+            type: "heading_3",
+            heading_3: {
+              rich_text: [{
+                type: "text",
+                text: { content: section.replace('### ', '') }
+              }]
+            }
+          });
+        } else if (section.trim()) {
+          // Untuk teks biasa, buat paragraph
+          // Bagi teks panjang menjadi chunk 2000 karakter
+          const chunkSize = 2000;
+          for (let i = 0; i < section.length; i += chunkSize) {
+            blocks.push({
+              object: "block",
+              type: "paragraph",
+              paragraph: {
+                rich_text: [{
+                  type: "text",
+                  text: { content: section.substring(i, i + chunkSize) }
+                }]
+              }
+            });
+          }
+        }
+      }
+      
+      return blocks;
+    }
+
 
     // Format kategori untuk multi_select
     const layananOptions = Array.isArray(kategori) 
@@ -54,8 +120,7 @@ export async function POST(request) {
         }))
       : [{ name: String(kategori) }];
 
-    // Simpan ke Notion
-    await notion.pages.create({
+   await notion.pages.create({
       parent: { database_id: databaseId },
       properties: {
         Name: { title: [{ text: { content: name } }] },
@@ -71,62 +136,36 @@ export async function POST(request) {
         Layanan: {
           multi_select: layananOptions,
         },
-        Budget: { number: Number(budget) },
-        "Ekspektasi Klien": { rich_text: [{ text: { content: expectation } }] },
-        // Hapus "Detail Project" dari properties karena akan dipindah ke children
+        Budget: { number: budgetNumber },
+        "Project Diajukan": { 
+          date: { 
+            start: new Date().toISOString() 
+          } 
+        },
       },
-      children: [
-        {
-          object: "block",
-          type: "heading_2",
-          heading_2: {
-            rich_text: [{ type: "text", text: { content: "Detail Project" } }]
-          }
-        },
-        // Block pertama (2000 karakter pertama)
-        {
-          object: "block",
-          type: "paragraph",
-          paragraph: {
-            rich_text: [{
-              type: "text",
-              text: { content: description.substring(0, 2000) }
-            }]
-          }
-        },
-        // Block lanjutan (jika ada)
-        ...(description.length > 2000 ? [{
-          object: "block",
-          type: "paragraph",
-          paragraph: {
-            rich_text: [{
-              type: "text",
-              text: { content: description.substring(2000) }
-            }]
-          }
-        }] : [])
-      ] 
-    });
+      children: processDescriptionBlocks(description) 
+    }); // Simpan ke Notion
+    
 
 
     // Kirim WhatsApp ke tim
-    const waMessage = `*Ajuan Project! Mohon Di Cek Segera*\n*Nama:* ${name}\n*Dari Bisnis:* ${businessName}\n*No Whatsapp:* ${phone}\n*Kategori:* ${
-      kategori && Array.isArray(kategori)
-        ? kategori.map((k) => k.label || "").join(", ")
-        : "Tidak ada kategori"
-    }\n*Budget:* ${formattedBudget}`;
+    // const waMessage = `*Ajuan Project! Mohon Di Cek Segera*\n*Nama:* ${name}\n*Dari Bisnis:* ${businessName}\n*No Whatsapp:* ${phone}\n*Kategori:* ${
+    //   kategori && Array.isArray(kategori)
+    //     ? kategori.map((k) => k.label || "").join(", ")
+    //     : "Tidak ada kategori"
+    // }\n*Budget:* ${formattedBudget}`;
 
-    await fetch(
-      `https://api.callmebot.com/whatsapp.php?phone=6288289158984&text=${encodeURIComponent(
-        waMessage
-      )}&apikey=${process.env.CALLMEBOT_API_KEY}`
-    );
+    // await fetch(
+    //   `https://api.callmebot.com/whatsapp.php?phone=6288289158984&text=${encodeURIComponent(
+    //     waMessage
+    //   )}&apikey=${process.env.CALLMEBOT_API_KEY}`
+    // );
 
-    await fetch(
-      `https://api.callmebot.com/whatsapp.php?phone=6285159128773&text=${encodeURIComponent(
-        waMessage
-      )}&apikey=${process.env.CALLMEBOTKHAL_API_KEY}`
-    );
+    // await fetch(
+    //   `https://api.callmebot.com/whatsapp.php?phone=6285159128773&text=${encodeURIComponent(
+    //     waMessage
+    //   )}&apikey=${process.env.CALLMEBOTKHAL_API_KEY}`
+    // );
 
     // Kirim Email konfirmasi
     const transporter = nodemailer.createTransport({

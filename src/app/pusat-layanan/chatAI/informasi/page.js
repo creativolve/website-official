@@ -89,32 +89,17 @@ export default function Tentang() {
         <h1>Asisten Digital Creativolve</h1>
 
         <p>
-          Selamat datang di era baru pelayanan digital Creativolve Agency. Kami
-          dengan bangga memperkenalkan{" "}
-          <strong className="text-white">
-            Asisten Digital Creativolve 1.0
-          </strong>
+          Selamat datang di era baru pelayanan digital Creativolve Agency. Creativolve dengan bangga menyatakan diri sebagai {" "} <strong className="text-white">agensi kreatif digital pertama di Bogor</strong>{" "} menerapkan sistem <strong className="text-white"> Retrieval-Augmented Generation {"(RAG)"} </strong> berbasis <strong className="text-white">model LLaMA 4 Maverick melalui Groq Cloud</strong> dalam bentuk {" "} <strong className="text-white">Asisten Digital Creativolve 1.0</strong>
           , sebuah solusi cerdas yang dirancang untuk memahami dan merespons
           kebutuhan klien secara cepat, empatik, dan relevan.
         </p>
 
         <p>
-          Asisten ini dibangun di atas kecanggihan{" "}
-          <strong className="text-white">
-            Model LLaMA 4 Maverick dari Meta
-          </strong>{" "}
-          yang dijalankan melalui{" "}
-          <strong className="text-white">Groq Cloud</strong>. Teknologi ini
-          memungkinkan asisten untuk memberikan pengalaman percakapan yang
-          natural, intuitif, dan penuh pemahaman—sehingga klien dapat merasa
-          benar-benar didengarkan dan dilayani dengan baik.
+        Sistem ini memungkinkan kami menghadirkan layanan pelanggan cerdas dan empatik, yang tidak hanya memahami pertanyaan klien tetapi juga mengambil data relevan dari basis pengetahuan internal Creativolve menghasilkan jawaban yang tepat, kontekstual, dan konsisten dengan identitas brand kami.
         </p>
 
         <p>
-          Tujuan utama dari Asisten Digital ini adalah untuk menjadi pendamping
-          cerdas bagi klien kami dalam menavigasi layanan Creativolve. Ia bukan
-          sekadar chatbot, tetapi representasi dari nilai-nilai kami: inovatif,
-          solutif, dan berorientasi pada kepuasan klien.
+        Dengan pendekatan ini, Creativolve tidak hanya memberikan pelayanan otomatisasi, tetapi juga membangun interaksi digital yang manusiawi dan berbasis solusi nyata, menjadi pelopor dalam era pelayanan berbasis AI di Bogor.
         </p>
 
         <p>Berikut adalah objektif utama dari Asisten Digital Creativolve:</p>

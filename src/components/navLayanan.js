@@ -91,7 +91,7 @@ export default function NavLayanan() {
       {/* Menu Mobile */}
       <nav
         className={`
-          ${isOpen ? "left-[0]" : "left-[-350px] md:left-[-400%]"}
+          ${isOpen ? "left-[0]" : "left-[-550px]"}
           h-[100vh] shadow-xl shadow-black bg-[#171717] w-[60%] p-7 flex gap-20 flex-col fixed z-[500] transition-all duration-600 ease-in-out
           md:w-[50%]
           lg:hidden
