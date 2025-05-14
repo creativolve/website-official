@@ -150,6 +150,7 @@ const FormProject = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
    const [submitted, setSubmitted] = useState(false)
   const [listPertanyaan, setListPertanyaan] = useState([]);
+    
 
   useEffect(() => {
     setIsClient(true);
@@ -231,7 +232,7 @@ const FormProject = () => {
 
     setQnaAnswers(newAnswers);
     setInputValue("");
-    setSelectedService([]);
+    // Removed: setSelectedService([]);
 
     // If last question, process the answers
     if (currentQnaStep === listPertanyaan.length - 1) {
@@ -240,7 +241,6 @@ const FormProject = () => {
 
       try {
         const response = await fetch("/api/modelAI/formAssistant", {
-          // Fixed typo
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -291,7 +291,7 @@ const FormProject = () => {
 
     // Move to next question
     setCurrentQnaStep(currentQnaStep + 1);
-  };
+  };  
 
   const getQuestionCategory = (question) => {
     // Cek apakah pertanyaan termasuk umum
@@ -581,10 +581,10 @@ const FormProject = () => {
             {!showChatbot && !qnaCompleted && !isProcessing && (
               <div className="flex gap-6 lg:items-center flex-col lg:justify-between lg:flex-row">
                 <div className="text w-[70%]">
-                  <h1 className="font-semibold text-[5.4vw] md:text-[4vw] lg:text-[1.3vw]">
+                  <h1 className="font-semibold">
                     Buat Brief
                   </h1>
-                  <p className="font-regular text-[2.9vw] md:text-[3vw] lg:text-[1.2vw]">
+                  <p className="font-regular">
                     Kami akan mengarahkan anda untuk membuat brief yang
                     terstruktur
                   </p>
@@ -596,9 +596,8 @@ const FormProject = () => {
                 <button
                   type="button"
                   onClick={startShowBriefAssistant}
-                  className="px-[20px] py-[5px] rounded-3xl text-[3.8vw] h-fit cursor-pointer border-2 border-transparent bg-[#ffffff] text-[#262626] 
-                                  md:text-[3vw]
-                                  lg:px-[25px] lg:py-[5px] lg:text-[1vw] transition-all duration-100 ease-in-out
+                  className="px-[20px] py-[5px] rounded-3xl h-fit cursor-pointer border-2 border-transparent bg-[#ffffff] text-[#262626] 
+                                  lg:px-[25px] lg:py-[5px]  transition-all duration-100 ease-in-out
                                   hover:bg-transparent hover:text-[#ffffff] hover:border-[#ffffff] hover:translate-y-[-5px]"
                 >
                   Buat brief!
@@ -654,89 +653,128 @@ const FormProject = () => {
 
 
 
-            {/* TAMPILAN QNA SAAT SEDANG DALAM SESI */}
-            {showChatbot && (
-              <div className="chatbot-container">
-                <div className="chat-messages">
-                  <span className="animated-gradient text-transparent bg-clip-text">
-                    Asisten digital Creativolve
-                  </span>
-                  <br />
-                  <br />
-                  <p className="text-[#cccccc]">
-                    Hai{" "}
-                    <strong className="text-white">
-                      {" "}
-                      <i>
-                        {formData.name} ( {formData.businessName} ){" "}
-                      </i>
-                    </strong>{" "}
-                    Anda memilih layanan{" "}
-                    <strong>
-                      <i>
-                        {" "}
-                        {formData.kategori
-                          .map((item) => item.label)
-                          .join(", ")}{" "}
-                      </i>
-                    </strong>{" "}
-                    <br /> <br />
-                    Saya Asisten Digital Creativolve yang akan membantu kamu
-                    dalam membuat brief, silahkan jawab pertanyaan berikut untuk
-                    membuat brief yang tepat untuk kamu
+
+{showChatbot && (
+  <div className="chatbot-container">
+    <div className="chat-messages">
+      <span className="animated-gradient text-transparent bg-clip-text">
+        Asisten digital Creativolve
+      </span>
+      <br />
+      <br />
+      <p className="text-[#cccccc]">
+        Hai{" "}
+        <strong className="text-white">
+          {" "}
+          <i>
+            {formData.name} ( {formData.businessName} ){" "}
+          </i>
+        </strong>{" "}
+        Anda memilih layanan{" "}
+        <strong>
+          <i>
+            {" "}
+            {formData.kategori
+              .map((item) => item.label)
+              .join(", ")}{" "}
+          </i>
+        </strong>{" "}
+        <br /> <br />
+        Saya Asisten Digital Creativolve yang akan membantu kamu
+        dalam membuat brief, silahkan jawab pertanyaan berikut untuk
+        membuat brief yang tepat untuk kamu
+      </p>
+      <br />
+      
+
+
+      {(() => {
+        let lastCategory = null;
+        return qnaAnswers.map((item, index) => {
+          const currentCategory = item.category;
+          const showCategoryHeading = currentCategory !== lastCategory;
+          lastCategory = currentCategory;
+          
+          return (
+            <div key={index}>
+              {showCategoryHeading && (
+                <div className="category-heading mt-4 mb-2">
+                  <h3 className="text-[#ffffff] font-bold text-[16px] border-b border-[#444] pb-1">
+                    {currentCategory === "umum" ? "Pertanyaan Umum" : `Layanan ${currentCategory}`}
+                  </h3>
+                </div>
+              )}
+              <div className="message-group space-y-2 mb-4">
+                <div className="bot-message rounded-lg">
+                  <p>
+                    <strong>{item.question}</strong>
                   </p>
-                  <br />
-                  <div className="bot-message rounded-lg">
-                    <p>
-                      <strong>{listPertanyaan[currentQnaStep]}</strong>
-                    </p>
-                  </div>
-
-                  {qnaAnswers.map((item, index) => (
-                    <div key={index} className="message-group space-y-2">
-                      <div className="user-message px-4 py-3 bg-[#ffffff] rounded-[10px] text-[#262626]">
-                        {renderAnswer(item.answer, index)}
-                      </div>
-                      <br />
-                      {index + 1 < listPertanyaan.length && (
-                        <div className="bot-mess">
-                          <p>
-                            <strong>{listPertanyaan[index + 1]}</strong>
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-
-                  {currentQnaStep < listPertanyaan.length && (
-                    <div className="chat-input flex flex-col space-y-2 mt-4">
-                      <input
-                        type="text"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                        onKeyPress={(e) =>
-                          e.key === "Enter" && handleAnswerSubmit()
-                        }
-                        placeholder="Ketik jawaban Anda..."
-                        disabled={isProcessing || editingIndex !== null}
-                        className="p-2 rounded text-[#cccccc] placeholder-white"
-                      />
-                      <button
-                        type="button"
-                        onClick={handleAnswerSubmit}
-                        className="px-4 py-2 bg-[#131313] text-white rounded hover:text-[black] hover:bg-[#ffffff] disabled:bg-[#939393]"
-                      >
-                        {isProcessing
-                          ? "Memproses..."
-                          : editingIndex !== null
-                          ? "Menyimpan..."
-                          : "Kirim"}
-                      </button>
-                    </div>
-                  )}
+                </div>
+                <div className="user-message px-4 py-3 bg-[#ffffff] rounded-[10px] text-[#262626]">
+                  {renderAnswer(item.answer, index)}
                 </div>
               </div>
-            )}
+            </div>
+          );
+        });
+      })()}
+      
+
+      {currentQnaStep < listPertanyaan.length && (
+        <>
+          {(() => {
+            if (currentQnaStep === 0 || (qnaAnswers.length > 0 && 
+                getQuestionCategory(listPertanyaan[currentQnaStep]) !== 
+                qnaAnswers[qnaAnswers.length-1].category)) {
+              const currentCategory = getQuestionCategory(listPertanyaan[currentQnaStep]);
+              return (
+                <div className="category-heading mt-4 mb-2">
+                  <h3 className="text-[#ffffff] font-bold text-[16px] border-b border-[#444] pb-1">
+                    {currentCategory === "umum" ? "Pertanyaan Umum" : `Layanan ${currentCategory}`}
+                  </h3>
+                </div>
+              );
+            }
+            return null;
+          })()}
+          
+          <div className="bot-message rounded-lg">
+            <p>
+              <strong>{listPertanyaan[currentQnaStep]}</strong>
+            </p>
+          </div>
+        </>
+      )}
+
+      {currentQnaStep < listPertanyaan.length && (
+        <div className="chat-input flex flex-col space-y-2 mt-4">
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyPress={(e) =>
+              e.key === "Enter" && handleAnswerSubmit()
+            }
+            placeholder="Ketik jawaban Anda..."
+            disabled={isProcessing || editingIndex !== null}
+            className="p-2 rounded text-[#cccccc] placeholder-white"
+          />
+          <button
+            type="button"
+            onClick={handleAnswerSubmit}
+            className="px-4 py-2 bg-[#131313] text-white rounded hover:text-[black] hover:bg-[#ffffff] disabled:bg-[#939393]"
+          >
+            {isProcessing
+              ? "Memproses..."
+              : editingIndex !== null
+              ? "Menyimpan..."
+              : "Kirim"}
+          </button>
+        </div>
+      )}
+    </div>
+  </div>
+)}
           </div>
 
           <button

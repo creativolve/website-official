@@ -53,14 +53,14 @@ export default function NavLayanan() {
             <X
               size={40}
               className="
-                  text-white hidden
+                  text-white hidden md:text-[2.9vw]
                   "
             />
           ) : (
             <Menu
               className="
-                  w-[30px] h-[30px] text-white
-                  md:w-[70px] md:h-[70px]
+                  w-[12vw] h-[30px] text-white
+                  md:w-[7vw] md:h-[70px]
                   "
             />
           )}
@@ -78,8 +78,8 @@ export default function NavLayanan() {
             <X
               size={55}
               className="
-                    w-[45px] h-[45px] text-white
-                    md:w-[70px] md:h-[70px]
+                    w-[12vw] h-[45px] text-white
+                    md:w-[7vw] md:h-[70px]
                     "
             />
           ) : (
@@ -105,10 +105,10 @@ export default function NavLayanan() {
               height={200}
               alt="logo"
               priority
-              className="w-[40vw] md:w-[30vw] lg:w-[13vw]"
+              className="w-[30vw] md:w-[20vw] lg:w-[13vw]"
             />
           </Link>
-          <h1 className="font-bold text-white text-[8vw] leading-[9vw] md:text-[4vw] lg:text-[2vw] lg:leading-[4vw]">
+          <h1 className="font-bold text-white text-[6vw] leading-[9vw] md:text-[3.5vw] lg:text-[2vw] lg:leading-[4vw]">
             Pusat Layanan
           </h1>
         </div>
@@ -117,7 +117,7 @@ export default function NavLayanan() {
             <li
               key={index}
               onClick={() => handleNavClick(item.path)} // Menggunakan router.push()
-              className="text-[4vw] md:text-[3vw] lg:text-[1.2vw]"
+              className="text-[4vw] md:text-[2.4vw] lg:text-[1.2vw]"
             >
               <Link href={item.path} className="cursor-pointer hover:underline">
                 {item.name}
@@ -128,7 +128,7 @@ export default function NavLayanan() {
       </nav>
 
       {/* Desktop View */}
-      <nav className="flex-col fixed gap-20 w-[60%] p-7 h-[100vh] bg-[#171717] shadow-xl shadow-black hidden lg:flex lg:w-[20%] lg:left-0">
+      <nav className="flex-col fixed gap-20 w-[54%] px-10 py-20 h-[100vh] bg-[#171717] shadow-xl shadow-black hidden lg:flex lg:w-[20%] lg:left-0">
         <div className="title flex flex-col gap-10">
           <Link href="/">
             <Image
@@ -137,10 +137,10 @@ export default function NavLayanan() {
               height={200}
               alt="logo"
               priority
-              className="w-[40vw] md:w-[30vw] lg:w-[13vw]"
+              className="w-[40vw] md:w-[30vw] lg:w-[10vw]"
             />
           </Link>
-          <h1 className="font-bold text-white text-[8vw] leading-[9vw] md:text-[4vw] lg:text-[2vw] lg:leading-[4vw]">
+          <h1 className="font-bold text-white text-[8vw] leading-[9vw] md:text-[4vw] lg:text-[1.7vw] lg:leading-[4vw]">
             Pusat Layanan
           </h1>
         </div>
@@ -149,7 +149,7 @@ export default function NavLayanan() {
             <li
               key={index}
               onClick={() => handleNavClick(item.path)} // Menggunakan router.push()
-              className="text-[4vw] md:text-[3vw] lg:text-[1.2vw]"
+              className="text-[4vw] md:text-[3vw] lg:text-[1.1vw]"
             >
               <Link href={item.path} className="cursor-pointer hover:underline">
                 {item.name}

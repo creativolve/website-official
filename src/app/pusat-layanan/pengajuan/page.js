@@ -13,7 +13,7 @@ export default function DiskusiAndProjectPage() {
       <NavLayanan />
       <main className="flex-2 px-8 py-2 lg:px-10 lg:py-7 lg:ml-[20%]">
         {/* Navigasi Form */}
-        <div className="flex gap-4 mt-[100px] text-white text-[3.5vw] md:text-[3vw] lg:text-[1.3vw]">
+        <div className="flex gap-4 mt-[100px] text-white text-[3vw] md:text-[1.8vw] lg:text-[1.2vw]">
           <span
             onClick={() => setActiveForm("diskusi")}
             className={`cursor-pointer hover:underline  

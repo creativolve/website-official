@@ -67,12 +67,22 @@ export default function ChatAI() {
 
   const renderMessageContent = (content) => {
     const urlRegex = /(https?:\/\/[^\s]+)(?=\s|$|[^\w\s])/g;
+    const boldRegex = /\*\*(.+?)\*\*/g;
+  
+    // Ubah URL menjadi link HTML
     const contentWithLinks = content.replace(urlRegex, (url) => {
       return `<a href="${url}" target="_blank" class="text-blue-500 hover:underline">${url}</a>`;
     });
-
-    return <div dangerouslySetInnerHTML={{ __html: contentWithLinks }} />;
+  
+    // Ubah teks **tebal** menjadi tag <strong>
+    const finalContent = contentWithLinks.replace(boldRegex, (match, boldText) => {
+      return `<strong className="text-white">${boldText}</strong>`;
+    });
+  
+    return <div dangerouslySetInnerHTML={{ __html: finalContent }} />;
   };
+  
+  
 
   return (
     <>
@@ -119,18 +129,18 @@ export default function ChatAI() {
               animate={{ opacity: 1 }} // Fade in ke opacity 1
               exit={{ opacity: 0 }} // Fade out ketika pesan dihapus (bisa untuk animasi keluar)
               transition={{ duration: 0.5 }} // Durasi animasi
-              className={`mt-5 flex flex-col overflow-hidden ${
+              className={`mt-10 flex flex-col overflow-hidden ${
                 msg.role === "user" ? "items-end" : "items-start"
               }`}
             >
               <span className="text-[#cccccc] mb-1">
-                {msg.role === "user" ? "Anda" : "Asisten Digital Creativolve"}
+                {msg.role === "user" ? "Anda" : ""}
               </span>
               <div
-                className={`rounded-[10px] p-4 text-left text-[3.5vw] lg:text-[1.1vw] max-w-[90%] lg:max-w-[60%] whitespace-pre-line ${
+                className={`rounded-[10px] p-4 text-left text-[3.5vw] lg:text-[1.1vw] whitespace-pre-line ${
                   msg.role === "user"
-                    ? "bg-[#ffffff] text-[#000000]"
-                    : "bg-[#505f7a] text-[#ffffff]"
+                    ? "bg-[#ffffff] text-[#000000] max-w-[90%] lg:max-w-[60%] "
+                    : "bg-[transparent] text-[#cccccc] max-w-[100%]"
                 }`}
               >
                 {renderMessageContent(msg.content)}
@@ -146,10 +156,7 @@ export default function ChatAI() {
               transition={{ duration: 0.5 }}
               className="mt-5 flex flex-col items-start"
             >
-              <span className="text-[#cccccc] mb-1">
-                Asisten Digital Creativolve
-              </span>
-              <div className="text-white rounded-[10px] p-4 text-left text-[3.5vw] lg:text-[1.1vw] max-w-[90%] lg:max-w-[60%] bg-[#3b3b3b]">
+              <div className="text-white rounded-[10px] p-4 text-left text-[3.5vw] lg:text-[1.1vw] max-w-[90%] lg:max-w-[60%] bg-[#171717]">
                 <strong className="animated-gradient text-transparent bg-clip-text">
                   Membalas...
                 </strong>

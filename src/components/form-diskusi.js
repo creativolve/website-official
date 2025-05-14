@@ -64,7 +64,7 @@ const FormDiskusi = () => {
   const [editingIndex, setEditingIndex] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [editValue, setEditValue] = useState("");
-  const [submitted, setSubmitted] = useState(false) // Tambahkan ini
+  const [submitted, setSubmitted] = useState(false);
 
   const startShowBriefAssistant = () => {
     if (!formData.name || !formData.email || !formData.phone) {
@@ -258,7 +258,6 @@ const FormDiskusi = () => {
     return phone.length >= 10 && /^\d+$/.test(phone);
   };
 
-
   const canSubmit = () => {
     return (
       formData.name.trim() &&
@@ -301,7 +300,7 @@ const FormDiskusi = () => {
           description: "",
         });
 
-        setSubmitted(true)
+        setSubmitted(true);
         setTimeout(() => {
           setPopupVisible(false);
         }, 5500);
@@ -333,15 +332,15 @@ const FormDiskusi = () => {
     <>
       <div className="text-white flex items-center justify-center py-30 px-0">
         <form
-        disabled={submitted}
+          disabled={submitted}
           method="POST"
           onSubmit={handleSubmit}
-          className="w-full flex flex-col gap-10 max-w-xl space-y-6 z-[0]"
+          className="w-full flex flex-col gap-10 max-w-2xl space-y-6 z-[0]"
         >
           <h1 className="text-xl font-semibold">Ajukan Diskusi Kepada Tim</h1>
 
           <InputFloating
-          disabled={submitted}
+            disabled={submitted}
             id="nama"
             label="Nama"
             type="text"
@@ -351,7 +350,7 @@ const FormDiskusi = () => {
           />
           <div className="flex gap-5">
             <InputFloating
-            disabled={submitted}
+              disabled={submitted}
               id="Email"
               label="Email"
               type="email"
@@ -360,7 +359,7 @@ const FormDiskusi = () => {
               onChange={handleInputChange}
             />
             <InputFloating
-            disabled={submitted}
+              disabled={submitted}
               id="number"
               label="No Whatsapp"
               type="number"
@@ -371,15 +370,14 @@ const FormDiskusi = () => {
           </div>
 
           <div className="bg-[#262626] rounded-2xl px-[20px] py-[30px]">
-
             {/* AWAL KONDISI */}
             {!showChatbot && !qnaCompleted && !isProcessing && !submitted && (
               <div className="flex gap-6 lg:items-center flex-col lg:justify-between lg:flex-row">
                 <div className="text w-[70%]">
-                  <h1 className="font-semibold text-[5.4vw] md:text-[4vw] lg:text-[1.3vw]">
+                  <h1 className="font-semibold">
                     Buat Brief
                   </h1>
-                  <p className="font-regular text-[2.9vw] md:text-[3vw] lg:text-[1.2vw]">
+                  <p className="font-regular">
                     Kami akan mengarahkan anda untuk membuat brief yang
                     terstruktur
                   </p>
@@ -391,16 +389,14 @@ const FormDiskusi = () => {
                 <button
                   type="button"
                   onClick={startShowBriefAssistant}
-                  className="px-[20px] py-[5px] rounded-3xl text-[3.8vw] h-fit cursor-pointer border-2 border-transparent bg-[#ffffff] text-[#262626] 
-                                  md:text-[3vw]
-                                  lg:px-[25px] lg:py-[5px] lg:text-[1vw] transition-all duration-100 ease-in-out
+                  className="px-[20px] py-[5px] rounded-3xl  h-fit cursor-pointer border-2 border-transparent bg-[#ffffff] text-[#262626] 
+                                  lg:px-[25px] lg:py-[5px] transition-all duration-100 ease-in-out
                                   hover:bg-transparent hover:text-[#ffffff] hover:border-[#ffffff] hover:translate-y-[-5px]"
                 >
                   Buat brief!
                 </button>
               </div>
             )}
-
 
             {/* Sedang Proses Penyusunan */}
             {!showChatbot && !qnaCompleted && isProcessing && !submitted && (
@@ -413,7 +409,6 @@ const FormDiskusi = () => {
                 </p>
               </div>
             )}
-
 
             {/* Sudah Berhasil Di susun */}
             {!showChatbot && qnaCompleted && !isProcessing && !submitted && (
@@ -439,12 +434,12 @@ const FormDiskusi = () => {
 
             {!showChatbot && qnaCompleted && !isProcessing && submitted && (
               <div>
-                    <span className="animated-gradient text-transparent bg-clip-text font-bold">
-                    Data Sudah Terkirim Kedalam Database Kami!
-                  </span>
-                  <p className="text-[#cccccc]">
-                    Mohon untuk tidak mengirim ulang form yang sudah di kirim, tunggu tim kami selesai meninjau ajuan anda dan menghubungi anda lewat Chat Whatsapp, Terimakasih.
-                  </p>
+                <span className="animated-gradient text-transparent bg-clip-text font-bold">
+                  Data Sudah Terkirim Kedalam Database Kami!
+                </span>
+                <p className="text-[#cccccc]">
+                  Mohon untuk tidak mengirim ulang form yang sudah di kirim, tunggu tim kami selesai meninjau ajuan anda dan menghubungi anda lewat Chat Whatsapp, Terimakasih.
+                </p>
               </div>
             )}
 
@@ -467,27 +462,33 @@ const FormDiskusi = () => {
                     membuat brief yang tepat untuk kamu
                   </p>
                   <br />
-                  <div className="bot-message rounded-lg">
-                    <p>
-                      <strong>{listPertanyaan[currentQnaStep]}</strong>
-                    </p>
-                  </div>
+                  
+                  {/* Only show current question if not currently editing */}
 
+
+                  {/* Display past questions and answers */}
                   {qnaAnswers.map((item, index) => (
                     <div key={index} className="message-group space-y-2">
+                      <div className="bot-message rounded-lg">
+                        <p>
+                          <strong>{item.question}</strong>
+                        </p>
+                      </div>
                       <div className="user-message px-4 py-3 bg-[#ffffff] rounded-[10px] text-[#262626]">
                         {renderAnswer(item.answer, index)}
                       </div>
                       <br />
-                      {index + 1 < listPertanyaan.length && (
-                        <div className="bot-mess">
-                          <p>
-                            <strong>{listPertanyaan[index + 1]}</strong>
-                          </p>
-                        </div>
-                      )}
                     </div>
                   ))}
+
+
+{editingIndex === null && currentQnaStep < listPertanyaan.length && (
+                    <div className="bot-message rounded-lg">
+                      <p>
+                        <strong>{listPertanyaan[currentQnaStep]}</strong>
+                      </p>
+                    </div>
+                  )}
 
                   {currentQnaStep < listPertanyaan.length && (
                     <div className="chat-input flex flex-col space-y-2 mt-4">
