@@ -32,6 +32,8 @@ export default function ChatAI() {
 
     setLoading(true);
 
+    setQuestion("")
+
     // Tambahkan pertanyaan user ke percakapan
     setMessages((prev) => [...prev, { role: "user", content: question }]);
 
@@ -61,7 +63,7 @@ export default function ChatAI() {
       ]);
     }
 
-    setQuestion("");
+
     setLoading(false);
   };
 
@@ -176,7 +178,7 @@ export default function ChatAI() {
             value={question}
             onInput={handleInput}
             onChange={(e) => setQuestion(e.target.value)}
-            placeholder="Tanyakan sesuatu..."
+            placeholder="pesan"
             className="w-full p-2 rounded-2xl bg-white text-black focus:outline-none"
           />
           <button

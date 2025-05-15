@@ -5,6 +5,18 @@
     const notion = new Client({ auth: process.env.DISKUSI_DB_API_KEY });
     const databaseId = process.env.DISKUSI_DATABASE_ID;
 
+    function formatTanggal() {
+      return new Date().toLocaleString('id-ID', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone: 'Asia/Jakarta'
+      });
+    }
+
     export async function POST(request) {
       try {
         const data = await request.json();
@@ -104,20 +116,17 @@
 
 
 
-        const waMessage = `*Ajuan Diskusi Dari Calon Klien! Mohon Di Cek Segera*\n_Berikut Data Calon Klien, untuk memudahkan pencarian pada database:_\n\n*Nama:* ${name}\n*No Whatsapp:* ${phone}\n*Email :* ${email}\n ${new Date().toISOString}`;
+        
+
+        const waMessage = `*Ajuan Diskusi Dari Calon Klien! Mohon Di Cek Segera*\n_Berikut Data Calon Klien, untuk memudahkan pencarian pada database:_\n\n*Nama:* ${name}\n*No Whatsapp:* ${phone}\n*Email :* ${email}\n\n\n ${formatTanggal()}`;
 
 
-        await fetch(
-          `https://api.callmebot.com/whatsapp.php?phone=6288289158984&text=${encodeURIComponent(
-            waMessage
-          )}&apikey=${process.env.CALLMEBOT_API_KEY}`
-        );
+        await Promise.all([
+          fetch(`https://api.callmebot.com/whatsapp.php?phone=6288289158984&text=${encodeURIComponent(waMessage)}&apikey=${process.env.CALLMEBOT_API_KEY}`),
+
+          fetch(`https://api.callmebot.com/whatsapp.php?phone=6285159128773&text=${encodeURIComponent(waMessage)}&apikey=${process.env.CALLMEBOTKHAL_API_KEY}`)
+        ]);
     
-        await fetch(
-          `https://api.callmebot.com/whatsapp.php?phone=6285159128773&text=${encodeURIComponent(
-            waMessage
-          )}&apikey=${process.env.CALLMEBOTKHAL_API_KEY}`
-        );
 
 
 

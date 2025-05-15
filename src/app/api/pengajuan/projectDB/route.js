@@ -8,6 +8,18 @@ const databaseId = process.env.PROJECT_DATABASE_ID;
 
 const projectId = nanoid(10);
 
+function formatTanggal() {
+  return new Date().toLocaleString('id-ID', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Asia/Jakarta'
+  });
+}
+
 export async function POST(request) {
   try {
     const data = await request.json();
@@ -153,19 +165,13 @@ const budgetNumber = parseInt(cleanedBudget);
       kategori && Array.isArray(kategori)
         ? kategori.map((k) => k.label || "").join(", ")
         : "Tidak ada kategori"
-    }\n*Budget:* ${formattedBudget}`;
+    }\n*Budget:* ${formattedBudget}\n\n\n${formatTanggal()}`;
 
-    await fetch(
-      `https://api.callmebot.com/whatsapp.php?phone=6288289158984&text=${encodeURIComponent(
-        waMessage
-      )}&apikey=${process.env.CALLMEBOT_API_KEY}`
-    );
+    await Promise.all([
+      fetch(`https://api.callmebot.com/whatsapp.php?phone=6288289158984&text=${encodeURIComponent(waMessage)}&apikey=${process.env.CALLMEBOT_API_KEY}`),
 
-    await fetch(
-      `https://api.callmebot.com/whatsapp.php?phone=6285159128773&text=${encodeURIComponent(
-        waMessage
-      )}&apikey=${process.env.CALLMEBOTKHAL_API_KEY}`
-    );
+      fetch(`https://api.callmebot.com/whatsapp.php?phone=6285159128773&text=${encodeURIComponent(waMessage)}&apikey=${process.env.CALLMEBOTKHAL_API_KEY}`)
+    ]);
 
     // Kirim Email konfirmasi
     const transporter = nodemailer.createTransport({
