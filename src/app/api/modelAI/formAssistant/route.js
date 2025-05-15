@@ -56,7 +56,7 @@
             content: userPrompt
           }
         ],
-        model: "meta-llama/llama-4-maverick-17b-128e-instruct", // ✅ ganti model agar valid
+        model: "meta-llama/llama-4-maverick-17b-128e-instruct", 
         temperature: 1,
         max_tokens: 5000,
         top_p: 1,

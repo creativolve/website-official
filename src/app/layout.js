@@ -18,7 +18,7 @@
       shortcut: "/favicon.png",
       apple: "/favicon.png",
     },
-    keywords: "Creativolve Agency, Agensi Pemasaran, Solusi Bisnis Digital",
+    keywords: "Creativolve Agency, Agensi Digital, Agensi Kreatif, Agensi Pemasaran, Agensi Branding, Solusi Bisnis Digital, Jasa Pembuatan Website, Jasa Desain, Digital Agency Indonesia, Agensi RAG AI, Agensi Teknologi, Inovasi Bisnis Berbasis AI",
 
     robots: "index, follow, noarchive",
 

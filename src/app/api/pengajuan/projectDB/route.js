@@ -149,23 +149,23 @@ const budgetNumber = parseInt(cleanedBudget);
 
 
     // Kirim WhatsApp ke tim
-    // const waMessage = `*Ajuan Project! Mohon Di Cek Segera*\n*Nama:* ${name}\n*Dari Bisnis:* ${businessName}\n*No Whatsapp:* ${phone}\n*Kategori:* ${
-    //   kategori && Array.isArray(kategori)
-    //     ? kategori.map((k) => k.label || "").join(", ")
-    //     : "Tidak ada kategori"
-    // }\n*Budget:* ${formattedBudget}`;
+    const waMessage = `*Ajuan Project Dari Klien! Mohon Di Cek Segera*\n_Berikut Data Klien, untuk memudahkan Peninjauan Project pada database:_\n\n*Key Project:* ${projectId}\n*Nama:* ${name}\n*Dari Bisnis:* ${businessName}\n*No Whatsapp:* ${phone}\n*Kategori:* ${
+      kategori && Array.isArray(kategori)
+        ? kategori.map((k) => k.label || "").join(", ")
+        : "Tidak ada kategori"
+    }\n*Budget:* ${formattedBudget}`;
 
-    // await fetch(
-    //   `https://api.callmebot.com/whatsapp.php?phone=6288289158984&text=${encodeURIComponent(
-    //     waMessage
-    //   )}&apikey=${process.env.CALLMEBOT_API_KEY}`
-    // );
+    await fetch(
+      `https://api.callmebot.com/whatsapp.php?phone=6288289158984&text=${encodeURIComponent(
+        waMessage
+      )}&apikey=${process.env.CALLMEBOT_API_KEY}`
+    );
 
-    // await fetch(
-    //   `https://api.callmebot.com/whatsapp.php?phone=6285159128773&text=${encodeURIComponent(
-    //     waMessage
-    //   )}&apikey=${process.env.CALLMEBOTKHAL_API_KEY}`
-    // );
+    await fetch(
+      `https://api.callmebot.com/whatsapp.php?phone=6285159128773&text=${encodeURIComponent(
+        waMessage
+      )}&apikey=${process.env.CALLMEBOTKHAL_API_KEY}`
+    );
 
     // Kirim Email konfirmasi
     const transporter = nodemailer.createTransport({

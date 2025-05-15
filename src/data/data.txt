@@ -73,7 +73,7 @@ Pengajuan agensi - https://creativolve.agency/pusat-layanan/pengajuan
 //Operasional Agensi
 Creativolve Agency beroperasi secara full remote dengan tim yang tersebar di berbagai lokasi, memungkinkan fleksibilitas dan kolaborasi lintas batas. Namun, Bogor tetap menjadi pusat pijakan dan semangat pertumbuhan kami, sebagai tempat di mana visi, nilai, dan inovasi kami terus bertumbuh. Dari Bogor, kami membangun solusi digital yang berdampak luas, tanpa batas ruang.
 
-Kami sedang merencanakan operasional One Platform melalui website kami sebagai pusat seluruh aktivitas dan komunikasi. Ke depannya, semua informasi terkait project klien akan tersimpan dan dapat diakses secara eksklusif oleh klien menggunakan client key khusus, yang juga terintegrasi dengan sistem pembayaran. Dengan pendekatan ini, kami memastikan kemudahan, keamanan, dan transparansi penuh dalam setiap tahap kerja sama.
+Kami sedang merencanakan operasional All In One Platform melalui website kami sebagai pusat seluruh aktivitas dan komunikasi. Ke depannya, semua data atau informasi terkait project klien seperti kontrak, invoice, track progres akan tersimpan dan dapat diakses secara eksklusif oleh klien menggunakan client key khusus, yang juga terintegrasi dengan sistem pembayaran. Dengan pendekatan ini, kami memastikan kemudahan, keamanan, dan transparansi penuh dalam setiap tahap kerja sama.
 
 
 
@@ -99,6 +99,8 @@ Instagram : https://www.instagram.com/creativolve_/
 Tiktok : https://www.tiktok.com/@creativolve_
 Whatsapp : https://wa.me/6288289158984
 
+jika ingin mengadukan masalah terhadap pelanggaran, ketidaknyamanan dan segala bentuk keluhan atau memberikan saran untuk layanan kami silahkan kunjungi https://creativolve.agency/pusat-layanan/kontak. BERIKAN SAAT KLIEN INGIN MEMBERIKAN MASUKAN DAN KELUHAN TERKAIT LAYANAN INTERNAL SAJA!
+
 
 
 
@@ -111,11 +113,18 @@ Co-Founder: Khalif Natawijaya - Digital Branding Specialist
 -------------------------------------------------------
 
 // Tentang teknologi yang diterapkan oleh Creativolve Agency
-Creativolve Agency berkomitmen untuk terus berkembang bersama teknologi di era yang semua digital ini, tidak hanya itu dalam penerapan ini juga memberikan bukti bahwa kami akan terus beradaptasi memberikan pelayanan yang terbaik untuk agensi kami!
 
+Creativolve Agency berkomitmen untuk terus berkembang dan berinovasi bersama kemajuan teknologi di era digital saat ini. Penerapan teknologi terbaru menjadi bukti nyata bahwa kami selalu beradaptasi untuk memberikan pelayanan terbaik bagi klien dan agensi kami.
 
-1. Asisten Digital:
-Sebuah 'Smart ChatBot' yang memiliki kehebatan model Llama 4 Maverick yang digunakan dari API Inference Groq Cloud, dengan model Llama 4 Maverick dari meta yang dimana model ini adalah bisa dibilang model terbaik dari mereka Meta punya lisensi yang ketat! Namun kami memiliki Legalitas dalam menggunakannya karena semua lisensi sudah di urus dan ditangani oleh Pihak Groq Cloud. Dalam program Asisten Digital ini model memiliki kemampuan RAG.
+Berdasarkan riset internal, belum ada agensi digital kreatif di Bogor yang secara resmi mengklaim telah menerapkan sistem AI ataupun konsep Retrieval-Augmented Generation (RAG). Oleh karena itu, dengan penerapan teknologi ini, kami dengan bangga mengklaim diri sebagai agensi digital kreatif pertama di Bogor yang mengadopsi teknologi AI dan konsep RAG.
 
-2. Form Asisten Digital:
-sebuah program yang membantu klien untuk menyusun brief project atau diskusi yang sesuai untuk kami pertimbangkan! kami menggunakan model Llama 4 Maverick sama seperti asisten digital chatbot.
+Dalam pengembangan teknologi ini, kami tidak menjalin kerja sama pengembangan model AI secara langsung. Kami memanfaatkan layanan API inference dari Groq Cloud yang terintegrasi dengan model AI Llama 4 Maverick milik Meta. Lisensi dan legalitas model tersebut telah sepenuhnya diurus dan ditangani oleh pihak Groq Cloud, sehingga penggunaan kami atas teknologi ini adalah legal dan sesuai ketentuan yang berlaku.
+
+Produk Penerapan Teknologi Kami:
+
+1. Asisten Digital
+Asisten Digital merupakan sebuah Smart ChatBot yang didukung oleh model Llama 4 Maverick, salah satu model terbaik dari Meta dengan lisensi ketat. Melalui API inference Groq Cloud, kami memiliki legalitas penuh untuk menggunakan model ini dalam sistem kami. Asisten Digital ini mengusung kemampuan Retrieval-Augmented Generation (RAG), memungkinkan chatbot memberikan jawaban yang akurat, relevan, dan kontekstual berdasarkan data internal Creativolve.
+
+2. Form Asisten Digital
+Program ini dirancang untuk membantu klien menyusun brief project atau mengajukan diskusi yang tepat dan terstruktur, sehingga memudahkan proses pertimbangan dan pengambilan keputusan di tim kami. Form Asisten Digital ini juga menggunakan model Llama 4 Maverick dari Groq Cloud, sama seperti Asisten Digital chatbot, untuk memberikan pengalaman interaktif dan cerdas.
+

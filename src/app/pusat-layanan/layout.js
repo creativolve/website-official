@@ -2,10 +2,10 @@ import { Montserrat } from "next/font/google";
 import "@/css/globals.css";
 
 export const metadata = {
-  title: "Pusat Layanan | Creativolve Agency",
+  title: "Pusat Layanan Creativolve Agency",
   description:
     "Pusat Layanan resmi Creativolve Agency — tempat Anda mendapatkan bantuan, informasi layanan, dan solusi terbaik untuk kebutuhan digital Anda. Tim kami siap mendampingi Anda 24/7 dengan respons cepat dan pelayanan yang empatik.",
-  keywords: "Creativolve Agency, Agensi Pemasaran, Solusi Bisnis Digital",
+    keywords: "Pusat Layanan Creativolve, Layanan Pelanggan Creativolve, Customer Support Creativolve, Bantuan Teknis Creativolve, Dukungan Klien Creativolve, Pusat Bantuan Agensi Digital, Creativolve Service Center, Layanan Purna Jual, Hubungi Creativolve, Support Creativolve Agency",
 
   robots: "index, follow, noarchive",
 

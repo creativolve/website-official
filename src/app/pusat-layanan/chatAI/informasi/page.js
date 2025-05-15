@@ -165,6 +165,11 @@ export default function Tentang() {
           memahami, membantu, dan memberi dampak positif. Dan inilah komitmen
           kami untuk Anda.
         </p>
+        <p>
+          <i>
+          Semua model AI yang kami gunakan di Groq Cloud sudah dikelola dan dijalankan dengan lisensi resmi yang telah ditangani oleh Groq, sehingga penggunaannya aman dan legal untuk keperluan komersial. Creativolve tidak meng-host model ini secara mandiri, melainkan mengaksesnya melalui layanan Groq, memastikan bahwa kami mematuhi semua ketentuan dan persyaratan lisensi yang berlaku. Data yang diproses dalam sistem ini sepenuhnya berasal dari informasi internal kami, seperti layanan, portofolio, dan dokumentasi agensi, yang tidak dibagikan ke pihak ketiga. Dengan pendekatan ini, kami menghadirkan solusi AI yang inovatif, transparan, dan etis, tanpa melanggar hak cipta atau batasan lisensi, sehingga dapat memberikan layanan terbaik bagi klien dengan penuh tanggung jawab.
+          </i>
+        </p>
       </main>
       <Footer />
     </>
