@@ -38,7 +38,7 @@
 
 
       const userPrompt = `
-      Susun data ini menjadi brief project dalam bahasa Indonesia  yang profesional tapi tetap mudah dipahami! jangan ubah kata katanya tapi susunn sesuai susunan yang  udah di tetapkan di prompt system jangan ubah jawaban sedikitpun kecuali pertanyaan agar terlihat lebih nyambung sama jawaban!
+      Susun data ini menjadi brief project dalam bahasa Indonesia  yang profesional tapi tetap mudah dipahami! ubah pertanyaan menjadi narasi tetapi jangan ubah jawabannya, susunn sesuai susunan yang  udah di tetapkan di prompt system!
 
       ini datanya ${formattedAnswers}
   `;
@@ -57,7 +57,7 @@
           }
         ],
         model: "meta-llama/llama-4-maverick-17b-128e-instruct", // ✅ ganti model agar valid
-        temperature: 0.7,
+        temperature: 1,
         max_tokens: 5000,
         top_p: 1,
       });

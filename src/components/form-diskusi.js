@@ -86,6 +86,12 @@ const FormDiskusi = () => {
   };
 
   const saveEdit = () => {
+    if (editValue.trim() === "") {
+      setValidateMessage("Jawaban tidak boleh kosong!");
+      setTimeout(() => setValidateMessage(""), 2000);
+      return;
+    }
+  
     const updatedAnswers = [...qnaAnswers];
     updatedAnswers[editingIndex] = {
       ...updatedAnswers[editingIndex],
@@ -94,7 +100,7 @@ const FormDiskusi = () => {
     setQnaAnswers(updatedAnswers);
     setEditingIndex(null);
     setEditValue("");
-  };
+  };    
 
   const cancelEdit = () => {
     setEditingIndex(null);
@@ -103,6 +109,12 @@ const FormDiskusi = () => {
 
   const handleAnswerSubmit = async () => {
     if (isProcessing) return;
+
+    if (inputValue.trim() === "") {
+      setValidateMessage("Jawaban tidak boleh kosong!");
+      setTimeout(() => setValidateMessage(""), 2000);
+      return;
+    }
 
     if (editingIndex !== null) {
       saveEdit();
@@ -490,6 +502,11 @@ const FormDiskusi = () => {
                     </div>
                   )}
 
+                {validateMessage && (
+                      <div className="text-red-500 mb-2">{validateMessage}</div>
+                    )}
+
+
                   {currentQnaStep < listPertanyaan.length && (
                     <div className="chat-input flex flex-col space-y-2 mt-4">
                       <input
@@ -503,17 +520,21 @@ const FormDiskusi = () => {
                         disabled={isProcessing || editingIndex !== null}
                         className="p-2 rounded text-[#cccccc] placeholder-white"
                       />
-                      <button
-                        type="button"
-                        onClick={handleAnswerSubmit}
-                        className="px-4 py-2 bg-[#131313] text-white rounded hover:text-[black] hover:bg-[#ffffff] disabled:bg-[#939393]"
-                      >
-                        {isProcessing
-                          ? "Memproses..."
-                          : editingIndex !== null
-                          ? "Menyimpan..."
-                          : "Kirim"}
-                      </button>
+ 
+                    <button
+                      type="button"
+                      onClick={handleAnswerSubmit}
+                      disabled={isProcessing || editingIndex !== null || inputValue.trim() === ""}
+                      className={`px-4 py-2 bg-[#131313] text-white rounded hover:text-[black] hover:bg-[#ffffff] ${
+                        inputValue.trim() === "" ? "opacity-50 cursor-not-allowed" : ""
+                      }`}
+                    >
+                      {isProcessing
+                        ? "Memproses..."
+                        : editingIndex !== null
+                        ? "Menyimpan..."
+                        : "Kirim"}
+                    </button>
                     </div>
                   )}
                 </div>

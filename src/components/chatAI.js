@@ -71,7 +71,7 @@ export default function ChatAI() {
   
     // Ubah URL menjadi link HTML
     const contentWithLinks = content.replace(urlRegex, (url) => {
-      return `<a href="${url}" target="_blank" class="text-blue-500 hover:underline">${url}</a>`;
+      return `<a href="${url}" target="_blank" class="text-blue-400 hover:underline">${url}</a>`;
     });
   
     // Ubah teks **tebal** menjadi tag <strong>

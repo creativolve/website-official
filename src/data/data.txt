@@ -1,11 +1,17 @@
-nama agensi: Creativolve Agency
 
+// Profil Agensi
+nama agensi: Creativolve Agency
 tentang: Creativolve Agency adalah agensi marketing dan branding yang menyediakan solusi inovatif untuk digital branding dan strategi bisnis masa kini. Kami berfokus pada penerapan teknologi terkini untuk mengembangkan identitas digital yang unik dan relevan dengan audiens yang tepat.
 
+// Konsep Utama Agensi
 konsep utama: Budget-Based Customization - Menyesuaikan layanan sesuai anggaran klien tanpa mengurangi kualitas, memberikan solusi yang efisien dan tepat sasaran.
 
-visis: Menjadi pusat solusi bisnis inovatif berbasis kreativitas digital untuk mendorong evolusi dan pertumbuhan bisnis, serta menjadi agen transformasi digital yang mempercepat keberhasilan klien kami.
 
+// Visi Agensi
+visi: Menjadi pusat solusi bisnis inovatif berbasis kreativitas digital untuk mendorong evolusi dan pertumbuhan bisnis, serta menjadi agen transformasi digital yang mempercepat keberhasilan klien kami.
+
+
+// MIsi Agensi
 misi:
 - Memberikan pelayanan digital yang profesional dengan pemanfaatan otomatisasi secara inovatif, menciptakan pengalaman yang lebih efisien dan efektif.
 - Membantu bisnis berkembang melalui solusi branding dan digital yang efektif dan adaptif terhadap perubahan pasar.
@@ -15,6 +21,8 @@ misi:
 - Membangun platform digital yang mendukung pertumbuhan bisnis berkelanjutan, dengan fokus pada pengoptimalan proses dan keberlanjutan.
 - Memberikan edukasi tentang digital branding dan strategi bisnis modern untuk membantu klien beradaptasi dengan tren dan teknologi terbaru.
 
+
+//Layanan Agensi
 layanan agensi:
 1. Digital Branding dan Strategy:
    Kami membantu klien menciptakan identitas brand yang kuat, relevan, dan autentik dengan pendekatan berbasis riset, analisis pasar, dan pemahaman mendalam tentang nilai-nilai brand.
@@ -31,44 +39,83 @@ layanan agensi:
 5. Search Engine Optimization (SEO):
    Kami menawarkan layanan SEO yang mencakup audit website, optimasi konten, pengoptimalan kecepatan situs, dan strategi backlink untuk memastikan visibilitas yang lebih baik di mesin pencari dan meningkatkan traffic organik.
 
+
+// Keunikan agensi
 keunikan agensi:
 - Fleksibilitas: Kami menyesuaikan layanan dengan anggaran klien tanpa mengurangi kualitas, memberikan solusi yang optimal dan terjangkau.
 - Konsultasi: Kami menawarkan sesi konsultasi untuk merancang strategi branding yang mendalam, berbasis data dan analisis pasar yang relevan dengan perkembangan industri klien.
 - Dukungan Brand: Pendampingan penuh dalam membangun, mengembangkan, dan memperkuat identitas brand digital klien melalui strategi yang berfokus pada kesinambungan nilai, visual, dan pesan brand yang konsisten.
 - Solusi Skalabel: Solusi kami tidak hanya memenuhi kebutuhan bisnis saat ini, tetapi juga dirancang untuk bersifat skalabel dan dapat beradaptasi dengan perkembangan bisnis serta teknologi.
 
+
+//alasan mengapa harus memilih agensi kami
 kenapa pilih agensi ini:
 - Fleksibel Sesuai Budget - Menyediakan solusi yang disesuaikan dengan anggaran klien tanpa mengorbankan kualitas.
 - Layanan Lengkap - Dengan kami, klien mendapatkan layanan digital branding, marketing, desain, SEO, hingga pengembangan website dalam satu atap.
 - Pendekatan Kolaboratif - Kami berkolaborasi erat dengan klien di setiap tahap proyek, untuk memastikan hasil yang maksimal.
 - Solusi Digital Skalabel - Setiap solusi yang kami tawarkan dirancang untuk pertumbuhan bisnis jangka panjang.
 
-hubungi kita:
-Link: https://creativolve.agency/ajukan-project
-
-langkah menghubungi kita:
-1. Kunjungi Website Kami di link berikut: https://creativolve.agency
-2. Cari menu 'Diskusi' di bagian navigasi website
-3. Klik tombol 'Diskusi Sekarang' untuk memulai percakapan
-4. Isi form dan ceritakan deskripsi singkat tentang project yang ingin Anda ajukan
-
+//Nilai yang diterapkan
 nilai kita:
 - Kreativitas: Kami percaya pada kekuatan kreativitas dalam menciptakan solusi yang luar biasa.
 - Inovasi: Kami berkomitmen untuk terus mengadopsi teknologi baru dan metode kreatif untuk memberikan solusi yang terbaik.
 - Kolaborasi: Kerja sama dengan klien adalah kunci keberhasilan kami, kami selalu terbuka untuk diskusi dan masukan.
 - Efisiensi: Kami menghargai waktu dan anggaran klien, sehingga kami berusaha memberikan solusi yang tepat dan efisien.
 
-Success Story: Kami telah bekerja dengan berbagai klien dari berbagai industri, membantu mereka membangun brand yang kuat dan sukses di dunia digital.
+//list situs resmi
+url website kita
+tentang agensi - https://creativolve.agency/tentang
+Layanan agensi - https://creativolve.agency/layanan
+Pusat Pelayanan agensi - https://creativolve.agency/pusat-layanan
+Pengajuan agensi - https://creativolve.agency/pusat-layanan/pengajuan
+
+
+//Operasional Agensi
+Creativolve Agency beroperasi secara full remote dengan tim yang tersebar di berbagai lokasi, memungkinkan fleksibilitas dan kolaborasi lintas batas. Namun, Bogor tetap menjadi pusat pijakan dan semangat pertumbuhan kami, sebagai tempat di mana visi, nilai, dan inovasi kami terus bertumbuh. Dari Bogor, kami membangun solusi digital yang berdampak luas, tanpa batas ruang.
+
+Kami sedang merencanakan operasional One Platform melalui website kami sebagai pusat seluruh aktivitas dan komunikasi. Ke depannya, semua informasi terkait project klien akan tersimpan dan dapat diakses secara eksklusif oleh klien menggunakan client key khusus, yang juga terintegrasi dengan sistem pembayaran. Dengan pendekatan ini, kami memastikan kemudahan, keamanan, dan transparansi penuh dalam setiap tahap kerja sama.
 
 
 
+
+//Legalitas Usaha
 creativolve sudah memiliki izin berusaha sehingga sah dan legal dimata hukum namun masih atas nama Founder. berikut data nya:
-Nomor induk Usaha (NIB) : 0705250010647
-KBLI : 74130 - Aktivitas Desain Komunikasi Visual/Desain Grafis/Multimedia
-Terbit : Jakarta, 7 Mei 2025
+Nomor Induk Berusaha (NIB): 0705250010647 
+Jenis Usaha (KBLI): 74130 – Aktivitas Desain Komunikasi Visual / Desain Grafis / Multimedia
+Tanggal Terbit: Jakarta, 7 Mei 2025
+Status Legalitas: Sah dan aktif melalui sistem OSS (Online Single Submission)
+Atas Nama: M. Adnan Fauzan Maulana (Founder)
+Skala Usaha: Mikro (PMDN – Penanaman Modal Dalam Negeri)
+
+Legalitas ini menunjukkan bahwa Creativolve Agency beroperasi secara sah dan mematuhi ketentuan hukum yang berlaku di Indonesia. Kami berkomitmen untuk memberikan layanan yang profesional, transparan, dan terpercaya kepada setiap klien.
+
+
+
+// Platform Sosial
+Semua kanal media sosial resmi Creativolve Agency hanya yang tercantum dan dapat diakses melalui website ini. Kami tidak memiliki akun resmi di platform lain di luar yang terdaftar, sehingga untuk informasi dan komunikasi yang terpercaya, mohon pastikan Anda mengakses melalui saluran resmi kami di website ini.
+
+berikut media sosial kami:
+Instagram : https://www.instagram.com/creativolve_/
+Tiktok : https://www.tiktok.com/@creativolve_
+Whatsapp : https://wa.me/6288289158984
+
 
 
 
 Founders:
 Founder: M Adnan Fauzan Maulana - Developer dan Business Development
 Co-Founder: Khalif Natawijaya - Digital Branding Specialist
+
+
+
+-------------------------------------------------------
+
+// Tentang teknologi yang diterapkan oleh Creativolve Agency
+Creativolve Agency berkomitmen untuk terus berkembang bersama teknologi di era yang semua digital ini, tidak hanya itu dalam penerapan ini juga memberikan bukti bahwa kami akan terus beradaptasi memberikan pelayanan yang terbaik untuk agensi kami!
+
+
+1. Asisten Digital:
+Sebuah 'Smart ChatBot' yang memiliki kehebatan model Llama 4 Maverick yang digunakan dari API Inference Groq Cloud, dengan model Llama 4 Maverick dari meta yang dimana model ini adalah bisa dibilang model terbaik dari mereka Meta punya lisensi yang ketat! Namun kami memiliki Legalitas dalam menggunakannya karena semua lisensi sudah di urus dan ditangani oleh Pihak Groq Cloud. Dalam program Asisten Digital ini model memiliki kemampuan RAG.
+
+2. Form Asisten Digital:
+sebuah program yang membantu klien untuk menyusun brief project atau diskusi yang sesuai untuk kami pertimbangkan! kami menggunakan model Llama 4 Maverick sama seperti asisten digital chatbot.

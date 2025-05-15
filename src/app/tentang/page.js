@@ -226,6 +226,62 @@ export default function TentangPage() {
           sekadar sebagai penyedia jasa, tapi sebagai mitra pertumbuhan jangka
           panjang bagi bisnis Anda.
         </p>
+
+        <h2>
+          Legalitas Usaha
+        </h2>
+        <p>
+        Creativolve Agency telah memiliki legalitas resmi sebagai pelaku usaha di Indonesia namun nama dalam legalitas usaha ini masih nama pemilik karena belum berbadan PT/CV. Kami terdaftar dalam sistem OSS (Online Single Submission) dengan detail sebagai berikut:
+        </p>
+        <ol className="list-decimal list-inside text-[#c2c2c2] marker:text-white leading-0">
+          <li className="flex gap-5 items-center">
+            <strong className="text-white">Nomor Induk Berusaha (NIB):</strong> <p>0705250010647</p>
+          </li>
+          <li className="flex gap-5 items-center">
+           <strong className="text-white">KBLI:</strong>
+           <p>74130 – Aktivitas Desain Komunikasi Visual / Desain Grafis / Multimedia</p>
+          </li>
+          <li className="flex gap-5 items-center">
+            <strong className="text-white">Tanggal Terbit:</strong>
+            <p>Jakarta, 7 Mei 2025</p>
+          </li>
+          <li className="flex gap-5 items-center">
+            <strong className="text-white">Skala Usaha:</strong>
+            <p>Mikro (PMDN – Penanaman Modal Dalam Negeri)</p>
+          </li>
+          <li className="flex gap-5 items-center">
+            <strong className="text-white">Atas Nama:</strong>
+            <p> M. Adnan Fauzan Maulana (Founder)</p>
+          </li>
+        </ol>
+        <p>
+        Legalitas ini menegaskan bahwa Creativolve beroperasi secara sah dan profesional di bawah payung hukum yang berlaku di Indonesia.
+        </p>
+
+        <h3>
+          Operasional
+        </h3>
+        <p>
+        Creativolve Agency adalah agensi digital yang beroperasi secara full remote, dengan tim profesional yang tersebar di berbagai lokasi. Model kerja ini memungkinkan kami untuk menghadirkan fleksibilitas, efisiensi, dan kolaborasi tanpa batas, guna memberikan solusi branding dan digital marketing yang inovatif dan berdampak.
+        </p>
+        <p>
+        Meskipun bekerja tanpa batasan geografis, kami tetap berakar dan bertumbuh di kota Bogor tempat di mana visi, nilai, dan semangat kami dibentuk. Dari Bogor, kami membangun fondasi untuk menjadi pusat solusi digital yang mendorong evolusi bisnis secara berkelanjutan, baik lokal maupun global.
+        </p>
+        <p>
+        Seluruh operasional Creativolve Agency dilakukan secara digital melalui platform sosial resmi serta saluran komunikasi yang terintegrasi, seperti website, layanan chat, dan fitur FAQ yang tersedia. Kami memanfaatkan teknologi ini untuk memberikan pelayanan yang cepat, transparan, dan mudah diakses oleh klien kapan saja dan di mana saja. 
+        </p>
+        <p>
+        Selain itu, kami sedang merencanakan pengembangan sistem pembayaran online yang terintegrasi langsung melalui website. Sistem ini akan menghubungkan proses pembayaran dengan akses eksklusif ke informasi dan progress project, yang hanya dapat diakses oleh klien melalui client key khusus. Dengan demikian, klien mendapatkan transparansi penuh sekaligus keamanan data proyek yang mereka percayakan kepada kami.
+        </p>
+        <br />
+        <br />
+        <br />
+        <p>
+          <strong className="text-white"><i>
+                          Semua kanal media sosial resmi Creativolve Agency hanya yang tercantum dan dapat diakses melalui website ini. Kami tidak memiliki akun resmi di platform lain di luar yang terdaftar, sehingga untuk informasi dan komunikasi yang terpercaya, mohon pastikan Anda mengakses melalui saluran resmi kami di website ini.
+          </i></strong>
+
+        </p>
       </main>
       <Footer />
     </>

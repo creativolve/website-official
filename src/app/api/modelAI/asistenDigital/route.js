@@ -47,16 +47,14 @@
       const completion = await groq.chat.completions.create({
         model: "meta-llama/llama-4-maverick-17b-128e-instruct",
         messages,
-        temperature: 0.5,
-        max_completion_tokens: 300,
-        top_p: 0.6,
+        temperature: 1,
+        max_completion_tokens: 500,
+        top_p: 0.9,
       });
 
       const modelReply = completion.choices[0].message.content;
 
-      const reply = isFirstInteraction
-        ? `Hai! Apa yang bisa saya bantu hari ini? ${modelReply}`
-        : modelReply;
+      const reply = modelReply
 
       conversationHistory.push({
         role: "assistant",
