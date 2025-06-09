@@ -1,5 +1,6 @@
 "use client"
 
+import DOMPurify from 'dompurify';
 import { motion } from "framer-motion";
 import Image from "next/image"
 import Heading from "./heading"
@@ -33,6 +34,13 @@ export default function ChatAI() {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
 
+    useEffect(() => {
+        const textarea = textareaRef.current;
+        if (textarea && question === "") {
+            textarea.style.height = "auto";
+        }
+    }, [question]);
+
     // Sanitasi input untuk mencegah injection
     const sanitizeInput = (input) => {
       if (!input || typeof input !== 'string') return '';
@@ -62,6 +70,11 @@ export default function ChatAI() {
             content: sanitizedQuestion,
             timestamp: userTimestamp,
         };
+
+        const textarea = textareaRef.current;
+        if (textarea) {
+          textarea.style.height = "auto"; // Reset
+        }
 
         setQuestion("");
         setMessages((prev) => [...prev, newMessage]);
@@ -123,15 +136,15 @@ export default function ChatAI() {
       return content;
     };
 
-    // Helper function untuk escape HTML entities - PENTING!
+    // Helper function untuk escape HTML entities
     const escapeHtml = (unsafe) => {
-      if (!unsafe || typeof unsafe !== 'string') return '';
-      return unsafe
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+        if (!unsafe || typeof unsafe !== 'string') return '';
+        return unsafe
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
     };
 
     // Helper function untuk validasi URL
@@ -168,7 +181,7 @@ export default function ChatAI() {
       });
     };
 
-    // 3. Headers - AMAN dengan validasi
+    // 3. Headers - DIPERBAIKI
     const parseHeaders = (text) => {
       if (!text || typeof text !== 'string') return '';
 
@@ -183,24 +196,45 @@ export default function ChatAI() {
           return;
         }
 
-        // Match headers dengan validasi ketat
-        const headerMatches = [
-          { level: 1, match: trimmedLine.match(/^#\s+(.+)$/), class: 'text-3xl font-bold text-white mb-3 mt-4' },
-          { level: 2, match: trimmedLine.match(/^##\s+(.+)$/), class: 'text-2xl font-bold text-white mb-2 mt-3' },
-          { level: 3, match: trimmedLine.match(/^###\s+(.+)$/), class: 'text-xl font-bold text-white mb-2 mt-3' },
-          { level: 4, match: trimmedLine.match(/^####\s+(.+)$/), class: 'text-lg font-bold text-white mb-1 mt-2' },
-          { level: 5, match: trimmedLine.match(/^#####\s+(.+)$/), class: 'text-base font-bold text-white mb-1 mt-2' },
-          { level: 6, match: trimmedLine.match(/^######\s+(.+)$/), class: 'text-sm font-bold text-white mb-1 mt-2' }
-        ];
+        // Header patterns dengan escape yang benar
+        let headerMatch = null;
+        let headerLevel = 0;
+        let headerText = '';
+        let headerClass = '';
 
-        const headerMatch = headerMatches.find(h => h.match);
+        // Check untuk setiap level header
+        if (trimmedLine.match(/^#{6}\s+(.+)$/)) {
+          headerMatch = trimmedLine.match(/^#{6}\s+(.+)$/);
+          headerLevel = 6;
+          headerClass = 'text-sm font-bold text-white mb-1 mt-2';
+        } else if (trimmedLine.match(/^#{5}\s+(.+)$/)) {
+          headerMatch = trimmedLine.match(/^#{5}\s+(.+)$/);
+          headerLevel = 5;
+          headerClass = 'text-base font-bold text-white mb-1 mt-2';
+        } else if (trimmedLine.match(/^#{4}\s+(.+)$/)) {
+          headerMatch = trimmedLine.match(/^#{4}\s+(.+)$/);
+          headerLevel = 4;
+          headerClass = 'text-lg font-bold text-white mb-1 mt-2';
+        } else if (trimmedLine.match(/^#{3}\s+(.+)$/)) {
+          headerMatch = trimmedLine.match(/^#{3}\s+(.+)$/);
+          headerLevel = 3;
+          headerClass = 'text-xl font-bold text-white mb-2 mt-3';
+        } else if (trimmedLine.match(/^#{2}\s+(.+)$/)) {
+          headerMatch = trimmedLine.match(/^#{2}\s+(.+)$/);
+          headerLevel = 2;
+          headerClass = 'text-2xl font-bold text-white mb-2 mt-3';
+        } else if (trimmedLine.match(/^#{1}\s+(.+)$/)) {
+          headerMatch = trimmedLine.match(/^#{1}\s+(.+)$/);
+          headerLevel = 1;
+          headerClass = 'text-3xl font-bold text-white mb-3 mt-4';
+        }
 
-        if (headerMatch) {
-          const headerText = validateLength(headerMatch.match[1].trim(), 200);
+        if (headerMatch && headerLevel > 0) {
+          headerText = validateLength(headerMatch[1].trim(), 200);
           const safeHeaderText = escapeHtml(headerText);
-          result.push(`<h${headerMatch.level} class="${headerMatch.class}">${safeHeaderText}</h${headerMatch.level}>`);
+          result.push(`<h${headerLevel} class="${headerClass}">${safeHeaderText}</h${headerLevel}>`);
         } else {
-          result.push(escapeHtml(line));
+          result.push(line);
         }
       });
 
@@ -366,7 +400,7 @@ export default function ChatAI() {
 
       let formatted = text;
 
-      // 1. Proses markdown-style links: [label](url) - SUDAH DI-ESCAPE
+      // 1. Proses markdown-style links: [label](url)
       formatted = formatted.replace(
         /\[([^\]]+)\]\(([^)]+)\)/g,
         (match, label, url) => {
@@ -382,7 +416,7 @@ export default function ChatAI() {
         }
       );
 
-      // 2. Proses plain URLs - SUDAH DI-ESCAPE
+      // 2. Proses plain URLs
       formatted = formatted.replace(
         /(?<!href=["'])(https?:\/\/[^\s<>&"']+[^\s<>&"'.,;!?])/g,
         (url) => {
@@ -421,7 +455,7 @@ export default function ChatAI() {
         if (paragraphBuffer.length > 0) {
           const content = paragraphBuffer.join(' ').trim();
           if (content && !isBlockElement(content)) {
-            result.push(`<p class="mb-2 text-gray-300">${content}</p>`);
+            result.push(`<p class="mb-2">${content}</p>`);
           } else {
             result.push(content);
           }
@@ -441,19 +475,16 @@ export default function ChatAI() {
       return result.join('\n');
     };
 
-    // PARSER UTAMA - SEQUENCE AMAN
+    // PARSER UTAMA - DIPERBAIKI
     const parseMessageContent = (content) => {
       if (!content || typeof content !== 'string') return '';
 
       let formatted = content;
 
-      // URUTAN PENTING: Escape dulu, baru parse
-      formatted = escapeHtml(formatted); // ESCAPE DULU!
-      
-      // Kemudian parse dengan aman
+      // Parsing sequence yang benar - TANPA double escape/unescape
       formatted = parseCodeBlocks(formatted);
       formatted = parseInlineCode(formatted);
-      formatted = parseHeaders(formatted);
+      formatted = parseHeaders(formatted); // Headers di-parse sebelum escape
       formatted = parseHorizontalRules(formatted);
       formatted = parseBlockquotes(formatted);
       formatted = parseMarkdownTables(formatted);
@@ -470,15 +501,20 @@ export default function ChatAI() {
 
     const renderMessageContent = (content) => {
       if (!content) return null;
-
+    
       try {
-        const formatted = parseMessageContent(content);
-        return <div dangerouslySetInnerHTML={{ __html: formatted }} />;
+        const parsed = parseMessageContent(content);
+        const safe = DOMPurify.sanitize(parsed, {
+          ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'strong', 'em', 'del', 'code', 'pre', 'a', 'ul', 'ol', 'li', 'blockquote', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'div', 'hr'],
+          ALLOWED_ATTR: ['class', 'href', 'target', 'rel']
+        });
+        return <div dangerouslySetInnerHTML={{ __html: safe }} />;
       } catch (error) {
         console.error('Error rendering message:', error);
         return <div className="text-red-400">Error menampilkan pesan</div>;
       }
     };
+    
 
     return(
         <>
