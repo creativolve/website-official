@@ -42,30 +42,10 @@
   };
 
   export default function RootLayout({ children }) {
-    const jsonLd = {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Creativolve Agency",
-      url: "https://creativolve.agency",
-      image: "https://creativolve.agency/ogg-image.jpg",
-      description:
-        "Agensi berbasis digital dan teknologi yang menjadi pusat solusi fleksibel untuk layanan digital dan teknologi",
-      logo: "https://creativolve.agency/favicon.png",
-      sameAs: [
-        "https://www.instagram.com/creativolve_",
-        "https://www.linkedin.com/company/creativolve",
-        "https://www.tiktok.com/@creativolve_",
-      ],
-    };
 
     return (
-      <html lang="id">
-        <head>
-        <link rel="canonical" href="https://creativolve.agency" />
-        </head>
-        <body className={`relative antialiased bg-[#17181a] h-fit`}>
+        <div className={`relative antialiased bg-[#17181a] h-fit`}>
           {children}
-        </body>
-      </html>
+        </div>
     );
   }

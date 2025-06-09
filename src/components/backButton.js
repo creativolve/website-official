@@ -3,12 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 
-export default function BackButton({color = 'gradient'}) {
+export default function BackButton({color = 'gradient', href = '/'}) {
 
     return(
         <>
           <Link
-            href="/"
+            href={href}
             className={`
               ${color === 'gradient'
                 ? "background-gradient"
@@ -32,7 +32,7 @@ export default function BackButton({color = 'gradient'}) {
                   ? ''
                   : 'invert group-hover:invert-0'
                 }
-                    w-[2vw] transition-all duration-200 ease-in-out 
+                    w-[8vw] transition-all duration-200 ease-in-out 
                     lg:w-[1.6vw] object-cover select-none
                     `}
             />
