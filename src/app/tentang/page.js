@@ -1,24 +1,10 @@
-"use client";
-
 import Footer from "@/components/footer";
 import "@/css/typografi.css";
 import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import "@/css/effect.css"
+import BackButton from "@/components/backButton";
 
 export default function TentangPage() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const misiList = [
     {
       misi: "Memberikan pelayanan digital dengan pemanfaatan automation secara profesional dan inovatif.",
@@ -44,69 +30,37 @@ export default function TentangPage() {
   ];
 
   return (
-    <>
+    <div>
+        <BackButton/>
       <Image
-        src="/images/hero/background.png"
+        src="/images/tentangPage/circle.png"
         alt="bg"
-        width={300}
+        width={500}
         priority
-        height={300}
+        height={500}
         className="
-        w-full absolute z-[-30] h-[50vh] top-[-20px] opacity-10 pointer-events-none select-none
-        lg:h-[90vh]  lg:opacity-25
+        w-[200vw] absolute z-[0] top-[0px] pointer-events-none select-none
+        lg:w-[63%] lg:left-52
         "
       />
-      <nav
-        className="
-        w-fit pt-[60px] px-[50px]
-        "
-      >
-        <div
-          className="
-            flex gap-5 items-center w-fit
-            "
-        >
-          <Link
-            href="/"
-            className={`
-                rounded-full px-5 py-2 transition-all duration-200 ease-in-out flex gap-5 text-white justify-center items-center
-                bg-[#262626]
-                
-                hover:shadow-md hover:bg-[#cfcfcf] hover:text-black group
-                active:shadow-md active:bg-[#cfcfcf] active:text-black
-
-                ${scrolled ? "fixed z-[100]" : ""}
-                `}
-          >
-            <Image
-              src="/images/Back Button.png"
-              alt="kembali"
-              width={100}
-              height={100}
-              className="
-                    w-[8vw] transition-all duration-200 ease-in-out
-                    lg:w-[2vw] object-cover select-none cursor-pointer invert
-                    group-hover:invert-0
-                    "
-            />
-            Kembali
-          </Link>
-        </div>
-      </nav>
+         
       <header
         className="
-        h-[50vh] flex justify-center items-center
+        h-[50vh] flex justify-center items-center 
         lg:h-[100vh]
         "
       >
         <h1
           className="
-            font-bold text-[8vw] leading-[9vw] text-center text-[#ffffff]
+            font-bold text-[8vw] leading-[9vw] text-center text-[#ffffff] z-1 mt-[100px]
             md:text-[7vw] md:leading-[7.1vw]
-            lg:text-[3.3vw] lg:leading-[3.7vw] 
+            lg:text-[3.3vw] lg:leading-[3.7vw]  lg:mt-[200px]
             "
         >
-          Creativolve Agency <br />
+            <span
+            className="text-gradient">
+                Creativolve Agency <br />
+            </span>
           Solusi Digital Kreatif
         </h1>
       </header>
@@ -116,14 +70,14 @@ export default function TentangPage() {
         md:px-[15vw]
         lg:px-0
 
-        prose prose-2xl prose-headings:text-[4.6vw] prose-h2:text-[5.4vw] prose-h1:text-[6.8vw] prose-headings:text-[#ffffff]  prose-p:text-[4.3vw] prose-p:text-[#cccccc] prose-p:font-medium prose-li:text-[4.3vw] prose-li:text-[#ffffff]  prose-li:font-bold prose-ol:text-[3vw] [&_ol]:pl-1 [&_ul]:pl-4
+        prose prose-xl prose-headings:text-[4.6vw] prose-h2:text-[5.4vw] prose-h1:text-[6.8vw] prose-headings:text-[#ffffff]  prose-p:text-[4.3vw] prose-p:text-[#cccccc] prose-p:font-medium prose-li:text-[4.3vw] prose-li:text-[#ffffff]  prose-li:font-bold prose-ol:text-[3vw] [&_ol]:pl-1 [&_ul]:pl-4
 
         md:prose-headings:text-[3.6vw]  md:prose-h2:text-[4vw] md:prose-h1:text-[5vw] md:prose-p:text-[2vw]md:prose-li:text-[2vw] md:prose-ol:text-[2vw]
               
         lg:prose-headings:text-[1.5vw] lg:prose-h2:text-[1.6vw] lg:prose-h1:text-[2vw] lg:prose-p:text-[1.2vw] lg:prose-li:text-[1.2vw] lg:prose-ol:text-[1.2vw]
         "
       >
-        <h1>Tentang Creativolve Agency</h1>
+        <h1 className="text-gradient">Tentang Creativolve Agency</h1>
         <p
           className="
             text-justify
@@ -154,20 +108,18 @@ export default function TentangPage() {
 
         <div
           className="
-            bg-[#262626] px-5 py-8 rounded-xl my-20 shadow-lg shadow-500/50
+            bg-[#21252C] px-5 py-8 rounded-xl my-20 shadow-lg shadow-500/50
             "
         >
-          <h2 className="text-white">Visi Dan Misi Kami!</h2>
+          <h2 className="text-gradient">Visi Dan Misi Kami!</h2>
           <p className="text-[#c2c2c2] text-justify lg:text-left">
             <strong className="text-white">Visi :</strong>
             <br /> Menjadi pusat solusi bisnis inovatif yang berpusat pada
             kreatif digital untuk mendorong evolusi dan pertumbuhan bisnis.
           </p>
 
-          <ol className="list-decimal list-inside text-[#c2c2c2] marker:text-white ">
-            <strong className="text-white">Misi :</strong>
-            <br />
-
+          <ol className="list-decimal list-inside text-[#c2c2c2] marker:text-white">
+          <p><strong className="text-white">Misi :</strong></p>
             {misiList.map((item, index) => (
               <li key={index}>
                 <span className="font-medium">{item.misi}</span>
@@ -176,7 +128,7 @@ export default function TentangPage() {
           </ol>
         </div>
 
-        <h2>Layanan Kami</h2>
+        <h2 className="text-gradient">Layanan Kami</h2>
         <p className="text-justify">
           Sebagai agensi dengan pendekatan menyeluruh, layanan kami dirancang
           dalam empat cakupan utama:
@@ -227,29 +179,29 @@ export default function TentangPage() {
           panjang bagi bisnis Anda.
         </p>
 
-        <h2>
+        <h2 className="text-gradient">
           Legalitas Usaha
         </h2>
         <p>
         Creativolve Agency telah memiliki legalitas resmi sebagai pelaku usaha di Indonesia namun nama dalam legalitas usaha ini masih nama pemilik karena belum berbadan PT/CV. Kami terdaftar dalam sistem OSS (Online Single Submission) dengan detail sebagai berikut:
         </p>
-        <ol className="list-decimal list-inside text-[#c2c2c2] marker:text-white leading-0">
-          <li className="flex gap-5 items-center">
+        <ol className="list-decimal list-inside text-[#c2c2c2] marker:text-white leading-6">
+          <li className="flex flex-col">
             <strong className="text-white">Nomor Induk Berusaha (NIB):</strong> <p>0705250010647</p>
           </li>
-          <li className="flex gap-5 items-center">
+          <li className="flex flex-col">
            <strong className="text-white">KBLI:</strong>
            <p>74130 – Aktivitas Desain Komunikasi Visual / Desain Grafis / Multimedia</p>
           </li>
-          <li className="flex gap-5 items-center">
+          <li className="flex flex-col">
             <strong className="text-white">Tanggal Terbit:</strong>
             <p>Jakarta, 7 Mei 2025</p>
           </li>
-          <li className="flex gap-5 items-center">
+          <li className="flex flex-col">
             <strong className="text-white">Skala Usaha:</strong>
             <p>Mikro (PMDN – Penanaman Modal Dalam Negeri)</p>
           </li>
-          <li className="flex gap-5 items-center">
+          <li className="flex flex-col">
             <strong className="text-white">Atas Nama:</strong>
             <p> M. Adnan Fauzan Maulana (Founder)</p>
           </li>
@@ -283,7 +235,13 @@ export default function TentangPage() {
 
         </p>
       </main>
-      <Footer />
-    </>
+      <div
+      className="
+        px-[40px]
+        md:px-[100px]
+        lg:px-[150px] lg:py-[20px]">
+        <Footer />
+      </div>
+    </div>
   );
 }

@@ -5,14 +5,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import Button from "./button";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInstagram,
-  faTiktok,
-  faWhatsapp,
-  faLinkedinIn,
-} from "@fortawesome/free-brands-svg-icons";
+import Iconsosmed from "./iconSocial";
 
 // Framer Motion
 import { LazyMotion, domAnimation, m } from "framer-motion";
@@ -38,31 +31,12 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isOpen]);
 
-  const iconSocial = [
-    {
-      name: faInstagram,
-      url: "https://www.instagram.com/creativolve_",
-      label: "Instagram",
-    },
-    {
-      name: faTiktok,
-      url: "https://www.tiktok.com/@creativolve_",
-      label: "TikTok",
-    },
-    { name: faWhatsapp, url: "https://wa.me/6288289158984", label: "WhatsApp" },
-    {
-      name: faLinkedinIn,
-      url: "https://www.linkedin.com/company/creativolve",
-      label: "LinkedIn",
-    },
-  ];
-
   const navLink = [
     { nav: "Tentang", href: "#tentang" },
     { nav: "Layanan", href: "#layanan" },
     { nav: "Mengapa Kami", href: "#mengapa" },
     { nav: "Blog", href: "#blog" },
-    { nav: "Diskusi", href: "#diskusi" },
+    { nav: "Pusat Layanan", href: "#pusatLayanan" },
   ];
 
   return (
@@ -76,12 +50,12 @@ export default function Navbar() {
             ease: "easeInOut",
           }}
           className={`
-        p-[30px] w-full mt-[-20px] h-[90px] z-[50] transition-all duration-200 ease-linear
-        md:py-[20x] md:h-[123px] 
-        lg:px-[96px] lg:py-[25px] lg:mt-0 lg:h-auto
+        w-full h-[75px] z-[100] absolute left-0 top-0 px-[40px] lg:px-[150px]
+        md:py-[20x] md:h-[123px]
+        lg:h-auto lg:py-[1.3rem]
         ${
           scrolled
-            ? "bg-[#262626e5] backdrop-blur-[2px] fixed shadow-xl"
+            ? "bg-[#17181a90] backdrop-blur-[10px] fixed shadow-xl "
             : "bg-transparent shadow-none"
         }
         `}
@@ -118,79 +92,25 @@ export default function Navbar() {
                 <li
                   key={index}
                   className="
-                  hover:text-[#ffffff] active:text-[#ffffff]
+                   hover:translate-y-[-5px] transition-all duration-100
                   "
                 >
-                  <Link href={item.href}>{item.nav}</Link>
+                  <Link
+                    className="
+                hover:text-[#00E5FF] hover:text-shadow-lg hover:text-shadow-[#00E5FF]
+                active:text-[#00E5FF] 
+                "
+                    href={item.href}
+                  >
+                    {item.nav}
+                  </Link>
                 </li>
               ))}
             </ul>
 
             {/* BUTTON */}
-            <Button name="Portofolio" href="/" target='_blank'/>
-            <m.ul
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{
-                y: 0,
-                opacity: 1,
-                transition: {
-                  type: "spring",
-                  stiffness: 60,
-                  damping: 12,
-                  delay: 0.8,
-                  ease: "easeInOut",
-                  staggerChildren: 0.2,
-                },
-              }}
-              viewport={{ once: true }}
-              className="
-                                icon flex gap-0
-                                lg:gap-4
-                                "
-            >
-              {iconSocial.map((item, index) => (
-                <m.li
-                  key={index}
-                  initial={{ opacity: 0}}
-                  animate={{
-                    opacity: 1
-                  }}
-                  className="
-                      text-[#ffffff]
-                      lg:text-[1.8vw] w-[50px] h-[50px] rounded-4xl text-center flex items-center justify-center transition-all duration-200 ease-in-out
-
-                      hover:bg-[#ffffff] hover:text-[#262626] hover:translate-y-[-8px]
-            
-                      active:bg-[#262626] active:text-[#262626] active:translate-y-[-8px]
-                      "
-                >
-                  <Link
-                    href={item.url}
-                    target="_blank"
-                    aria-label={`buka ${item.label} Creativolve Agency`}
-                    rel="noopener noreferrer"
-                  >
-                    <FontAwesomeIcon icon={item.name} />
-                    <span className="sr-only">{item.label}</span>
-                  </Link>
-                </m.li>
-              ))}
-            </m.ul>
+            <Button name="Portofolio" href="/" target="_blank" />
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
           {/* Mobile an */}
           <div
@@ -210,7 +130,7 @@ export default function Navbar() {
                 alt="Creativolve - Creative And Innovative Agency"
                 className="
                 mb-[-50px]
-                lg:hidden w-[150px] md:w-[250px]"
+                lg:hidden w-[150px] md:w-[200px] translate-y-[50%]"
               />
 
               <h1
@@ -222,7 +142,7 @@ export default function Navbar() {
               </h1>
             </div>
 
-            <div className="lg:hidden absolute top-[30px] right-[30px]">
+            <div className="lg:hidden absolute translate-y-[55%] right-[50px] md:right-[150px]">
               <button
                 onClick={toggleNavbar}
                 className="text-gray-700"
@@ -239,8 +159,8 @@ export default function Navbar() {
                 ) : (
                   <Menu
                     className="
-                  w-[30px] h-[30px] text-white
-                  md:w-[70px] md:h-[70px]
+                  w-[40px] h-[40px] text-white
+                  md:w-[45px] md:h-[45px]
                   "
                   />
                 )}
@@ -255,7 +175,7 @@ export default function Navbar() {
                 right: "0px",
               }}
               className="
-            flex flex-col gap-10 items-end absolute w-[100vw] h-[115vh]  bg-[#262626] text-[#ffffff] py-58 px-18 overflow-hidden
+            flex flex-col gap-10 items-end fixed w-[100vw] h-[115vh] z-[9999] bg-[#17181a] text-[#ffffff] py-58 px-18 overflow-hidden
             md:py-42 md:px-28
             "
             >
@@ -270,8 +190,8 @@ export default function Navbar() {
                     <X
                       size={55}
                       className="
-                    w-[45px] h-[45px] text-white
-                    md:w-[70px] md:h-[70px]
+                  w-[40px] h-[40px] text-white
+                  md:w-[45px] md:h-[45px]
                     "
                     />
                   ) : (
@@ -282,7 +202,7 @@ export default function Navbar() {
 
               <ul
                 className="
-              flex flex-col gap-7 items-end
+              flex flex-col gap-5 md:gap-10 items-end
               "
               >
                 {/* Iterasi */}
@@ -290,11 +210,11 @@ export default function Navbar() {
                   <li
                     key={index}
                     className="
-                  text-[4.9vw] text-[#dfdfdf]
-                  md:text-[4vw]
+                  text-[clamp(1rem,2vw,1.9rem)] text-[#dfdfdf]
                   transition-all duration-100 ease-in-out
 
-                  hover:text-[#ffffff] active:text-[#ffffff]
+                hover:text-[#00E5FF] hover:text-shadow-lg hover:text-shadow-[#00E5FF]
+                active:text-[#00E5FF] 
                   "
                     onClick={clicked}
                   >
@@ -304,65 +224,8 @@ export default function Navbar() {
               </ul>
 
               {/* Button */}
-              <Button name="Portofolio" href="/" target='_blank'/>
-              <m.ul
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{
-                y: 0,
-                opacity: 1,
-                transition: {
-                  type: "spring",
-                  stiffness: 60,
-                  damping: 12,
-                  delay: 0.8,
-                  ease: "easeInOut",
-                  staggerChildren: 0.2,
-                },
-              }}
-              viewport={{ once: true }}
-              className="
-                                icon flex gap-5
-                                md:gap-10
-                                lg:gap-4
-                                "
-            >
-              {iconSocial.map((item, index) => (
-                <m.li
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      type: "spring",
-                      stiffness: 60,
-                      damping: 14,
-                      duration: 0.5,
-                      delay: index * 0.4,
-                    },
-                  }}
-                  viewport={{ once: true }}
-                  className="
-                      text-[#ffffff] text-[7vw]
-                      lg:text-[1.8vw] w-[50px] h-[50px] rounded-4xl text-center flex items-center justify-center transition-all duration-200 ease-in-out
-            
-                      hover:bg-[#262626] hover:text-white hover:translate-y-[-8px]
-            
-                      active:bg-[#262626] active:text-white active:translate-y-[-8px]
-                      "
-                >
-                  <Link
-                    href={item.url}
-                    target="_blank"
-                    aria-label={`buka ${item.label} Creativolve Agency`}
-                    rel="noopener noreferrer"
-                  >
-                    <FontAwesomeIcon icon={item.name} />
-                    <span className="sr-only">{item.label}</span>
-                  </Link>
-                </m.li>
-              ))}
-            </m.ul>
+              <Button name="Portofolio" href="/" target="_blank" />
+              <Iconsosmed />
             </div>
           </div>
         </m.nav>

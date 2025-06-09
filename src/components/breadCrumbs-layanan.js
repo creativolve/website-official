@@ -1,7 +1,10 @@
+"use client"
+
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import "@/css/effect.css"
 
 const allBreadcrumbs = [
   [
@@ -41,12 +44,12 @@ export default function BreadcrumbNav({ index = 0 }) {
       className={`
       flex items-center gap-3 px-5 py-2  rounded-full transition-all duration-150 ease-in-out
 
-      ${scrolled? 'bg-[#ffffff] fixed' : 'bg-transparent'}
+      ${scrolled? 'background-gradient fixed' : 'bg-transparent'}
       `}>
         <Link href="/" 
           className="group">
           <Image
-            src="/images/Back Button.png"
+            src="/images/back_icon.png"
             alt="Kembali"
             width={40}
             height={40}

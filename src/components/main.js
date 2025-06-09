@@ -1,59 +1,55 @@
-"use client";
+"use client"
 
 import dynamic from "next/dynamic";
-import { useState, useEffect } from "react";
-const Navbar = dynamic(() => import("./navbar"), { ssr: true });
-const About = dynamic(() => import("./about"), { ssr: true });
-const Service = dynamic(() => import("./service"), { ssr: true });
-const Footer = dynamic(() => import("./footer"), { ssr: false });
-const Hero = dynamic(() => import("./hero"), { ssr: true });
-const WhyOur = dynamic(() => import("./why"), { ssr: true });
-const Blog = dynamic(() => import("./blog"));
-const Discus = dynamic(() => import("./discus"), { ssr: false });
 
-const Loader = dynamic(() => import("./load"), { ssr: false });
+const Navbar = dynamic(() => import("./navbar"), { ssr: true });
+const Hero = dynamic(() => import("./hero"), { ssr: true });
+const Card = dynamic(() => import("./card"), { ssr: true });
+const Tentang = dynamic(() => import("./tentang"), { ssr: true });
+const Layanan = dynamic(() => import("./layanan"), { ssr: true });
+const Mengapa = dynamic(() => import("./mengapa"), { ssr: true });
+const BlogSec = dynamic(() => import("./blogSec"), { ssr: true });
+const PusatLaySec = dynamic(() => import("./pusatLaySec"), { ssr: true });
+const Footer = dynamic(() => import("./footer"), { ssr: true });
 
 export default function Main() {
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const loadAssets = async () => {
-      await Promise.all([
-        new Promise((resolve) => {
-          const img = new Image();
-          img.src = "/images/load_logo.png"; // Pastikan path benar
-          img.onload = resolve;
-          img.onerror = resolve; // Tambahkan fallback jika gagal
-        }),
-        new Promise((resolve) => setTimeout(resolve, 1500)),
-      ]);
-      setIsLoading(false);
-    };
-
-    loadAssets();
-  }, []);
-
-  if (isLoading) return <Loader />;
-
-  return (
-    <>
-      <Navbar />
-      <main
+    return(
+        <div
         className="
-        px-[45px]
-
+        px-[40px]
         md:px-[100px]
-        lg:px-[200px] lg:py-[10px]
-        "
-      >
-        <Hero />
-        <About />
-        <Service />
-        <WhyOur />
-        <Blog />
-        <Discus/> 
-      </main>
-      <Footer />
-    </>
-  );
+        lg:px-[150px] lg:py-[20px]
+        ">
+
+            
+
+        <Navbar/>
+        <main>
+            <Hero/>
+            <div 
+            className="
+            container-card h-fit py-20 grid place-items-center gap-8 my-[70px]
+            md:grid-cols-2 md:grid-rows-2 md:gap-15
+            lg:grid-cols-4 lg:grid-rows-1
+            ">
+                <Card index={0}/>
+                <Card index={1}/>
+                <Card index={2}/>
+                <Card index={3}/>
+            </div>
+            <Tentang/>
+            <Layanan/>
+            <Mengapa/>
+            <BlogSec/>
+            <PusatLaySec/>
+        </main>
+        <Footer/>   
+        <div className="z-[100] fixed bottom-0 left-0 w-full h-[80px] bg-[#17181a48] backdrop-blur-[5px] lg:h-[10px]
+    [mask-image:linear-gradient(to_top,black,transparent)] 
+    [webkit-mask-image:linear-gradient(to_top,black,transparent)]">
+</div>
+
+        </div>
+    )
 }

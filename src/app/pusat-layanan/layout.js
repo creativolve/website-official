@@ -1,18 +1,21 @@
-import { Montserrat } from "next/font/google";
 import "@/css/globals.css";
 
 export const metadata = {
   title: "Pusat Layanan Creativolve Agency",
   description:
-    "Pusat Layanan resmi Creativolve Agency — tempat Anda mendapatkan bantuan, informasi layanan, dan solusi terbaik untuk kebutuhan digital Anda. Tim kami siap mendampingi Anda 24/7 dengan respons cepat dan pelayanan yang empatik.",
-    keywords: "Pusat Layanan Creativolve, Layanan Pelanggan Creativolve, Customer Support Creativolve, Bantuan Teknis Creativolve, Dukungan Klien Creativolve, Pusat Bantuan Agensi Digital, Creativolve Service Center, Layanan Purna Jual, Hubungi Creativolve, Support Creativolve Agency",
-
+    "Pusat layanan yang tampil elegan dengan penerapan AI dalam sistem Asisten Digital kami!",
+  metadataBase: new URL("https://creativolve.agency"),
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
+  keywords: "Creativolve Agency, Agensi Digital, Agensi Kreatif, Agensi Pemasaran, Agensi Branding, Solusi Bisnis Digital, Jasa Pembuatan Website, Jasa Desain, Digital Agency Indonesia, Agensi RAG AI, Agensi Teknologi, Inovasi Bisnis Berbasis AI",
   robots: "index, follow, noarchive",
-
   openGraph: {
-    title: "Asisten Digital | Creativolve Agency",
+    title: "Pusat Layanan Creativolve Agency",
     description:
-      "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
+      "Pusat layanan yang tampil elegan dengan penerapan AI dalam sistem Asisten Digital kami!",
     url: "https://creativolve.agency/",
     type: "website",
     images: [
@@ -33,18 +36,10 @@ export const viewport = {
   userScalable: "no",
 };
 
-const montserrat = Montserrat({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
 export default function PageLayout({ children }) {
   return (
-    <div
-      className={`${montserrat.className} relative antialiased bg-[#171717]`}
-    >
+    <>
       {children}
-    </div>
+    </>
   );
 }

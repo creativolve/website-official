@@ -1,8 +1,7 @@
-"use client";
-
 import BreadcrumbNav from "@/components/breadCrumbs-layanan";
 import Button from "@/components/button";
 import Footer from "@/components/footer";
+import "@/css/effect.css"
 
 import "@/css/typografi.css";
 
@@ -22,7 +21,7 @@ export default function LayananUmum() {
           lg:prose-headings:text-[1.5vw] lg:prose-h2:text-[1.6vw] lg:prose-h1:text-[2vw] lg:prose-p:text-[1.2vw] lg:prose-li:text-[1.2vw] lg:prose-ol:text-[1.2vw]
          "
       >
-        <h1 className="leading-9 md:leading-12 lg:leading-11">
+        <h1 className="text-gradient leading-9 md:leading-12 lg:leading-11">
           Layanan Fleksibel dan Siap Pakai untuk Siapa Saja yang Butuh Konten
           Keren
         </h1>
@@ -104,7 +103,13 @@ export default function LayananUmum() {
 
         <Button name='Pusat Layanan!' href='/pusat-layanan'/>
       </main>
-      <Footer />
+<div
+      className="
+        px-[40px]
+        md:px-[100px]
+        lg:px-[150px] lg:py-[20px]">
+        <Footer />
+      </div>
     </>
   );
 }

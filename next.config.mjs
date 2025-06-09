@@ -10,6 +10,7 @@ const nextConfig = {
             value: 'all',
           },
         ],
+        
       },
     ];
   },

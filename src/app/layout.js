@@ -1,6 +1,9 @@
+
+  
   import { Montserrat } from "next/font/google";
   import "@/css/globals.css";
   import Script from "next/script";
+  import ClientWrapper from "@/components/clientParalax";
 
   const montserrat = Montserrat({
     weight: ["400", "500", "600", "700"],
@@ -9,9 +12,9 @@
   });
 
   export const metadata = {
-    title: "Creativolve Agency | Creative Digital Solutions",
+    title: "Creativolve Agency - Agensi Digital Kreatif",
     description:
-      "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
+      "Agensi berbasis digital dan teknologi yang menjadi pusat solusi fleksibel untuk layanan digital dan teknologi",
     metadataBase: new URL("https://creativolve.agency"),
     icons: {
       icon: "/favicon.png",
@@ -23,9 +26,9 @@
     robots: "index, follow, noarchive",
 
     openGraph: {
-      title: "Creativolve Agency | Creative Digital Solutions",
+      title: "Creativolve Agency - Agensi Digital Kreatif",
       description:
-        "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
+        "Agensi berbasis digital dan teknologi yang menjadi pusat solusi fleksibel untuk layanan digital dan teknologi",
       url: "https://creativolve.agency/",
       type: "website",
       images: [
@@ -54,7 +57,7 @@
       url: "https://creativolve.agency",
       image: "https://creativolve.agency/ogg-image.jpg",
       description:
-        "Solusi efektif untuk beralih ke Bisnis Digital dengan strategi branding dan marketing yang tepat, tanpa mengkhawatirkan biaya anggaran.",
+        "Agensi berbasis digital dan teknologi yang menjadi pusat solusi fleksibel untuk layanan digital dan teknologi",
       logo: "https://creativolve.agency/favicon.png",
       sameAs: [
         "https://www.instagram.com/creativolve_",
@@ -96,8 +99,10 @@
             {JSON.stringify(jsonLd)}
           </Script>
         </head>
-        <body className={`${montserrat.className} relative antialiased bg-[#171717]`}>
+        <body className={`${montserrat.className} relative antialiased bg-[#17181a] min-h-screen`}>
+        <ClientWrapper>
           {children}
+        </ClientWrapper>
         </body>
       </html>
     );

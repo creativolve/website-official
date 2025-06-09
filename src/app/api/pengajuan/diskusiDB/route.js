@@ -117,7 +117,7 @@
 
 
         
-
+        // Kirim WhatsApp ke tim
         const waMessage = `*Ajuan Diskusi Dari Calon Klien! Mohon Di Cek Segera*\n_Berikut Data Calon Klien, untuk memudahkan pencarian pada database:_\n\n*Nama:* ${name}\n*No Whatsapp:* ${phone}\n*Email :* ${email}\n\n\n ${formatTanggal()}`;
 
 

@@ -4,21 +4,22 @@
   import { motion, AnimatePresence } from "framer-motion";
   import Image from "next/image";
   import Link from "next/link";
-
+  import "@/css/effect.css"
+import Button from "@/components/button";
 
 
   const kategori = [
     {
       heading: "Layanan Untuk Bisnis",
       paragraph: "Kami memiliki layanan kelas bisnis, layanan ini ditawarkan untuk bisnis UMKM atau Startup yang sedang berkembang,layanan ini memberikan penawaran terbaik untuk para pelaku bisnis.",
-      image: "/images/layanan/untuk bisnis.png",
+      image: "/images/layananPage/untuk bisnis.png",
       button: "Lihat Lengkapnya",
       href: "/layanan/kelas-bisnis"
     },
     {
       heading: "Layanan Untuk Umum",
       paragraph: "Kami memiliki Layanan umum, layanan ini di tawarkan content creator, freelancer, hingga organisasi yang sedang membutuhkan suatu jasa digital seperti desain, editing dan lainnya.",
-      image: "/images/layanan/untuk umum.png",
+      image: "/images/layananPage/untuk umum.png",
       button: "Lihat Lengkapnya",
       href: "/layanan/umum"
     },
@@ -50,20 +51,20 @@
           hover:bg-[#ffffff] group 
           ">
               <Image
-              src="/images/Back Button.png"
+              src="/images/home_icon.png"
               alt="kembali"
               width={100}
               height={100}
               className='
-              w-[8vw] transition-all duration-200 ease-in-out invert
+              w-[8vw] transition-all duration-200 ease-in-out invert-0
               lg:w-[2vw] object-cover select-none cursor-pointer
-              group-hover:invert-0
+              group-hover:invert
               '
               />
           </Link>
           <div
           className="
-          relative bg-[#ffffff] w-fit h-full px-5 py-2 rounded-3xl flex gap-5 
+          relative background-gradient w-fit h-full px-5 py-2 rounded-3xl flex gap-5 
           ">
             <motion.div 
             className="
@@ -146,7 +147,7 @@
                 }}
                 layout
                 className="
-                font-semibold text-[6.6vw] leading-[6vw] text-[#ffffff]
+                font-semibold text-[6.6vw] leading-[6vw] text-[#ffffff] text-gradient
                 md:text-[5vw]
                  lg:text-[2.4vw] lg:leading-[3vw]
                 ">
@@ -172,31 +173,11 @@
                 >
                   {items.paragraph}
                 </motion.p>
-                <Link href={items.href}>
-                <motion.button
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -30 }}
-                transition={{
-                  delay: 0.2,
-                  type: "spring",
-                  stiffness: 180,
-                  damping: 13,
-                  mass: 0.8,
-                }}
-                layout
-                className="
-                bg-[#ffffff] text-[#262626] rounded-4xl px-[5vw] cursor-pointer py-[1.5vw] transition-all duration-200 border-transparent border-2 ease-in-out text-[3.5vw]
-                md:text-[2.7vw]
-                lg:text-[1.1vw]
-                lg:px-[2vw] lg:py-[0.3vw]
-
-                hover:bg-transparent hover:text-[#ffffff]
-                hover:border-[#ffffff] hover:translate-y-[-5px]
-                ">
-                  {items.button}
-                </motion.button>
-                </Link>
+                <Button
+                name={items.button}
+                href={items.href}
+                target='_blank'
+                />
               </div>
             ) : null )}
           </AnimatePresence>
