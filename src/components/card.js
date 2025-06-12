@@ -65,7 +65,7 @@ export default function Card({ index }) {
           width={300}
           height={300}
           priority
-          quality={100}
+          quality={75}
           alt="lightning"
           className={`absolute  w-[500px] opacity-[0.7] blur-2xl select-none pointer-events-none
             ${
@@ -84,7 +84,7 @@ export default function Card({ index }) {
             alt={item.title}
             width={500}
             height={500}
-            quality={100}
+            quality={80}
             className={`
                 ${
                     serviceSection

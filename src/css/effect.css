@@ -37,10 +37,10 @@
       #00E5FF,
       #00FFEE,
       #07ffb5,
-      #ffc107
+      #4907ff
     );
     background-size: 400% 400%;
-    animation: gradient-move 1s ease infinite;
+    animation: gradient-move 2s ease infinite;
     
     background-clip: text;
     -webkit-background-clip: text;
@@ -49,7 +49,19 @@
   }
   
   
-
+  .typing-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background-color: currentColor;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+  }
+  
+  @keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
 
 
   @keyframes gradient-move {

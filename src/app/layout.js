@@ -45,8 +45,6 @@
   export const viewport = {
     width: "device-width",
     initialScale: 1,
-    maximumScale: 1,
-    userScalable: "no",
   };
 
   export default function RootLayout({ children }) {
@@ -94,6 +92,12 @@
           }
         `}
       </Script>
+
+      <Script
+  rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+  as="style"
+></Script>
 
           <Script id="json-ld" type="application/ld+json">
             {JSON.stringify(jsonLd)}

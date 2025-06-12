@@ -30,14 +30,14 @@
     ];
 
     return (
-      <nav className="">
+      <nav className="w-fit">
         {/* Menu Toggle Button */}
         <div
           onClick={toggleMenu}
-          className={`open text-[clamp(1.5rem,3vw,1.8rem)] cursor-pointer w-fit h-fit  relative
+          className={`open text-[clamp(1.5rem,3vw,1.8rem)] cursor-pointer w-fit h-fit  fixed
             ${isOpen 
-              ? 'top-0px left-[-13px] z-50'
-              : 'top-[-2] left-6 z-0'
+              ? 'top-5 left-6 z-50'
+              : 'top-9 lg:top-3 left-6 z-0'
             }`}
         >
           <FontAwesomeIcon icon={isOpen ? faXmark : faBars} />
@@ -70,6 +70,14 @@
               onClick={() => setIsOpen(false)}
               >
               {page === 'Asisten Digital' ? 'Pengajuan' : 'Asisten Digital'}
+              </Link>
+
+              <Link
+                href='/'
+                className="flex items-center space-x-3 text-[#cccccc] hover:text-[#ffffff] transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                <span>Beranda</span>
               </Link>
 
 

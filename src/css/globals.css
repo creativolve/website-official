@@ -1,9 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-html,body,*{
-  scroll-behavior: smooth;
-}
+
 
 /* Hide scrollbar */
 .no-scrollbar::-webkit-scrollbar {

@@ -31,7 +31,7 @@ export default function Mengapa(){
 
     return(
         <>
-        <div id="mengapa"
+        <section id="mengapa"
         className="
         h-[150vh] w-full flex items-center 
         lg:h-[120vh]
@@ -44,12 +44,12 @@ export default function Mengapa(){
                 <div className="text lg:w-[40%]">
                     <Heading index={3}/>
                 </div>
-                <div className="dropdown lg:w-[40%]">
+                <div className="dropdown stroke-none border-none lg:w-[40%]">
                     <div className="join join-vertical rounded-[20px] bg-[#21252C] shadow-[0_0_40px_#00E5FF50] stroke-none border-none">
                             {listAlasan.map((item, index) => (
                             <div key={index}    
                             className={`
-                                collapse collapse-arrow join-item border border-base-300
+                                collapse collapse-arrow join-item
                                 ${index === 0 
                                     ? "rounded-t-[20px]" 
                                     : ""}
@@ -59,10 +59,10 @@ export default function Mengapa(){
                                     : ""}
                               `}>
                                 <input type="radio" name="my-accordion-4" defaultChecked={index === 0} />
-                                <h2 className="collapse-title font-semibold">
+                                <h2 className="collapse-title text-white font-semibold">
                                     {item.title}
                                 </h2>
-                                <p className="collapse-content text-sm text-[#b6b6b6]">
+                                <p className="collapse-content text-sm text-[#dadada]">
                                     {item.paragraft}
                                 </p>
                             </div>
@@ -70,7 +70,7 @@ export default function Mengapa(){
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         </>
     )
 }

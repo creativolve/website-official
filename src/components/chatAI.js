@@ -10,14 +10,366 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
+
+// Hook untuk efek mengetik dengan smart auto scroll
+const useTypingEffect = (text, speed = 30, onTextUpdate = null, onTypingComplete = null) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+
+  useEffect(() => {
+    if (!text) {
+      setDisplayedText('');
+      return;
+    }
+
+    setIsTyping(true);
+    setDisplayedText('');
+    
+    let currentIndex = 0;
+    const timer = setInterval(() => {
+      if (currentIndex < text.length) {
+        const newText = text.slice(0, currentIndex + 1);
+        setDisplayedText(newText);
+        
+        // Trigger callback untuk auto scroll setiap beberapa karakter
+        if (onTextUpdate && currentIndex % 10 === 0) {
+          onTextUpdate(newText);
+        }
+        
+        currentIndex++;
+      } else {
+        setIsTyping(false);
+        clearInterval(timer);
+        // Final callback saat selesai mengetik
+        if (onTextUpdate) {
+          onTextUpdate(text);
+        }
+        if (onTypingComplete) {
+          onTypingComplete();
+        }
+      }
+    }, speed);
+
+    return () => clearInterval(timer);
+  }, [text, speed, onTextUpdate, onTypingComplete]);
+
+  return { displayedText, isTyping };
+};
+
+// Hook untuk smart auto scroll
+const useSmartAutoScroll = (containerRef) => {
+  const [isUserScrolling, setIsUserScrolling] = useState(false);
+  const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
+  const scrollTimeoutRef = useRef(null);
+  const lastScrollTop = useRef(0);
+
+  // Fungsi untuk cek apakah user sedang scroll manual
+  const handleScroll = useCallback(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const { scrollTop, scrollHeight, clientHeight } = container;
+    const isAtBottom = scrollHeight - scrollTop - clientHeight < 50;
+    
+    // Jika user scroll ke atas dari posisi terakhir, anggap sebagai manual scroll
+    if (scrollTop < lastScrollTop.current && !isAtBottom) {
+      setIsUserScrolling(true);
+      setShouldAutoScroll(false);
+    }
+    
+    // Jika user scroll kembali ke bawah, aktifkan auto scroll
+    if (isAtBottom && isUserScrolling) {
+      setIsUserScrolling(false);
+      setShouldAutoScroll(true);
+    }
+    
+    lastScrollTop.current = scrollTop;
+
+    // Reset status user scrolling setelah 2 detik tidak ada aktivitas scroll
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    
+    scrollTimeoutRef.current = setTimeout(() => {
+      if (isAtBottom) {
+        setIsUserScrolling(false);
+        setShouldAutoScroll(true);
+      }
+    }, 2000);
+  }, [isUserScrolling, containerRef]);
+
+  // Fungsi untuk smooth scroll ke bawah
+  const scrollToBottom = useCallback((behavior = 'smooth') => {
+    const container = containerRef.current;
+    if (!container || !shouldAutoScroll) return;
+
+    const { scrollHeight, clientHeight } = container;
+    container.scrollTo({
+      top: scrollHeight - clientHeight,
+      behavior: behavior
+    });
+  }, [shouldAutoScroll]);
+
+  // Fungsi untuk force scroll (untuk pesan baru)
+  const forceScrollToBottom = useCallback((behavior = 'smooth') => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const { scrollHeight, clientHeight } = container;
+    container.scrollTo({
+      top: scrollHeight - clientHeight,
+      behavior: behavior
+    });
+    
+    // Reset status untuk auto scroll
+    setIsUserScrolling(false);
+    setShouldAutoScroll(true);
+  }, []);
+
+  return {
+    isUserScrolling,
+    shouldAutoScroll,
+    scrollToBottom,
+    forceScrollToBottom,
+    handleScroll
+  };
+};
+
+// Komponen untuk menampilkan pesan AI dengan efek mengetik
+const AIMessage = ({ content, timestamp, isLatest, onTextUpdate, hasTyped, onTypingComplete }) => {
+  const { displayedText, isTyping } = useTypingEffect(
+    (isLatest && !hasTyped) ? content : "", 
+    30, 
+    (isLatest && !hasTyped) ? onTextUpdate : null,
+    (isLatest && !hasTyped) ? onTypingComplete : null
+  );
+  
+  // Jika pesan sudah pernah di-type atau bukan pesan terbaru, tampilkan langsung
+  const textToShow = (isLatest && !hasTyped) ? displayedText : content;
+
+  // Function untuk parsing dan rendering yang sama seperti sebelumnya
+  const escapeHtml = (unsafe) => {
+    if (!unsafe || typeof unsafe !== 'string') return '';
+    return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  };
+
+  const isValidUrl = (string) => {
+    try {
+      const url = new URL(string);
+      return url.protocol === 'http:' || url.protocol === 'https:';
+    } catch (_) {
+      return false;
+    }
+  };
+
+  const validateLength = (text, maxLength = 200) => {
+    if (!text) return '';
+    return text.length > maxLength ? text.substring(0, maxLength - 3) + '...' : text;
+  };
+
+  const parseCodeBlocks = (text) => {
+    const codeBlockRegex = /```(\w*)\n?([\s\S]*?)```/g;
+    return text.replace(codeBlockRegex, (match, language, code) => {
+      const safeLang = escapeHtml((language || 'text').substring(0, 20));
+      const safeCode = escapeHtml(code.trim());
+      return `<pre class="bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto my-4"><code class="language-${safeLang}">${safeCode}</code></pre>`;
+    });
+  };
+
+  const parseInlineCode = (text) => {
+    return text.replace(/`([^`]+)`/g, (match, code) => {
+      const safeCode = escapeHtml(code);
+      return `<code class="bg-gray-200 text-gray-800 px-1 py-0.5 rounded text-sm">${safeCode}</code>`;
+    });
+  };
+
+  const parseHeaders = (text) => {
+    if (!text || typeof text !== 'string') return '';
+
+    const lines = text.split('\n');
+    const result = [];
+
+    lines.forEach(line => {
+      const trimmedLine = line.trim();
+      
+      if (!trimmedLine) {
+        result.push('');
+        return;
+      }
+
+      let headerMatch = null;
+      let headerLevel = 0;
+      let headerText = '';
+      let headerClass = '';
+
+      if (trimmedLine.match(/^#{6}\s+(.+)$/)) {
+        headerMatch = trimmedLine.match(/^#{6}\s+(.+)$/);
+        headerLevel = 6;
+        headerClass = 'text-sm font-bold text-white mb-1 mt-2';
+      } else if (trimmedLine.match(/^#{5}\s+(.+)$/)) {
+        headerMatch = trimmedLine.match(/^#{5}\s+(.+)$/);
+        headerLevel = 5;
+        headerClass = 'text-base font-bold text-white mb-1 mt-2';
+      } else if (trimmedLine.match(/^#{4}\s+(.+)$/)) {
+        headerMatch = trimmedLine.match(/^#{4}\s+(.+)$/);
+        headerLevel = 4;
+        headerClass = 'text-lg font-bold text-white mb-1 mt-2';
+      } else if (trimmedLine.match(/^#{3}\s+(.+)$/)) {
+        headerMatch = trimmedLine.match(/^#{3}\s+(.+)$/);
+        headerLevel = 3;
+        headerClass = 'text-xl font-bold text-white mb-2 mt-3';
+      } else if (trimmedLine.match(/^#{2}\s+(.+)$/)) {
+        headerMatch = trimmedLine.match(/^#{2}\s+(.+)$/);
+        headerLevel = 2;
+        headerClass = 'text-2xl font-bold text-white mb-2 mt-3';
+      } else if (trimmedLine.match(/^#{1}\s+(.+)$/)) {
+        headerMatch = trimmedLine.match(/^#{1}\s+(.+)$/);
+        headerLevel = 1;
+        headerClass = 'text-3xl font-bold text-white mb-3 mt-4';
+      }
+
+      if (headerMatch && headerLevel > 0) {
+        headerText = validateLength(headerMatch[1].trim(), 200);
+        const safeHeaderText = escapeHtml(headerText);
+        result.push(`<h${headerLevel} class="${headerClass}">${safeHeaderText}</h${headerLevel}>`);
+      } else {
+        result.push(line);
+      }
+    });
+
+    return result.join('\n');
+  };
+
+  const parseTextFormatting = (text) => {
+    text = text.replace(/\*\*(.*?)\*\*/g, (match, content) => {
+      const safeContent = escapeHtml(content);
+      return `<strong class="font-bold text-white">${safeContent}</strong>`;
+    });
+    
+    text = text.replace(/\*(.*?)\*/g, (match, content) => {
+      const safeContent = escapeHtml(content);
+      return `<em class="italic text-gray-300">${safeContent}</em>`;
+    });
+    
+    text = text.replace(/~~(.*?)~~/g, (match, content) => {
+      const safeContent = escapeHtml(content);
+      return `<del class="line-through text-gray-400">${safeContent}</del>`;
+    });
+    
+    return text;
+  };
+
+  const formatTextWithLinks = (text) => {
+    if (!text || typeof text !== 'string') return '';
+
+    let formatted = text;
+
+    formatted = formatted.replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      (match, label, url) => {
+        if (!isValidUrl(url) || url.length > 500) {
+          return escapeHtml(match);
+        }
+        
+        const cleanLabel = validateLength(label, 100);
+        const safeLabel = escapeHtml(cleanLabel);
+        const safeUrl = escapeHtml(url);
+        
+        return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">${safeLabel}</a>`;
+      }
+    );
+
+    formatted = formatted.replace(
+      /(?<!href=["'])(https?:\/\/[^\s<>&"']+[^\s<>&"'.,;!?])/g,
+      (url) => {
+        if (!isValidUrl(url) || url.length > 500) {
+          return escapeHtml(url);
+        }
+        
+        try {
+          const urlObj = new URL(url);
+          let displayText = urlObj.hostname + urlObj.pathname;
+          displayText = displayText.replace(/\/$/, '');
+          displayText = validateLength(displayText, 50);
+          
+          const safeDisplayText = escapeHtml(displayText);
+          const safeUrl = escapeHtml(url);
+          
+          return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">${safeDisplayText}</a>`;
+        } catch (_) {
+          return escapeHtml(url);
+        }
+      }
+    );
+
+    return formatted;
+  };
+
+  const parseMessageContent = (content) => {
+    if (!content || typeof content !== 'string') return '';
+
+    let formatted = content;
+
+    formatted = parseCodeBlocks(formatted);
+    formatted = parseInlineCode(formatted);
+    formatted = parseHeaders(formatted);
+    formatted = parseTextFormatting(formatted);
+    formatted = formatTextWithLinks(formatted);
+    formatted = formatted.replace(/\n/g, '<br>');
+
+    return formatted;
+  };
+
+  const renderMessageContent = (content) => {
+    if (!content) return null;
+  
+    try {
+      const parsed = parseMessageContent(content);
+      const safe = DOMPurify.sanitize(parsed, {
+        ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'strong', 'em', 'del', 'code', 'pre', 'a', 'ul', 'ol', 'li', 'blockquote', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'div', 'hr'],
+        ALLOWED_ATTR: ['class', 'href', 'target', 'rel']
+      });
+      return <div dangerouslySetInnerHTML={{ __html: safe }} />;
+    } catch (error) {
+      console.error('Error rendering message:', error);
+      return <div className="text-red-400">Error menampilkan pesan</div>;
+    }
+  };
+
+  return (
+    <div className="bg-[transparent] text-[#cccccc] max-w-[100%]">
+      {renderMessageContent(textToShow)}
+      {isTyping && (
+        <span className="inline-block w-2 h-5 ml-1 bg-white animate-pulse">|</span>
+      )}
+    </div>
+  );
+};
 
 export default function ChatAI() {
     const [question, setQuestion] = useState("");
     const [loading, setLoading] = useState(false);
     const [messages, setMessages] = useState([]);
+    const [typedMessages, setTypedMessages] = useState(new Set()); // Track pesan yang sudah selesai typing
 
     const textareaRef = useRef(null);
+    const messagesContainerRef = useRef(null);
+    const topRef = useRef(null);
+
+    // Gunakan smart auto scroll hook
+    const { 
+      isUserScrolling, 
+      shouldAutoScroll, 
+      scrollToBottom, 
+      forceScrollToBottom, 
+      handleScroll 
+    } = useSmartAutoScroll(messagesContainerRef);
 
     const handleInput = (e) => {
       const textarea = textareaRef.current;
@@ -27,13 +379,35 @@ export default function ChatAI() {
       }
       setQuestion(e.target.value);
     };
-  
-    const bottomRef = useRef(null);
 
+    // Callback untuk typing update dengan throttling
+    const handleTypingUpdate = useCallback((text) => {
+      // Auto scroll terus jalan tanpa memperhatikan user scroll saat typing
+      scrollToBottom();
+    }, [scrollToBottom]);
+
+    // Callback saat typing selesai
+    const handleTypingComplete = useCallback((messageIndex) => {
+      setTypedMessages(prev => new Set([...prev, messageIndex]));
+    }, []);
+
+    // Auto scroll saat ada pesan baru
     useEffect(() => {
-        bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, [messages]);
+      if (messages.length > 0) {
+        // Delay sedikit untuk memastikan DOM ter-render
+        setTimeout(() => {
+          forceScrollToBottom();
+        }, 100);
+      }
+    }, [messages.length, forceScrollToBottom]);
 
+    // Scroll to top saat pertama kali load
+    useEffect(() => {
+      if (messages.length === 0) {
+        topRef.current?.scrollIntoView({ behavior: "auto" });
+      }
+    }, [messages.length]);
+    
     useEffect(() => {
         const textarea = textareaRef.current;
         if (textarea && question === "") {
@@ -41,11 +415,9 @@ export default function ChatAI() {
         }
     }, [question]);
 
-    // Sanitasi input untuk mencegah injection
     const sanitizeInput = (input) => {
       if (!input || typeof input !== 'string') return '';
       
-      // Batasi panjang input
       const maxLength = 5000;
       const sanitized = input.trim();
       
@@ -73,7 +445,7 @@ export default function ChatAI() {
 
         const textarea = textareaRef.current;
         if (textarea) {
-          textarea.style.height = "auto"; // Reset
+          textarea.style.height = "auto";
         }
 
         setQuestion("");
@@ -81,7 +453,7 @@ export default function ChatAI() {
 
         try {
           const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 detik timeout
+          const timeoutId = setTimeout(() => controller.abort(), 30000);
 
           const res = await fetch("/api/modelAI/asistenDigital", {
             method: "POST",
@@ -123,11 +495,9 @@ export default function ChatAI() {
         setLoading(false);
     };
 
-    // Sanitasi response AI
     const sanitizeAIResponse = (content) => {
       if (!content || typeof content !== 'string') return 'Response tidak valid';
       
-      // Batasi panjang response
       const maxLength = 20000;
       if (content.length > maxLength) {
         return content.substring(0, maxLength) + '\n\n[Response dipotong karena terlalu panjang]';
@@ -136,397 +506,19 @@ export default function ChatAI() {
       return content;
     };
 
-    // Helper function untuk escape HTML entities
-    const escapeHtml = (unsafe) => {
-        if (!unsafe || typeof unsafe !== 'string') return '';
-        return unsafe
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#039;");
-    };
-
-    // Helper function untuk validasi URL
-    const isValidUrl = (string) => {
-      try {
-        const url = new URL(string);
-        return url.protocol === 'http:' || url.protocol === 'https:';
-      } catch (_) {
-        return false;
-      }
-    };
-
-    // Helper function untuk validasi panjang teks
-    const validateLength = (text, maxLength = 200) => {
-      if (!text) return '';
-      return text.length > maxLength ? text.substring(0, maxLength - 3) + '...' : text;
-    };
-
-    // 1. Code Blocks - AMAN
-    const parseCodeBlocks = (text) => {
-      const codeBlockRegex = /```(\w*)\n?([\s\S]*?)```/g;
-      return text.replace(codeBlockRegex, (match, language, code) => {
-        const safeLang = escapeHtml((language || 'text').substring(0, 20));
-        const safeCode = escapeHtml(code.trim());
-        return `<pre class="bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto my-4"><code class="language-${safeLang}">${safeCode}</code></pre>`;
-      });
-    };
-
-    // 2. Inline Code - AMAN
-    const parseInlineCode = (text) => {
-      return text.replace(/`([^`]+)`/g, (match, code) => {
-        const safeCode = escapeHtml(code);
-        return `<code class="bg-gray-200 text-gray-800 px-1 py-0.5 rounded text-sm">${safeCode}</code>`;
-      });
-    };
-
-    // 3. Headers - DIPERBAIKI
-    const parseHeaders = (text) => {
-      if (!text || typeof text !== 'string') return '';
-
-      const lines = text.split('\n');
-      const result = [];
-
-      lines.forEach(line => {
-        const trimmedLine = line.trim();
-        
-        if (!trimmedLine) {
-          result.push('');
-          return;
-        }
-
-        // Header patterns dengan escape yang benar
-        let headerMatch = null;
-        let headerLevel = 0;
-        let headerText = '';
-        let headerClass = '';
-
-        // Check untuk setiap level header
-        if (trimmedLine.match(/^#{6}\s+(.+)$/)) {
-          headerMatch = trimmedLine.match(/^#{6}\s+(.+)$/);
-          headerLevel = 6;
-          headerClass = 'text-sm font-bold text-white mb-1 mt-2';
-        } else if (trimmedLine.match(/^#{5}\s+(.+)$/)) {
-          headerMatch = trimmedLine.match(/^#{5}\s+(.+)$/);
-          headerLevel = 5;
-          headerClass = 'text-base font-bold text-white mb-1 mt-2';
-        } else if (trimmedLine.match(/^#{4}\s+(.+)$/)) {
-          headerMatch = trimmedLine.match(/^#{4}\s+(.+)$/);
-          headerLevel = 4;
-          headerClass = 'text-lg font-bold text-white mb-1 mt-2';
-        } else if (trimmedLine.match(/^#{3}\s+(.+)$/)) {
-          headerMatch = trimmedLine.match(/^#{3}\s+(.+)$/);
-          headerLevel = 3;
-          headerClass = 'text-xl font-bold text-white mb-2 mt-3';
-        } else if (trimmedLine.match(/^#{2}\s+(.+)$/)) {
-          headerMatch = trimmedLine.match(/^#{2}\s+(.+)$/);
-          headerLevel = 2;
-          headerClass = 'text-2xl font-bold text-white mb-2 mt-3';
-        } else if (trimmedLine.match(/^#{1}\s+(.+)$/)) {
-          headerMatch = trimmedLine.match(/^#{1}\s+(.+)$/);
-          headerLevel = 1;
-          headerClass = 'text-3xl font-bold text-white mb-3 mt-4';
-        }
-
-        if (headerMatch && headerLevel > 0) {
-          headerText = validateLength(headerMatch[1].trim(), 200);
-          const safeHeaderText = escapeHtml(headerText);
-          result.push(`<h${headerLevel} class="${headerClass}">${safeHeaderText}</h${headerLevel}>`);
-        } else {
-          result.push(line);
-        }
-      });
-
-      return result.join('\n');
-    };
-
-    // 4. Horizontal Rules - AMAN
-    const parseHorizontalRules = (text) => {
-      return text.replace(/^---+$/gm, '<hr class="my-4 border-gray-500">');
-    };
-
-    // 5. Blockquotes - AMAN
-    const parseBlockquotes = (text) => {
-      const lines = text.split('\n');
-      const result = [];
-      let blockquoteContent = [];
-
-      const flushBlockquote = () => {
-        if (blockquoteContent.length > 0) {
-          const safeContent = blockquoteContent.map(line => escapeHtml(line)).join('<br>');
-          result.push(`<blockquote class="border-l-4 border-gray-500 pl-4 py-2 my-4 bg-gray-800 text-gray-300 italic">${safeContent}</blockquote>`);
-          blockquoteContent = [];
-        }
-      };
-
-      lines.forEach(line => {
-        const match = line.match(/^>\s*(.*)$/);
-        if (match) {
-          blockquoteContent.push(match[1]);
-        } else {
-          flushBlockquote();
-          result.push(line);
-        }
-      });
-
-      flushBlockquote();
-      return result.join('\n');
-    };
-
-    // 6. Tables - AMAN
-    const parseMarkdownTables = (text) => {
-      const lines = text.split('\n');
-      const tableRegex = /^\s*\|(.+)\|\s*$/;
-      const separatorRegex = /^\s*\|([:-\s|]+)\|\s*$/;
-
-      let inTable = false;
-      let tableHtml = '';
-      const output = [];
-
-      for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-
-        if (tableRegex.test(line)) {
-          const cells = line.split('|').slice(1, -1).map(cell => escapeHtml(cell.trim()));
-
-          if (!inTable) {
-            inTable = true;
-            tableHtml += '<div class="overflow-x-auto my-4"><table class="min-w-full border border-gray-600 rounded-lg"><thead class="bg-gray-700">';
-            tableHtml += '<tr>' + cells.map(c => `<th class="border border-gray-600 px-4 py-2 text-left text-white font-semibold">${c}</th>`).join('') + '</tr>';
-            tableHtml += '</thead><tbody>';
-          } else if (separatorRegex.test(line)) {
-            continue;
-          } else {
-            tableHtml += '<tr class="hover:bg-gray-800">' + cells.map(c => `<td class="border border-gray-600 px-4 py-2 text-gray-300">${c}</td>`).join('') + '</tr>';
-          }
-        } else {
-          if (inTable) {
-            tableHtml += '</tbody></table></div>';
-            output.push(tableHtml);
-            tableHtml = '';
-            inTable = false;
-          }
-          output.push(line);
-        }
-      }
-
-      if (inTable) {
-        tableHtml += '</tbody></table></div>';
-        output.push(tableHtml);
-      }
-
-      return output.join('\n');
-    };
-
-    // 7. Lists - AMAN
-    const parseLists = (text) => {
-      const lines = text.split('\n');
-      const result = [];
-      let inOrderedList = false;
-      let inUnorderedList = false;
-      let listItems = [];
-
-      const flushOrderedList = () => {
-        if (listItems.length > 0) {
-          result.push(`<ol class="list-decimal list-inside mb-10 ml-4 space-y-1">${listItems.join('')}</ol>`);
-          listItems = [];
-        }
-      };
-
-      const flushUnorderedList = () => {
-        if (listItems.length > 0) {
-          result.push(`<ul class="list-disc list-inside mb-8 ml-4 space-y-1">${listItems.join('')}</ul>`);
-          listItems = [];
-        }
-      };
-
-      lines.forEach(line => {
-        const numbered = line.match(/^\s*(\d+)\.\s+(.+)$/);
-        const bullet = line.match(/^\s*[-*+]\s+(.+)$/);
-
-        if (numbered) {
-          if (inUnorderedList) flushUnorderedList();
-          inUnorderedList = false;
-          inOrderedList = true;
-          const safeContent = escapeHtml(numbered[2]);
-          listItems.push(`<li class="text-gray-300 mb-1">${safeContent}</li>`);
-        } else if (bullet) {
-          if (inOrderedList) flushOrderedList();
-          inOrderedList = false;
-          inUnorderedList = true;
-          const safeContent = escapeHtml(bullet[1]);
-          listItems.push(`<li class="text-gray-300 mb-1">${safeContent}</li>`);
-        } else {
-          if (inOrderedList) flushOrderedList();
-          if (inUnorderedList) flushUnorderedList();
-          inOrderedList = inUnorderedList = false;
-          result.push(line);
-        }
-      });
-
-      if (inOrderedList) flushOrderedList();
-      if (inUnorderedList) flushUnorderedList();
-
-      return result.join('\n');
-    };
-
-    // 8. Text Formatting - AMAN
-    const parseTextFormatting = (text) => {
-      // Bold
-      text = text.replace(/\*\*(.*?)\*\*/g, (match, content) => {
-        const safeContent = escapeHtml(content);
-        return `<strong class="font-bold text-white">${safeContent}</strong>`;
-      });
-      
-      // Italic
-      text = text.replace(/\*(.*?)\*/g, (match, content) => {
-        const safeContent = escapeHtml(content);
-        return `<em class="italic text-gray-300">${safeContent}</em>`;
-      });
-      
-      // Strikethrough
-      text = text.replace(/~~(.*?)~~/g, (match, content) => {
-        const safeContent = escapeHtml(content);
-        return `<del class="line-through text-gray-400">${safeContent}</del>`;
-      });
-      
-      return text;
-    };
-
-    // 9. Links - AMAN dengan validasi ketat
-    const formatTextWithLinks = (text) => {
-      if (!text || typeof text !== 'string') return '';
-
-      let formatted = text;
-
-      // 1. Proses markdown-style links: [label](url)
-      formatted = formatted.replace(
-        /\[([^\]]+)\]\(([^)]+)\)/g,
-        (match, label, url) => {
-          if (!isValidUrl(url) || url.length > 500) {
-            return escapeHtml(match);
-          }
-          
-          const cleanLabel = validateLength(label, 100);
-          const safeLabel = escapeHtml(cleanLabel);
-          const safeUrl = escapeHtml(url);
-          
-          return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">${safeLabel}</a>`;
-        }
-      );
-
-      // 2. Proses plain URLs
-      formatted = formatted.replace(
-        /(?<!href=["'])(https?:\/\/[^\s<>&"']+[^\s<>&"'.,;!?])/g,
-        (url) => {
-          if (!isValidUrl(url) || url.length > 500) {
-            return escapeHtml(url);
-          }
-          
-          try {
-            const urlObj = new URL(url);
-            let displayText = urlObj.hostname + urlObj.pathname;
-            displayText = displayText.replace(/\/$/, '');
-            displayText = validateLength(displayText, 50);
-            
-            const safeDisplayText = escapeHtml(displayText);
-            const safeUrl = escapeHtml(url);
-            
-            return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">${safeDisplayText}</a>`;
-          } catch (_) {
-            return escapeHtml(url);
-          }
-        }
-      );
-
-      return formatted;
-    };
-
-    // 10. Paragraphs - AMAN
-    const isBlockElement = (line) => /^<(h[1-6]|ul|ol|li|pre|blockquote|table|div|hr)/.test(line);
-
-    const parseParagraphs = (text) => {
-      const lines = text.split('\n');
-      const result = [];
-      let paragraphBuffer = [];
-
-      const flushParagraph = () => {
-        if (paragraphBuffer.length > 0) {
-          const content = paragraphBuffer.join(' ').trim();
-          if (content && !isBlockElement(content)) {
-            result.push(`<p class="mb-2">${content}</p>`);
-          } else {
-            result.push(content);
-          }
-          paragraphBuffer = [];
-        }
-      };
-
-      lines.forEach((line) => {
-        if (line.trim() === '') {
-          flushParagraph();
-        } else {
-          paragraphBuffer.push(line);
-        }
-      });
-
-      flushParagraph();
-      return result.join('\n');
-    };
-
-    // PARSER UTAMA - DIPERBAIKI
-    const parseMessageContent = (content) => {
-      if (!content || typeof content !== 'string') return '';
-
-      let formatted = content;
-
-      // Parsing sequence yang benar - TANPA double escape/unescape
-      formatted = parseCodeBlocks(formatted);
-      formatted = parseInlineCode(formatted);
-      formatted = parseHeaders(formatted); // Headers di-parse sebelum escape
-      formatted = parseHorizontalRules(formatted);
-      formatted = parseBlockquotes(formatted);
-      formatted = parseMarkdownTables(formatted);
-      formatted = parseLists(formatted);
-      formatted = parseTextFormatting(formatted);
-      formatted = formatTextWithLinks(formatted);
-      formatted = parseParagraphs(formatted);
-
-      // Replace newlines terakhir
-      formatted = formatted.replace(/\n/g, '<br>');
-
-      return formatted;
-    };
-
-    const renderMessageContent = (content) => {
-      if (!content) return null;
-    
-      try {
-        const parsed = parseMessageContent(content);
-        const safe = DOMPurify.sanitize(parsed, {
-          ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'strong', 'em', 'del', 'code', 'pre', 'a', 'ul', 'ol', 'li', 'blockquote', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'div', 'hr'],
-          ALLOWED_ATTR: ['class', 'href', 'target', 'rel']
-        });
-        return <div dangerouslySetInnerHTML={{ __html: safe }} />;
-      } catch (error) {
-        console.error('Error rendering message:', error);
-        return <div className="text-red-400">Error menampilkan pesan</div>;
-      }
-    };
-    
-
     return(
         <>
-             <div
-      className="flex mt-[-65px] py-10 h-[77vh] overflow-hidden flex-col lg:px-4"
-    >
-         <div className="flex-1 overflow-y-auto p-4 scrollbar-hide no-scrollbar">
+             <div className="flex mt-[-65px] py-10 h-[77vh] overflow-hidden flex-col lg:px-4">
+         <div 
+          ref={messagesContainerRef}
+          onScroll={handleScroll}
+          className="flex-1 overflow-y-auto lg:p-4 scrollbar-hide no-scrollbar scroll-smooth"
+        >
 
-            {/* TAMPILAN AWAL */}
             <div className="flex flex-col justify-center items-center gap-7">
                 {messages.length === 0 && !loading && (
                     <>
+                    <div ref={topRef}></div>
                     <Image
                         src="/images/ChatAI/avatars.png"
                         alt="avatars"
@@ -545,16 +537,24 @@ export default function ChatAI() {
 
                 {messages.map((msg, i) => (
                     <motion.div
-                    key={i}
-                    initial={{ opacity: 0 }} 
-                    animate={{ opacity: 1 }} 
-                    exit={{ opacity: 0 }} 
-                    transition={{ duration: 0.5 }} 
+                    key={`${msg.timestamp}-${i}`}
+                    initial={{ opacity: 0, y: 20 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    transition={{ duration: 0.3, ease: "easeOut" }} 
                     className={`mt-10 w-full flex flex-col overflow-hidden ${
                         msg.role === "user" ? "chat chat-end" : "items-start"
                     }`}
                     >
-                    <span className="text-[clamp(0.8rem,1vw,1.4rem)] text-white mb-1">
+                    <span className="text-[clamp(0.8rem,1vw,1.4rem)] text-[white] mb-1">
+                    {msg.role !== 'user' && (
+                          <div className="text-[clamp(0.6rem,1vw,0.9rem)] text-[#c5c5c5]">
+                            <div className="inline-grid *:[grid-area:1/1]">
+                              <div className="status status-info animate-ping"></div>
+                              <div className="status status-info"></div>
+                            </div> AI Aktif Dengan Baik
+                          </div>
+                        )}
+
                         {msg.role === "user" ? "Anda - " : "Asisten Digital - "}
                         <time className="text-white opacity-40">
                          {new Date(msg.timestamp).toLocaleString("id-ID", {
@@ -568,35 +568,65 @@ export default function ChatAI() {
                     <div
                         className={`rounded-[10px] text-left text-[clamp(0.9rem,1vw,1rem)] ${
                         msg.role === "user"
-                            ? "chat-bubble bg-[#ffffff] text-black min-w-[100px]"
-                            : "bg-[transparent] text-[#cccccc] max-w-[100%]"
+                            ? "chat-bubble bg-[#ffffff] w-fit text-[#414141]"
+                            : ""
                         }`}
                     >
-                        {renderMessageContent(msg.content)}
+                        {msg.role === "ai" ? (
+                          <AIMessage 
+                            content={msg.content} 
+                            timestamp={msg.timestamp}
+                            isLatest={i === messages.length - 1}
+                            onTextUpdate={i === messages.length - 1 ? handleTypingUpdate : undefined}
+                            hasTyped={typedMessages.has(i)}
+                            onTypingComplete={() => handleTypingComplete(i)}
+                          />
+                        ) : (
+                          msg.content
+                        )}
                     </div>
                     </motion.div>
                 ))}
 
         {loading && (
                     <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
+                    key="loading-indicator"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                     className="mt-5 flex flex-col items-start"
                     >
-                    <div className="text-white rounded-[10px] p-4 text-left text-[3.5vw] lg:text-[1.1vw] max-w-[90%] lg:max-w-[60%] bg-[#171717]">
-                        <strong className="text-loading">
-                        Membalas...
-                        </strong>
+                    <div className="text-white rounded-[10px] p-4 text-left text-[3.5vw] lg:text-[1.1vw] max-w-[90%] lg:max-w-[60%] bg-transparent">
+                    <div className="flex flex-col">
+                        <div className="text-[clamp(0.6rem,1vw,0.9rem)]">
+                          <div className="status status-success animate-bounce"></div> Sedang Membalas
+                        </div>
+                        <span className="loading loading-infinity text-success loading-xl"></span>
+                      </div>
                     </div>
                     </motion.div>
                 )}
-
-                <div ref={bottomRef} />
                 </div>
+
+                {/* Scroll to bottom button (muncul saat user scroll up) */}
+                {isUserScrolling && (
+                  <motion.button
+                    key="scroll-to-bottom"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    onClick={() => forceScrollToBottom()}
+                    className="fixed bottom-32 right-8 background-gradient text-white p-3 rounded-full shadow-lg transition-all duration-200 z-10"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </motion.button>
+                )}
          </div>
 
-      {/* INPUT */}
         <div className="fixed w-[80%] left-[50%] translate-x-[-50%] bottom-10">
         <form onSubmit={handleSubmit} className="relative">
           <div className="bg-white rounded-xl flex items-center overflow-hidden">

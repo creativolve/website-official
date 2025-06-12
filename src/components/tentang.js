@@ -11,7 +11,7 @@ export default function Tentang(){
 
     return(
         <>
-        <div
+        <section
         id="tentang"
         className="
         container w-full h-[150vh] flex justify-center items-center my-20 lg:h-[120vh]
@@ -44,7 +44,7 @@ export default function Tentang(){
                     <Button name='Tentang kami' href='/tentang'/>
                 </div>
             </div>
-        </div>
+        </section>
         </>
     )
 }

@@ -123,7 +123,13 @@ export default async function Tentang() {
         </p>
       </main>
 
-      <Footer />
+      <div
+      className="
+        px-[40px]
+        md:px-[100px]
+        lg:px-[150px] lg:py-[20px]">
+        <Footer />
+      </div>
     </>
   );
 }

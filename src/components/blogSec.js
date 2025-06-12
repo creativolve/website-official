@@ -85,7 +85,7 @@ export default function Blogsec(){
                             `}
                         />
 
-                        <h2 className="text-[clamp(1rem,3vw,1.3rem)] font-semibold">
+                        <h2 className="text-[clamp(1rem,3vw,1.3rem)] text-white font-semibold">
                             Konten Video
                         </h2>
                         <div className="image relative aspect-video rounded-[15px]  overflow-hidden">
@@ -108,7 +108,7 @@ export default function Blogsec(){
                     className="
                     w-full h-fit bg-[#21252C] rounded-[15px] p-[15px] flex flex-col gap-4
                     ">
-                        <h2 className="text-[clamp(1rem,3vw,1.3rem)] font-semibold">
+                        <h2 className="text-[clamp(1rem,3vw,1.3rem)] font-semibold text-white">
                             Blog Artikel
                         </h2>
                         <div className="image relative aspect-video rounded-[15px]  overflow-hidden">

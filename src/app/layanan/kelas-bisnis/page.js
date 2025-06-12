@@ -86,7 +86,7 @@ export default function LayananUmum(){
         <Button name='Pusat Layanan!' href='/pusat-layanan'/>
 
       </main>
-<div
+      <div
       className="
         px-[40px]
         md:px-[100px]

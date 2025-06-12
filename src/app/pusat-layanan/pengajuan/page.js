@@ -4,6 +4,7 @@
 import { useState } from "react"
 import FormDiskusi from "@/components/formDiskusi";
 import FormProject from "@/components/formProyek";
+import NavPusatLayanan from "@/components/navPusLay";
 
 
 export default function Pengajuan(){
@@ -12,14 +13,16 @@ export default function Pengajuan(){
     return(
 
         <>
+          <NavPusatLayanan page="pengajuan"/>
         {/* Navigasi Form */}
-        <div className="flex absolute left-[50%] translate-x-[-50%] gap-4 py-7 text-white text-[clamp(0.6rem,0.8vw,0.9rem)] w-[80%] justify-center items-center">
+        <div className="flex fixed top-0 lg:top-0 left-[58%] translate-x-[-50%] gap-4 py-7 text-white text-[clamp(0.6rem,0.8vw,0.9rem)] w-[80%] justify-center items-center
+        md:left-[50%]">
           <span
             onClick={() => setActiveForm("diskusi")}
             className={`cursor-pointer hover:underline  
             ${
               activeForm === "diskusi"
-                ? "font-bold text-white"
+                ? "font-bold text-[#00ccff]"
                 : "font-reguler text-[#cccccc]"
             }
             `}
@@ -32,25 +35,12 @@ export default function Pengajuan(){
             className={`cursor-pointer hover:underline  
                       ${
                         activeForm === "project"
-                          ? "font-bold text-[#ffffff]"
+                          ? "font-bold text-[#00ccff]"
                           : "font-reguler text-[#cccccc]"
                       }
                       `}
           >
             Pengajuan Project
-          </span>
-          |
-          <span
-            onClick={() => setActiveForm("project")}
-            className={`cursor-pointer hover:underline  
-                      ${
-                        activeForm === "project"
-                          ? "font-bold text-[#ffffff]"
-                          : "font-reguler text-[#cccccc]"
-                      }
-                      `}
-          >
-            Pengajuan Keluhan
           </span>
         </div>
 

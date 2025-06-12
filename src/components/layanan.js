@@ -7,7 +7,7 @@ export default function Layanan(){
 
     return(
         <>
-        <div 
+        <section 
         id="layanan"
         className="
         w-full h-[180vh] flex items-center
@@ -34,7 +34,7 @@ export default function Layanan(){
                     <Card index={7}/>
                 </div>
             </div>
-        </div>
+        </section>
         </>
     )
 }
