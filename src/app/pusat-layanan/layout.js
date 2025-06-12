@@ -20,7 +20,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://creativolve.agency/og-image.jpg",
+        url: "https://creativolve.agency/og-asistendigital.jpg",
         width: 1200,
         height: 630,
         alt: "Creativolve Agency",
