@@ -10,144 +10,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 import Link from "next/link";
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import { debounce } from 'lodash';
 
-// Hook untuk efek mengetik dengan smart auto scroll
-const useTypingEffect = (text, speed = 30, onTextUpdate = null, onTypingComplete = null) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
 
-  useEffect(() => {
-    if (!text) {
-      setDisplayedText('');
-      return;
-    }
-
-    setIsTyping(true);
-    setDisplayedText('');
-    
-    let currentIndex = 0;
-    const timer = setInterval(() => {
-      if (currentIndex < text.length) {
-        const newText = text.slice(0, currentIndex + 1);
-        setDisplayedText(newText);
-        
-        // Trigger callback untuk auto scroll setiap beberapa karakter
-        if (onTextUpdate && currentIndex % 10 === 0) {
-          onTextUpdate(newText);
-        }
-        
-        currentIndex++;
-      } else {
-        setIsTyping(false);
-        clearInterval(timer);
-        // Final callback saat selesai mengetik
-        if (onTextUpdate) {
-          onTextUpdate(text);
-        }
-        if (onTypingComplete) {
-          onTypingComplete();
-        }
-      }
-    }, speed);
-
-    return () => clearInterval(timer);
-  }, [text, speed, onTextUpdate, onTypingComplete]);
-
-  return { displayedText, isTyping };
-};
-
-// Hook untuk smart auto scroll
-const useSmartAutoScroll = (containerRef) => {
-  const [isUserScrolling, setIsUserScrolling] = useState(false);
-  const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
-  const scrollTimeoutRef = useRef(null);
-  const lastScrollTop = useRef(0);
-
-  // Fungsi untuk cek apakah user sedang scroll manual
-  const handleScroll = useCallback(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const { scrollTop, scrollHeight, clientHeight } = container;
-    const isAtBottom = scrollHeight - scrollTop - clientHeight < 50;
-    
-    // Jika user scroll ke atas dari posisi terakhir, anggap sebagai manual scroll
-    if (scrollTop < lastScrollTop.current && !isAtBottom) {
-      setIsUserScrolling(true);
-      setShouldAutoScroll(false);
-    }
-    
-    // Jika user scroll kembali ke bawah, aktifkan auto scroll
-    if (isAtBottom && isUserScrolling) {
-      setIsUserScrolling(false);
-      setShouldAutoScroll(true);
-    }
-    
-    lastScrollTop.current = scrollTop;
-
-    // Reset status user scrolling setelah 2 detik tidak ada aktivitas scroll
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
-    }
-    
-    scrollTimeoutRef.current = setTimeout(() => {
-      if (isAtBottom) {
-        setIsUserScrolling(false);
-        setShouldAutoScroll(true);
-      }
-    }, 2000);
-  }, [isUserScrolling, containerRef]);
-
-  // Fungsi untuk smooth scroll ke bawah
-  const scrollToBottom = useCallback((behavior = 'smooth') => {
-    const container = containerRef.current;
-    if (!container || !shouldAutoScroll) return;
-
-    const { scrollHeight, clientHeight } = container;
-    container.scrollTo({
-      top: scrollHeight - clientHeight,
-      behavior: behavior
-    });
-  }, [shouldAutoScroll]);
-
-  // Fungsi untuk force scroll (untuk pesan baru)
-  const forceScrollToBottom = useCallback((behavior = 'smooth') => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const { scrollHeight, clientHeight } = container;
-    container.scrollTo({
-      top: scrollHeight - clientHeight,
-      behavior: behavior
-    });
-    
-    // Reset status untuk auto scroll
-    setIsUserScrolling(false);
-    setShouldAutoScroll(true);
-  }, []);
-
-  return {
-    isUserScrolling,
-    shouldAutoScroll,
-    scrollToBottom,
-    forceScrollToBottom,
-    handleScroll
-  };
-};
-
-// Komponen untuk menampilkan pesan AI dengan efek mengetik
-const AIMessage = ({ content, timestamp, isLatest, onTextUpdate, hasTyped, onTypingComplete }) => {
-  const { displayedText, isTyping } = useTypingEffect(
-    (isLatest && !hasTyped) ? content : "", 
-    30, 
-    (isLatest && !hasTyped) ? onTextUpdate : null,
-    (isLatest && !hasTyped) ? onTypingComplete : null
-  );
-  
-  // Jika pesan sudah pernah di-type atau bukan pesan terbaru, tampilkan langsung
-  const textToShow = (isLatest && !hasTyped) ? displayedText : content;
-
+// Simplified AIMessage component without typing effects
+const AIMessage = ({ content, timestamp }) => {
   // Function untuk parsing dan rendering yang sama seperti sebelumnya
   const escapeHtml = (unsafe) => {
     if (!unsafe || typeof unsafe !== 'string') return '';
@@ -180,6 +48,10 @@ const AIMessage = ({ content, timestamp, isLatest, onTextUpdate, hasTyped, onTyp
       const safeCode = escapeHtml(code.trim());
       return `<pre class="bg-gray-800 text-gray-100 p-4 rounded-lg overflow-x-auto my-4"><code class="language-${safeLang}">${safeCode}</code></pre>`;
     });
+  };
+
+  const parseHorizontalRules = (text) => {
+    return text.replace(/^\s*---\s*$/gm, '<hr class="my-4 border-t border-gray-600">');
   };
 
   const parseInlineCode = (text) => {
@@ -313,16 +185,17 @@ const AIMessage = ({ content, timestamp, isLatest, onTextUpdate, hasTyped, onTyp
 
   const parseMessageContent = (content) => {
     if (!content || typeof content !== 'string') return '';
-
+  
     let formatted = content;
-
+  
+    formatted = parseHorizontalRules(formatted); // Add this line
     formatted = parseCodeBlocks(formatted);
     formatted = parseInlineCode(formatted);
     formatted = parseHeaders(formatted);
     formatted = parseTextFormatting(formatted);
     formatted = formatTextWithLinks(formatted);
     formatted = formatted.replace(/\n/g, '<br>');
-
+  
     return formatted;
   };
 
@@ -344,10 +217,7 @@ const AIMessage = ({ content, timestamp, isLatest, onTextUpdate, hasTyped, onTyp
 
   return (
     <div className="bg-[transparent] text-[#cccccc] max-w-[100%]">
-      {renderMessageContent(textToShow)}
-      {isTyping && (
-        <span className="inline-block w-2 h-5 ml-1 bg-white animate-pulse">|</span>
-      )}
+      {renderMessageContent(content)}
     </div>
   );
 };
@@ -356,20 +226,82 @@ export default function ChatAI() {
     const [question, setQuestion] = useState("");
     const [loading, setLoading] = useState(false);
     const [messages, setMessages] = useState([]);
-    const [typedMessages, setTypedMessages] = useState(new Set()); // Track pesan yang sudah selesai typing
 
     const textareaRef = useRef(null);
     const messagesContainerRef = useRef(null);
     const topRef = useRef(null);
+    const scrollCheckTimeout = useRef(null);
+    const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
+    const isUserScrolling = useRef(false);
 
-    // Gunakan smart auto scroll hook
-    const { 
-      isUserScrolling, 
-      shouldAutoScroll, 
-      scrollToBottom, 
-      forceScrollToBottom, 
-      handleScroll 
-    } = useSmartAutoScroll(messagesContainerRef);
+    const [isUserScrolledUp, setIsUserScrolledUp] = useState(false);
+    const lastScrollPosition = useRef(0);
+
+
+    const checkScrollPosition = useCallback(() => {
+      const container = messagesContainerRef.current;
+      if (!container) return;
+    
+      const { scrollTop, scrollHeight, clientHeight } = container;
+      const isAtBottom = scrollHeight - scrollTop - clientHeight < 10;
+      
+      // Deteksi arah scroll
+      const isScrollingUp = scrollTop < lastScrollPosition.current;
+      
+      setIsUserScrolledUp(!isAtBottom && isScrollingUp);
+      lastScrollPosition.current = scrollTop;
+    }, []);
+    
+    const forceScrollToBottom = useCallback(() => {
+      messagesContainerRef.current?.scrollTo({
+        top: messagesContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+      setIsUserScrolledUp(false);
+    }, []);
+
+    useEffect(() => {
+      const container = messagesContainerRef.current;
+      if (!container) return;
+    
+      container.addEventListener('scroll', checkScrollPosition);
+      return () => container.removeEventListener('scroll', checkScrollPosition);
+    }, [checkScrollPosition]);
+    
+    const handleScroll = useCallback(() => {
+      const container = messagesContainerRef.current;
+      if (!container) return;
+    
+      const { scrollTop, scrollHeight, clientHeight } = container;
+      const isAtBottom = scrollHeight - scrollTop - clientHeight < 10; // 10px threshold
+    
+      setShouldAutoScroll(isAtBottom);
+      isUserScrolling.current = !isAtBottom;
+    }, []);
+    
+    // Auto-scroll instant tanpa timeout
+    useEffect(() => {
+      if (shouldAutoScroll && !isUserScrolling.current) {
+        const container = messagesContainerRef.current;
+        if (container) {
+          container.scrollTop = container.scrollHeight; // Instant scroll tanpa animasi
+        }
+      }
+    }, [messages, shouldAutoScroll]);
+    
+    // Bersihkan timeout saat unmount
+    useEffect(() => {
+      // Simpan timeout dalam variabel lokal
+      scrollCheckTimeout.current = setTimeout(() => {
+        // logika timeout Anda
+      }, 1000);
+    
+      return () => {
+        // Gunakan variabel lokal untuk cleanup
+        const timeout = scrollCheckTimeout.current;
+        clearTimeout(timeout);
+      };
+    }, []);
 
     const handleInput = (e) => {
       const textarea = textareaRef.current;
@@ -379,34 +311,6 @@ export default function ChatAI() {
       }
       setQuestion(e.target.value);
     };
-
-    // Callback untuk typing update dengan throttling
-    const handleTypingUpdate = useCallback((text) => {
-      // Auto scroll terus jalan tanpa memperhatikan user scroll saat typing
-      scrollToBottom();
-    }, [scrollToBottom]);
-
-    // Callback saat typing selesai
-    const handleTypingComplete = useCallback((messageIndex) => {
-      setTypedMessages(prev => new Set([...prev, messageIndex]));
-    }, []);
-
-    // Auto scroll saat ada pesan baru
-    useEffect(() => {
-      if (messages.length > 0) {
-        // Delay sedikit untuk memastikan DOM ter-render
-        setTimeout(() => {
-          forceScrollToBottom();
-        }, 100);
-      }
-    }, [messages.length, forceScrollToBottom]);
-
-    // Scroll to top saat pertama kali load
-    useEffect(() => {
-      if (messages.length === 0) {
-        topRef.current?.scrollIntoView({ behavior: "auto" });
-      }
-    }, [messages.length]);
     
     useEffect(() => {
         const textarea = textareaRef.current;
@@ -465,34 +369,105 @@ export default function ChatAI() {
           });
 
           clearTimeout(timeoutId);
-          const data = await res.json();
 
-          if (res.ok && data) {
-                const aiTimestamp = data.timestamp || new Date().toISOString();
-                
-                setMessages(prev => [...prev, {
-                    role: "ai",
-                    content: sanitizeAIResponse(data.reply),
-                    timestamp: aiTimestamp,
-                    modelUsed: data.modelUsed
-                }]);
-          } else {
-            setMessages(prev => [...prev, {
-                role: "ai",
-                content: "Maaf, terjadi kesalahan dalam memproses permintaan Anda.",
-                timestamp: new Date().toISOString()
-            }]);        
+          if (!res.ok) {
+            throw new Error('Network response was not ok');
           }
+
+          // Handle streaming response
+          const reader = res.body.getReader();
+          const decoder = new TextDecoder();
+          
+          let aiMessageIndex = -1;
+          let aiTimestamp = new Date().toISOString();
+          let modelUsed = '';
+
+          // Add initial AI message placeholder
+          setMessages(prev => {
+            const newMessages = [...prev, {
+              role: "ai",
+              content: "",
+              timestamp: aiTimestamp,
+              modelUsed: ""
+            }];
+            aiMessageIndex = newMessages.length - 1;
+            return newMessages;
+          });
+
+          setLoading(false);
+
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            const chunk = decoder.decode(value);
+            const lines = chunk.split('\n');
+
+            for (const line of lines) {
+              if (line.startsWith('data: ')) {
+                try {
+                  const data = JSON.parse(line.slice(6));
+                  
+                  if (data.type === 'metadata') {
+                    modelUsed = data.modelUsed;
+                    aiTimestamp = data.timestamp;
+                  } else if (data.type === 'content') {
+                    // Update AI message content with streaming text
+                    setMessages(prev => {
+                      const newMessages = [...prev];
+                      if (newMessages[aiMessageIndex]) {
+                        newMessages[aiMessageIndex] = {
+                          ...newMessages[aiMessageIndex],
+                          content: sanitizeAIResponse(data.content),
+                          modelUsed: modelUsed,
+                          timestamp: aiTimestamp
+                        };
+                      }
+                      return newMessages;
+                    });
+                  } else if (data.type === 'complete') {
+                    // Final update with complete message
+                    setMessages(prev => {
+                      const newMessages = [...prev];
+                      if (newMessages[aiMessageIndex]) {
+                        newMessages[aiMessageIndex] = {
+                          ...newMessages[aiMessageIndex],
+                          content: sanitizeAIResponse(data.content),
+                          modelUsed: data.modelUsed,
+                          timestamp: data.timestamp
+                        };
+                      }
+                      return newMessages;
+                    });
+                  } else if (data.type === 'error') {
+                    setMessages(prev => {
+                      const newMessages = [...prev];
+                      if (newMessages[aiMessageIndex]) {
+                        newMessages[aiMessageIndex] = {
+                          ...newMessages[aiMessageIndex],
+                          content: "Terjadi kesalahan dalam memproses permintaan.",
+                          timestamp: new Date().toISOString()
+                        };
+                      }
+                      return newMessages;
+                    });
+                  }
+                } catch (parseError) {
+                  console.error('Error parsing stream data:', parseError);
+                }
+              }
+            }
+          }
+
         } catch (err) {
             console.error('Chat error:', err);
+            setLoading(false);
             setMessages(prev => [...prev, {
                 role: "ai",
                 content: "Koneksi terputus atau terjadi kesalahan jaringan.",
                 timestamp: new Date().toISOString()
             }]);
         }
-
-        setLoading(false);
     };
 
     const sanitizeAIResponse = (content) => {
@@ -512,7 +487,7 @@ export default function ChatAI() {
          <div 
           ref={messagesContainerRef}
           onScroll={handleScroll}
-          className="flex-1 overflow-y-auto lg:p-4 scrollbar-hide no-scrollbar scroll-smooth"
+          className="flex-1 overflow-y-auto lg:p-4 scrollbar-hide no-scrollbar"
         >
 
             <div className="flex flex-col justify-center items-center gap-7">
@@ -536,12 +511,9 @@ export default function ChatAI() {
             </div>
 
                 {messages.map((msg, i) => (
-                    <motion.div
+                    <div
                     key={`${msg.timestamp}-${i}`}
-                    initial={{ opacity: 0, y: 20 }} 
-                    animate={{ opacity: 1, y: 0 }} 
-                    transition={{ duration: 0.3, ease: "easeOut" }} 
-                    className={`mt-10 w-full flex flex-col overflow-hidden ${
+                    className={`mt-10 w-full px-3 flex flex-col overflow-hidden ${
                         msg.role === "user" ? "chat chat-end" : "items-start"
                     }`}
                     >
@@ -549,7 +521,7 @@ export default function ChatAI() {
                     {msg.role !== 'user' && (
                           <div className="text-[clamp(0.6rem,1vw,0.9rem)] text-[#c5c5c5]">
                             <div className="inline-grid *:[grid-area:1/1]">
-                              <div className="status status-info animate-ping"></div>
+                            <div className="status status-info animate-ping"></div>
                               <div className="status status-info"></div>
                             </div> AI Aktif Dengan Baik
                           </div>
@@ -576,25 +548,17 @@ export default function ChatAI() {
                           <AIMessage 
                             content={msg.content} 
                             timestamp={msg.timestamp}
-                            isLatest={i === messages.length - 1}
-                            onTextUpdate={i === messages.length - 1 ? handleTypingUpdate : undefined}
-                            hasTyped={typedMessages.has(i)}
-                            onTypingComplete={() => handleTypingComplete(i)}
                           />
                         ) : (
                           msg.content
                         )}
                     </div>
-                    </motion.div>
+                    </div>
                 ))}
 
         {loading && (
-                    <motion.div
+                    <div
                     key="loading-indicator"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
                     className="mt-5 flex flex-col items-start"
                     >
                     <div className="text-white rounded-[10px] p-4 text-left text-[3.5vw] lg:text-[1.1vw] max-w-[90%] lg:max-w-[60%] bg-transparent">
@@ -605,26 +569,25 @@ export default function ChatAI() {
                         <span className="loading loading-infinity text-success loading-xl"></span>
                       </div>
                     </div>
-                    </motion.div>
+                    </div>
                 )}
                 </div>
-
-                {/* Scroll to bottom button (muncul saat user scroll up) */}
-                {isUserScrolling && (
-                  <motion.button
-                    key="scroll-to-bottom"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    onClick={() => forceScrollToBottom()}
-                    className="fixed bottom-32 right-8 background-gradient text-white p-3 rounded-full shadow-lg transition-all duration-200 z-10"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                    </svg>
-                  </motion.button>
-                )}
+                {isUserScrolledUp && (
+  <motion.button
+    key="scroll-to-bottom"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: 20 }}
+    transition={{ duration: 0.2, ease: "easeOut" }}
+    onClick={forceScrollToBottom}
+    className="fixed bottom-32 right-8 background-gradient text-white p-3 rounded-full shadow-lg z-50 hover:shadow-xl transition-all"
+    aria-label="Scroll to bottom"
+  >
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </motion.button>
+)}
          </div>
 
         <div className="fixed w-[80%] left-[50%] translate-x-[-50%] bottom-10">

@@ -1,12 +1,11 @@
+import MainServer from "@/components/mainServer";
 
-
-import Main from "@/components/main";
 
 export default function Home() {
 
   return (
     <>
-    <Main/>
+    <MainServer/>
     </>
   );
 }

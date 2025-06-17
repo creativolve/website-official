@@ -56,15 +56,21 @@ const headingList = [
         {
       section: '',
       beforeSpan: 'Tanyakan apapun kepada ',
-      span: ' Asisten Digital Creativolve',
+      span: ' Creativolve Operations & Response Assistant (C.O.R.A)',
       afterSpan: '✨'
+    },
+    {
+      section: '',
+      beforeSpan: ' ',
+      span: ' Eksplorasi ',
+      afterSpan: 'Wawasan Terbaru seputar Bisnis, Branding, dan Teknologi Digital'
     },
   ];
 
   
-export default function Heading({index, paragraft = 'left'}) {
+export default function Heading({index, paragraft = 'left', font = 'semibold'}) {
     const item = headingList[index];
-    const isSubHeading = index === 5 || index === 6 || index === 8;
+    const isSubHeading = index === 5 || index === 6 || index === 8 || index === 9;
 
     if (!item) return null;
 
@@ -73,7 +79,7 @@ export default function Heading({index, paragraft = 'left'}) {
         <>
         <h2
         className={`
-        font-semibold text-white text-${paragraft}
+        font-${font} text-white text-${paragraft}
         ${isSubHeading 
           ? 'text-[clamp(1.2rem,2vw,1.5rem)] leading-[clamp(1.4rem,3vw,2.4rem)] text-shadow-[0_0_20px_#00E5FF]' 
           : 'text-[clamp(2rem,5vw,2.5rem)] leading-[clamp(2.2rem,5.2vw,2.5rem)] heading-shadow'}

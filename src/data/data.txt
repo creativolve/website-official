@@ -5,31 +5,31 @@ Berikut adalah penyusunan data yang rapi tanpa mengubah isi konten:
 - Tentang:  
   Creativolve Agency adalah agensi marketing dan branding yang menyediakan solusi inovatif untuk digital branding dan strategi bisnis masa kini. Kami berfokus pada penerapan teknologi terkini untuk mengembangkan identitas digital yang unik dan relevan dengan audiens yang tepat. Creativolve Agency didirikan pada 19 Januari 2025 di Bogor, walaupun belum memiliki kantor fisik.  
 
----
+----------------------------------
 
 **KONSEP UTAMA AGENSI**  
 - Konsep Utama: Budget-Based Customization  
   Menyesuaikan layanan sesuai anggaran klien tanpa mengurangi kualitas, memberikan solusi yang efisien dan tepat sasaran.  
 
----
+----------------------------------
 
 **NILAI UTAMA**  
 Creativolve memiliki pondasi yang menjadi nilai utama yaitu, sebagai agensi yang Kolaboratif, kami berkomitmen menyediakan solusi efektif sesuai budget dengan kualitas unggul dan berkomitmen menjadi agensi digital berbasis teknologi yang andal dan inovatif.  
 
----
+----------------------------------
 
 **PONDASI AGENSI**  
 1. Kolaborasi  
 2. Budget-based Customization  
 3. Teknologi  
 
----
+----------------------------------
 
 **VISI AGENSI**  
 - Visi:  
   Menjadi pusat solusi bisnis inovatif berbasis kreativitas digital untuk mendorong evolusi dan pertumbuhan bisnis, serta menjadi agen transformasi digital yang mempercepat keberhasilan klien kami.  
 
----
+----------------------------------
 
 **MISI AGENSI**  
 - Misi:  
@@ -41,7 +41,7 @@ Creativolve memiliki pondasi yang menjadi nilai utama yaitu, sebagai agensi yang
   6. Membangun platform digital yang mendukung pertumbuhan bisnis berkelanjutan, dengan fokus pada pengoptimalan proses dan keberlanjutan.  
   7. Memberikan edukasi tentang digital branding dan strategi bisnis modern untuk membantu klien beradaptasi dengan tren dan teknologi terbaru.  
 
----
+----------------------------------
 
 **LAYANAN AGENSI**  
 Kami memiliki 2 kategori layanan yaitu layanan kategori bisnis dan umum:  
@@ -107,12 +107,14 @@ Kami memiliki 2 kategori layanan yaitu layanan kategori bisnis dan umum:
 1. **Gdev Id:**  
    Kita bukanlah satu kesatuan kita adalah suatu intensitas yang berbeda. Gdev adalah sebuah komunitas yang kedepannya direncanakan menjadi sebuah startup teknologi dan Creativolve Agency adalah sebuah agensi digital, namun pengembangan teknologi di Agensi ini akan bekerja sama dengan Gdev Id kedepannya.  
 
+Kita membuka hubungan PARTNERSHIP ataupun kolaborasi bagi para klien ataupun project provider. sesuai dengan visi dan misi agensi kita bukan akan hanya menyaingi agensi lain tapi juga berkolaborasi untuk membangun evolusi agensi digital kreatif dan teknologi.
+
 ---
 
 **OPERASIONAL AGENSI**  
 Creativolve Agency beroperasi secara full remote dengan tim yang tersebar di berbagai lokasi, memungkinkan fleksibilitas dan kolaborasi lintas batas. Namun, Bogor tetap menjadi pusat pijakan dan semangat pertumbuhan kami, sebagai tempat di mana visi, nilai, dan inovasi kami terus bertumbuh. Dari Bogor, kami membangun solusi digital yang berdampak luas, tanpa batas ruang. Untuk saat ini agensi belum melayani klien luar Negeri namun kita akan memaksimalkan pelayanan di negara Indonesia.  
 
-Creativolve Agency baru akan mulai berjalan secara publik di bulan Juli 2025 kini agensi sedang dalam tahap pembangunan portofolio dan semua sistem digitalnya, namun walaupun belum berjalan secara publik kita sudah memiliki kerja sama dengan beberapa mitra/freelancer.  
+Creativolve Agency baru akan mulai berjalan secara publik di bulan Juli 2025 kini agensi sedang dalam tahap pembangunan portofolio dan semua sistem digitalnya, namun walaupun belum berjalan secara publik kita sudah memiliki kerja sama dengan beberapa mitra/freelancer sebagai project provider.  
 
 Kami sedang merencanakan operasional All In One Digital System melalui website kami sebagai pusat seluruh aktivitas dan komunikasi. Ke depannya, semua data atau informasi terkait project klien seperti kontrak, invoice, track progres akan tersimpan dan dapat diakses secara eksklusif oleh klien menggunakan client key khusus, yang juga terintegrasi dengan sistem pembayaran. Dengan pendekatan ini, kami memastikan kemudahan, keamanan, dan transparansi penuh dalam setiap tahap kerja sama.  
 
@@ -144,8 +146,8 @@ Jika ingin mengadukan masalah terhadap pelanggaran, ketidaknyamanan dan segala b
 ---
 
 **FOUNDERS**  
-- **Founder:** M Adnan Fauzan Maulana - Developer dan Business Development  
-- **Co-Founder:** Khalif Natawijaya - Digital Branding Specialist  
+- **Founder:** M. Adnan Fauzan Maulana - Developer dan Business Development  
+- **Co-Founder:** M. Khalif Natawijaya - Digital Branding Specialist  
 
 ---
 
@@ -158,8 +160,8 @@ Dalam pengembangan teknologi ini, kami tidak menjalin kerja sama pengembangan mo
 
 **Produk Penerapan Teknologi Kami:**  
 
-1. **Asisten Digital**  
-   Asisten Digital merupakan sebuah Smart ChatBot yang didukung oleh model Llama 4 Maverick, salah satu model terbaik dari Meta dengan lisensi ketat. Melalui API inference Groq Cloud, kami memiliki legalitas penuh untuk menggunakan model ini dalam sistem kami. Asisten Digital ini mengusung kemampuan Retrieval-Augmented Generation (RAG), memungkinkan chatbot memberikan jawaban yang akurat, relevan, dan kontekstual berdasarkan data internal Creativolve.  
+1. **Creativolve Operations & Response Assistant (C.O.R.A)**  
+   Creativolve Operations & Response Assistant (C.O.R.A) merupakan sebuah Smart ChatBot yang didukung oleh model Llama 4 Maverick, salah satu model terbaik dari Meta dengan lisensi ketat. Melalui API inference Groq Cloud, kami memiliki legalitas penuh untuk menggunakan model ini dalam sistem kami. Asisten Digital ini mengusung kemampuan Retrieval-Augmented Generation (RAG), memungkinkan chatbot memberikan jawaban yang akurat, relevan, dan kontekstual berdasarkan data internal Creativolve.  
 
-2. **Form Asisten Digital**  
-   Program ini dirancang untuk membantu klien menyusun brief project atau mengajukan diskusi yang tepat dan terstruktur, sehingga memudahkan proses pertimbangan dan pengambilan keputusan di tim kami. Form Asisten Digital ini juga menggunakan model Llama 4 Maverick dari Groq Cloud, sama seperti Asisten Digital chatbot, untuk memberikan pengalaman interaktif dan cerdas.
+2. **BRIFAI**  
+   Program ini dirancang untuk membantu klien menyusun brief project dengan menjawab pertanyanan yang ada di form dikusi dan proyek menjadri lebih tepat dan terstruktur, sehingga memudahkan proses pertimbangan dan pengambilan keputusan di tim kami. BRIFAI ini juga menggunakan model Llama 4 Maverick dari Groq Cloud, sama seperti Asisten Digital chatbot, untuk memberikan pengalaman interaktif dan cerdas.

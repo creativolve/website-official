@@ -75,18 +75,76 @@ export async function POST(req) {
     }
 
     const modelReply = completion.choices[0].message.content;
-    const reply = modelReply;
 
     conversationHistory.push({
       role: "assistant",
-      content: reply,
+      content: modelReply,
     });
 
-    return Response.json({
-      reply: reply,
-      modelUsed: completion.model,
-      timestamp: new Date().toISOString(),
+    // Create streaming response with typing animation
+    const encoder = new TextEncoder();
+    const stream = new ReadableStream({
+      async start(controller) {
+        try {
+          // Send initial metadata
+          const metadata = {
+            type: 'metadata',
+            modelUsed: completion.model,
+            timestamp: new Date().toISOString(),
+          };
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify(metadata)}\n\n`));
+
+          // Simulate typing by sending characters with delay
+          const words = modelReply.split(' ');
+    let currentText = '';
+    
+    for (let i = 0; i < words.length; i++) {
+      const word = words[i];
+      currentText += (i > 0 ? ' ' : '') + word;
+      
+      const chunk = {
+        type: 'content',
+        content: currentText,
+        isComplete: i === words.length - 1
+      };
+      
+      controller.enqueue(encoder.encode(`data: ${JSON.stringify(chunk)}\n\n`));
+      
+      // Percepat delay antar kata (50-150ms)
+      if (i < words.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 20 + Math.random() * 100));
+      }
+    }
+
+          // Send completion signal
+          const completion_signal = {
+            type: 'complete',
+            content: modelReply,
+            modelUsed: completion.model,
+            timestamp: new Date().toISOString(),
+          };
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify(completion_signal)}\n\n`));
+          
+          controller.close();
+        } catch (error) {
+          const errorChunk = {
+            type: 'error',
+            error: error.message
+          };
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify(errorChunk)}\n\n`));
+          controller.close();
+        }
+      }
     });
+
+    return new Response(stream, {
+      headers: {
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+      },
+    });
+
   } catch (error) {
     console.error("❌ERROR:", error);
     return new Response(
@@ -94,8 +152,8 @@ export async function POST(req) {
         error: "Terjadi kesalahan sistem",
         details: process.env.NODE_ENV === 'development' ? error.message : "Internal server error",
         timestamp: new Date().toISOString(),
-      },
-      { status: 500 })
+      }),
+      { status: 500 }
     );
   }
 }

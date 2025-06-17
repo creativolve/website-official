@@ -9,7 +9,7 @@ const Button = ({ name, href, target = '_self', onClick, style = 'solid'}) => {
         <button
         onClick={onClick}
           data-nonsnipet
-          className={`
+          className={` z-[500]
             ${style === 'solid'
               ? 'border-transparent background-gradient text-black'
               : 'border-[#00E5FF] bg-transparent'

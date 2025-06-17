@@ -7,9 +7,7 @@ import Link from "next/link";
 export default async function Tentang() {
   return (
     <>
-    <BackButton href="/pusat-layanan/asisten-digital"/>
-
-
+      <BackButton href="/pusat-layanan/asisten-digital" />
 
       <header className="h-[60vh] flex justify-center items-center w-[80vw] m-auto lg:h-[100vh] lg:w-[60vw]">
         <Image
@@ -20,7 +18,7 @@ export default async function Tentang() {
           quality={100}
           alt="Thumbnail"
           className="w-full rounded-2xl object-cover object-left 
-          shadow-[0px_0px_20px_#108FFF,0px_0px_20px_#00F6FF]
+          shadow-[0px_0px_20px_#108FFF,0px_0px_20px_#00F6FF] pointer-events-none select-none
           h-[30vh] lg:h-auto"
         />
       </header>
@@ -47,43 +45,56 @@ export default async function Tentang() {
             agensi kreatif digital pertama di Bogor
           </strong>{" "}
           menerapkan sistem{" "}
-          <strong className="text-white">Retrieval-Augmented Generation (RAG)</strong>{" "}
+          <strong className="text-white">
+            Retrieval-Augmented Generation (RAG)
+          </strong>{" "}
           berbasis{" "}
           <strong className="text-white">
             model LLaMA 4 Maverick melalui Groq Cloud
           </strong>{" "}
           dalam bentuk{" "}
-          <strong className="text-white">Asisten Digital Creativolve 1.0</strong>,
-          sebuah solusi cerdas yang dirancang untuk memahami dan merespons
+          <strong className="text-white">
+            Asisten Digital Creativolve 1.0
+          </strong>
+          , sebuah solusi cerdas yang dirancang untuk memahami dan merespons
           kebutuhan klien secara cepat, empatik, dan relevan.
         </p>
 
         <p>
-          Sistem ini memungkinkan kami menghadirkan layanan pelanggan cerdas dan empatik,
-          yang tidak hanya memahami pertanyaan klien tetapi juga mengambil data relevan
-          dari basis pengetahuan internal Creativolve menghasilkan jawaban yang tepat,
-          kontekstual, dan konsisten dengan identitas brand kami.
+          Sistem ini memungkinkan kami menghadirkan layanan pelanggan cerdas dan
+          empatik, yang tidak hanya memahami pertanyaan klien tetapi juga
+          mengambil data relevan dari basis pengetahuan internal Creativolve
+          menghasilkan jawaban yang tepat, kontekstual, dan konsisten dengan
+          identitas brand kami.
         </p>
 
         <p>
-          Dengan pendekatan ini, Creativolve tidak hanya memberikan pelayanan otomatisasi,
-          tetapi juga membangun interaksi digital yang manusiawi dan berbasis solusi nyata,
-          menjadi pelopor dalam era pelayanan berbasis AI di Bogor.
+          Dengan pendekatan ini, Creativolve tidak hanya memberikan pelayanan
+          otomatisasi, tetapi juga membangun interaksi digital yang manusiawi
+          dan berbasis solusi nyata, menjadi pelopor dalam era pelayanan
+          berbasis AI di Bogor.
         </p>
 
         <p>Berikut adalah objektif utama dari Asisten Digital Creativolve:</p>
 
         <ul>
           <li>
-            <strong className="text-white">Memberikan Solusi yang Relevan:</strong>{" "}
-            Menangkap inti masalah dari klien dan menawarkan solusi langsung dari layanan kami.
+            <strong className="text-white">
+              Memberikan Solusi yang Relevan:
+            </strong>{" "}
+            Menangkap inti masalah dari klien dan menawarkan solusi langsung
+            dari layanan kami.
           </li>
           <li>
-            <strong className="text-white">Meningkatkan Pengalaman Pelanggan:</strong>{" "}
+            <strong className="text-white">
+              Meningkatkan Pengalaman Pelanggan:
+            </strong>{" "}
             Interaksi yang ramah dan empatik seperti diskusi dengan konsultan.
           </li>
           <li>
-            <strong className="text-white">Menyediakan Informasi yang Akurat:</strong>{" "}
+            <strong className="text-white">
+              Menyediakan Informasi yang Akurat:
+            </strong>{" "}
             Berdasarkan data layanan internal Creativolve.
           </li>
           <li>
@@ -91,7 +102,9 @@ export default async function Tentang() {
             Jawaban cepat tanpa menunggu support manual.
           </li>
           <li>
-            <strong className="text-white">Memahami Kebutuhan Secara Personal:</strong>{" "}
+            <strong className="text-white">
+              Memahami Kebutuhan Secara Personal:
+            </strong>{" "}
             Analisis cerdas untuk respons personal.
           </li>
           <li>
@@ -103,31 +116,34 @@ export default async function Tentang() {
             Menjawab pertanyaan umum secara otomatis.
           </li>
           <li>
-            <strong className="text-white">Mendukung Inovasi:</strong>{" "}
-            Langkah awal membangun sistem pelayanan AI masa depan.
+            <strong className="text-white">Mendukung Inovasi:</strong> Langkah
+            awal membangun sistem pelayanan AI masa depan.
           </li>
         </ul>
 
         <p>
           Dengan dukungan teknologi tercanggih, Asisten Digital Creativolve
           menjadi titik temu antara kecanggihan AI dan kepekaan manusia.
-          Teknologi yang hebat adalah yang memahami, membantu, dan memberi dampak positif.
+          Teknologi yang hebat adalah yang memahami, membantu, dan memberi
+          dampak positif.
         </p>
 
         <p>
           <i>
             Semua model AI yang digunakan melalui Groq Cloud dilisensikan resmi,
             dan data diproses secara internal tanpa dibagikan ke pihak ketiga.
-            Ini memastikan keamanan, legalitas, dan etika penggunaan AI untuk klien kami.
+            Ini memastikan keamanan, legalitas, dan etika penggunaan AI untuk
+            klien kami.
           </i>
         </p>
       </main>
 
       <div
-      className="
+        className="
         px-[40px]
         md:px-[100px]
-        lg:px-[150px] lg:py-[20px]">
+        lg:px-[150px] lg:py-[20px]"
+      >
         <Footer />
       </div>
     </>

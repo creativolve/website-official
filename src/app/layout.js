@@ -3,7 +3,9 @@
   import { Montserrat } from "next/font/google";
   import "@/css/globals.css";
   import Script from "next/script";
-  import ClientWrapper from "@/components/clientParalax";
+  import { LenisProvider } from '@/components/lenis-provider';
+  
+
 
   const montserrat = Montserrat({
     weight: ["400", "500", "600", "700"],
@@ -48,6 +50,9 @@
   };
 
   export default function RootLayout({ children }) {
+
+    
+
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -104,9 +109,10 @@
           </Script>
         </head>
         <body className={`${montserrat.className} relative antialiased bg-[#17181a] min-h-screen`}>
-        <ClientWrapper>
+
+        <LenisProvider>
           {children}
-        </ClientWrapper>
+        </LenisProvider>
         </body>
       </html>
     );

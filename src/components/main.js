@@ -17,7 +17,7 @@ const PusatLaySec = dynamic(() => import("./pusatLaySec"), { ssr: true });
 const Footer = dynamic(() => import("./footer"), { ssr: true });
 const Loader = dynamic(() => import("./load"), { ssr: false });
 
-export default function Main() {
+export default function Main({posts}) {
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -56,7 +56,7 @@ export default function Main() {
                                   src='/images/hero_section/circle.png'
                                   width={500}
                                   height={500}
-                                  quality={80}
+                                  quality={40}
                                   priority
                                   alt="Circle"
                                   className="top-[480px] filter drop-shadow-[0_0_40px_#00E5FF] translate-y-[20%] w-[50vw] pointer-events-none select-none  right-0 absolute
@@ -94,7 +94,7 @@ export default function Main() {
         </FadeInWhenVisible>
 
         <FadeInWhenVisible delay={0.5}>
-          <BlogSec />
+          <BlogSec posts={posts} />
         </FadeInWhenVisible>
 
         <FadeInWhenVisible delay={0.6}>

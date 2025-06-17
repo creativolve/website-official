@@ -58,6 +58,8 @@ export default function Card({ index }) {
 
         md:w-[37vw]
         lg:w-[18vw]
+
+        hover:scale-[1.05] transition-transform ease-in-out duration-300
         "
       >
         <Image
@@ -65,9 +67,9 @@ export default function Card({ index }) {
           width={300}
           height={300}
           priority
-          quality={75}
+          quality={40}
           alt="lightning"
-          className={`absolute  w-[500px] opacity-[0.7] blur-2xl select-none pointer-events-none
+          className={`absolute  w-[500px] opacity-[0.7] blur-2xl pointer-events-none select-none
             ${
                 serviceSection
                 ? 'bottom-[-10vw] right-[-10vw]'
