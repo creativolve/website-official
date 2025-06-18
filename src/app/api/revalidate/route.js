@@ -20,7 +20,7 @@ export async function POST(req) {
     }
 
     const { 
-      tags = ['notion-all'], 
+      tags = ['notion-all', `post-${pageId}`], 
       paths = [],
       type = 'tag' // 'tag', 'path', or 'both'
     } = body;
@@ -38,12 +38,11 @@ export async function POST(req) {
     if (type === 'tag' || type === 'both') {
       try {
         const tagPromises = tags.map(async (tag) => {
-          await revalidateTag(tag);
-          console.log(`✅ Tag revalidated: ${tag}`);
-          return tag;
-        });
-        
-        results.revalidatedTags = await Promise.all(tagPromises);
+            await revalidateTag(tag);
+            console.log(`✅ Tag revalidated: ${tag}`);
+            return tag;
+          });
+          results.revalidatedTags = await Promise.all(tagPromises);
       } catch (error) {
         console.error("❌ Error revalidating tags:", error);
         return NextResponse.json({

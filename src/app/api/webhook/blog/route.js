@@ -83,6 +83,8 @@ export async function POST(req) {
     const eventType = body.type;
     const eventData = body.data;
 
+    const pageId = eventData?.id || eventData?.page_id || eventData?.object?.id;
+
     if (!eventType || !eventData) {
       console.log("⚠️ Payload tidak lengkap:", body);
       return new Response(JSON.stringify({ 
@@ -94,15 +96,17 @@ export async function POST(req) {
 
     console.log("📦 Event diterima:", {
       type: eventType,
-      pageId: eventData.id,
+      pageId,
+      fullEventData: eventData,
       timestamp: new Date().toISOString()
     });
+    
 
     // Handle berbagai tipe event
     await handleNotionEvent(eventType, eventData);
 
     // ✅ STEP 4: Trigger cache revalidation
-    await triggerRevalidation();
+    await triggerRevalidation(pageId);
 
     return new Response(JSON.stringify({
       success: true,
@@ -158,15 +162,23 @@ async function handleNotionEvent(eventType, eventData) {
 }
 
 // Fungsi untuk trigger revalidation
-async function triggerRevalidation() {
+async function triggerRevalidation(pageId) {
   try {
     if (!process.env.REVALIDATE_SECRET) {
       console.warn("⚠️ REVALIDATE_SECRET tidak ditemukan, skip revalidation");
       return;
     }
 
-    const revalidateUrl = `${process.env.NEXTAUTH_URL || 'https://creativolve.agency'}/api/revalidate`;
+    const tags = ["notion-all", "notion-pages", "notion-database"];
     
+    if (pageId) {
+      tags.push(`post-${pageId}`);
+    } else {
+      console.warn("⚠️ pageId tidak tersedia, hanya merevalidate tag global");
+    }
+
+    const revalidateUrl = `${process.env.NEXTAUTH_URL || 'https://creativolve.agency'}/api/revalidate`;
+
     const res = await fetch(revalidateUrl, {
       method: "POST",
       headers: {
@@ -174,7 +186,7 @@ async function triggerRevalidation() {
         "x-secret": process.env.REVALIDATE_SECRET,
       },
       body: JSON.stringify({ 
-        tags: ["notion-all", "notion-pages", "notion-database"] 
+        tags 
       }),
     });
 

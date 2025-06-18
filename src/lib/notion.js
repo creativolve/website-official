@@ -1,4 +1,5 @@
   import { Client } from "@notionhq/client";
+  import { unstable_cache } from 'next/cache';
 
   const notion = new Client({ auth: process.env.BLOG_API_KEY });
 
@@ -40,6 +41,12 @@
       }
     };
   }
+
+  export const getCachedDatabase = unstable_cache(
+    async () => await getDatabase(),
+    ['notion-all'],
+    { tags: ['notion-all'] }
+  );
 
   export async function getPage(pageId) {
     const response = await notion.pages.retrieve({ page_id: pageId });
