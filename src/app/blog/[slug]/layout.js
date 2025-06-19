@@ -1,11 +1,13 @@
+export const dynamic = 'force-dynamic';
 
-import { getDatabase } from '@/lib/notion';
+import { getCachedDatabase } from '@/lib/notion';
+
 
 export async function generateMetadata({ params }) {
   // PENTING: Await params terlebih dahulu untuk Next.js 15
   const { slug } = await params;
   
-  const { posts } = await getDatabase();
+  const { posts } = await getCachedDatabase();
   const post = posts.find(p => 
     p.properties.Slug?.rich_text?.[0]?.plain_text === slug
   );

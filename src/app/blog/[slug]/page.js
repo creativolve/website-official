@@ -1,5 +1,6 @@
+export const dynamic = 'force-dynamic';
 
-import { getDatabase, getPage, getBlocks } from '@/lib/notion';
+import { getCachedDatabase, getPage, getBlocks } from '@/lib/notion';
 import { formatDate } from '@/utils/date';
 import '@/css/typografi.css'
 import Image from 'next/image';
@@ -7,7 +8,7 @@ import BackButton from "@/components/backButton";
 import Footer from '@/components/footer';
 
 export async function generateStaticParams() {
-  const { posts } = await getDatabase();
+  const { posts } = await getCachedDatabase();
   return posts.map(post => ({
     slug: post.properties.Slug?.rich_text?.[0]?.plain_text
   }));

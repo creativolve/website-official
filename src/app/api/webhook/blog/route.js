@@ -1,25 +1,22 @@
-// app/api/webhooks/notion/route.js
+
+// app/api/webhooks/blog/route.js
 import { createHmac, timingSafeEqual } from "crypto";
+import { forceRefreshCache } from "@/lib/notion";
 
 export async function POST(req) {
   try {
-    // Ambil verification token dari environment
     const verificationToken = process.env.NOTION_VERIFICATION_TOKEN;
     
     if (!verificationToken) {
-      console.error("❌ NOTION_VERIFICATION_TOKEN tidak ditemukan di environment");
+      console.error("❌ NOTION_VERIFICATION_TOKEN tidak ditemukan");
       return new Response(JSON.stringify({ error: "Server configuration error" }), { 
         status: 500 
       });
     }
 
-    // Ambil signature dari header
     const signatureHeader = req.headers.get("x-notion-signature");
-    
-    // Ambil raw body untuk signature verification
     const rawBody = await req.text();
     
-    // Parse JSON body
     let body;
     try {
       body = JSON.parse(rawBody);
@@ -30,13 +27,12 @@ export async function POST(req) {
       });
     }
 
-    // ✅ STEP 1: Handle verification token (initial subscription verification)
+    // Handle verification token untuk initial setup
     if (body.verification_token) {
-      console.log("🔐 Verification token diterima:", body.verification_token);
+      console.log("🔐 Verification token received");
       
-      // Verifikasi bahwa token cocok dengan yang diharapkan
       if (body.verification_token === verificationToken) {
-        console.log("✅ Token verification berhasil");
+        console.log("✅ Token verification successful");
         return new Response(JSON.stringify({ 
           success: true,
           message: "Webhook verified successfully" 
@@ -45,48 +41,40 @@ export async function POST(req) {
           headers: { "Content-Type": "application/json" },
         });
       } else {
-        console.error("❌ Token verification gagal - token tidak cocok");
+        console.error("❌ Token verification failed");
         return new Response(JSON.stringify({ error: "Invalid verification token" }), { 
           status: 401 
         });
       }
     }
 
-    // ✅ STEP 2: Validate signature untuk event biasa
+    // Validate signature untuk webhook events
     if (signatureHeader) {
-      // Hitung signature menggunakan raw body
       const calculatedSignature = `sha256=${createHmac("sha256", verificationToken)
         .update(rawBody)
         .digest("hex")}`;
 
-      // Bandingkan signature secara timing-safe
       const isValidSignature = timingSafeEqual(
         Buffer.from(calculatedSignature), 
         Buffer.from(signatureHeader)
       );
 
       if (!isValidSignature) {
-        console.error("🚫 Signature validation gagal");
-        console.error("Expected:", calculatedSignature);
-        console.error("Received:", signatureHeader);
+        console.error("🚫 Signature validation failed");
         return new Response(JSON.stringify({ error: "Unauthorized" }), { 
           status: 401 
         });
       }
       
-      console.log("✅ Signature validation berhasil");
-    } else {
-      console.warn("⚠️ Tidak ada X-Notion-Signature header");
+      console.log("✅ Signature validation successful");
     }
 
-    // ✅ STEP 3: Process webhook events
+    // Process webhook events
     const eventType = body.type;
     const eventData = body.data;
 
-    const pageId = eventData?.id || eventData?.page_id || eventData?.object?.id;
-
     if (!eventType || !eventData) {
-      console.log("⚠️ Payload tidak lengkap:", body);
+      console.log("⚠️ Incomplete payload:", body);
       return new Response(JSON.stringify({ 
         error: "Invalid payload - missing type or data" 
       }), { 
@@ -94,25 +82,24 @@ export async function POST(req) {
       });
     }
 
-    console.log("📦 Event diterima:", {
+    console.log("📦 Event received:", {
       type: eventType,
-      pageId,
-      fullEventData: eventData,
+      pageId: eventData.id,
       timestamp: new Date().toISOString()
     });
-    
 
-    // Handle berbagai tipe event
-    await handleNotionEvent(eventType, eventData);
+    // Handle event and get affected resources
+    const affectedResources = await handleNotionEvent(eventType, eventData);
 
-    // ✅ STEP 4: Trigger cache revalidation
-    await triggerRevalidation(pageId);
+    // Trigger comprehensive revalidation
+    await triggerComprehensiveRevalidation(eventData.id, affectedResources);
 
     return new Response(JSON.stringify({
       success: true,
       message: "Webhook processed successfully",
       eventType: eventType,
-      pageId: eventData.id
+      pageId: eventData.id,
+      affectedResources
     }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
@@ -121,82 +108,142 @@ export async function POST(req) {
   } catch (error) {
     console.error("💥 Error processing webhook:", error);
     return new Response(JSON.stringify({ 
-      error: "Internal server error" 
+      error: "Internal server error",
+      details: error.message 
     }), { 
       status: 500 
     });
   }
 }
 
-// Fungsi untuk handle berbagai tipe event
 async function handleNotionEvent(eventType, eventData) {
+  const affectedResources = {
+    tags: ['notion-all'],
+    paths: ['/blog', '/'],
+    shouldRevalidateHomepage: false
+  };
+
   switch (eventType) {
     case 'page.content_updated':
       console.log("📝 Page content updated:", eventData.id);
-      // Tambahkan logic khusus untuk update konten page
+      affectedResources.tags.push(`post-${eventData.id}`);
+      affectedResources.paths.push(`/blog/${eventData.id}`);
+      affectedResources.shouldRevalidateHomepage = true;
       break;
       
     case 'page.created':
       console.log("🆕 New page created:", eventData.id);
-      // Tambahkan logic khusus untuk page baru
+      affectedResources.tags.push(`post-${eventData.id}`, 'notion-posts');
+      affectedResources.shouldRevalidateHomepage = true;
       break;
       
     case 'page.deleted':
       console.log("🗑️ Page deleted:", eventData.id);
-      // Tambahkan logic khusus untuk page dihapus
+      affectedResources.tags.push('notion-posts');
+      affectedResources.shouldRevalidateHomepage = true;
       break;
       
     case 'database.schema_updated':
       console.log("🔄 Database schema updated:", eventData.id);
-      // Tambahkan logic khusus untuk perubahan schema database
+      affectedResources.tags.push('notion-database', 'notion-posts');
+      affectedResources.shouldRevalidateHomepage = true;
       break;
       
-    case 'comment.created':
-      console.log("💬 Comment created:", eventData.id);
-      // Tambahkan logic khusus untuk comment baru
+    case 'page.property_updated':
+      console.log("🔧 Page property updated:", eventData.id);
+      affectedResources.tags.push(`post-${eventData.id}`, 'notion-posts');
+      affectedResources.shouldRevalidateHomepage = true;
       break;
       
     default:
       console.log("❓ Unknown event type:", eventType);
   }
+
+  return affectedResources;
 }
 
-// Fungsi untuk trigger revalidation
-async function triggerRevalidation(pageId) {
+async function triggerComprehensiveRevalidation(pageId, affectedResources) {
   try {
+    await forceRefreshCache();
+    console.log("✅ Cache force refreshed manually before tag/path revalidation");
+    
     if (!process.env.REVALIDATE_SECRET) {
-      console.warn("⚠️ REVALIDATE_SECRET tidak ditemukan, skip revalidation");
+      console.warn("⚠️ REVALIDATE_SECRET not found, skipping revalidation");
       return;
     }
 
-    const tags = ["notion-all", "notion-pages", "notion-database"];
-    
-    if (pageId) {
-      tags.push(`post-${pageId}`);
-    } else {
-      console.warn("⚠️ pageId tidak tersedia, hanya merevalidate tag global");
-    }
+    const baseUrl = 'https://creativolve.agency';
+    const revalidateUrl = `${baseUrl}/api/revalidate`;
 
-    const revalidateUrl = `${process.env.NEXTAUTH_URL || 'https://creativolve.agency'}/api/revalidate`;
-
-    const res = await fetch(revalidateUrl, {
+    // Revalidate tags
+    const tagResponse = await fetch(revalidateUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "x-secret": process.env.REVALIDATE_SECRET,
       },
       body: JSON.stringify({ 
-        tags 
+        tags: affectedResources.tags,
+        type: 'tag'
       }),
     });
 
-    if (res.ok) {
-      const result = await res.json();
-      console.log("✅ Cache revalidation berhasil:", result);
-    } else {
-      console.error("❌ Cache revalidation gagal:", res.status, res.statusText);
+    if (!tagResponse.ok) {
+      throw new Error(`Tag revalidation failed: ${tagResponse.status}`);
     }
+
+    // Revalidate paths
+    const pathResponse = await fetch(revalidateUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-secret": process.env.REVALIDATE_SECRET,
+      },
+      body: JSON.stringify({ 
+        paths: affectedResources.paths,
+        type: 'path'
+      }),
+    });
+
+    if (!pathResponse.ok) {
+      throw new Error(`Path revalidation failed: ${pathResponse.status}`);
+    }
+
+    console.log("✅ Comprehensive revalidation completed");
+    
+    // Optional: Trigger ISR for critical pages
+    if (affectedResources.shouldRevalidateHomepage) {
+      await triggerISRRevalidation(baseUrl);
+    }
+
   } catch (error) {
-    console.error("💥 Error during revalidation:", error);
+    console.error("💥 Error during comprehensive revalidation:", error);
+    throw error;
+  }
+}
+
+async function triggerISRRevalidation(baseUrl) {
+  try {
+    // Trigger ISR untuk homepage dan blog page
+    const criticalPages = ['/', '/blog'];
+    
+    const promises = criticalPages.map(async (page) => {
+      try {
+        const response = await fetch(`${baseUrl}${page}`, {
+          method: 'HEAD',
+          headers: {
+            'Cache-Control': 'no-cache',
+            'x-revalidate': 'true'
+          }
+        });
+        console.log(`✅ ISR triggered for ${page}: ${response.status}`);
+      } catch (error) {
+        console.warn(`⚠️ ISR failed for ${page}:`, error.message);
+      }
+    });
+
+    await Promise.all(promises);
+  } catch (error) {
+    console.error("💥 Error during ISR revalidation:", error);
   }
 }
