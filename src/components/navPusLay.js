@@ -15,17 +15,17 @@
       {
         icon: faEnvelope,
         contact: 'Email',
-        href: 'mailto:someone@example.com',
+        href: 'mailto:creativolve.agency@gmail.com',
       },
       {
         icon: faInstagram,
         contact: 'Instagram',
-        href: 'https://instagram.com/yourprofile',
+        href: "https://www.instagram.com/creativolve_",
       },
       {
         icon: faWhatsapp,
         contact: 'Whatsapp',
-        href: 'https://wa.me/6281234567890',
+        href: 'https://wa.me/6288289158984',
       },
     ];
 

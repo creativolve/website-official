@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic';
 
-import { getCachedDatabase, getPage, getBlocks } from '@/lib/notion';
+import { getCachedDatabase, getCachedPostBySlug, getCachedPost, getCachedBlocks } from '@/lib/notion';
 import { formatDate } from '@/utils/date';
 import '@/css/typografi.css'
 import Image from 'next/image';
@@ -19,16 +19,13 @@ export default async function BlogDetail({ params }) {
     // Await params for Next.js 15
     const { slug } = await params;
 
-    const { posts } = await getDatabase();
-    const post = posts.find(p => 
-      p.properties.Slug?.rich_text?.[0]?.plain_text === slug
-    );
+    const post = await getCachedPostBySlug(slug);
   
     if (!post) return <div>Post tidak ditemukan</div>;
   
     // Ambil konten lengkap
-    const page = await getPage(post.id);
-    const blocks = await getBlocks(post.id);
+    const page = await getCachedPost(post.id);
+    const blocks = await getCachedBlocks(post.id);
 
     return (
       <>

@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic';
 
-import { getCachedDatabase } from '@/lib/notion';
+import { getCachedDatabase, getCachedPostBySlug } from '@/lib/notion';
 
 
 export async function generateMetadata({ params }) {
@@ -8,9 +8,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   
   const { posts } = await getCachedDatabase();
-  const post = posts.find(p => 
-    p.properties.Slug?.rich_text?.[0]?.plain_text === slug
-  );
+  const post = await getCachedPostBySlug(slug);
 
   if (!post) return {
     title: "Artikel Tidak Ditemukan - Creativolve",

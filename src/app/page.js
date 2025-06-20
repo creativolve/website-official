@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import MainServer from "@/components/mainServer";
 
 
