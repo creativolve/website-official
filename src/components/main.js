@@ -54,8 +54,8 @@ export default function Main({posts}) {
         <main>
           <Image
                                   src='/images/hero_section/circle.png'
-                                  width={500}
-                                  height={500}
+                                  width={200}
+                                  height={200}
                                   quality={40}
                                   priority
                                   alt="Circle"
@@ -104,7 +104,7 @@ export default function Main({posts}) {
 
         </main>
         <Footer/>   
-        <div className="z-[100] fixed bottom-0 left-0 w-full h-[80px] bg-[#17181a48] backdrop-blur-[5px] lg:h-[10px]
+        <div className="z-[100] fixed bottom-0 left-0 w-full h-[80px] bg-[#17181a48] backdrop-blur-[5px] lg:h-[80px]
     [mask-image:linear-gradient(to_top,black,transparent)] 
     [webkit-mask-image:linear-gradient(to_top,black,transparent)]">
 </div>

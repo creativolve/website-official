@@ -1,6 +1,7 @@
 "use client";
 
 import "@/css/effect.css";
+import "@/css/globals.css";
 import InputFloating from "@/components/inputForm";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -332,14 +333,14 @@ const FormDiskusi = () => {
         <div className="text z-1">
           <h2
             className="
-                     text-[clamp(1.3rem,1.7vw,1.7rem)] font-bold
+                     text-[clamp(1.3rem,1.7vw,1.7rem)] font-bold text-white
                     "
           >
             Pengajuan Diskusi
           </h2>
           <p
             className="
-                    text-[clamp(0.8rem,1.1vw,0.9rem)]
+                    text-[clamp(0.8rem,1.1vw,0.9rem)] text-[#cccccc]
                     "
           >
             Silahkan mengisi form ini untuk mengajukan diskusi pada tim kami,
@@ -352,10 +353,10 @@ const FormDiskusi = () => {
         <div className="w-full lg:w-[60%] h-full flex gap-9 px-10 py-50 flex-col justify-center 
         lg:px-30">
           <h2 className="
-          text-gradient font-bold text-[clamp(1.2rem,2vw,1.5rem)] leading-[clamp(1.4rem,3vw,2.4rem)] text-shadow-[0_0_20px_#00E5FF]
+          text-gradient font-bold text-[clamp(1.2rem,2vw,1.5rem)] leading-[clamp(1.4rem,3vw,2.4rem)] text-shadow-[0_0_20px_#00E5FF] text-white
           ">Sedang Mengajukan Diskusi, Tunggu Beberapa Saat!</h2>
           <div className="flex flex-col">
-            <div className="text-[clamp(0.6rem,1vw,0.9rem)]">
+            <div className="text-[clamp(0.6rem,1vw,0.9rem)] text-white">
               <div className="status status-success animate-bounce"></div> Sistem Berjalan
             </div>
             <span className="loading loading-infinity text-success loading-xl"></span>
@@ -364,7 +365,8 @@ const FormDiskusi = () => {
       )}
 
       {!submitted && (
-        <div className="form w-full lg:w-[60%] h-full lg:overflow-auto scrollbar-hide no-scrollbar">
+        <div className="form w-full lg:w-[60%] h-full lg:max-h-screen lg:overflow-y-auto scrollbar-hide no-scrollbar"
+        data-lenis-prevent>
           <form
             disabled={submitted}
             method="POST"
@@ -401,7 +403,7 @@ const FormDiskusi = () => {
             <div className="bg-[#17181A] rounded-2xl px-[20px] py-[30px] h-fit">
               {!showChatbot && !qnaCompleted && !isProcessing && !submitted && (
                 <div className="flex gap-6 lg:items-center flex-col lg:justify-between lg:flex-row">
-                  <div className="text w-[70%]">
+                  <div className="text w-[70%] text-white">
                     <h1 className="font-semibold text-[clamp(1rem,1.3vw,2rem)]">
                       Buat Brief
                     </h1>

@@ -49,13 +49,12 @@ export default function BreadcrumbNav({ index = 0 }) {
         <Link href="/" 
           className="group">
           <Image
-            src="/images/back_icon.png"
+            src="/images/home_icon.png"
             alt="Kembali"
             width={40}
             height={40}
             className={`
-              w-[7vw] lg:w-[1.5vw] object-cover select-none cursor-pointer invert transition-all duration-150 ease-in-out
-              ${scrolled ? 'invert-0' : 'invert'}
+              w-[7vw] lg:w-[1.5vw] object-cover select-none cursor-pointer transition-all duration-150  ease-in-out
             `}
           />
         </Link>

@@ -45,7 +45,7 @@ export default function Pengajuan(){
         </div>
 
 
-        <div className="bg-[#21252C] rounded-3xl w-[80%] h-[80vh] fixed left-[50%] translate-y-[-50%] translate-x-[-50%] top-[53%] flex p-[15px]">
+        <div className="bg-[#21252C] rounded-3xl w-[80%] h-[80vh] fixed left-[50%] translate-y-[-50%] translate-x-[-50%] top-[53%] flex p-[15px] overflow-scroll text-white">
         {/* Tampilkan Form berdasarkan pilihan */}
         {activeForm === "diskusi" && <FormDiskusi />}
         {activeForm === "project" && <FormProject />}

@@ -34,7 +34,7 @@
         {/* Menu Toggle Button */}
         <div
           onClick={toggleMenu}
-          className={`open text-[clamp(1.5rem,3vw,1.8rem)] cursor-pointer w-fit h-fit  fixed
+          className={`open text-[clamp(1.5rem,3vw,1.8rem)] cursor-pointer w-fit h-fit  fixed text-white
             ${isOpen 
               ? 'top-5 left-6 z-50'
               : 'top-9 lg:top-3 left-6 z-0'

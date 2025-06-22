@@ -80,11 +80,11 @@ export default function BerandaBlog({ posts }) {
 
                 <div className="p-6 flex flex-col flex-grow md:w-2/3">
                   {tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-3">
+                    <div className="flex flex-wrap gap-5 mb-3">
                       {tags.map((tag) => (
                         <span
                           key={tag.id}
-                          className="px-2 py-1 text-sm rounded-full font-medium"
+                          className="px-5 py-1 text-[clamp(0.6rem,1.3vw,0.8rem)] rounded-full font-medium bg-[#17181a]"
                           style={{ color: tag.color }}
                         >
                           {tag.name}
@@ -93,7 +93,7 @@ export default function BerandaBlog({ posts }) {
                     </div>
                   )}
 
-                  <h2 className="text-xl font-bold mb-2 line-clamp-2">
+                  <h2 className="text-xl font-bold mb-2 line-clamp-2 text-white">
                     {title}
                   </h2>
 

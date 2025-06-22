@@ -28,12 +28,17 @@ export default async function Tentang() {
           m-auto pb-40 px-[50px]
           md:px-[15vw]
           lg:px-20
-          prose prose-2xl prose-headings:text-[4.6vw] prose-h2:text-[5.4vw] prose-h1:text-[6.8vw]
-          prose-headings:text-[#ffffff] prose-p:text-[4.3vw] prose-p:text-[#cccccc] prose-p:font-medium
-          prose-li:text-[4.3vw] prose-li:text-[#ffffff] prose-li:font-regular prose-ol:text-[3vw]
-          [&_ol]:pl-1 [&_ul]:pl-4
-          md:prose-headings:text-[3.6vw] md:prose-h2:text-[4vw] md:prose-h1:text-[5vw] md:prose-p:text-[2vw] md:prose-li:text-[2vw] md:prose-ol:text-[2vw]
-          lg:prose-headings:text-[1.5vw] lg:prose-h2:text-[1.6vw] lg:prose-h1:text-[2vw] lg:prose-p:text-[1.2vw] lg:prose-li:text-[1.2vw] lg:prose-ol:text-[1.2vw]
+           py-[6vw] text-justify w-[100%]
+  prose prose-2xl 
+  prose-p:text-[#cccccc] prose-headings:text-white
+  prose-headings:text-[4.6vw] prose-h2:text-[6vw] 
+  prose-h1:text-[6.8vw] 
+  prose-p:text-[4.5vw]
+  prose-li:text-[4.5vw] 
+  prose-li:text-[#cccccc]
+  prose-li:marker:text-white
+  md:prose-headings:text-[3.6vw] md:prose-h2:text-[4vw] md:prose-h1:text-[5vw] md:prose-p:text-[3.5vw] md:prose-li:text-[3.5vw]
+  lg:prose-headings:text-[1.5vw] lg:prose-h2:text-[2.1vw] lg:prose-h1:text-[3.2vw] lg:prose-p:text-[1.3vw] lg:prose-li:text-[1.3vw]
         "
       >
         <h1>Asisten Digital Creativolve</h1>

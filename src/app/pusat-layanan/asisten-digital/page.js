@@ -25,7 +25,7 @@ export default function AsistenDigitalPage() {
         {/* Baris atas */}
         <div className="flex items-center justify-between" ref={topRef}>
           <NavPusatLayanan />
-          <span className="text-[clamp(0.7rem,2vw,0.9rem)] hidden md:block translate-x-[50%]">
+          <span className="text-[clamp(0.7rem,2vw,0.9rem)] hidden md:block translate-x-[50%] text-white">
             ORVIA {"(C.O.R.A)"} 1.4
           </span>
           <div className="flex justify-center items-center flex-col-reverse gap-1">
@@ -33,7 +33,7 @@ export default function AsistenDigitalPage() {
               name="Dokumentasi"
               href="/pusat-layanan/asisten-digital/deskripsi"
             />
-            <span className="text-[clamp(0.7rem,2vw,0.9rem)] md:hidden">
+            <span className="text-[clamp(0.7rem,2vw,0.9rem)] md:hidden text-white">
               ORVIA {"(C.O.R.A)"} 1.4
             </span>
           </div>

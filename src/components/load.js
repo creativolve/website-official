@@ -15,7 +15,7 @@ export default function Loader() {
           height={550}
           priority
           className="w-30" />
-          <div className="text">
+          <div className="text-white">
             <h1 className="text-[clamp(2rem,5vw,2.5rem)] leading-[clamp(2.2rem,5.2vw,2.5rem)] heading-shadow  font-semibold text-loading">
                 Selamat Datang
             </h1>

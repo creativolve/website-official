@@ -8,7 +8,7 @@ const InputFloating = ({ id, label, type, name, value, onChange, disabled, class
         value={value}
         onChange={onChange} 
         placeholder=" "
-        className="peer w-full border-b border-[#ffffff] text-[clamp(0.8rem,2vw,0.9rem)] bg-transparent py-2 text-white placeholder-transparent focus:outline-none"
+        className="peer w-full border-b border-[#ffffff] text-[clamp(0.8rem,2vw,0.9rem)] bg-transparent py-2 text-white placeholder-transparent focus:outline-none "
         required
         disabled={disabled}
       />

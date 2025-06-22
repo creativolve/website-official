@@ -103,10 +103,9 @@ export default function FormProject() {
     description: "",
   });
 
-
   const [isClient, setIsClient] = useState(false);
 
-    const [popupMessage, setPopupMessage] = useState("");
+  const [popupMessage, setPopupMessage] = useState("");
   const [showChatbot, setShowChatbot] = useState(false);
   const [currentQnaStep, setCurrentQnaStep] = useState(0);
   const [qnaAnswers, setQnaAnswers] = useState([]);
@@ -398,10 +397,10 @@ export default function FormProject() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     setPopupMessage("Pengajuan Diskusi Anda Sedang Diproses");
-    
+
     try {
       const response = await fetch("/api/pengajuan/projectDB", {
         method: "POST",
@@ -448,10 +447,9 @@ export default function FormProject() {
 
   if (!isClient) {
     return (
-        <div className="fixed inset-0 flex items-center justify-center text-white skeleton z-50">
-          Memuat formulir...
-        </div>
-
+      <div className="fixed inset-0 flex items-center justify-center text-white skeleton z-50">
+        Memuat formulir...
+      </div>
     );
   }
 
@@ -490,376 +488,387 @@ export default function FormProject() {
                     text-[clamp(0.8rem,1.1vw,0.9rem)]
                     "
           >
-            Silahkan mengisi form ini untuk mengajukan proyek kerja sama dengan kami, rancangan brief yang dibantu oleh Asisten Form kami!
+            Silahkan mengisi form ini untuk mengajukan proyek kerja sama dengan
+            kami, rancangan brief yang dibantu oleh Asisten Form kami!
           </p>
         </div>
       </div>
 
-      {isSubmitting &&(
-        <div className="w-full lg:w-[60%] h-full flex gap-9 px-10 py-50 flex-col justify-center 
-        lg:px-30">
-          <h2 className="
+      {isSubmitting && (
+        <div
+          className="w-full lg:w-[60%] h-full flex gap-9 px-10 py-50 flex-col justify-center 
+        lg:px-30"
+        >
+          <h2
+            className="
           text-gradient font-bold text-[clamp(1.2rem,2vw,1.5rem)] leading-[clamp(1.4rem,3vw,2.4rem)] text-shadow-[0_0_20px_#00E5FF]
-          ">Sedang Mengajukan Proyek, Tunggu Beberapa Saat!</h2>
+          "
+          >
+            Sedang Mengajukan Proyek, Tunggu Beberapa Saat!
+          </h2>
           <div className="flex flex-col">
             <div className="text-[clamp(0.6rem,1vw,0.9rem)]">
-              <div className="status status-success animate-bounce"></div> Sistem Berjalan
+              <div className="status status-success animate-bounce"></div>{" "}
+              Sistem Berjalan
             </div>
             <span className="loading loading-infinity text-success loading-xl"></span>
           </div>
         </div>
       )}
 
-    {submitted &&(
-      <div className="w-full lg:w-[60%] h-full flex px-10 py-50 flex-col justify-center 
-      lg:px-30">
-        <h1
-        className="
+      {submitted && (
+        <div
+          className="w-full lg:w-[60%] h-full flex px-10 py-50 flex-col justify-center 
+      lg:px-30"
+        >
+          <h1
+            className="
         text-gradient font-bold text-[clamp(1.2rem,2vw,1.5rem)] leading-[clamp(1.4rem,3vw,2.4rem)] text-shadow-[0_0_20px_#00E5FF]
-        ">
-          Pengajuan Proyek Anda Sudah Kami Terima!
-        </h1>
-        <p
-        className="
+        "
+          >
+            Pengajuan Proyek Anda Sudah Kami Terima!
+          </h1>
+          <p
+            className="
          text-[clamp(0.7rem,2vw,0.9rem)] text-[#b6b6b6]
-        ">
-          Kami juga sudah mengirim email kepada anda, silahkan cek email apakah data sudah sesuai dan untuk memastikan apakah sudah terima atau belum.
-        </p>
-      </div>
-    )}
+        "
+          >
+            Kami juga sudah mengirim email kepada anda, silahkan cek email
+            apakah data sudah sesuai dan untuk memastikan apakah sudah terima
+            atau belum.
+          </p>
+        </div>
+      )}
 
       {!submitted && (
         <div className="form w-full lg:w-[60%] h-full lg:overflow-auto scrollbar-hide no-scrollbar">
-        <form
-          onSubmit={handleSubmit}
-          method="POST"
-          className="w-full px-4 py-20 lg:px-20 lg:py-10 flex flex-col gap-10 max-w-2xl space-y-6 z-[0]"
-          disabled={submitted}
-        >
-          <InputFloating
-            id="nama"
-            label="Nama"
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
+          <form
+            onSubmit={handleSubmit}
+            method="POST"
+            className="w-full px-4 py-20 lg:px-20 lg:py-10 flex flex-col gap-10 max-w-2xl space-y-6 z-[0]"
             disabled={submitted}
-          />
+            data-lenis-prevent
+          >
+            <InputFloating
+              id="nama"
+              label="Nama"
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              disabled={submitted}
+            />
 
-          <InputFloating
-            id="namaBisnis"
-            label="Nama Bisnis/Organisasi/Project"
-            type="text"
-            name="businessName"
-            value={formData.businessName}
-            onChange={handleInputChange}
-            disabled={submitted}
-          />
+            <InputFloating
+              id="namaBisnis"
+              label="Nama Bisnis/Organisasi/Project"
+              type="text"
+              name="businessName"
+              value={formData.businessName}
+              onChange={handleInputChange}
+              disabled={submitted}
+            />
 
-          <InputFloating
-            id="email"
-            label="Email"
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-            disabled={submitted}
-          />
+            <InputFloating
+              id="email"
+              label="Email"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+              disabled={submitted}
+            />
 
-          <InputFloating
-            id="number"
-            label="No Whatsapp*"
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleInputChange}
-            required
-            disabled={submitted}
-          />
+            <InputFloating
+              id="number"
+              label="No Whatsapp*"
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+              required
+              disabled={submitted}
+            />
 
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="w-full">
-              <label className="text-white mb-1 block">Jenis Kategori:</label>
-              <Select
-                options={businessTypeOptions}
-                value={formData.businessType}
-                onChange={handleSelectChange}
-                placeholder="Pilih kategori"
-                className="text-black"
-                disabled={submitted}
-                classNamePrefix="react-select"
-              />
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="w-full">
+                <label className="text-white mb-1 block">Jenis Kategori:</label>
+                <Select
+                  options={businessTypeOptions}
+                  value={formData.businessType}
+                  onChange={handleSelectChange}
+                  placeholder="Pilih kategori"
+                  className="text-black"
+                  disabled={submitted}
+                  classNamePrefix="react-select"
+                />
+              </div>
+
+              <div className="w-full">
+                <label className="text-white mb-1 block">Pilih Layanan:</label>
+                <Select
+                  isMulti
+                  options={layananOptions}
+                  value={formData.kategori}
+                  onChange={handleKategoriChange}
+                  disabled={submitted}
+                  placeholder="Pilih layanan"
+                  className="text-black"
+                  classNamePrefix="react-select"
+                />
+              </div>
             </div>
 
-            <div className="w-full">
-              <label className="text-white mb-1 block">Pilih Layanan:</label>
-              <Select
-                isMulti
-                options={layananOptions}
-                value={formData.kategori}
-                onChange={handleKategoriChange}
-                disabled={submitted}
-                placeholder="Pilih layanan"
-                className="text-black"
-                classNamePrefix="react-select"
-              />
-            </div>
-          </div>
+            <InputFloating
+              id="budget"
+              label="Budget (Rp)"
+              type="number"
+              name="budget"
+              value={formData.budget}
+              onChange={handleInputChange}
+              disabled={submitted}
+            />
 
-          <InputFloating
-            id="budget"
-            label="Budget (Rp)"
-            type="number"
-            name="budget"
-            value={formData.budget}
-            onChange={handleInputChange}
-            disabled={submitted}
-          />
-
-          <div className="bg-[#17181A] rounded-2xl px-[20px] py-[30px] h-fit">
-            {!showChatbot && !qnaCompleted && !isProcessing && !submitted && (
-              <div className="flex gap-6 lg:items-center flex-col lg:justify-between lg:flex-row">
-                <div className="text w-[70%]">
-                  <h1 className="font-semibold text-[clamp(1rem,1.3vw,2rem)]">
-                    Buat Brief
-                  </h1>
-                  <p className="font-regular text-[clamp(0.7rem,0.9vw,0.9rem)]">
-                    Kami akan mengarahkan anda untuk membuat brief yang
-                    terstruktur
-                  </p>
-                  <br />
-                  <span className="text-red-600 text-[2vw] md:text-[2vw] lg:text-[1vw]">
-                    {validateMessage}
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={startShowBriefAssistant}
-                  className="rounded-3xl min-w-[100px] px-2 py-[5px] text-sm cursor-pointer border-transparent shadow-[0_0_15px_#00E5FF]  transition ease-in-out background-gradient text-black
+            <div className="bg-[#17181A] rounded-2xl px-[20px] py-[30px] h-fit">
+              {!showChatbot && !qnaCompleted && !isProcessing && !submitted && (
+                <div className="flex gap-6 lg:items-center flex-col lg:justify-between lg:flex-row">
+                  <div className="text w-[70%]">
+                    <h1 className="font-semibold text-[clamp(1rem,1.3vw,2rem)]">
+                      Buat Brief
+                    </h1>
+                    <p className="font-regular text-[clamp(0.7rem,0.9vw,0.9rem)]">
+                      Kami akan mengarahkan anda untuk membuat brief yang
+                      terstruktur
+                    </p>
+                    <br />
+                    <span className="text-red-600 text-[2vw] md:text-[2vw] lg:text-[1vw]">
+                      {validateMessage}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={startShowBriefAssistant}
+                    className="rounded-3xl min-w-[100px] px-2 py-[5px] text-sm cursor-pointer border-transparent shadow-[0_0_15px_#00E5FF]  transition ease-in-out background-gradient text-black
 
                   hover:translate-y-[-5px] hover:shadow-[#00E5FF] hover:shadow-lg
                   "
-                >
-                  Buat brief!
-                </button>
-              </div>
-            )}
-
-            {/* TAMPILAN BOX SAAT DI SUSUN OLEH ASISTEN DIGITAL */}
-            {!showChatbot && !qnaCompleted && isProcessing && (
-              <div>
-                <h3 className="animated-gradient text-transparent bg-clip-text font-bold">
-                  Data Sedang Disusun Oleh Asisten Digital!
-                </h3>
-                <p>
-                  Mohon tunggu hingga data selesai disusun oleh Asisten Digital!
-                </p>
-              </div>
-            )}
-
-            {/* TAMPILAN BOX QNA SAAT QNA BERHASIL DISIMPAN*/}
-            {!showChatbot && qnaCompleted && !isProcessing && (
-              <div className="preview-container flex flex-col">
-                <h3 className="text-white font-semibold mb-4">
-                  Data Berhasil Disimpan!
-                </h3>
-                <p>
-                  Brief anda sudah tersimpan dalam sistem kami silahkan ajukan
-                  untuk mengirim ke database agensi untuk dilakukan pemeriksaan!{" "}
-                </p>
-                <div className="flex gap-2 mt-4">
-                  <button
-                    type="button"
-                    onClick={() => setShowChatbot(true)}
-                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                   >
-                    Edit Kembali
+                    Buat brief!
                   </button>
                 </div>
-              </div>
-            )}
+              )}
 
-            {!showChatbot && qnaCompleted && !isProcessing && submitted && (
-              <div>
-                <span className="animated-gradient text-transparent bg-clip-text font-bold">
-                  Data Sudah Terkirim Kedalam Database Kami!
-                </span>
-                <p className="text-[#cccccc]">
-                  Mohon untuk tidak mengirim ulang form yang sudah di kirim,
-                  tunggu tim kami selesai meninjau ajuan anda dan menghubungi
-                  anda lewat Chat Whatsapp, Terimakasih.
-                </p>
-              </div>
-            )}
-
-            {showChatbot && (
-              <div className="chatbot-container">
-                <div className="chat-messages">
-                  <span className="animated-gradient text-transparent bg-clip-text">
-                    Asisten digital Creativolve
-                  </span>
-                  <br />
-                  <br />
-                  <p className="text-[#cccccc]">
-                    Hai{" "}
-                    <strong className="text-white">
-                      {" "}
-                      <i>
-                        {formData.name} ( {formData.businessName} ){" "}
-                      </i>
-                    </strong>{" "}
-                    Anda memilih layanan{" "}
-                    <strong>
-                      <i>
-                        {" "}
-                        {formData.kategori
-                          .map((item) => item.label)
-                          .join(", ")}{" "}
-                      </i>
-                    </strong>{" "}
-                    <br /> <br />
-                    Saya Asisten Digital Creativolve yang akan membantu kamu
-                    dalam membuat brief, silahkan jawab pertanyaan berikut untuk
-                    membuat brief yang tepat untuk kamu
+              {/* TAMPILAN BOX SAAT DI SUSUN OLEH ASISTEN DIGITAL */}
+              {!showChatbot && !qnaCompleted && isProcessing && (
+                <div>
+                  <h3 className="animated-gradient text-transparent bg-clip-text font-bold">
+                    Data Sedang Disusun Oleh Asisten Digital!
+                  </h3>
+                  <p>
+                    Mohon tunggu hingga data selesai disusun oleh Asisten
+                    Digital!
                   </p>
-                  <br />
+                </div>
+              )}
 
-                  {(() => {
-                    let lastCategory = null;
-                    return qnaAnswers.map((item, index) => {
-                      const currentCategory = item.category;
-                      const showCategoryHeading =
-                        currentCategory !== lastCategory;
-                      lastCategory = currentCategory;
+              {/* TAMPILAN BOX QNA SAAT QNA BERHASIL DISIMPAN*/}
+              {!showChatbot && qnaCompleted && !isProcessing && (
+                <div className="preview-container flex flex-col">
+                  <h3 className="text-white font-semibold mb-4">
+                    Data Berhasil Disimpan!
+                  </h3>
+                  <p>
+                    Brief anda sudah tersimpan dalam sistem kami silahkan ajukan
+                    untuk mengirim ke database agensi untuk dilakukan
+                    pemeriksaan!{" "}
+                  </p>
+                  <div className="flex gap-2 mt-4">
+                    <button
+                      type="button"
+                      onClick={() => setShowChatbot(true)}
+                      className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    >
+                      Edit Kembali
+                    </button>
+                  </div>
+                </div>
+              )}
 
-                      return (
-                        <div key={index}>
-                          {showCategoryHeading && (
-                            <div className="category-heading mt-4 mb-2">
-                              <h3 className="text-[#ffffff] font-bold text-[16px] border-b border-[#444] pb-1">
-                                {currentCategory === "umum"
-                                  ? "Pertanyaan Umum"
-                                  : `Layanan ${currentCategory}`}
-                              </h3>
-                            </div>
-                          )}
-                          <div className="message-group space-y-2 mb-4">
-                            <div className="bot-message rounded-lg">
-                              <p>
-                                <strong>{item.question}</strong>
-                              </p>
-                            </div>
-                            <div className="user-message px-4 py-3 bg-[#ffffff] rounded-[10px] text-[#262626]">
-                              {renderAnswer(item.answer, index)}
+              {!showChatbot && qnaCompleted && !isProcessing && submitted && (
+                <div>
+                  <span className="animated-gradient text-transparent bg-clip-text font-bold">
+                    Data Sudah Terkirim Kedalam Database Kami!
+                  </span>
+                  <p className="text-[#cccccc]">
+                    Mohon untuk tidak mengirim ulang form yang sudah di kirim,
+                    tunggu tim kami selesai meninjau ajuan anda dan menghubungi
+                    anda lewat Chat Whatsapp, Terimakasih.
+                  </p>
+                </div>
+              )}
+
+              {showChatbot && (
+                <div className="chatbot-container">
+                  <div className="chat-messages">
+                    <span className="animated-gradient text-transparent bg-clip-text">
+                      Asisten digital Creativolve
+                    </span>
+                    <br />
+                    <br />
+                    <p className="text-[#cccccc]">
+                      Hai{" "}
+                      <strong className="text-white">
+                        {" "}
+                        <i>
+                          {formData.name} ( {formData.businessName} ){" "}
+                        </i>
+                      </strong>{" "}
+                      Anda memilih layanan{" "}
+                      <strong>
+                        <i>
+                          {" "}
+                          {formData.kategori
+                            .map((item) => item.label)
+                            .join(", ")}{" "}
+                        </i>
+                      </strong>{" "}
+                      <br /> <br />
+                      Saya Asisten Digital Creativolve yang akan membantu kamu
+                      dalam membuat brief, silahkan jawab pertanyaan berikut
+                      untuk membuat brief yang tepat untuk kamu
+                    </p>
+                    <br />
+
+                    {(() => {
+                      let lastCategory = null;
+                      return qnaAnswers.map((item, index) => {
+                        const currentCategory = item.category;
+                        const showCategoryHeading =
+                          currentCategory !== lastCategory;
+                        lastCategory = currentCategory;
+
+                        return (
+                          <div key={index}>
+                            {showCategoryHeading && (
+                              <div className="category-heading mt-4 mb-2">
+                                <h3 className="text-[#ffffff] font-bold text-[16px] border-b border-[#444] pb-1">
+                                  {currentCategory === "umum"
+                                    ? "Pertanyaan Umum"
+                                    : `Layanan ${currentCategory}`}
+                                </h3>
+                              </div>
+                            )}
+                            <div className="message-group space-y-2 mb-4">
+                              <div className="bot-message rounded-lg">
+                                <p>
+                                  <strong>{item.question}</strong>
+                                </p>
+                              </div>
+                              <div className="user-message px-4 py-3 bg-[#ffffff] rounded-[10px] text-[#262626]">
+                                {renderAnswer(item.answer, index)}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      );
-                    });
-                  })()}
+                        );
+                      });
+                    })()}
 
-                  {currentQnaStep < listPertanyaan.length && (
-                    <>
-                      {(() => {
-                        if (
-                          currentQnaStep === 0 ||
-                          (qnaAnswers.length > 0 &&
-                            getQuestionCategory(
+                    {currentQnaStep < listPertanyaan.length && (
+                      <>
+                        {(() => {
+                          if (
+                            currentQnaStep === 0 ||
+                            (qnaAnswers.length > 0 &&
+                              getQuestionCategory(
+                                listPertanyaan[currentQnaStep]
+                              ) !== qnaAnswers[qnaAnswers.length - 1].category)
+                          ) {
+                            const currentCategory = getQuestionCategory(
                               listPertanyaan[currentQnaStep]
-                            ) !== qnaAnswers[qnaAnswers.length - 1].category)
-                        ) {
-                          const currentCategory = getQuestionCategory(
-                            listPertanyaan[currentQnaStep]
-                          );
-                          return (
-                            <div className="category-heading mt-4 mb-2">
-                              <h3 className="text-[#ffffff] font-bold text-[16px] border-b border-[#444] pb-1">
-                                {currentCategory === "umum"
-                                  ? "Pertanyaan Umum"
-                                  : `Layanan ${currentCategory}`}
-                              </h3>
-                            </div>
-                          );
-                        }
-                        return null;
-                      })()}
-
-                      <div className="bot-message rounded-lg">
-                        <p>
-                          <strong>{listPertanyaan[currentQnaStep]}</strong>
-                        </p>
-                      </div>
-                      <div ref={bottomRef}></div>
-                    </>
-                  )}
-
-                  {validateMessage && (
-                    <div className="text-red-500 mb-2">{validateMessage}</div>
-                  )}
-                  {currentQnaStep < listPertanyaan.length && (
-                    <div className="chat-input flex flex-col space-y-2 mt-4">
-                      <input
-                        type="text"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" && !e.shiftKey) {
-                            e.preventDefault();
-                            handleAnswerSubmit(e);
+                            );
+                            return (
+                              <div className="category-heading mt-4 mb-2">
+                                <h3 className="text-[#ffffff] font-bold text-[16px] border-b border-[#444] pb-1">
+                                  {currentCategory === "umum"
+                                    ? "Pertanyaan Umum"
+                                    : `Layanan ${currentCategory}`}
+                                </h3>
+                              </div>
+                            );
                           }
-                        }}
-                        placeholder="Ketik jawaban Anda..."
-                        disabled={isProcessing || editingIndex !== null}
-                        className="p-2 rounded text-[#cccccc] placeholder-white"
-                      />
-                      <button
-                        type="button"
-                        onClick={handleAnswerSubmit}
-                        disabled={
-                          isProcessing ||
-                          editingIndex !== null ||
-                          inputValue.trim() === ""
-                        }
-                        className={`px-4 py-2 bg-[#131313] text-white rounded hover:text-[black] hover:bg-[#ffffff] ${
-                          inputValue.trim() === ""
-                            ? "opacity-50 cursor-not-allowed"
-                            : ""
-                        }`}
-                      >
-                        {isProcessing
-                          ? "Memproses..."
-                          : editingIndex !== null
-                          ? "Menyimpan..."
-                          : "Kirim"}
-                      </button>
-                    </div>
-                  )}
+                          return null;
+                        })()}
+
+                        <div className="bot-message rounded-lg">
+                          <p>
+                            <strong>{listPertanyaan[currentQnaStep]}</strong>
+                          </p>
+                        </div>
+                        <div ref={bottomRef}></div>
+                      </>
+                    )}
+
+                    {validateMessage && (
+                      <div className="text-red-500 mb-2">{validateMessage}</div>
+                    )}
+                    {currentQnaStep < listPertanyaan.length && (
+                      <div className="chat-input flex flex-col space-y-2 mt-4">
+                        <input
+                          type="text"
+                          value={inputValue}
+                          onChange={(e) => setInputValue(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" && !e.shiftKey) {
+                              e.preventDefault();
+                              handleAnswerSubmit(e);
+                            }
+                          }}
+                          placeholder="Ketik jawaban Anda..."
+                          disabled={isProcessing || editingIndex !== null}
+                          className="p-2 rounded text-[#cccccc] placeholder-white"
+                        />
+                        <button
+                          type="button"
+                          onClick={handleAnswerSubmit}
+                          disabled={
+                            isProcessing ||
+                            editingIndex !== null ||
+                            inputValue.trim() === ""
+                          }
+                          className={`px-4 py-2 bg-[#131313] text-white rounded hover:text-[black] hover:bg-[#ffffff] ${
+                            inputValue.trim() === ""
+                              ? "opacity-50 cursor-not-allowed"
+                              : ""
+                          }`}
+                        >
+                          {isProcessing
+                            ? "Memproses..."
+                            : editingIndex !== null
+                            ? "Menyimpan..."
+                            : "Kirim"}
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
 
-          <button
-            type="submit"
-            className={`px-4 py-2 rounded-full transition ${
-              canSubmit()
-                ? "border-transparent background-gradient text-black"
-                : "bg-gray-400 cursor-not-allowed"
-            }`}
-            disabled={!canSubmit() || isSubmitting}
-          >
-            {isSubmitting ? "Mengirim..." : "Ajukan!"}
-          </button>
-        </form>
-      </div>
+            <button
+              type="submit"
+              className={`px-4 py-2 rounded-full transition ${
+                canSubmit()
+                  ? "border-transparent background-gradient text-black"
+                  : "bg-gray-400 cursor-not-allowed"
+              }`}
+              disabled={!canSubmit() || isSubmitting}
+            >
+              {isSubmitting ? "Mengirim..." : "Ajukan!"}
+            </button>
+          </form>
+        </div>
       )}
-
-
-
-
-
-
     </div>
   );
 }

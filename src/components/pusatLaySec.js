@@ -37,7 +37,7 @@ export default function PusatLaySec(){
                                         `}
                                     />
                                     <div 
-                                    className="text w-full mt-[-60px] mb-[30px] flex flex-col space-y-6 lg:w-[60%] lg:px-[3rem] lg:mt-0 z-[30] lg:mb-0">
+                                    className="text w-full mb-[30px] flex flex-col space-y-6 lg:w-[60%] lg:px-[3rem] lg:mt-10 z-[30] lg:mb-0">
                                         <Heading index={6}/>
                                         <Button name="Pusat Layanan!" href="/pusat-layanan"/>
                                     </div>
