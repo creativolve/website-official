@@ -56,10 +56,10 @@ export default function Layanan() {
 <div
   className="
     relative
-    w-full lg:w-1/2 flex justify-center items-center translate-x-[20vw]
-    translate-y-[40vh]   
+    w-full lg:w-1/2 flex justify-center items-center translate-x-[10vw]
+    translate-y-[27vh]   
     md:translate-y-[70vh]  md:translate-x-[50vw] 
-    lg:translate-y-[40vh] lg:translate-x-[20vw]  
+    lg:translate-y-[40vh] lg:translate-x-[10vw]  
     xl:translate-y-[40vh] 
   "
 >
@@ -72,9 +72,7 @@ export default function Layanan() {
 >
   <div className="w-full aspect-square relative">
     {/* Judul */}
-    <h3 className="absolute top-4 left-4 text-xl font-semibold px-3 py-1 rounded-2xl bg-[#030303]/80 text-white z-10">
-      {card.title}
-    </h3>
+
 
     {/* Gambar */}
     <Image
@@ -86,7 +84,7 @@ export default function Layanan() {
              (max-width: 1200px) 50vw, 
              33vw"
       priority
-      quality={100}
+      quality={94}
     />
 
 

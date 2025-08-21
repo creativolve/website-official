@@ -17,12 +17,14 @@ export default function HeroSection() {
             lg:w-[50%] inset-0 flex flex-col gap-4
             "
       >
-        <BlurText
-          className="font-bold text-5xl
-        lg:text-5xl  text-center"
-        >
-          Dapatkan Solusi Digital Sesuai Budget Kamu!
-        </BlurText>
+        <H1>
+          <BlurText
+            className="font-bold text-5xl
+          lg:text-5xl  text-center"
+          >
+            Dapatkan Solusi Digital Sesuai Budget Kamu!
+          </BlurText>
+        </H1>
         <FadeIn delay={1}>
           <Paragraph align="center" fontSize="base">
             Tidak perlu khawatir soal biaya besar. Mulai dari desain, branding,

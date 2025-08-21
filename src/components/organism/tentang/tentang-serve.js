@@ -24,7 +24,7 @@ export default function TentangServe() {
               <SpotlightCard className="w-full aspect-square">
                 <div className="relative w-full h-full">
                   <Image
-                    src="/image/photo-tentang.jpg"
+                    src="/image/Tentang Section.jpg"
                     alt="Photo Tentang - Tim kreatif kami"
                     fill
                     style={{ objectFit: "cover" }}
