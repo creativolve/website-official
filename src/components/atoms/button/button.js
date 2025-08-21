@@ -1,100 +1,109 @@
-  import "@/app/css/buttonStars.css";
-  import Link from "next/link";
+import "@/app/css/buttonStars.css";
+import Link from "next/link";
 import ShinyText from "../animation/shinnyText";
-  
 
-  const GradientButton = ({
-    as: Component = "button",
-    className = "",
-    href,
-    color = "white",
-    speed = "3s",
-    thickness = 3,
-    children,
-    ...rest
-  }) => {
-    const content = (
-      <div className="inner-content relative overflow-hidden text-white py-[0.3em] px-[1rem] rounded-[20px] z-[1] max-w-[500px] w-full text-center">
-        {children}
-      </div>
-    );
-
-    return (
-      <Component
-        className={`star-border-container cursor-pointer ${className}`}
-        style={{
-          padding: `${thickness}px 0`,
-          ...rest.style,
-        }}
-        {...rest}
-      >
-        <div
-          className="border-gradient-bottom"
-          style={{
-            background: `radial-gradient(circle, ${color}, transparent 10%)`,
-            animationDuration: speed,
-          }}
-        ></div>
-        <div
-          className="border-gradient-top"
-          style={{
-            background: `radial-gradient(circle, ${color}, transparent 10%)`,
-            animationDuration: speed,
-          }}
-        ></div>
-
-        {href ? <Link href={href}>{content}</Link> : content}
-      </Component>
-    );
-  };
-
-export function SolidButton({
- as: Component = "button",
-    className = "",
-    href,
-    color = "white",
-    speed = "3s",
-    thickness = 3,
-    children,
-    ...rest
-}) {
-
+const GradientButton = ({
+  as: Component = "button",
+  className = "",
+  href,
+  color = "white",
+  speed = "3s",
+  thickness = 3,
+  children,
+  ...rest
+}) => {
   const content = (
-      <div className="relative overflow-hidden text-[#242424] bg-white py-[0.3rem] px-[1rem] rounded-[20px] z-[1] max-w-[200px] w-full text-center hover:bg-[#14161a] hover:text-white ease-in-out duration-200">
-        {children}
-      </div>
-    );
-
+    <div className="inner-content relative overflow-hidden text-white py-[0.3em] px-[1rem] rounded-[20px] z-[1] max-w-[500px] w-full text-center">
+      {children}
+    </div>
+  );
 
   return (
-      <Component
-        className={`star-border-container cursor-pointer ${className}`}
+    <Component
+      className={`star-border-container cursor-pointer ${className}`}
+      style={{
+        padding: `${thickness}px 0`,
+        ...rest.style,
+      }}
+      aria-label={typeof children === "string" ? children : rest["aria-label"]} // 🔥 tambahin accessible name
+      {...rest}
+    >
+      <div
+        className="border-gradient-bottom"
         style={{
-          padding: `${thickness}px 0`,
-          ...rest.style,
+          background: `radial-gradient(circle, ${color}, transparent 10%)`,
+          animationDuration: speed,
         }}
-        {...rest}
-      >
-        <div
-          className="border-gradient-bottom"
-          style={{
-            background: `radial-gradient(circle, ${color}, transparent 10%)`,
-            animationDuration: speed,
-          }}
-        ></div>
-        <div
-          className="border-gradient-top"
-          style={{
-            background: `radial-gradient(circle, ${color}, transparent 10%)`,
-            animationDuration: speed,
-          }}
-        ></div>
+      ></div>
+      <div
+        className="border-gradient-top"
+        style={{
+          background: `radial-gradient(circle, ${color}, transparent 10%)`,
+          animationDuration: speed,
+        }}
+      ></div>
 
-        {href ? <Link href={href}>{content}</Link> : content}
-      </Component>
+      {href ? (
+        <Link
+          href={href}
+          aria-label={
+            typeof children === "string" ? children : rest["aria-label"]
+          }
+        >
+          {content}
+        </Link>
+      ) : (
+        content
+      )}
+    </Component>
+  );
+};
+
+export function SolidButton({
+  as: Component = "button",
+  className = "",
+  href,
+  color = "white",
+  speed = "3s",
+  thickness = 3,
+  children,
+  ...rest
+}) {
+  const content = (
+    <div className="relative overflow-hidden text-[#242424] bg-white py-[0.3rem] px-[1rem] rounded-[20px] z-[1] max-w-[200px] w-full text-center hover:bg-[#14161a] hover:text-white ease-in-out duration-200">
+      {children}
+    </div>
+  );
+
+  return (
+    <Component
+      className={`star-border-container cursor-pointer ${className}`}
+      style={{
+        padding: `${thickness}px 0`,
+        ...rest.style,
+      }}
+      aria-label={typeof children === "string" ? children : rest["aria-label"]}
+      {...rest}
+    >
+      <div
+        className="border-gradient-bottom"
+        style={{
+          background: `radial-gradient(circle, ${color}, transparent 10%)`,
+          animationDuration: speed,
+        }}
+      ></div>
+      <div
+        className="border-gradient-top"
+        style={{
+          background: `radial-gradient(circle, ${color}, transparent 10%)`,
+          animationDuration: speed,
+        }}
+      ></div>
+
+      {href ? <Link href={href}>{content}</Link> : content}
+    </Component>
   );
 }
-
 
 export function ShinyButton({ children }) {
   return (
@@ -109,5 +118,4 @@ export function ShinyButton({ children }) {
   );
 }
 
-
-  export default GradientButton;
+export default GradientButton;

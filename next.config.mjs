@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // 🚫 Jangan build untuk browser lama
+  experimental: {
+    legacyBrowsers: false,
+  },
+
+  // ⚡ Minify pakai SWC
+  swcMinify: true,
+
+  // 📷 Remote image config
   images: {
-    domains: ['drive.google.com', 'lh3.googleusercontent.com'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -15,6 +23,8 @@ const nextConfig = {
       },
     ],
   },
+
+  // 🌐 Headers tambahan (optional SEO/robots control)
   async headers() {
     return [
       {
@@ -22,7 +32,7 @@ const nextConfig = {
         headers: [
           {
             key: 'X-Robots-Tag',
-            value: 'all',
+            value: 'all', // default aja, bisa dihapus kalau ga kepake
           },
         ],
       },

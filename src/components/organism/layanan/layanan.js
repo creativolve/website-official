@@ -58,7 +58,7 @@ export default function Layanan() {
     relative
     w-full lg:w-1/2 flex justify-center items-center translate-x-[10vw]
     translate-y-[27vh]   
-    md:translate-y-[70vh]  md:translate-x-[50vw] 
+    md:translate-y-[50vh]  md:translate-x-[20vw] 
     lg:translate-y-[40vh] lg:translate-x-[10vw]  
     xl:translate-y-[40vh] 
   "
@@ -83,7 +83,6 @@ export default function Layanan() {
       sizes="(max-width: 768px) 100vw, 
              (max-width: 1200px) 50vw, 
              33vw"
-      priority
       quality={94}
     />
 

@@ -12,8 +12,8 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="navbar fixed top-6 left-1/2 -translate-x-1/2 px-4
-        z-[999] w-[90%] md:w-[80%] 
+    <nav className="navbar z-[9999] fixed top-6 left-1/2 -translate-x-1/2 px-4
+         w-[90%] md:w-[80%] 
         backdrop-blur-md bg-black/30 border border-white/10 
         rounded-full shadow-lg">
       

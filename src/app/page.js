@@ -23,7 +23,8 @@ export default function Home() {
       <main
         className="
         z-[10] 
-      px-4
+      px-10
+      md:px-30
       lg:px-30
       "
       >
