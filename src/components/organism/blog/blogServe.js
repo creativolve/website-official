@@ -1,6 +1,7 @@
 import { getCachedDatabase } from "@/lib/notion";
-import BlogSection from "./blog";
 import { Suspense } from "react";
+import BlogSectionWrapper from "./blogwraper";
+
 
 // Loading component
 function BlogLoading() {
@@ -14,54 +15,26 @@ function BlogLoading() {
   );
 }
 
-// Server component untuk fetch data
+// Server Component untuk fetch data
 async function BlogData() {
   try {
-    console.log("BlogData: Fetching from Notion...");
     const data = await getCachedDatabase();
-    
-    let posts = [];
-    if (data?.posts) {
-      posts = data.posts;
-    } else if (Array.isArray(data)) {
-      posts = data;
-    }
-    
-    console.log(`BlogData: Found ${posts.length} posts`);
-    
+    const posts = Array.isArray(data) ? data : data?.posts || [];
+
     if (!posts.length) {
       return (
-        <div className="w-full h-[400px] bg-[#21252C] rounded-[15px] p-[15px] flex items-center justify-center">
-          <div className="text-center space-y-4">
-            <div className="text-yellow-400 text-lg font-semibold">
-              📝 No Blog Posts Found
-            </div>
-            <div className="text-gray-400 text-sm">
-              Make sure your Notion database has published posts
-            </div>
-          </div>
+        <div className="w-full h-[400px] flex items-center justify-center text-white">
+          No Blog Posts Found
         </div>
       );
     }
 
-    return <BlogSection posts={posts} />;
-    
+    // lempar ke wrapper Client
+    return <BlogSectionWrapper posts={posts} />; 
   } catch (error) {
-    console.error("BlogData Error:", error);
-    
     return (
-      <div className="w-full h-[400px] bg-[#21252C] rounded-[15px] p-[15px] flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <div className="text-red-400 text-lg font-semibold">
-            ❌ Error Loading Blog
-          </div>
-          <div className="text-gray-400 text-sm">
-            {error.message}
-          </div>
-          <div className="text-xs text-gray-500 bg-gray-800 p-3 rounded max-w-md">
-            Check your Notion API configuration
-          </div>
-        </div>
+      <div className="w-full h-[400px] flex items-center justify-center text-red-400">
+        Error loading blog: {error.message}
       </div>
     );
   }

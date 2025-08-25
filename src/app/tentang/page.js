@@ -22,7 +22,7 @@ export default function TentangPage() {
         {/* DESKRIPSI */}
         <section
           id="deskripsi"
-          className=" z-[10] h-[140dvh] lg:h-screen py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center"
+          className=" z-[10] min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center"
         >
           <ColTextImage
             ShinyTextValue="Menyediakan berbagai layanan solusi digital kreatif dan strategi branding bisnis!"
@@ -35,7 +35,7 @@ export default function TentangPage() {
         {/* VISI */}
         <section
           id="visi"
-          className=" z-[10] h-[140dvh] lg:h-screen py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center"
+          className=" z-[10] min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center"
         >
           <ColImageText
             ShinyTextValue="Visi & Misi Kami: Menjadi Pusat Solusi Digital"
@@ -48,7 +48,7 @@ export default function TentangPage() {
         {/* Skema Harga Section */}
         <section
           id="skema-plan"
-          className=" z-[10] h-[140dvh] lg:h-screen py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center"
+          className=" z-[10] min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center"
         >
           <ColTextImage
             ShinyTextValue="Pilihan Skema Harga yang Fleksibel dan Bisa Disesuaikan"
@@ -61,7 +61,7 @@ export default function TentangPage() {
         {/* Izin Resmi Section */}
         <section
           id="resmi"
-          className=" z-[10] h-[140dvh] lg:h-screen py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center"
+          className=" z-[10] min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center"
         >
           <ColImageText
             ShinyTextValue="Agensi Resmi dengan Izin Legal yang Terpercaya"

@@ -16,7 +16,7 @@ export default function ColTextImage({ ShinyTextValue, ParagraphValue, SrcImg, A
           <div className="w-full lg:w-1/2 max-w-md lg:max-w-none">
             <FadeIn>
               <H2>
-                <ShinyText text={ShinyTextValue} disabled={false} speed={2} />
+                {ShinyTextValue}
               </H2>
               <Paragraph>{ParagraphValue}</Paragraph>
             </FadeIn>
@@ -77,7 +77,7 @@ export function ColImageText({ ShinyTextValue, ParagraphValue, SrcImg, AltImg })
           <div className="w-full lg:w-1/2 max-w-md lg:max-w-none">
             <FadeIn>
               <H2>
-                <ShinyText text={ShinyTextValue} disabled={false} speed={2} />
+                {ShinyTextValue}
               </H2>
               <Paragraph>{ParagraphValue}</Paragraph>
             </FadeIn>
