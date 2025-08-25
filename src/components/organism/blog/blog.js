@@ -9,7 +9,6 @@ import GradientButton, { SolidButton } from "@/components/atoms/button/button";
 import FadeIn from "@/components/atoms/animation/fadein";
 import SpotlightCard from "@/components/atoms/animation/spootlight";
 
-
 export default function BlogSection({ posts }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
@@ -64,6 +63,8 @@ export default function BlogSection({ posts }) {
             Kami hadir bukan sekadar menyelesaikan proyek Anda tapi untuk
             menjadi solusi jangka panjang bagi kebutuhan digital Anda!
           </Paragraph>
+        </FadeIn>
+        <FadeIn>
           <div className="w-auto">
             <SolidButton href="/blog">Jelajahi Artikel!</SolidButton>
           </div>
@@ -71,104 +72,102 @@ export default function BlogSection({ posts }) {
       </div>
 
       <FadeIn>
+        <SpotlightCard className="w-full rounded-[15px] p-4 md:p-6 relative overflow-hidden">
+          <div className="flex items-center justify-between mb-4 md:mb-6 relative z-10">
+            {/* Dots indicator */}
+            <div className="flex gap-2">
+              {latestPosts.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setIsVisible(false);
+                    setTimeout(() => {
+                      setCurrentIndex(index);
+                      setIsVisible(true);
+                    }, 300);
+                  }}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? "bg-[#318aff] w-6"
+                      : "bg-gray-600  hover:bg-gray-400"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
 
-          <SpotlightCard className="w-full rounded-[15px] p-4 md:p-6 relative overflow-hidden">
-
-            <div className="flex items-center justify-between mb-4 md:mb-6 relative z-10">
-              {/* Dots indicator */}
-              <div className="flex gap-2">
-                {latestPosts.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setIsVisible(false);
-                      setTimeout(() => {
-                        setCurrentIndex(index);
-                        setIsVisible(true);
-                      }, 300);
-                    }}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentIndex
-                        ? "bg-[#318aff] w-6"
-                        : "bg-gray-600  hover:bg-gray-400"
-                    }`}
-                  />
-                ))}
+          {/* Main content */}
+          <div
+            className={`flex flex-col lg:flex-row gap-4 md:gap-6 transition-all duration-300 ease-in-out relative z-10 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-4"
+            }`}
+          >
+            {/* Thumbnail */}
+            <div className="w-full lg:w-1/2 relative">
+              <div className="relative w-full aspect-video rounded-[12px] overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.3)]">
+                <Image
+                  src={
+                    currentPost?.coverUrl ||
+                    "/images/blog/default-thumbnail.jpg"
+                  }
+                  fill
+                  alt={title}
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
               </div>
             </div>
 
-            {/* Main content */}
-            <div
-              className={`flex flex-col lg:flex-row gap-4 md:gap-6 transition-all duration-300 ease-in-out relative z-10 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-4"
-              }`}
-            >
-              {/* Thumbnail */}
-              <div className="w-full lg:w-1/2 relative">
-                <div className="relative w-full aspect-video rounded-[12px] overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.3)]">
-                  <Image
-                    src={
-                      currentPost?.coverUrl ||
-                      "/images/blog/default-thumbnail.jpg"
-                    }
-                    fill
-                    alt={title}
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            {/* Content */}
+            <div className="w-full lg:w-1/2 flex flex-col justify-between py-2">
+              {/* Tags */}
+              {tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {tags.slice(0, 3).map((tag) => (
+                    <span
+                      key={tag.id}
+                      className="px-3 py-1 text-xs font-medium rounded-full bg-[#318aff] text-[#ffffff] border border-[#ffffff]"
+                    >
+                      {tag.name}
+                    </span>
+                  ))}
                 </div>
-              </div>
+              )}
 
-              {/* Content */}
-              <div className="w-full lg:w-1/2 flex flex-col justify-between py-2">
-                {/* Tags */}
-                {tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag.id}
-                        className="px-3 py-1 text-xs font-medium rounded-full bg-[#318aff] text-[#ffffff] border border-[#ffffff]"
-                      >
-                        {tag.name}
-                      </span>
-                    ))}
-                  </div>
-                )}
+              {/* Title */}
+              <h3 className="text-[clamp(1rem,2.5vw,1.4rem)] font-bold text-white mb-2 line-clamp-2 leading-snug">
+                {title}
+              </h3>
 
-                {/* Title */}
-                <h3 className="text-[clamp(1rem,2.5vw,1.4rem)] font-bold text-white mb-2 line-clamp-2 leading-snug">
-                  {title}
-                </h3>
+              {/* Description */}
+              {description && (
+                <p className="text-gray-300 text-sm mb-3 line-clamp-3 leading-relaxed">
+                  {description}
+                </p>
+              )}
 
-                {/* Description */}
-                {description && (
-                  <p className="text-gray-300 text-sm mb-3 line-clamp-3 leading-relaxed">
-                    {description}
-                  </p>
-                )}
-
-                {/* Footer */}
-                <div className="flex items-end justify-between mt-auto">
-                  <div className="text-gray-400 text-xs md:text-sm">
-                    {publishedDate && (
-                      <time dateTime={publishedDate}>
-                        {formatDate(publishedDate)}
-                      </time>
-                    )}
-                  </div>
-
-                  <GradientButton
-                    href={`/blog/${slug}`}
-                    className="font-semibold leading-none flex items-center gap-2 py-3 group"
-                  >
-                    Baca Selegkapnya
-                  </GradientButton>
+              {/* Footer */}
+              <div className="flex items-end justify-between mt-auto">
+                <div className="text-gray-400 text-xs md:text-sm">
+                  {publishedDate && (
+                    <time dateTime={publishedDate}>
+                      {formatDate(publishedDate)}
+                    </time>
+                  )}
                 </div>
+
+                <GradientButton
+                  href={`/blog/${slug}`}
+                  className="font-semibold leading-none flex items-center gap-2 py-3 group"
+                >
+                  Baca Selegkapnya
+                </GradientButton>
               </div>
             </div>
-          </SpotlightCard>
+          </div>
+        </SpotlightCard>
       </FadeIn>
     </section>
   );

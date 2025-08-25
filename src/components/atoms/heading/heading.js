@@ -1,4 +1,4 @@
-export default function H1({ align = "left", children, className = "" }) {
+export default function H1({ align = "left", children, className = "", fontWeight = "font-bold " }) {
   // Validasi alignment options
   const validAlignments = ["left", "center", "right", "justify"];
   const alignmentClass = validAlignments.includes(align) ? `text-${align}` : "text-left";
@@ -7,7 +7,7 @@ export default function H1({ align = "left", children, className = "" }) {
     <h1 
       className={`
         ${alignmentClass} 
-        font-bold 
+        ${fontWeight} 
         text-3xl 
         lg:text-5xl 
         ${className}

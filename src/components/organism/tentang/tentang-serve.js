@@ -25,7 +25,7 @@ export default function TentangServe() {
                 <div className="relative w-full h-full">
                   <Image
                     src="/image/Tentang Section.jpg"
-                    alt="Photo Tentang - Tim kreatif kami"
+                    alt="Tentang Kami"
                     fill
                     style={{ objectFit: "cover" }}
                     className="rounded-md"

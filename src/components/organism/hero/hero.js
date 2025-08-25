@@ -18,10 +18,7 @@ export default function HeroSection() {
             "
       >
         <H1>
-          <BlurText
-            className="font-bold text-5xl
-          lg:text-5xl  text-center"
-          >
+          <BlurText>
             Dapatkan Solusi Digital Sesuai Budget Kamu!
           </BlurText>
         </H1>

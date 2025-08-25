@@ -1,7 +1,13 @@
+"use client"
+
 import "@/app/css/buttonStars.css";
 import Link from "next/link";
 import ShinyText from "../animation/shinnyText";
+import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 
+// GRADIENT BUTTON
 const GradientButton = ({
   as: Component = "button",
   className = "",
@@ -59,6 +65,7 @@ const GradientButton = ({
   );
 };
 
+// SOLID BUTTON
 export function SolidButton({
   as: Component = "button",
   className = "",
@@ -105,6 +112,8 @@ export function SolidButton({
   );
 }
 
+
+// SHINY BUTTON
 export function ShinyButton({ children }) {
   return (
     <button
@@ -117,5 +126,41 @@ export function ShinyButton({ children }) {
     </button>
   );
 }
+
+
+// BACK BUTTON
+export function BackButton() {
+  const router = useRouter();
+
+  const handleBack = () => {
+    const referrer = document.referrer; 
+    const isSameDomain = referrer.includes(window.location.hostname);
+
+    if (isSameDomain) {
+      router.back(); // balik ke halaman internal
+    } else {
+      router.push("/"); // fallback ke homepage kita
+    }
+  };
+
+  return (
+    <button
+      onClick={handleBack}
+      className="
+        fixed top-4 left-4 z-50
+        flex items-center gap-2
+        bg-white text-black
+        px-3 py-2 rounded-xl
+        shadow-lg
+        transition-colors duration-200
+        hover:bg-[#318aff] hover:text-white
+      "
+    >
+      <FontAwesomeIcon icon={faArrowLeft} className="w-4 h-4" />
+      <span className="text-sm font-medium">Kembali</span>
+    </button>
+  );
+}
+
 
 export default GradientButton;

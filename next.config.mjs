@@ -1,13 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 🚫 Jangan build untuk browser lama
-  experimental: {
-    legacyBrowsers: false,
-  },
-
-  // ⚡ Minify pakai SWC
-  swcMinify: true,
-
   // 📷 Remote image config
   images: {
     remotePatterns: [
