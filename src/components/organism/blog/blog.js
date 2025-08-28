@@ -113,6 +113,7 @@ export default function BlogSection({ posts }) {
                     "/images/blog/default-thumbnail.jpg"
                   }
                   fill
+                  quality={60}
                   alt={title}
                   className="object-cover transition-transform duration-500 hover:scale-105"
                 />

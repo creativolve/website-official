@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import "@/app/css/buttonStars.css";
 import Link from "next/link";
 import ShinyText from "../animation/shinnyText";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 // GRADIENT BUTTON
 const GradientButton = ({
@@ -16,6 +16,7 @@ const GradientButton = ({
   speed = "3s",
   thickness = 3,
   children,
+  onClick,
   ...rest
 }) => {
   const content = (
@@ -31,8 +32,9 @@ const GradientButton = ({
         padding: `${thickness}px 0`,
         ...rest.style,
       }}
-      aria-label={typeof children === "string" ? children : rest["aria-label"]} // 🔥 tambahin accessible name
+      aria-label={typeof children === "string" ? children : rest["aria-label"]}
       {...rest}
+      onClick={onClick}
     >
       <div
         className="border-gradient-bottom"
@@ -74,6 +76,7 @@ export function SolidButton({
   speed = "3s",
   thickness = 3,
   children,
+  onClick,
   ...rest
 }) {
   const content = (
@@ -91,6 +94,7 @@ export function SolidButton({
       }}
       aria-label={typeof children === "string" ? children : rest["aria-label"]}
       {...rest}
+      onClick={onClick}
     >
       <div
         className="border-gradient-bottom"
@@ -112,8 +116,7 @@ export function SolidButton({
   );
 }
 
-
-// SHINY BUTTON
+// SHINY BUTTON (tidak menerima onClick, tetap khusus)
 export function ShinyButton({ children }) {
   return (
     <button
@@ -127,19 +130,23 @@ export function ShinyButton({ children }) {
   );
 }
 
-
 // BACK BUTTON
-export function BackButton() {
+export function BackButton({ onClick }) {
   const router = useRouter();
 
   const handleBack = () => {
-    const referrer = document.referrer; 
+    if (onClick) {
+      onClick(); // kalau ada custom onClick, jalankan dulu
+      return;
+    }
+
+    const referrer = document.referrer;
     const isSameDomain = referrer.includes(window.location.hostname);
 
     if (isSameDomain) {
-      router.back(); // balik ke halaman internal
+      router.back();
     } else {
-      router.push("/"); // fallback ke homepage kita
+      router.push("/");
     }
   };
 
@@ -161,6 +168,5 @@ export function BackButton() {
     </button>
   );
 }
-
 
 export default GradientButton;

@@ -46,7 +46,7 @@ export default function Layanan() {
 
         <FadeIn>
           <H2>Solusi Digital Dengan Fleksibilitas Untuk Setiap Kalangan!</H2><br />
-          <GradientButton>
+          <GradientButton href='/layanan'>
             Lihat Lengkapnya!
           </GradientButton>
         </FadeIn>
@@ -56,7 +56,7 @@ export default function Layanan() {
 <div
   className="
     relative
-    w-full lg:w-1/2 flex justify-center items-center translate-x-[10vw]
+    w-full lg:w-1/2 flex justify-center items-center translate-x-[1vw]
     translate-y-[27vh]   
     md:translate-y-[50vh]  md:translate-x-[20vw] 
     lg:translate-y-[40vh] lg:translate-x-[10vw]  
@@ -79,11 +79,11 @@ export default function Layanan() {
       src={card.image}
       alt={card.title}
       fill
-      className="object-cover"
+      className="object-cover pointer-events-none select-none"
       sizes="(max-width: 768px) 100vw, 
              (max-width: 1200px) 50vw, 
              33vw"
-      quality={94}
+      quality={64}
     />
 
 

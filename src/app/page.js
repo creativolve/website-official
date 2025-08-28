@@ -1,13 +1,19 @@
-import Navbar from "@/components/molecules/navbar/navbar";
-import DarkVeil from "@/components/atoms/background/darkveli/darkveli";
-import HeroSection from "@/components/organism/hero/hero";
+import dynamic from "next/dynamic";
+
+// tetap static import
 import CurvedLoop from "@/components/atoms/animation/curvedLoop";
-import TentangServe from "@/components/organism/tentang/tentang-serve";
-import Layanan from "@/components/organism/layanan/layanan";
-import Mengapa from "@/components/organism/mengapa/mengapa";
 import BlogServe from "@/components/organism/blog/blogServe";
-import PusatLaySection from "@/components/organism/pusatLayanan/pusatLayanan";
+import DarkVeil from "@/components/atoms/background/darkveli/darkveli";
 import Footer from "@/components/organism/footer/footer";
+
+
+// dynamic import
+const Navbar = dynamic(() => import("@/components/molecules/navbar/navbar"), { ssr: true });
+const HeroSection = dynamic(() => import("@/components/organism/hero/hero"), { ssr: true });
+const TentangServe = dynamic(() => import("@/components/organism/tentang/tentang-serve"), { ssr: true});
+const Layanan = dynamic(() => import("@/components/organism/layanan/layanan"), { ssr: true });
+const Mengapa = dynamic(() => import("@/components/organism/mengapa/mengapa"), { ssr: true });
+const PusatLaySection = dynamic(() => import("@/components/organism/pusatLayanan/pusatLayanan"), { ssr: true });
 
 export default async function Home() {
   return (
