@@ -36,7 +36,7 @@ export default function HeroBerandaBlog({ searchTerm, setSearchTerm }) {
 
   {/* Content */}
   <div
-    className="lg:w-[50%] inset-0 justify-center items-center flex flex-col gap-4 relative z-10"
+    className="lg:w-[50%] inset-0 justify-center px-10 items-center flex flex-col gap-4 relative z-10"
   >
     <div className="w-auto">
       <FadeIn delay={0.5}>
@@ -45,10 +45,7 @@ export default function HeroBerandaBlog({ searchTerm, setSearchTerm }) {
     </div>
 
     <H1>
-      <BlurText
-        className="font-bold text-5xl
-                  lg:text-5xl  text-center"
-      >
+      <BlurText>
         Eksplorasi Wawasan Terbaru seputar Bisnis, Branding, dan Teknologi
         Digital
       </BlurText>

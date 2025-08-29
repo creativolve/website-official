@@ -22,7 +22,7 @@ const produk = [
 
 const contact = [
   { link: "Email", href: "creativolve.agency@gmail.com" },
-  { link: "WhatsApp", href: "https://wa.me/6288289158984" },
+  { link: "WhatsApp", href: "https://wa.me/62881012092569" },
 ];
 
 export default function Footer() {
@@ -31,7 +31,7 @@ export default function Footer() {
       <div
         className="
           relative z-10 
-          bg-[#11111] backdrop-blur-xl border border-white/20
+          bg-[#222633] 
           shadow-lg rounded-[30px]
           py-16 px-8
           md:px-[10vw]

@@ -1,5 +1,4 @@
 import FadeIn from "@/components/atoms/animation/fadein";
-import ShinyText from "@/components/atoms/animation/shinnyText";
 import SpotlightCard from "@/components/atoms/animation/spootlight";
 import { H2 } from "@/components/atoms/heading/heading";
 import Paragraph from "@/components/atoms/paragraft/paragraf";
@@ -29,6 +28,7 @@ export default function ColTextImage({ IdSection, children, SrcImg, AltImg }) {
                       src={SrcImg}
                       alt={AltImg}
                       fill
+                      quality={90}
                       style={{ objectFit: "cover" }}
                       className="rounded-md"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -62,6 +62,7 @@ export function ColImageText({IdSection, children, SrcImg, AltImg }) {
                       src={SrcImg}
                       alt={AltImg}
                       fill
+                      quality={90}
                       style={{ objectFit: "cover" }}
                       className="rounded-md"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

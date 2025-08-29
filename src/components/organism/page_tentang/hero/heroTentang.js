@@ -22,10 +22,14 @@ export default function HeroTentangPage() {
     scale={0.2}
     rotation={30}
   />
+  <div className="absolute bottom-0 left-0 w-full h-1/3 
+  bg-gradient-to-t 
+  from-black/70 via-black/20 to-transparent pointer-events-none" 
+/>
       </div>
       <div
         className="
-            lg:w-[50%] inset-0 justify-center items-center flex flex-col gap-4
+            lg:w-[50%] inset-0 justify-center  px-10 items-center flex flex-col gap-4
             "
       >
         <div className="w-auto">
@@ -34,10 +38,7 @@ export default function HeroTentangPage() {
           </FadeIn>
         </div>
         <H1>
-          <BlurText
-            className="font-bold text-5xl
-                  lg:text-5xl  text-center"
-          >
+          <BlurText>
             Agensi Solusi Digital Dan Strategi Branding
           </BlurText>
         </H1>

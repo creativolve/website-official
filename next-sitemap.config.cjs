@@ -9,7 +9,8 @@ const config = {
   robotsTxtOptions: {
     policies: [
       { userAgent: '*', allow: '/' },
-      { userAgent: '*', allow: '/favicon.png' }
+      { userAgent: '*', allow: '/favicon.png' },
+      { userAgent: '*', disallow: '/image/circle' },
     ],
     additionalSitemaps: [
       'https://creativolve.agency/sitemap.xml'

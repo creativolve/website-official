@@ -27,6 +27,7 @@ export default function TentangServe() {
                     src="/image/Tentang Section.jpg"
                     alt="Tentang Kami"
                     fill
+                    quality={40}
                     style={{ objectFit: "cover" }}
                     className="rounded-md"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

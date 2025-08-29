@@ -20,12 +20,13 @@ export default function HeroLayananPage() {
           speed={5}
           noiseIntensity={1.75}
           scale={0.2}
-          rotation={100}
+          rotation={-60}
         />
-        <div className="absolute bottom-0 left-0 w-full h-1/3 
+        <div
+          className="absolute bottom-0 left-0 w-full h-1/3 
   bg-gradient-to-t 
-  from-black/70 via-black/20 to-transparent pointer-events-none" 
-/>
+  from-black/70 via-black/20 to-transparent pointer-events-none"
+        />
       </div>
       <div
         className="
@@ -34,19 +35,19 @@ export default function HeroLayananPage() {
       >
         <div className="w-auto">
           <FadeIn delay={0.5}>
-            <ShinyButton>Creativolve Agency</ShinyButton>
+            <ShinyButton>Pusat Layanan Agensi</ShinyButton>
           </FadeIn>
         </div>
-        <H1>
-          <BlurText   >
-            Layanan Fleksibel Dengan Sistem Penyesuaian Sesuai Budget.
+        <H1 align="center">
+          <BlurText className="text-center">
+            Evolusi Pusat Layanan
+            Era Digital Dan Teknologi
           </BlurText>
         </H1>
         <FadeIn delay={0.3}>
           <Paragraph align="center">
-            Creativolve Agency memberikan layanan yang bisa dikustomisasi
-            berdasarkan budget, sehingga klien tetap mendapat hasil terbaik
-            tanpa harus keluar dari kemampuan finansialnya.
+            Creativolve terus mengembangkan penerepan AI Agent pada operasional
+            agensi, guna memberikan pelayanan yang efektif dan juga efisien!.
           </Paragraph>
         </FadeIn>
       </div>

@@ -35,17 +35,17 @@ export default async function BlogDetail({ params }) {
 
     return (
       <>
-      <BackButton/>
+      <BackButton href="/blog"/>
         <main>
-          <article className="max-w-3xl mx-auto py-20 px-4">
+          <article className="max-w-3xl mx-auto py-20 px-10">
 
 
             {/* Cover Image */}
             <div className="mb-8 rounded-lg">
               <Image
                 src={post.coverUrl}
-                width={1000}
-                height={1000}
+                width={1920}
+                height={1080}
                 priority
                 quality={100}
                 alt={

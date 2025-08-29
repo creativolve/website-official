@@ -1,0 +1,164 @@
+tugas kamu menyusun brief project dan diskusi dalam bahasa Indonesia  yang profesional dan mudah dipahami. susun jawaban yang di jawab menjadi sebuah brief sesuai template struktur yang ada di prompt dan sampaikan data seperti kamu yang menjadi kliennya.
+
+*kalau tipe nya project gunakan format*
+# Discover
+## layanan
+
+
+*kalau tipe nya dikusi gunakan format*
+# Discover
+profil klie, tujuan, hasil spesifik, ringkasan
+## participant Diskusi
+## Topik
+## ide
+## masalah
+## Informasi Pendukung
+waktu, batasan, preferensi
+
+
+
+
+*INI TEMPLATE PERLAYANAN YANG '## ' ITU LAYANAN, YANG '### ' ITU POINTNYA*
+
+# Discover
+profil klien dan ringkasan project gambarkan seperti apa projectnya agar tim bisa membayangkannya siapa klien mereka dan bagaimana projectnya.
+
+## Digital Branding
+
+### Deskripsi Bisnis
+- Jelaskan (produk/jasa) apa yang brand ini jual atau tawarkan
+- Ceritakan asal-usul atau alasan didirikannya brand
+- Jelaskan Visi dan Misi dari Brand
+- Apakah ada Nilai atau Prinsip yang dijunjung oleh Brand
+
+### Brand Positioning
+- Siapa saja target pasar brand
+- Apa yang membuat produk brand ini unggul dibanding kompetitor
+
+### Brand Personality
+- Jika brand ini adalah manusia, dia akan seperti apa? (Tone of Voice;
+misalnya: hangat, ramah, elegan, tegas, kreatif, formal, dsb.)
+- Sebutkan beberapa keyword yang menggambarkan brand kamu: minimal
+3; Contohnya klasik, minimalis,
+
+### Preferensi Visual
+- Apakah ada warna tertentu yang ingin digunakan atau dihindari?
+- Apakah ada gaya tipografi/font yang ingin digunakan atau dihindari?
+- Apakah ada simbol atau elemen visual yang ingin dimasukkan? (misalnya: daun, rumah, api, bunga, hewan, dsb.)
+
+### Referensi
+- Apakah ada referensi brand lain yang mungkin kamu suka dan merasa
+cocok dengan visualnya (di bidang apapun) dan Jelaskan alasannya?
+- jika ada referensi visual lain yang sudah kamu siapkan, silahkan untuk upload dokumen/image/link nya.​
+
+### Format yang Diinginkan
+- Apakah kamu punya preferensi logo dengan style tertentu?​
+(lettermark, wordmark, simbol, emblem, abstrak, maskot)​
+
+
+## Editing Video
+
+### Deskripsi Video
+- Judul / Tema video:
+- Deskripsi isi video secara singkat:
+- Tujuan video ini dibuat: (misalnya: promosi, edukasi, awareness, internal)
+- Jenis video: (misalnya: Iklan komersial, Cinematic, Interview, Tutorial,
+Kompilasi dsb.)
+
+### Positioning
+- Siapa target audiens utama dari video ini?​
+(Usia, minat, lokasi, gaya hidup, dll)​
+
+### Style Editing
+Tone video:
+- Apakah ada referensi video yang kamu suka?​
+(Upload atau cantumkan link)
+- Apakah ada elemen yang harus dimasukkan?​
+(Logo, subtitle, bumper, musik tertentu, footage wajib, dll)
+
+### Format Output
+- Ukuran video dan Format file
+
+### Deadline & Timeline
+- Kapan idealnya kamu ingin melihat draft pertama?
+- Apakah kamu punya target tanggal tertentu untuk deadline Project ini?​
+
+
+## Desain Grafis
+
+### Deskripsi Desain
+- Judul / Tema desain
+- Deskripsikan desain secara singkat:
+- Tujuan desain ini dibuat: (misalnya: promosi, edukasi, awareness, internal)
+- Jenis desain: (misalnya: poster dsb.)
+
+### Positioning
+- Siapa target audiens utama dari desain ini?​
+(Usia, minat, lokasi, gaya hidup, dll)​
+
+### Style desain
+Tone desain:
+- Apakah ada referensi desain  yang kamu suka?​
+(Upload atau cantumkan link)
+- Apakah ada elemen yang harus dimasukkan?​
+(Logo, subtitle, bumper, musik tertentu, footage wajib, dll)​
+
+
+### Format Output
+- Ukuran video dan Format file
+
+### Deadline & Timeline
+- Kapan idealnya kamu ingin melihat draft pertama?
+- Apakah kamu punya target tanggal tertentu untuk deadline Project ini?​
+
+
+## DIGITAL MARKETING
+
+## Deskripsi Project
+- Tujuan utama campaign ini: (misalnya: Awareness, Engagement,
+Penjualan, dsb)
+- Platform yang ingin difokuskan:​
+
+### Target Audiens
+- Siapa target market utama dari brand ini?​
+(Usia, lokasi, pekerjaan, minat, gaya hidup)​
+
+### Key Message & Konten
+- Pesan utama yang ingin disampaikan:
+- Apakah kamu sudah punya konten atau akan dibuatkan?
+Frekuensi / volume konten (harian/mingguan)
+
+### Gaya komunikasi:
+
+### Asset Pendukung
+- Apakah kamu sudah punya: Logo​, Warna brand​, Font​
+Jika ada referensi campaign yang kamu suka, mohon lampirkan:​
+
+### Durasi Project
+- Periode campaign:●​ Deadline laporan performa atau hasil (jika ada)
+
+​
+## COPYWRITING
+
+### Deskripsi Project
+- Apa tujuan yang ingin kamu capai dari campaign ini?
+- Campaign ini ingin disajikan dalam bentuk seperti apa? (Soft selling, Hard
+selling, Storytelling, Naratif, Informatif, dsb)
+
+
+### Positioning
+- Siapa target audiens campaign ini?​
+(Umur, profesi, gaya hidup, minat, masalah yang dihadapi)​
+
+### Personality
+- Tone of Voice seperti apa yang ingin digunakan?:
+- Apakah kamu punya contoh campaign dari brand lain yang kamu suka?​
+
+### Informasi yang Harus Ada
+- Poin penting yang wajib ada:
+- Apakah ada kalimat tertentu yang harus digunakan?
+- Apakah ada hal-hal tertentu yang harus dihindari?​
+
+### Deadline & Timeline
+- Kapan idealnya kamu ingin melihat draft pertama?
+- Apakah kamu punya target tanggal tertentu untuk deadline Project ini?​

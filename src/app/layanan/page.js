@@ -8,6 +8,9 @@ import ColTextImage, {
 import Footer from "@/components/organism/footer/footer";
 import HeroLayananPage from "@/components/organism/layanan_page/hero/hero";
 
+
+
+
 export default function LayananPage() {
   return (
     <>

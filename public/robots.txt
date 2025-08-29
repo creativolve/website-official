@@ -6,6 +6,10 @@ Allow: /
 User-agent: *
 Allow: /favicon.png
 
+# *
+User-agent: *
+Disallow: /image/circle
+
 # Host
 Host: https://creativolve.agency
 
