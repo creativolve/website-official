@@ -28,19 +28,19 @@ const pertanyaanKhususLayanan = {
     "Apakah kamu punya preferensi logo dengan style tertentu? (lettermark, wordmark, simbol, emblem, abstrak, maskot)",
     "Apakah kamu punya target tanggal tertentu untuk deadline project branding ini?",
   ],
-  "Digital Marketing": [
-    "Apa tujuan utama campaign ini? (misalnya: Awareness, Engagement, Penjualan, dsb)",
-    "Platform mana yang ingin difokuskan untuk campaign ini?",
-    "Siapa target market utama dari brand ini? (Usia, lokasi, pekerjaan, minat, gaya hidup)",
-    "apa pesan utama yang ingin disampaikan melalui campaign marketing ini?",
-    "Apakah kamu sudah memiliki konten Marketing atau akan dibuatkan?",
-    "Berapa frekuensi posting konten yang diinginkan?(harian/mingguan)",
-    "Gaya komunikasi seperti apa yang diinginkan dalam project Digital Marketing Ini?(Serius/friendly dll)",
-    "Komponen apa campaign saja yang sudah kamu miliki?(Logo,font,warna brand dll)",
-    "Jika ada referensi campaign yang kamu suka untuk digital marketing, mohon lampirkan (cantumkan link)",
-    "Berapa lama periode campaign Digital Markting ini akan berlangsung?",
-    "Kapan deadline laporan performa atau hasil dari markring (jika ada)?",
-  ],
+  // "Digital Marketing": [
+  //   "Apa tujuan utama campaign ini? (misalnya: Awareness, Engagement, Penjualan, dsb)",
+  //   "Platform mana yang ingin difokuskan untuk campaign ini?",
+  //   "Siapa target market utama dari brand ini? (Usia, lokasi, pekerjaan, minat, gaya hidup)",
+  //   "apa pesan utama yang ingin disampaikan melalui campaign marketing ini?",
+  //   "Apakah kamu sudah memiliki konten Marketing atau akan dibuatkan?",
+  //   "Berapa frekuensi posting konten yang diinginkan?(harian/mingguan)",
+  //   "Gaya komunikasi seperti apa yang diinginkan dalam project Digital Marketing Ini?(Serius/friendly dll)",
+  //   "Komponen apa campaign saja yang sudah kamu miliki?(Logo,font,warna brand dll)",
+  //   "Jika ada referensi campaign yang kamu suka untuk digital marketing, mohon lampirkan (cantumkan link)",
+  //   "Berapa lama periode campaign Digital Markting ini akan berlangsung?",
+  //   "Kapan deadline laporan performa atau hasil dari markring (jika ada)?",
+  // ],
   "Editing Video": [
     "Apa judul atau tema video ini?",
     "Deskripsikan isi video proyek ini secara singkat?",
@@ -75,6 +75,18 @@ const pertanyaanKhususLayanan = {
     "Apakah ada hal-hal tertentu yang harus dihindari dalam CoprWriting ini?",
     "Apakah kamu punya target tanggal tertentu untuk deadline project copywriting ini?",
   ],
+  "Web Development": [
+  "Apa tujuan utama website ini? (misalnya: company profile, e-commerce, blog, landing page, dsb)",
+  "Deskripsikan website yang ingin kamu buat secara singkat?",
+  "Siapa target audiens utama dari website ini? (usia, minat, lokasi, gaya hidup, dll)",
+  "Fitur apa saja yang wajib ada di website? (misalnya: login, katalog produk, checkout, blog, dsb)",
+  "Apakah kamu sudah punya domain dan hosting, atau perlu kami siapkan?",
+  "Apakah kamu sudah memiliki desain UI/UX atau ingin kami buatkan?",
+  "Apakah ada referensi website yang kamu suka? (cantumkan link)",
+  "Apakah website perlu terhubung dengan platform lain? (misalnya: payment gateway, WhatsApp, marketplace, dll)",
+  "Apakah ada konten yang sudah disiapkan? (teks, foto, video, dll)",
+  "Apakah kamu punya target tanggal tertentu untuk deadline Project Website ini?",
+]
 };
 
 const layananOptions = [
