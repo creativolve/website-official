@@ -539,8 +539,22 @@ export default function FormProject() {
           </p>
         </div>
       )}
+            {isSubmitting && (
+        <div className="w-full lg:w-[60%] h-full flex gap-9 px-10 py-50 flex-col justify-center 
+        lg:px-30">
+          <h2 className="
+          text-gradient font-bold text-[clamp(1.2rem,2vw,1.5rem)] leading-[clamp(1.4rem,3vw,2.4rem)] text-white
+          ">Sedang Mengajukan Diskusi</h2>
+          <div className="flex flex-col">
+            <div className="text-[clamp(0.6rem,1vw,0.9rem)] text-white">
+              <div className="status status-success animate-bounce"></div> Sistem Berjalan
+            </div>
+            <span className="loading loading-infinity text-success loading-xl"></span>
+          </div>
+        </div>
+      )}
 
-      {!submitted && (
+      {!submitted  && !isSubmitting && (
         <div className="form w-full lg:w-[60%] h-full lg:overflow-auto scrollbar-hide no-scrollbar">
           <form
             onSubmit={handleSubmit}
@@ -867,6 +881,30 @@ export default function FormProject() {
               {isSubmitting ? "Mengirim..." : "Ajukan!"}
             </button>
           </form>
+        </div>
+      )}
+
+            {submitted && (
+        <div
+          className="w-full lg:w-[60%] h-full flex px-10 py-50 flex-col justify-center 
+      lg:px-30"
+        >
+          <h1
+            className="
+        text-gradient font-bold text-[clamp(1.2rem,2vw,1.5rem)] leading-[clamp(1.4rem,3vw,2.4rem)] text-shadow-[0_0_20px_#00E5FF]
+        "
+          >
+           {popupMessage}
+          </h1>
+          <p
+            className="
+         text-[clamp(0.7rem,2vw,0.9rem)] text-[#b6b6b6]
+        "
+          >
+            Kami juga sudah mengirim email kepada anda, silahkan cek email
+            apakah data sudah sesuai dan untuk memastikan apakah sudah kami
+            terima atau belum.
+          </p>
         </div>
       )}
     </div>
