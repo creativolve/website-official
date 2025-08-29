@@ -91,10 +91,10 @@ const pertanyaanKhususLayanan = {
 
 const layananOptions = [
   { value: "Digital Branding", label: "Digital Branding" },
-  { value: "Digital Marketing", label: "Digital Marketing" },
+  // { value: "Digital Marketing", label: "Digital Marketing" },
   { value: "Editing Video", label: "Editing Video" },
   { value: "Desain Grafis", label: "Desain Grafis" },
-  { value: "Copywriting", label: "Copywriting" },
+  { value: "Web Development", label: "Web Development" },
 ];
 
 const businessTypeOptions = [
