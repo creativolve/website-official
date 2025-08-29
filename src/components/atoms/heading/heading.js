@@ -7,7 +7,7 @@ export default function H1({ align = "left", children, className = "", fontWeigh
     <h1 
       className={`
         ${alignmentClass} 
-        ${fontWeight} 
+        ${fontWeight} text-white
         text-3xl 
         lg:text-5xl 
         ${className}
@@ -26,7 +26,7 @@ export function H2({ align = "left", children, className = "" }) {
   return (
     <h2 
       className={`
-        text-3xl
+        text-3xl text-white
         md:text-4xl 
         font-bold 
         ${alignmentClass} 
@@ -45,7 +45,7 @@ export function H3({ align = "left", children, className = "" }) {
   return (
     <h3 
       className={`
-        text-2xl 
+        text-2xl text-white
         font-bold 
         ${alignmentClass} 
         ${className}

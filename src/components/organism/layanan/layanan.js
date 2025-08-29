@@ -78,6 +78,7 @@ export default function Layanan() {
     <Image
       src={card.image}
       alt={card.title}
+      loading="lazy"
       fill
       className="object-cover pointer-events-none select-none"
       sizes="(max-width: 768px) 100vw, 

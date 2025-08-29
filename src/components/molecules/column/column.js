@@ -27,6 +27,7 @@ export default function ColTextImage({ IdSection, children, SrcImg, AltImg }) {
                     <Image
                       src={SrcImg}
                       alt={AltImg}
+                      loading="lazy"
                       fill
                       quality={90}
                       style={{ objectFit: "cover" }}
@@ -61,6 +62,7 @@ export function ColImageText({IdSection, children, SrcImg, AltImg }) {
                     <Image
                       src={SrcImg}
                       alt={AltImg}
+                      loading="lazy"
                       fill
                       quality={90}
                       style={{ objectFit: "cover" }}

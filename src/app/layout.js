@@ -68,7 +68,11 @@ export default function RootLayout({ children }) {
 
         {/* ✅ Preconnect fonts (hemat waktu DNS lookup) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
       </head>
       <body
         className={`${montserrat.variable} antialiased bg-black overflow-x-hidden`}
@@ -78,19 +82,19 @@ export default function RootLayout({ children }) {
         {/* ✅ Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-L7L5HMSKME"
-          strategy="afterInteractive"
+          strategy="lazyOnload" // 🔥 jadi lazy
         />
-        <Script id="gtag-init" strategy="afterInteractive">
+        <Script id="gtag-init" strategy="lazyOnload">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-L7L5HMSKME');
-          `}
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L7L5HMSKME');
+  `}
         </Script>
 
         {/* ✅ JSON-LD */}
-        <Script id="json-ld" type="application/ld+json" strategy="afterInteractive">
+        <Script id="json-ld" type="application/ld+json" strategy="lazyOnload">
           {JSON.stringify(jsonLd)}
         </Script>
       </body>
