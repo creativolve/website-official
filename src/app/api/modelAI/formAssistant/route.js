@@ -19,10 +19,11 @@ import Groq from "groq-sdk";
         );
       }
 
-          const systemPrompt = await fs.readFile(
-            path.resolve("src", "data", "prompt-form.txt"),
-            "utf-8"
-          );
+      const systemPrompt = await fs.readFile(
+  path.resolve("src", "data", "prompt-form.md"),
+  "utf-8"
+);
+
 
 
           

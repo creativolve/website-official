@@ -20,12 +20,12 @@ export async function POST(req) {
     }
 
     const systemPrompt = await fs.readFile(
-      path.resolve("src", "data", "prompt.txt"),
+      path.resolve("src", "data", "prompt.md"),
       "utf-8"
     );
 
     const companyData = await fs.readFile(
-      path.resolve("src", "data", "data.txt"),
+      path.resolve("src", "data", "data.md"),
       "utf-8"
     );
 
