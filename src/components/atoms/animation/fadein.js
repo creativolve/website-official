@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 
 const FadeIn = ({
   children,
@@ -16,31 +16,46 @@ const FadeIn = ({
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    if (!ref.current) return;
+    if (!ref.current || typeof IntersectionObserver === "undefined") return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          observer.unobserve(ref.current);
+          observer.unobserve(entry.target); // hanya element ini
         }
       },
       { threshold, rootMargin }
     );
+
     observer.observe(ref.current);
-    return () => observer.disconnect();
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
   }, [threshold, rootMargin]);
 
-  return (
-   <motion.div
-  ref={ref}
-  className={className}
-  initial={{ opacity: 0, y, filter: "blur(10px)" }} // blur awal
-  animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-  transition={{ duration, delay, ease: "easeOut" }}
->
-  {children}
-</motion.div>
+  // pakai useMemo biar object animasi gak berubah tiap render
+  const initial = useMemo(
+    () => ({ opacity: 0, y, filter: "blur(10px)" }),
+    [y]
+  );
 
+  const animate = useMemo(
+    () => (inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}),
+    [inView]
+  );
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={initial}
+      animate={animate}
+      transition={{ duration, delay, ease: "easeOut" }}
+    >
+      {children}
+    </motion.div>
   );
 };
 

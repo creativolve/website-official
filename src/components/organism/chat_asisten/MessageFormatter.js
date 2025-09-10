@@ -118,6 +118,52 @@ export const MessageFormatter = {
     return text;
   },
 
+  parseTables: (text) => {
+    const lines = text.split('\n');
+    const result = [];
+    let tableBuffer = [];
+
+    const flushTable = () => {
+      if (tableBuffer.length < 2) return; // butuh header + pemisah minimal
+      const header = tableBuffer[0].split('|').map(c => c.trim()).filter(Boolean);
+      const rows = tableBuffer.slice(2).map(row =>
+        row.split('|').map(c => c.trim()).filter(Boolean)
+      );
+
+      let html = `<div class="overflow-x-auto my-4"><table class="min-w-full border border-gray-600 text-sm text-left text-gray-300">`;
+      html += `<thead class="bg-gray-700 text-gray-100"><tr>`;
+      header.forEach(h => {
+        html += `<th class="px-4 py-2 border border-gray-600">${MessageFormatter.escapeHtml(h)}</th>`;
+      });
+      html += `</tr></thead><tbody>`;
+      rows.forEach(r => {
+        html += `<tr>`;
+        r.forEach(c => {
+          html += `<td class="px-4 py-2 border border-gray-600">${MessageFormatter.escapeHtml(c)}</td>`;
+        });
+        html += `</tr>`;
+      });
+      html += `</tbody></table></div>`;
+
+      result.push(html);
+      tableBuffer = [];
+    };
+
+    for (const line of lines) {
+      if (line.trim().startsWith('|') && line.includes('|')) {
+        tableBuffer.push(line);
+      } else {
+        if (tableBuffer.length) {
+          flushTable();
+        }
+        result.push(line);
+      }
+    }
+    if (tableBuffer.length) flushTable();
+
+    return result.join('\n');
+  },
+
   formatTextWithLinks: (text) => {
     if (!text || typeof text !== 'string') return '';
 
@@ -174,6 +220,7 @@ export const MessageFormatter = {
 
     // Apply parsing in order
     formatted = MessageFormatter.parseHorizontalRules(formatted);
+    formatted = MessageFormatter.parseTables(formatted);
     formatted = MessageFormatter.parseCodeBlocks(formatted);
     formatted = MessageFormatter.parseInlineCode(formatted);
     formatted = MessageFormatter.parseHeaders(formatted);
@@ -192,11 +239,11 @@ export const MessageFormatter = {
       const parsed = MessageFormatter.parseMessageContent(content);
       const safe = DOMPurify.sanitize(parsed, {
         ALLOWED_TAGS: [
-          'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'strong', 'em', 'del', 
-          'code', 'pre', 'a', 'ul', 'ol', 'li', 'blockquote', 'table', 'thead', 
-          'tbody', 'tr', 'th', 'td', 'div', 'hr'
+          'h1','h2','h3','h4','h5','h6','p','br','strong','em','del',
+          'code','pre','a','ul','ol','li','blockquote','table','thead',
+          'tbody','tr','th','td','div','hr'
         ],
-        ALLOWED_ATTR: ['class', 'href', 'target', 'rel']
+        ALLOWED_ATTR: ['class','href','target','rel']
       });
       
       return <div dangerouslySetInnerHTML={{ __html: safe }} />;

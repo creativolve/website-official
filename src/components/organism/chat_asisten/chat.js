@@ -1,10 +1,8 @@
 "use client";
 
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import "@/app/css/globals.css"
-
+import "@/app/css/globals.css";
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import H1 from "@/components/atoms/heading/heading";
@@ -12,6 +10,7 @@ import ShinyText from "@/components/atoms/animation/shinnyText";
 import AIMessage from "./AIMessage";
 import { ShinyButton, SolidButton } from "@/components/atoms/button/button";
 import { motion } from "framer-motion";
+import RotatingText from "@/components/atoms/animation/rotatingText";
 
 export default function ChatAI() {
   const [question, setQuestion] = useState("");
@@ -41,6 +40,11 @@ export default function ChatAI() {
     setIsUserScrolledUp(!isAtBottom && isScrollingUp);
     lastScrollPosition.current = scrollTop;
   }, []);
+
+
+
+    const rotatingTexts = ["Profesional", "Responsif", "Efektif", "Efisiensi"];
+
 
   const forceScrollToBottom = useCallback(() => {
     messagesContainerRef.current?.scrollTo({
@@ -290,11 +294,29 @@ export default function ChatAI() {
               <>
                 <div ref={topRef}></div>
                 <div className="lg:w-[70%] flex flex-col justify-center items-center">
-                    <ShinyButton>
-                        C.O.R.A
-                    </ShinyButton>
+                  <ShinyButton>CORA V1.5</ShinyButton>
                   <H1 align="center" className="m-auto">
-                    Hai, Selamat Datang!
+                    Hai, Selamat Datang!{" "}
+                    <span className="inline-block">
+                    <RotatingText
+                      texts={rotatingTexts}
+                      mainClassName="px-2 sm:px-3 md:px-4 bg-gradient-to-br from-[#318aff] to-[#8dc8ff] text-white overflow-hidden py-0.5 sm:py-1 md:py-1 justify-center rounded-lg shadow-md"
+                      staggerFrom="last"
+                      initial={{ y: "100%", opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: "-120%", opacity: 0 }}
+                      staggerDuration={0.025}
+                      splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                      elementLevelClassName="inline-block"
+                      transition={{
+                        type: "spring",
+                        damping: 30,
+                        stiffness: 400,
+                      }}
+                      rotationInterval={2500}
+                      pauseOnHover={true}
+                    />
+                    </span>
                   </H1>
                 </div>
               </>
@@ -311,9 +333,8 @@ export default function ChatAI() {
               <span className="text-[clamp(0.8rem,1vw,1.4rem)] text-[white] mb-1">
                 {msg.role !== "user" && (
                   <div className="text-[clamp(0.6rem,1vw,0.9rem)] text-[#c5c5c5]">
-                                      <ShinyButton>
-                    AI Aktif Dengan Baik
-                  </ShinyButton><br />
+                    <ShinyButton>AI Aktif Dengan Baik</ShinyButton>
+                    <br />
                   </div>
                 )}
 
@@ -348,9 +369,7 @@ export default function ChatAI() {
               key="loading-indicator"
               className="mt-5 flex flex-col items-start"
             >
-                <ShinyText
-                text="AI Sedang Merespon"
-                />
+              <ShinyText text="AI Sedang Merespon" />
             </div>
           )}
         </div>

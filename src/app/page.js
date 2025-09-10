@@ -25,7 +25,7 @@ export default async function Home() {
 
       <main className="z-[10] px-10 md:px-30 lg:px-30">
         <HeroSection />
-
+{/* 
         <div className="z-[10] mt-[-240px] lg:mt-[-150px]">
           <CurvedLoop
             marqueeText="Digital ✦ Creative ✦ Solution ✦ With ✦ Technology ✦"
@@ -35,7 +35,7 @@ export default async function Home() {
             interactive={false}
             className="text-[200px] lg:text-[100px]"
           />
-        </div>
+        </div> */}
 
         <TentangServe />
         <Layanan />

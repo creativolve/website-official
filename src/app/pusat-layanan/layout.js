@@ -41,7 +41,7 @@ const montserrat = Montserrat({
 
 export default function PageLayout({ children }) {
   return (
-    <div>
+    <div className="bg-black">
       {children}
     </div>
   );

@@ -7,6 +7,8 @@ import { ShinyButton } from "@/components/atoms/button/button";
 import H1 from "@/components/atoms/heading/heading";
 import Beams from "@/components/atoms/animation/beamsBg";
 import GridDistortion from "@/components/atoms/animation/gridDistortion";
+import DarkVeil from "@/components/atoms/background/darkveli/darkveli";
+
 
 
 export default function HeroBerandaBlog({ searchTerm, setSearchTerm }) {
@@ -18,14 +20,9 @@ export default function HeroBerandaBlog({ searchTerm, setSearchTerm }) {
 >
   {/* Background */}
   <div className="top-0 left-0 w-full h-full absolute">
-    <GridDistortion
-      imageSrc="/image/Abstract blue color background.jpg"
-      grid={6}
-      mouse={0.1}
-      strength={0.6}
-      relaxation={0.9}
-      className="custom-class"
-    />
+      <div className="w-full h-70 lg:h-120 absolute">
+        <DarkVeil />
+      </div>
     {/* 🔥 Fade/vignette shadow bawah */}
 <div className="absolute bottom-0 left-0 w-full h-1/3 
   bg-gradient-to-t 

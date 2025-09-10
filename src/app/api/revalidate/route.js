@@ -82,9 +82,9 @@ export async function POST(req) {
 
     // Always revalidate global cache
     try {
-      await revalidateTag('notion-all');
-      if (!results.revalidatedTags.includes('notion-all')) {
-        results.revalidatedTags.push('notion-all');
+      await revalidateTag('notion-all', "notion-services");
+      if (!results.revalidatedTags.includes('notion-all', "notion-services")) {
+        results.revalidatedTags.push('notion-all',"notion-services");
       }
       console.log("✅ Global notion cache revalidated");
     } catch (error) {

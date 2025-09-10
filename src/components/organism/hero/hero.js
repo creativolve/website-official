@@ -32,8 +32,8 @@ export default function HeroSection() {
 
     <FadeIn delay={1.7}>
         <div className="flex justify-center gap-10">
-          <GradientButton href='/'>Ajukan Project</GradientButton>
-          <SolidButton href='/'>Pusat Layanan</SolidButton>
+          <GradientButton href='/pusat-layanan/pengajuan'>Ajukan Project</GradientButton>
+          <SolidButton href='/pusat-layanan/asisten-digital'>Asisten Digital</SolidButton>
         </div>
     </FadeIn>
       </div>

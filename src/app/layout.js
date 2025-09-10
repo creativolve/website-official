@@ -1,6 +1,8 @@
 import { Montserrat } from "next/font/google";
 import "@/app/css/globals.css";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",

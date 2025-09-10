@@ -1,78 +1,110 @@
-# PROFIL AGENSI
+# 📌 PROFIL AGENSI  
 - **Nama Agensi:** Creativolve Agency  
+- **Didirikan:** 19 Januari 2025, Bogor (operasional full remote)  
 - **Tentang:**  
-  Creativolve Agency adalah agensi digital yang menawarkan solusi branding & digital sesuai budget, tanpa mengurangi kualitas strategi. Kami berfokus pada penerapan teknologi terkini untuk mengembangkan identitas digital yang unik dan relevan dengan audiens yang tepat. Creativolve Agency didirikan pada 19 Januari 2025 di Bogor, walaupun belum memiliki kantor fisik.  
+  Creativolve Agency adalah agensi digital yang menawarkan solusi **branding & digital berbasis budget**, tanpa mengurangi kualitas strategi. Kami berfokus pada pemanfaatan teknologi terkini untuk mengembangkan identitas digital yang unik, relevan, dan tepat sasaran.  
 
 ---
 
-# KONSEP UTAMA AGENSI
-- **Konsep Utama:** Budget-Based Customization  
-  Menyesuaikan layanan sesuai anggaran klien tanpa mengurangi kualitas, memberikan solusi yang efisien dan tepat sasaran.  
+# 🎯 KONSEP UTAMA  
+**Budget-Based Customization**  
+→ Menyesuaikan layanan sesuai anggaran klien tanpa mengurangi kualitas, sehingga solusi tetap efisien dan berdampak.  
 
 ---
 
-# NILAI UTAMA
-Creativolve memiliki pondasi yang menjadi nilai utama yaitu, sebagai agensi yang Kolaboratif, kami berkomitmen menyediakan solusi efektif sesuai budget dengan kualitas unggul dan berkomitmen menjadi agensi digital berbasis teknologi yang andal dan inovatif.  
+# 💡 NILAI & PONDASI  
+- **Nilai Utama:** Kolaboratif, Efektif, Berkualitas, Inovatif.  
+- **Pondasi Agensi:**  
+  1. Kolaborasi  
+  2. Budget-Based Customization  
+  3. Teknologi  
 
 ---
 
-# PONDASI AGENSI
-1. Kolaborasi  
-2. Budget-based Customization  
-3. Teknologi  
+# 🌍 VISI  
+Menjadi pusat solusi bisnis inovatif berbasis kreativitas digital untuk mendorong **evolusi & pertumbuhan bisnis**, serta menjadi agen transformasi digital yang mempercepat keberhasilan klien.  
 
 ---
 
-# VISI AGENSI
-- **Visi:**  
-  Menjadi pusat solusi bisnis inovatif berbasis kreativitas digital untuk mendorong evolusi dan pertumbuhan bisnis, serta menjadi agen transformasi digital yang mempercepat keberhasilan klien kami.  
+# 🚀 MISI  
+1. Memberikan pelayanan digital profesional dengan otomatisasi yang inovatif.  
+2. Membantu bisnis berkembang melalui solusi branding & digital adaptif.  
+3. Menciptakan identitas visual yang autentik & menarik bagi audiens.  
+4. Membangun komunitas bisnis berbasis digital branding.  
+5. Mendorong adopsi teknologi berbasis data dalam strategi pemasaran.  
+6. Menghadirkan platform digital yang mendukung pertumbuhan berkelanjutan.  
+7. Memberikan edukasi digital branding & strategi bisnis modern.  
 
 ---
 
-# MISI AGENSI
-- **Misi:**  
-  1. Memberikan pelayanan digital yang profesional dengan pemanfaatan otomatisasi secara inovatif, menciptakan pengalaman yang lebih efisien dan efektif.  
-  2. Membantu bisnis berkembang melalui solusi branding dan digital yang efektif dan adaptif terhadap perubahan pasar.  
-  3. Menonjolkan keunikan brand untuk membentuk identitas visual yang autentik dan menarik, menciptakan hubungan emosional dengan audiens.  
-  4. Membangun komunitas bisnis berbasis digital branding yang saling mendukung dalam memperkuat eksistensi brand di pasar.  
-  5. Mendorong adopsi teknologi dalam strategi pemasaran dan branding yang lebih cerdas dan berbasis data.  
-  6. Membangun platform digital yang mendukung pertumbuhan bisnis berkelanjutan, dengan fokus pada pengoptimalan proses dan keberlanjutan.  
-  7. Memberikan edukasi tentang digital branding dan strategi bisnis modern untuk membantu klien beradaptasi dengan tren dan teknologi terbaru.  
+# 🛠️ LAYANAN AGENSI  
+### 1. Digital Branding & Strategy (Bisnis)  
+Identitas brand berbasis riset, analisis pasar, & nilai brand.  
+
+### 2. Desain & Editing (Umum)  
+Desain visual kreatif dan editing profesional (sosial media, promosi, event).  
+
+### 3. Web Development (Bisnis)  
+Website responsif, modern, dengan teknologi terbaru + optimasi UX.  
 
 ---
 
-# LAYANAN AGENSI
-Kami memiliki 2 kategori layanan yaitu layanan kategori **bisnis** dan **umum**:  
+# 📊 SKEMA HARGA UTAMA  
+### 🔹 Digital Branding  
+- **Individu:** Rp200.000 – Rp300.000  
+- **Startup/UMKM:** Rp300.000 – Rp1.000.000  
+- **Mega Bisnis:** Rp1.000.000 – Rp6.000.000 
+Sumber [Skema Harga Digital Branding](https://creativolve.agency/layanan#digital-branding)
 
-### 1. Digital Branding dan Strategy (Bisnis)  
-Membantu klien menciptakan identitas brand yang kuat, relevan, dan autentik dengan pendekatan berbasis riset, analisis pasar, dan pemahaman mendalam tentang nilai-nilai brand.  
+### 🔹 Desain Grafis  
+- Desain Satuan → Rp35.000 – Rp500.000 / desain  
+- Paket Modular → Rp150.000 – Rp400.000+  
+- Paket Growth → Rp1.200.000 / paket  
+- Subscription → Rp4.000.000 / bulan 
+Sumber [Skema Harga Desain Grafis](https://creativolve.agency/layanan#desain-grafis)
+
+### 🔹 Video Editing  
+- Personal → Rp70.000 (≤ 1 menit)  
+- Organisasi → Rp230.000 (3–7 menit)  
+- Business → Rp430.000 (≤ 10 menit)  
+- Add-On → Motion Graphic mulai Rp500.000 
+Sumber [Skema Harga Desain Grafis](https://creativolve.agency/layanan#editing-video) 
+
+### 🔹 Web Development  
+- Individu → Rp200.000 + domain .my.id  
+- Startup → Rp800.000 + domain .com + hosting  
+- Mega Bisnis → Rp3.000.000 (company profile lengkap)  
+- E-commerce → Rp10.000.000  
+- Maintenance → Rp400.000 / bulan  
+- Add-On Integrasi API → Rp900.000 – Rp4.000.000 
+Sumber [Skema Harga Desain Grafis](https://creativolve.agency/layanan#web-development)  
 
 
-### 2. Desain dan Editing (Umum)  
-Menyediakan layanan desain visual kreatif yang mendalam dan profesional untuk kebutuhan apapun, mulai dari media sosial hingga desain untuk presentasi, iklan, dan konten lainnya.  
+## Catatan :
+Sebelum memilih paket atau layanan desain, konsultasikan terlebih dahulu kebutuhan Anda. Dengan begitu, tim Creativolve Agency dapat:
+• Memahami tujuan dan prioritas Anda.
+• Menyusun layanan yang paling relevan.
+• Memberikan penawaran kustom sesuai anggaran dan kebutuhan.
+Jadi, apapun kebutuhan digital Anda, jangan ragu untuk berdiskusi lebih dulu dengan kami.
+---
 
-### 3. Pengembangan Website (Bisnis)  
-Membangun situs web responsif yang sepenuhnya disesuaikan dengan kebutuhan klien, menggunakan teknologi terbaru dan pengoptimalan UX.  
+# ⭐ KEUNIKAN  
+1. Fleksibilitas sesuai budget.  
+2. Konsultasi strategi berbasis data.  
+3. Pendampingan brand end-to-end.  
+4. Solusi skalabel sesuai pertumbuhan bisnis.  
 
 ---
 
-# KEUNIKAN AGENSI
-1. **Fleksibilitas:** Menyesuaikan layanan dengan anggaran klien tanpa mengurangi kualitas.  
-2. **Konsultasi:** Sesi konsultasi strategi branding berbasis data dan analisis pasar.  
-3. **Dukungan Brand:** Pendampingan penuh membangun dan memperkuat identitas brand digital klien.  
-4. **Solusi Skalabel:** Solusi yang dapat berkembang sesuai pertumbuhan bisnis dan teknologi.  
+# ✅ ALASAN MEMILIH KAMI  
+- **Fleksibel Sesuai Budget** – solusi tanpa mengorbankan kualitas.  
+- **Layanan Lengkap** – branding, desain, marketing, SEO, hingga web dev.  
+- **Kolaboratif** – bekerja erat dengan klien untuk hasil terbaik.  
+- **Solusi Jangka Panjang** – mendukung pertumbuhan berkelanjutan.  
 
 ---
 
-# ALASAN MEMILIH AGENSI KAMI
-1. **Fleksibel Sesuai Budget** - Solusi sesuai anggaran klien tanpa mengorbankan kualitas.  
-2. **Layanan Lengkap** - Semua layanan digital branding, marketing, desain, SEO, hingga pengembangan website dalam satu atap.  
-3. **Pendekatan Kolaboratif** - Kolaborasi erat dengan klien untuk hasil maksimal.  
-4. **Solusi Digital Skalabel** - Solusi untuk pertumbuhan bisnis jangka panjang.  
-
----
-
-# KARAKTER YANG DITERAPKAN
+# 🧭 KARAKTER AGENSI  
 1. Kreativitas  
 2. Inovasi  
 3. Kolaborasi  
@@ -80,72 +112,55 @@ Membangun situs web responsif yang sepenuhnya disesuaikan dengan kebutuhan klien
 
 ---
 
-# LANGKAH AGENCY KEDEPANNYA
-1. Membangun sistem **All In One Digital System**.  
-2. Meningkatkan penerapan teknologi untuk operasional dan pelayanan.  
+# 📌 RENCANA KE DEPAN  
+1. Membangun sistem **All-In-One Digital System** (kontrak, invoice, progress, payment).  
+2. Meningkatkan pemanfaatan teknologi internal & layanan.  
 3. Ekspansi layanan agar lebih scalable.  
-4. Peningkatan kualitas tim melalui pelatihan profesional.  
+4. Peningkatan kualitas tim lewat pelatihan.  
 
 ---
 
-# LINK SITUS RESMI
-- [Tentang Agensi](https://creativolve.agency/tentang)  
-- [Layanan Agensi](https://creativolve.agency/layanan)  
-- [Pusat Pelayanan Agensi](https://creativolve.agency/pusat-layanan)  
-- [Pengajuan Agensi](https://creativolve.agency/pusat-layanan/pengajuan)  
-
----
-
-# PARTNERSHIP
-- **Gdev Id:**  
-  Komunitas yang kelak menjadi startup teknologi, berkolaborasi dengan Creativolve dalam pengembangan teknologi agensi.  
-
-Kami membuka hubungan **partnership** atau kolaborasi untuk membangun ekosistem agensi digital kreatif dan teknologi.  
-
----
-
-# OPERASIONAL AGENSI
-- Operasional **full remote** dengan pusat semangat di Bogor.  
-- Fokus saat ini: pembangunan portofolio dan sistem digital.  
-- Target publik: **November 2025**.  
-- Merencanakan **All In One Digital System** dengan fitur kontrak, invoice, progress tracking, client key, dan integrasi pembayaran.  
-
----
-
-# LEGALITAS USAHA
-- **Nomor Induk Berusaha (NIB):** 0705250010647  
-- **Jenis Usaha (KBLI):** 74130 – Desain Komunikasi Visual / Multimedia  
-- **Tanggal Terbit:** 7 Mei 2025  
-- **Status:** Sah dan aktif (OSS)  
+# 🏢 LEGALITAS  
+- **NIB:** 0705250010647  
+- **KBLI:** 74130 – Desain Komunikasi Visual / Multimedia  
+- **Terbit:** 7 Mei 2025  
+- **Status:** Sah & aktif (OSS)  
 - **Atas Nama:** M. Adnan Fauzan Maulana (Founder)  
 - **Skala Usaha:** Mikro (PMDN)  
 
 ---
 
-# PLATFORM SOSIAL
+# 🔗 OFFICIAL LINKS  
+- [Tentang Agensi](https://creativolve.agency/tentang)  
+- [Layanan](https://creativolve.agency/layanan)  
+- [Pusat Layanan](https://creativolve.agency/pusat-layanan)  
+- [Pengajuan](https://creativolve.agency/pusat-layanan/pengajuan)  
+
+---
+
+# 🌐 MEDIA SOSIAL  
 - Instagram: [@creativolve_](https://www.instagram.com/creativolve_/)  
-- Tiktok: [@creativolve_](https://www.tiktok.com/@creativolve_)  
-- Whatsapp: [Hubungi via WhatsApp](https://wa.me/62881012092569)  
+- TikTok: [@creativolve_](https://www.tiktok.com/@creativolve_)  
+- WhatsApp: [Klik di sini](https://wa.me/62881012092569)  
 
 ⚠️ **Catatan:** Hanya akun resmi di atas yang digunakan.  
 
 ---
 
-# FOUNDERS
-- **Founder:** M. Adnan Fauzan Maulana - Developer & Business Development  
-- **Co-Founder:** M. Khalif Natawijaya - Digital Branding Specialist  
+# 👥 FOUNDERS  
+- **Founder:** M. Adnan Fauzan Maulana – Developer & Business Development  
+- **Co-Founder:** M. Khalif Natawijaya – Digital Branding Specialist  
 
 ---
 
-# TEKNOLOGI YANG DITERAPKAN
-Creativolve Agency adalah agensi digital kreatif pertama di Bogor yang mengadopsi **AI dan RAG (Retrieval-Augmented Generation)**.  
+# 🤝 PARTNERSHIP  
+- **Gdev ID** → komunitas teknologi yang berkolaborasi dalam pengembangan sistem & inovasi agensi.  
+- Terbuka untuk partnership dan kolaborasi membangun ekosistem agensi digital kreatif & teknologi.  
 
-- **Model AI:** Llama 4 Maverick (Meta) melalui API inference **Groq Cloud**.  
-- **Lisensi:** Dikelola sepenuhnya oleh Groq Cloud → penggunaan kami legal dan sesuai ketentuan.  
+---
 
-### Produk Teknologi
-1. **Creativolve Operations & Response Assistant (C.O.R.A)**  
-   Smart ChatBot berbasis Llama 4 Maverick + RAG, untuk jawaban akurat, relevan, dan kontekstual.  
-
-2. **BRIFAI**  
-   Program untuk membantu klien menyusun brief project dengan interaktif, menggunakan model yang sama.  
+# 🖥️ TEKNOLOGI  
+- **AI & RAG (Retrieval-Augmented Generation)** dengan **Llama 4 Maverick (Meta)** via **Groq Cloud API**.  
+- **Produk Internal:**  
+  1. **C.O.R.A (Creativolve Operations & Response Assistant)** – chatbot cerdas untuk operasional & klien.  
+  2. **BRIFAI** – sistem penyusunan brief interaktif berbasis AI.  

@@ -2,7 +2,7 @@
     import { Client } from "@notionhq/client";
     import nodemailer from "nodemailer";
 
-    const notion = new Client({ auth: process.env.DISKUSI_DB_API_KEY });
+    const notion = new Client({ auth: process.env.FORM_NOTION_API_KEY });
     const databaseId = process.env.DISKUSI_DATABASE_ID;
 
     function formatTanggal() {

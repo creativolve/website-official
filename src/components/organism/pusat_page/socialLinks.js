@@ -60,7 +60,7 @@ export default function SocialLinks() {
   ];
 
   return (
-    <section className="z-[10] min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center">
+    <section id="kontak" className="z-[10] min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <FadeIn>

@@ -1,8 +1,9 @@
-// lib/notion.js - Updated with better cache strategy
+// lib/notion.js - Updated with better cache strategy and Service blocks
 import { Client } from "@notionhq/client";
 import { unstable_cache } from 'next/cache';
 
 const notion = new Client({ auth: process.env.BLOG_API_KEY });
+const serviceNotion = new Client({ auth: process.env.SERVICEPLAN_API_KEY });
 
 export async function getDatabase() {
   try {
@@ -191,4 +192,209 @@ export async function forceRefreshCache() {
     console.error("❌ Error force refreshing cache:", error);
     throw error;
   }
+}
+
+// =================== SERVICE FUNCTIONS ===================
+
+async function fetchServices() {
+  const res = await fetch(
+    `https://api.notion.com/v1/databases/${process.env.SERVICENOTION_DATABASE_ID}/query`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.SERVICEPLAN_API_KEY}`,
+        "Notion-Version": "2022-06-28",
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  const data = await res.json();
+  console.log("📥 Raw Notion response:", data);
+
+  if (!data.results) {
+    throw new Error(data.message || "Failed to fetch Notion services");
+  }
+
+  return data.results.map((item) => ({
+    id: item.id,
+    name: item.properties?.Name?.title?.[0]?.plain_text || "No title",
+    price: item.properties?.Harga?.rich_text?.[0]?.plain_text || "-",
+    desc: item.properties?.Deskripsi?.rich_text?.[0]?.plain_text || "",
+    category: item.properties?.Select?.select?.name || "",
+  }));
+}
+
+// Fetch service blocks untuk seluruh halaman
+async function fetchServiceBlocks(serviceId) {
+  try {
+    const response = await serviceNotion.blocks.children.list({
+      block_id: serviceId,
+      page_size: 100,
+    });
+
+    const blocks = await Promise.all(
+      response.results.map(async (block) => {
+        if (block.type === "table") {
+          // Ambil semua row dari table
+          const rowsRes = await serviceNotion.blocks.children.list({
+            block_id: block.id,
+            page_size: 100,
+          });
+          return { ...block, rows: rowsRes.results };
+        }
+        return block;
+      })
+    );
+
+    return blocks;
+  } catch (error) {
+    console.error(`❌ Error fetching service blocks ${serviceId}:`, error);
+    return [];
+  }
+}
+
+
+// Fetch services dengan blocks (complete data)
+async function fetchServicesWithBlocks() {
+  try {
+    console.log("🔄 Fetching services with blocks...");
+    
+    // Fetch basic service data
+    const services = await fetchServices();
+    
+    // Fetch blocks untuk setiap service
+    const servicesWithBlocks = await Promise.all(
+      services.map(async (service) => {
+        try {
+          const blocks = await fetchServiceBlocks(service.id);
+          return {
+            ...service,
+            blocks: blocks,
+            hasBlocks: blocks.length > 0
+          };
+        } catch (error) {
+          console.warn(`⚠️ Failed to fetch blocks for service ${service.id}:`, error.message);
+          return {
+            ...service,
+            blocks: [],
+            hasBlocks: false
+          };
+        }
+      })
+    );
+    
+    console.log(`✅ Fetched ${servicesWithBlocks.length} services with blocks`);
+    return servicesWithBlocks;
+  } catch (error) {
+    console.error("❌ Error fetching services with blocks:", error);
+    throw error;
+  }
+}
+
+// Basic services cache (tanpa blocks)
+
+async function getBlockChildren(blockId) {
+  const blocks = [];
+  let cursor;
+
+  do {
+    const { results, next_cursor, has_more } =
+      await serviceNotion.blocks.children.list({
+        block_id: blockId,
+        start_cursor: cursor,
+      });
+
+    blocks.push(...results);
+    cursor = has_more ? next_cursor : null;
+  } while (cursor);
+
+  return blocks;
+}
+
+
+
+export const getServices = unstable_cache(
+  async () => {
+    console.log("✅ Fetching Notion Services");
+    return await fetchServices();
+  },
+  ["notion-services"],
+  {
+    tags: ["notion-all", "notion-services"],
+    revalidate: 300, // 5 menit
+  }
+);
+
+// Services dengan blocks cache
+export const getServicesWithBlocks = unstable_cache(
+  async () => {
+    console.log("✅ Fetching Notion Services with Blocks");
+    return await fetchServicesWithBlocks();
+  },
+  ["notion-services-with-blocks"],
+  {
+    tags: ["notion-all", "notion-services", "notion-service-blocks"],
+    revalidate: 300, // 5 menit
+  }
+);
+
+// Individual service dengan blocks
+export const getServiceWithBlocks = unstable_cache(
+  async (serviceId) => {
+    try {
+      // Fetch service data
+      const services = await fetchServices();
+      const service = services.find(s => s.id === serviceId);
+      
+      if (!service) {
+        throw new Error(`Service with id "${serviceId}" not found`);
+      }
+      
+      // Fetch blocks
+      const blocks = await fetchServiceBlocks(serviceId);
+      
+      console.log(`✅ Found service with blocks: ${serviceId}`);
+      return {
+        ...service,
+        blocks: blocks,
+        hasBlocks: blocks.length > 0
+      };
+    } catch (error) {
+      console.error(`❌ Error finding service with blocks ${serviceId}:`, error);
+      throw error;
+    }
+  },
+  ["notion-service-with-blocks"],
+  {
+    tags: ["notion-all", "notion-services", "notion-service-blocks"],
+    revalidate: 300
+  }
+);
+
+// Service blocks cache (untuk individual service blocks)
+export const getCachedServiceBlocks = unstable_cache(
+  async (serviceId) => {
+    return await fetchServiceBlocks(serviceId);
+  },
+  ["notion-service-blocks"],
+  {
+    tags: ["notion-all", "notion-service-blocks"],
+    revalidate: 300
+  }
+);
+
+// Non-cached versions
+export async function getFreshServices() {
+  console.log("🆕 Fetching fresh services from Notion...");
+  return await fetchServices();
+}
+
+export async function getFreshServicesWithBlocks() {
+  console.log("🆕 Fetching fresh services with blocks from Notion...");
+  return await fetchServicesWithBlocks();
+}
+
+export async function getServiceBlocks(serviceId) {
+  return await fetchServiceBlocks(serviceId);
 }

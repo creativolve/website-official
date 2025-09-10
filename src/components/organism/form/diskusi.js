@@ -1,10 +1,10 @@
 "use client";
 
-
 import "@/app/css/globals.css";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import InputFloating from "./inputFoloating";
+import { H2 } from "@/components/atoms/heading/heading";
 
 const listPertanyaan = [
   "Apa hal utama yang ingin Anda diskusikan bersama kami?",
@@ -172,23 +172,33 @@ const FormDiskusi = () => {
     if (editingIndex === index) {
       return (
         <div className="flex flex-col gap-2">
-          <input
-            type="text"
+          <textarea
             value={editValue}
             onChange={(e) => setEditValue(e.target.value)}
-            className="p-2 border border-gray-300 rounded text-black"
+            className="p-2 border border-gray-300 rounded text-black resize-none"
+            rows="1"
+            style={{
+              minHeight: "2.5rem",
+              maxHeight: "7.5rem",
+              overflow: "hidden",
+            }}
+            onInput={(e) => {
+              e.target.style.height = "auto";
+              e.target.style.height =
+                Math.min(e.target.scrollHeight, 120) + "px";
+            }}
             autoFocus
           />
           <div className="flex gap-2">
             <button
               onClick={saveEdit}
-              className="px-3 py-1 bg-[#262626] text-white rounded hover:bg-[#cfcfcf] hover:text-[#262626] border-none cursor-pointer"
+              className="px-3 py-1 bg-[#008cff] text-white rounded hover:bg-[#001c58] hover:text-[#ffffff] border-none cursor-pointer"
             >
               Simpan
             </button>
             <button
               onClick={cancelEdit}
-              className="px-3 py-1 bg-[#555353] text-white rounded hover:bg-[#cfcfcf] hover:text-[#262626] border-none cursor-pointer"
+              className="px-3 py-1 bg-[#000000] text-white rounded hover:bg-[#cfcfcf] hover:text-[#262626] border-none cursor-pointer"
             >
               Batal
             </button>
@@ -261,8 +271,8 @@ const FormDiskusi = () => {
     e.preventDefault();
     const data = formData;
 
-    setIsSubmitting(true)
-    
+    setIsSubmitting(true);
+
     setPopupMessage("Pengajuan Diskusi Anda Sedang Diproses");
 
     try {
@@ -296,68 +306,39 @@ const FormDiskusi = () => {
     } finally {
       setIsSubmitting(false);
     }
-    
   };
 
   if (!isClient) {
     return (
-        <div className="fixed inset-0 flex items-center justify-center text-white skeleton z-50">
-          Memuat formulir...
-        </div>
-
+      <div className="fixed inset-0 flex items-center justify-center text-white skeleton z-50">
+        Memuat formulir...
+      </div>
     );
   }
 
   return (
     <div
       className="
-        flex justify-between flex-col h-full overflow-auto
+        flex justify-center items center flex-col h-full overflow-auto
         lg:flex-row
         "
     >
-      <div className="explain flex-1 w-auto p-10 min-h-[450px] md:min-h-[500px] lg:min-h-[300px] flex flex-col gap-6 lg:gap-24 overflow-hidden relative lg:w-[40%] lg:h-[100%] lg:px-17 lg:py-15 bg-[black] rounded-2xl">
-        <Image
-          src="/image/circle/elips.png"
-          width={650}
-          height={650}
-          alt="Circle-background"
-          className="absolute w-[400px] bottom-[-90px] left-[-80px] lg:bottom-[-190] lg:left-[-130]"
-        />
-        <Image
-          src="/logo/logo.png"
-          width={700}
-          height={700}
-          alt="logo"
-          className="w-[clamp(6rem,12vw,16rem)]"
-        />
-        <div className="text z-1">
+      {isSubmitting && (
+        <div
+          className="w-full max-w-[80%] h-full flex gap-9 px-10 py-50 flex-col justify-center 
+        lg:px-30"
+        >
           <h2
             className="
-                     text-[clamp(1.3rem,1.7vw,1.7rem)] font-bold text-white
-                    "
-          >
-            Pengajuan Diskusi
-          </h2>
-          <p
-            className="
-                    text-[clamp(0.8rem,1.1vw,0.9rem)] text-[#cccccc]
-                    "
-          >
-            Silahkan mengisi form ini untuk mengajukan diskusi pada tim kami,
-            dengan rancangan brief yang dibantu oleh Asisten Digital Form kami!
-          </p>
-        </div>
-      </div>
-
-      {isSubmitting && (
-        <div className="w-full lg:w-[60%] h-full flex gap-9 px-10 py-50 flex-col justify-center 
-        lg:px-30">
-          <h2 className="
           text-gradient font-bold text-[clamp(1.2rem,2vw,1.5rem)] leading-[clamp(1.4rem,3vw,2.4rem)] text-white
-          ">Sedang Mengajukan Diskusi</h2>
+          "
+          >
+            Sedang Mengajukan Diskusi
+          </h2>
           <div className="flex flex-col">
             <div className="text-[clamp(0.6rem,1vw,0.9rem)] text-white">
-              <div className="status status-success animate-bounce"></div> Sistem Berjalan
+              <div className="status status-success animate-bounce"></div>{" "}
+              Sistem Berjalan
             </div>
             <span className="loading loading-infinity text-success loading-xl"></span>
           </div>
@@ -365,13 +346,16 @@ const FormDiskusi = () => {
       )}
 
       {!submitted && !isSubmitting && (
-        <div className="form w-full lg:w-[60%] h-full lg:max-h-screen lg:overflow-y-auto scrollbar-hide no-scrollbar"
-        data-lenis-prevent>
+        <div
+          className="form w-full max-w-[80%] h-full lg:max-h-screen lg:overflow-y-auto scrollbar-hide no-scrollbar"
+          data-lenis-prevent
+        >
+          <H2>Form Pengajuan Diskusi!</H2>  
           <form
             disabled={submitted}
             method="POST"
             onSubmit={handleSubmit}
-            className="w-full px-4 py-20 lg:px-20 lg:py-10 flex flex-col gap-10 max-w-2xl space-y-6 z-[0]"
+            className="w-full px-0 py-20 lg:py-10 flex flex-col gap-10 max-w-2xl space-y-6 z-[0]"
           >
             <InputFloating
               id="nama"
@@ -400,7 +384,7 @@ const FormDiskusi = () => {
               value={formData.phone}
               onChange={handleInputChange}
             />
-            <div className="bg-[black] rounded-2xl px-[20px] py-[30px] h-fit">
+            <div className="bg-[#111114] rounded-2xl px-[20px] py-[30px] h-fit">
               {!showChatbot && !qnaCompleted && !isProcessing && !submitted && (
                 <div className="flex gap-6 lg:items-center flex-col lg:justify-between lg:flex-row">
                   <div className="text w-[70%] text-white">
@@ -530,8 +514,7 @@ const FormDiskusi = () => {
 
                     {currentQnaStep < listPertanyaan.length && (
                       <div className="chat-input flex flex-col space-y-2 mt-4">
-                        <input
-                          type="text"
+                        <textarea
                           value={inputValue}
                           onChange={(e) => setInputValue(e.target.value)}
                           onKeyDown={(e) => {
@@ -542,7 +525,18 @@ const FormDiskusi = () => {
                           }}
                           placeholder="Ketik jawaban Anda..."
                           disabled={isProcessing || editingIndex !== null}
-                          className="p-2 rounded text-[#cccccc] placeholder-white"
+                          className="p-2 rounded text-[#cccccc] placeholder-white resize-none"
+                          rows="1"
+                          style={{
+                            minHeight: "2.5rem",
+                            maxHeight: "7.5rem",
+                            overflow: "hidden",
+                          }}
+                          onInput={(e) => {
+                            e.target.style.height = "auto";
+                            e.target.style.height =
+                              Math.min(e.target.scrollHeight, 120) + "px";
+                          }}
                         />
 
                         <button
@@ -589,7 +583,7 @@ const FormDiskusi = () => {
 
       {submitted && (
         <div
-          className="w-full lg:w-[60%] h-full flex px-10 py-50 flex-col justify-center 
+          className="w-full max-w-[80%] h-full flex px-10 py-50 flex-col justify-center 
       lg:px-30"
         >
           <h1
@@ -597,7 +591,7 @@ const FormDiskusi = () => {
         text-gradient font-bold text-[clamp(1.2rem,2vw,1.5rem)] leading-[clamp(1.4rem,3vw,2.4rem)] text-shadow-[0_0_20px_#00E5FF]
         "
           >
-           {popupMessage}
+            {popupMessage}
           </h1>
           <p
             className="

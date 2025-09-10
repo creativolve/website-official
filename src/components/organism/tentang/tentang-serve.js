@@ -13,7 +13,7 @@ export default function TentangServe() {
   return (
     <section
       id="tentang"
-      className=" z-[10] h-[140dvh] lg:h-screen py-12 px-4 mt-[-200px] sm:px-6 lg:mt-[-230px] lg:px-8 flex justify-center items-center"
+      className=" z-[10] h-[140dvh] lg:h-screen py-12 px-4 items-center"
       aria-labelledby="tentang-heading"
     >
       <div className="container mx-auto">

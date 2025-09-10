@@ -1,60 +1,82 @@
-"use client"
+  "use client";
+
+  import { useState } from "react";
+  import FormDiskusi from "@/components/organism/form/diskusi";
+  import FormProject from "@/components/organism/form/proyek";
+  import GradientButton, {
+    BackButton,
+    SolidButton,
+  } from "@/components/atoms/button/button";
+  import ColTextImage from "@/components/molecules/column/column";
+  import H1 from "@/components/atoms/heading/heading";
+  import Paragraph from "@/components/atoms/paragraft/paragraf";
+  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+  import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 
-import { useState } from "react"
-import FormDiskusi from "@/components/organism/form/diskusi";
-import FormProject from "@/components/organism/form/proyek";
-import { BackButton } from "@/components/atoms/button/button";
-
-
-export default function Pengajuan(){
-    const [activeForm, setActiveForm] = useState("diskusi");
-
-    return(
-
-              <section
-        className=" z-[10] min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center"
-      >
-        <BackButton href="/pusat-layanan"/>
-
-        {/* Navigasi Form */}
-        <div className="flex fixed top-0 lg:top-0 left-[58%] translate-x-[-50%] gap-4 py-7 text-white text-[clamp(0.6rem,0.8vw,0.9rem)] w-[80%] justify-center items-center
-        md:left-[50%]">
-          <span
-            onClick={() => setActiveForm("diskusi")}
-            className={`cursor-pointer hover:underline  
-            ${
-              activeForm === "diskusi"
-                ? "font-bold text-[#00ccff]"
-                : "font-reguler text-[#cccccc]"
-            }
-            `}
+  export function FormOverlay({ children, onClose }) {
+    return (
+      <div className="bg-[#000000d3] h-screen z-[500] fixed inset-0 lg:py-10 flex justify-center items-center">
+        <div className="relative bg-[#202125] h-[90vh] w-full max-w-[80%] mx-auto rounded-2xl p-4 flex justify-center items-center">
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 text-gray-400 hover:text-white transition"
           >
-            Pengajuan Diskusi
-          </span>
-          |
-          <span
-            onClick={() => setActiveForm("project")}
-            className={`cursor-pointer hover:underline  
-                      ${
-                        activeForm === "project"
-                          ? "font-bold text-[#00ccff]"
-                          : "font-reguler text-[#cccccc]"
-                      }
-                      `}
+            <FontAwesomeIcon icon={faTimes} size="lg" />
+          </button>
+
+          {children}
+        </div>
+      </div>
+    );
+  }
+
+  export default function Pengajuan() {
+    const [activeForm, setActiveForm] = useState(null);
+
+    const openDiskusiForm = () => setActiveForm("diskusi");
+    const openProjectForm = () => setActiveForm("project");
+    const closeForm = () => setActiveForm(null);
+
+    return (
+      <>
+        <BackButton />
+        {activeForm === "diskusi" && (
+          <FormOverlay onClose={closeForm}>
+            <FormDiskusi />
+          </FormOverlay>
+        )}
+                {activeForm === "project" && (
+          <FormOverlay onClose={closeForm}>
+            <FormProject />
+          </FormOverlay>
+        )}
+        <main
+          className="
+          z-[10] 
+        px-10
+        md:px-30
+        lg:px-30
+        "
+        >
+          <ColTextImage
+            IdSection="form"
+            SrcImg="/image/brif-ai.jpg"
+            AltImg="Brief AI Creativolve Agency"
           >
-            Pengajuan Project
-          </span>
-        </div>
-
-
-        <div className="bg-[#21252C] rounded-3xl w-[80%] h-[80vh] fixed left-[50%] translate-y-[-50%] translate-x-[-50%] top-[53%] flex p-[15px] overflow-scroll text-white">
-        {/* Tampilkan Form berdasarkan pilihan */}
-        {activeForm === "diskusi" && <FormDiskusi />}
-        {activeForm === "project" && <FormProject />}
-            
-        </div>
-      </section>
-    )
-}
-
+            <H1>Lengkapi Form Untuk Mengajukan Kepentingan Anda!</H1>
+            <Paragraph>
+              Silahkan lengkapi form untuk mengajukan diskusi atau project agar
+              kami bisa menyelesaikan masalah dan memenuhi kebutuhan digital anda
+              dengan tepat!
+            </Paragraph>
+            <div className="button flex gap-6">
+              <SolidButton onClick={openDiskusiForm}>Ajukan Diskusi</SolidButton>
+              <GradientButton onClick={openProjectForm}>Ajukan Proyek</GradientButton>
+            </div>
+          </ColTextImage>
+        </main>
+      </>
+    );
+  }

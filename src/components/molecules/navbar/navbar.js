@@ -69,7 +69,7 @@ export default function Navigation() {
 
       {/* Navbar end */}
       <div className="navbar-end">
-        <GradientButton href="/konsultasi">Konsultasi</GradientButton>
+        <GradientButton href="/pusat-layanan#kontak">Hubungi Kami!</GradientButton>
       </div>
     </nav>
   );

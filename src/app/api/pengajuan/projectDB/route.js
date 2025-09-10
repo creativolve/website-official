@@ -3,7 +3,7 @@ import { Client } from "@notionhq/client";
 import nodemailer from "nodemailer";
 import { nanoid } from "nanoid";
 
-const notion = new Client({ auth: process.env.PROJECT_DB_API_KEY });
+const notion = new Client({ auth: process.env.FORM_NOTION_API_KEY });
 const databaseId = process.env.PROJECT_DATABASE_ID;
 
 const projectId = nanoid(10);

@@ -1,4 +1,11 @@
+// next.config.js
+import bundleAnalyzer from '@next/bundle-analyzer';
+
 /** @type {import('next').NextConfig} */
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 const nextConfig = {
   // 📷 Remote image config
   images: {
@@ -24,7 +31,7 @@ const nextConfig = {
         headers: [
           {
             key: 'X-Robots-Tag',
-            value: 'all', // default aja, bisa dihapus kalau ga kepake
+            value: 'all',
           },
         ],
       },
@@ -32,4 +39,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

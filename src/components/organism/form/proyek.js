@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import Select from "react-select";
 import InputFloating from "./inputFoloating";
+import { H2 } from "@/components/atoms/heading/heading";
 
 const pertanyaanUmum = [
   "Apa nama brand atau project ini?",
@@ -76,17 +77,17 @@ const pertanyaanKhususLayanan = {
     "Apakah kamu punya target tanggal tertentu untuk deadline project copywriting ini?",
   ],
   "Web Development": [
-  "Apa tujuan utama website ini? (misalnya: company profile, e-commerce, blog, landing page, dsb)",
-  "Deskripsikan website yang ingin kamu buat secara singkat?",
-  "Siapa target audiens utama dari website ini? (usia, minat, lokasi, gaya hidup, dll)",
-  "Fitur apa saja yang wajib ada di website? (misalnya: login, katalog produk, checkout, blog, dsb)",
-  "Apakah kamu sudah punya domain dan hosting, atau perlu kami siapkan?",
-  "Apakah kamu sudah memiliki desain UI/UX atau ingin kami buatkan?",
-  "Apakah ada referensi website yang kamu suka? (cantumkan link)",
-  "Apakah website perlu terhubung dengan platform lain? (misalnya: payment gateway, WhatsApp, marketplace, dll)",
-  "Apakah ada konten yang sudah disiapkan? (teks, foto, video, dll)",
-  "Apakah kamu punya target tanggal tertentu untuk deadline Project Website ini?",
-]
+    "Apa tujuan utama website ini? (misalnya: company profile, e-commerce, blog, landing page, dsb)",
+    "Deskripsikan website yang ingin kamu buat secara singkat?",
+    "Siapa target audiens utama dari website ini? (usia, minat, lokasi, gaya hidup, dll)",
+    "Fitur apa saja yang wajib ada di website? (misalnya: login, katalog produk, checkout, blog, dsb)",
+    "Apakah kamu sudah punya domain dan hosting, atau perlu kami siapkan?",
+    "Apakah kamu sudah memiliki desain UI/UX atau ingin kami buatkan?",
+    "Apakah ada referensi website yang kamu suka? (cantumkan link)",
+    "Apakah website perlu terhubung dengan platform lain? (misalnya: payment gateway, WhatsApp, marketplace, dll)",
+    "Apakah ada konten yang sudah disiapkan? (teks, foto, video, dll)",
+    "Apakah kamu punya target tanggal tertentu untuk deadline Project Website ini?",
+  ],
 };
 
 const layananOptions = [
@@ -472,39 +473,6 @@ export default function FormProject() {
         lg:flex-row
         "
     >
-      <div className="explain flex-1 w-auto p-10 min-h-[450px] md:min-h-[500px] lg:min-h-[300px] flex flex-col gap-6 lg:gap-24 overflow-hidden relative lg:w-[40%] lg:h-[100%] lg:px-17 lg:py-15 bg-[black] rounded-2xl">
-        <Image
-          src="/image/circle/elips.png"
-          width={650}
-          height={650}
-          alt="Circle-background"
-          className="absolute w-[400px] bottom-[-90px] left-[-80px] lg:bottom-[-190] lg:left-[-130]"
-        />
-        <Image
-          src="/logo/logo.png"
-          width={700}
-          height={700}
-          alt="logo"
-          className="w-[clamp(6rem,12vw,16rem)]"
-        />
-        <div className="text z-1">
-          <h2
-            className="
-                     text-[clamp(1.3rem,1.7vw,1.7rem)] font-bold
-                    "
-          >
-            Pengajuan Proyek
-          </h2>
-          <p
-            className="
-                    text-[clamp(0.8rem,1.1vw,0.9rem)]
-                    "
-          >
-            Silahkan mengisi form ini untuk mengajukan proyek kerja sama dengan
-            kami, rancangan brief yang dibantu oleh Asisten Form kami!
-          </p>
-        </div>
-      </div>
 
       {isSubmitting && (
         <div
@@ -551,30 +519,42 @@ export default function FormProject() {
           </p>
         </div>
       )}
-            {isSubmitting && (
-        <div className="w-full lg:w-[60%] h-full flex gap-9 px-10 py-50 flex-col justify-center 
-        lg:px-30">
-          <h2 className="
+
+      {isSubmitting && (
+        <div
+          className="w-full max-w-[80%] h-full flex gap-9 px-10 py-50 flex-col justify-center 
+        lg:px-30"
+        >
+          <h2
+            className="
           text-gradient font-bold text-[clamp(1.2rem,2vw,1.5rem)] leading-[clamp(1.4rem,3vw,2.4rem)] text-white
-          ">Sedang Mengajukan Diskusi</h2>
+          "
+          >
+            Sedang Mengajukan Diskusi
+          </h2>
           <div className="flex flex-col">
             <div className="text-[clamp(0.6rem,1vw,0.9rem)] text-white">
-              <div className="status status-success animate-bounce"></div> Sistem Berjalan
+              <div className="status status-success animate-bounce"></div>{" "}
+              Sistem Berjalan
             </div>
             <span className="loading loading-infinity text-success loading-xl"></span>
           </div>
         </div>
       )}
 
-      {!submitted  && !isSubmitting && (
-        <div className="form w-full lg:w-[60%] h-full lg:overflow-auto scrollbar-hide no-scrollbar">
+      {!submitted && !isSubmitting && (
+        <div className="form w-full max-w-[80%] h-full lg:overflow-auto scrollbar-hide no-scrollbar">
           <form
             onSubmit={handleSubmit}
             method="POST"
-            className="w-full px-4 py-20 lg:px-20 lg:py-10 flex flex-col gap-10 max-w-2xl space-y-6 z-[0]"
+            className="w-full px-0 py-20 lg:py-10 flex flex-col gap-10 max-w-2xl space-y-6 z-[0]"
             disabled={submitted}
             data-lenis-prevent
           >
+                      <H2>Form Pengajuan Diskusi!</H2>
+                      <br />
+                      <br />
+                      <br />
             <InputFloating
               id="nama"
               label="Nama"
@@ -656,7 +636,7 @@ export default function FormProject() {
               disabled={submitted}
             />
 
-            <div className="bg-[black] rounded-2xl px-[20px] py-[30px] h-fit">
+            <div className="bg-[#111114]  rounded-2xl px-[20px] py-[30px] h-fit">
               {!showChatbot && !qnaCompleted && !isProcessing && !submitted && (
                 <div className="flex gap-6 lg:items-center flex-col lg:justify-between lg:flex-row">
                   <div className="text w-[70%]">
@@ -838,10 +818,10 @@ export default function FormProject() {
                     {validateMessage && (
                       <div className="text-red-500 mb-2">{validateMessage}</div>
                     )}
+
                     {currentQnaStep < listPertanyaan.length && (
                       <div className="chat-input flex flex-col space-y-2 mt-4">
-                        <input
-                          type="text"
+                        <textarea
                           value={inputValue}
                           onChange={(e) => setInputValue(e.target.value)}
                           onKeyDown={(e) => {
@@ -852,8 +832,20 @@ export default function FormProject() {
                           }}
                           placeholder="Ketik jawaban Anda..."
                           disabled={isProcessing || editingIndex !== null}
-                          className="p-2 rounded text-[#cccccc] placeholder-white"
+                          className="p-2 rounded text-[#cccccc] placeholder-white resize-none"
+                          rows="1"
+                          style={{
+                            minHeight: "2.5rem",
+                            maxHeight: "7.5rem",
+                            overflow: "hidden",
+                          }}
+                          onInput={(e) => {
+                            e.target.style.height = "auto";
+                            e.target.style.height =
+                              Math.min(e.target.scrollHeight, 120) + "px";
+                          }}
                         />
+
                         <button
                           type="button"
                           onClick={handleAnswerSubmit}
@@ -862,7 +854,7 @@ export default function FormProject() {
                             editingIndex !== null ||
                             inputValue.trim() === ""
                           }
-                          className={`px-4 py-2 bg-[#131313] text-white rounded hover:text-[black] hover:bg-[#ffffff] ${
+                          className={`px-4 py-2 bg-[#00ccff] text-white rounded hover:text-[black] hover:bg-[#ffffff] ${
                             inputValue.trim() === ""
                               ? "opacity-50 cursor-not-allowed"
                               : ""
@@ -896,7 +888,7 @@ export default function FormProject() {
         </div>
       )}
 
-            {submitted && (
+      {submitted && (
         <div
           className="w-full lg:w-[60%] h-full flex px-10 py-50 flex-col justify-center 
       lg:px-30"
@@ -906,7 +898,7 @@ export default function FormProject() {
         text-gradient font-bold text-[clamp(1.2rem,2vw,1.5rem)] leading-[clamp(1.4rem,3vw,2.4rem)] text-shadow-[0_0_20px_#00E5FF]
         "
           >
-           {popupMessage}
+            {popupMessage}
           </h1>
           <p
             className="

@@ -5,12 +5,12 @@ import Paragraph from "@/components/atoms/paragraft/paragraf";
 import Image from "next/image";
 import { Children } from "react";
 
-export default function ColTextImage({ IdSection, children, SrcImg, AltImg }) {
+export default function ColTextImage({ IdSection, children, SrcImg, AltImg, className}) {
   return (
     <>
       <section
         id={IdSection}
-        className=" z-[10] min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center"
+        className={` z-[10] min-h-screen py-12 px-4 sm:px-6 bg-black lg:px-8 flex justify-center ${className} items-center`}
       >
         <div className="container mx-auto">
           <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-8 lg:gap-16">
